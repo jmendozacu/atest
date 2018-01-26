@@ -1,0 +1,72 @@
+<?php
+/**
+ * @category    CleverSoft
+ * @package     CleverBlock
+ * @copyright   Copyright © 2017 CleverSoft., JSC. All Rights Reserved.
+ * @author 		ZooExtension.com
+ * @email       magento.cleversoft@gmail.com
+ */
+?>
+<?php
+
+$blocks = $block->getBlocks();
+$full_w  = $block->getConfig('enable_fullwidth')?$block->getConfig('enable_fullwidth'): $block->getData('enable_fullwidth');
+$id = $block->getConfig('id') ? $block->getConfig('id') : $block->getData('id');
+$scroll = $block->getConfig('scroll') ? $block->getConfig('scroll') : $block->getData('scroll');
+$title = $block->getConfig('widget_title') ? $block->getConfig('widget_title') : $block->getData('widget_title');
+$lazyload = $block->getData('lazyload');
+if (is_null($lazyload)) $lazyload = 'false';
+$_matoHelper = $this->helper('CleverSoft\Base\Helper\Data');
+$rtl_language = $_matoHelper->getCfg('responsive/rtl_language');
+?>
+<div class="<?php echo $block->getConfig('classes')? $block->getConfig('classes') : $block->getData('classes') ?>" id="<?php echo $id ?>">
+
+    <div class="block zoo-block-widget block-sample clearfix">
+        <?php if ($title): ?>
+            <div class="zoo-main-heading">
+                <div class="zoo-heading-wrapper-title">
+                    <h3><span><?php echo $title ?></span></h3>
+                </div>
+            </div>
+        <?php endif ?>
+
+        <div class="<?php echo $scroll == 1 ? 'owl-carousel ' : 'row' ?>">
+            <?php foreach ($blocks as $block): ?>
+                <div class="<?php echo $scroll == 1 ? 'block-content' : $block['class'] ?>">
+                    <?php echo $block['content'] ?>
+                </div>
+            <?php endforeach ?>
+        </div>
+
+    </div>
+    <?php if($full_w) : ?>
+    <style>
+        #<?php echo $id ?>{
+            width: 100vw;
+            position: relative;
+            left: 50%;
+            right: 50%;
+            margin-left: -50vw;
+            margin-right: -50vw
+        };
+    </style>
+    <?php endif; ?>
+    <script>
+        require([
+            "jquery",
+            "CleverSoft_CleverBlock/js/block.frontend"
+        ], function ($,cleverBlockMage) {
+            $(document).ready(function () {
+                //
+                $('#<?php echo $id ?>').cleverBlockMage({
+                    animation: <?php echo $this->getConfig('animation') ? $this->getConfig('animation') : $this->getData('animation') ?>,
+                    parallax: <?php echo $this->getConfig('parallax') ? $this->getConfig('parallax') : $this->getData('parallax') ?>,
+                    carousel: <?php echo $this->getConfig('carousel') ? $this->getConfig('carousel') : $this->getData('carousel') ?>,
+                    carouselConfig: {
+                        lazyload:<?php echo $lazyload; ?>
+                    }
+                });
+            });
+        });
+    </script>
+</div>

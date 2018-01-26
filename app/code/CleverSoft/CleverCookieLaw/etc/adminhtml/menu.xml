@@ -1,0 +1,7 @@
+<!-- File: app/code/Pulsestorm/MenuTutorial/etc/adminhtml/menu.xml -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="CleverSoft_CleverCookieLaw::cookielaw" title="Cookie Law Compliance" module="CleverSoft_CleverCookieLaw" sortOrder="55" parent="CleverSoft_Base::cl_all" resource="CleverSoft_Base::all" />
+        <add id="CleverSoft_CleverCookieLaw::cookielawsettings" title="Settings" module="CleverSoft_CleverCookieLaw" sortOrder="0" parent="CleverSoft_CleverCookieLaw::cookielaw" action="adminhtml/system_config/edit/section/cookielaw" resource="CleverSoft_Theme::config_cookielaw" />
+    </menu>
+</config>

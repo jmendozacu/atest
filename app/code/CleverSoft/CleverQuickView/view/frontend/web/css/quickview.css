@@ -1,0 +1,24 @@
+#clever-quickview .copyright {
+    display: none;
+
+}
+
+.qv-modal > #clever-quickview {min-height: 300px;}
+
+.clever-loading-wrap {
+    min-height: 400px;
+    display: table;
+    width: 100%
+}
+
+.loader,
+.clever-loader {
+    position: relative;
+    text-align: center;
+    padding: 100px 0
+}
+.clever-loader {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}

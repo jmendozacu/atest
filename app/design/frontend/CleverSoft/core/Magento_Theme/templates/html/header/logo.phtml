@@ -1,0 +1,45 @@
+<?php
+/**
+ * Copyright © 2017 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+// @codingStandardsIgnoreFile
+/**
+ * @var \Magento\Theme\Block\Html\Header\Logo $block
+ */
+$theme = $this->helper('CleverSoft\Base\Helper\Data');
+$cfgstore = $theme->getCfg('header');
+if ($cfgstore['logo_upload']) {
+    $logo = $cfgstore['logo_upload'];
+    $logo_url = $this->getUrl('pub/media/wysiwyg/cleversoft/logo/', ['_secure' => $this->getRequest()->isSecure(),'_type'=>\Magento\Framework\UrlInterface::URL_TYPE_WEB]).$logo;
+}
+if ($cfgstore['logo_retina_upload']) {
+    $retine_logo = $cfgstore['logo_retina_upload'];
+    $retine_logo_url = $this->getUrl('pub/media/wysiwyg/cleversoft/logo/', ['_secure' => $this->getRequest()->isSecure(),'_type'=>\Magento\Framework\UrlInterface::URL_TYPE_WEB]).$retine_logo;
+}
+?>
+
+<?php $storeName = $block->getThemeName() ? $block->getThemeName() : $block->getLogoAlt();?>
+<?php if ($block->isHomePage()):?>
+    <strong class="logo">
+<?php else: ?>
+    <a class="logo" href="<?php echo $block->getUrl(''); ?>" title="<?php /* @escapeNotVerified */ echo $storeName ?>">
+<?php endif ?>
+<?php    if ($cfgstore['logo_upload']) { ?>
+    <img src="<?php /* @escapeNotVerified */ echo $logo_url ?>"
+         alt="<?php /* @escapeNotVerified */ echo $block->getLogoAlt() ?>"
+        <?php echo $cfgstore['logo_upload_width'] ? 'width="' . $cfgstore['logo_upload_width'] . '"' : '' ?>
+        height="auto"
+        />
+<?php } else {?>
+    <img src="<?php /* @escapeNotVerified */ echo $block->getLogoSrc() ?>"
+         alt="<?php /* @escapeNotVerified */ echo $block->getLogoAlt() ?>"
+        <?php echo $block->getLogoWidth() ? 'width="' . $block->getLogoWidth() . '"' : '' ?>
+        <?php echo $block->getLogoHeight() ? 'height="' . $block->getLogoHeight() . '"' : '' ?>
+        />
+<?php } ?>
+<?php if ($block->isHomePage()):?>
+    </strong>
+<?php else:?>
+    </a>
+<?php endif?>

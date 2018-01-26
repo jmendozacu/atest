@@ -1,0 +1,154 @@
+<?php 
+/**
+ * @category    CleverSoft
+ * @package     CleverBrands
+ * @copyright   Copyright © 2017 CleverSoft., JSC. All Rights Reserved.
+ * @author 		ZooExtension.com
+ * @email       magento.cleversoft@gmail.com
+ */
+?>
+<?php
+$element = $block->getElement();
+$fieldId = ($element->getHtmlContainerId()) ? ' id="' . $element->getHtmlContainerId() . '"' : '';
+$fieldClass = "field admin__field field-{$element->getId()} {$element->getCssClass()}";
+$fieldClass .= ($element->getRequired()) ? ' required' : '';
+$fieldAttributes = $fieldId . ' class="' . $fieldClass . '" ' . $block->getUiId('form-field', $element->getId());
+
+//Get value to grid manufacturer
+$gridBrands = $block->getInputHtml();
+$brands = array();
+$linkto = array();
+$img = array();
+
+if(isset($gridBrands) && isset($gridBrands['brands'])){
+    $gridBrands['brands'] = is_array($gridBrands['brands']) ? $gridBrands['brands'] : explode(',',$gridBrands['brands']);
+    $gridBrands['linkto'] = is_array($gridBrands['linkto']) ? $gridBrands['linkto'] : explode(',',$gridBrands['linkto']);
+    $gridBrands['img'] = is_array($gridBrands['img']) ? $gridBrands['img'] : explode(',',$gridBrands['img']);
+    foreach($gridBrands['brands'] as $keys => $values){
+        $brands[] = isset($values) ? $values : '';
+    }
+
+    foreach($gridBrands['linkto'] as $keys => $values){
+        $linkto[] = isset($values) ? $values : '';
+    }
+
+    foreach($gridBrands['img'] as $keys => $values){
+        $img[] = isset($values) ? $values : '';
+    }
+}
+
+$allAttributeOptions = $block->getAttibuteOptions();
+$options = '';
+?>
+
+<div<?php /* @escapeNotVerified */ echo $fieldAttributes ?>>
+    <?php echo $element->getLabelHtml() ?>
+    <div class="control admin__field-control">
+        <table class="manufacturer">
+            <?php
+            if(isset($gridBrands) && isset($gridBrands['brands'])):
+                for($i = 0; $i < count($brands); $i++):
+                    if($linkto[$i] == "" && $img[$i] == "") continue;
+                    ?>
+                    <tr class="brands brands-<?php echo $i; ?>">
+                        <td>
+                            <select name="parameters[brands][]">
+                                <?php
+                                foreach ($allAttributeOptions as $attribute):
+                                    ?>
+                                    <option value="<?php echo $attribute['label'] ?>" <?php if($attribute['label'] == $brands[$i]) echo "selected"; ?>><?php echo $attribute['label'] ?></option>
+                                    <?php
+                                    $options .= $i==0?'<option value="'.$attribute['label'].'">'.$attribute['label'] .'</option>':'';
+                                endforeach;
+                                ?>
+                            </select>
+                        </td>
+                        <td>
+                            <input type="text" name="parameters[linkto][]" placeholder="link to" value="<?php echo $linkto[$i]; ?>"/>
+                        </td>
+                        <td>
+                            <input type="text" name="parameters[img][]" placeholder="image" id="<?php echo 'img-'.$i.'-insert' ?>" value="<?php echo $img[$i]; ?>"/>
+                        </td>
+                        <td>
+                            <button type="button" value="Pick" id="<?php echo 'img-'.$i ?>" onclick="cleverMediabrowserUtilityBrands.openDialog('<?php  echo $block->getUrl('cleverbrand/wysiwyg_images').'target_element_id/img-'.$i.'-insert'; ?>')">Pick</button>
+                        </td>
+                        <td>
+                            <button type="button" value="Clear" id="<?php echo 'img-'.$i."-in"; ?>" onclick="removeImage(this.id)">Clear</button>
+                        </td>
+                        <td>
+                            <button type="button" value="Delete" id="<?php echo $i; ?>" onclick="removeRow(this.id)">Delete</button>
+                        </td>
+                    </tr>
+                <?php
+                endfor;
+            else:
+                $i = 0;
+                ?>
+                <tr class="brands brands-0">
+                    <td>
+                        <select name="parameters[brands][]">
+                            <?php
+                            foreach ($allAttributeOptions as $attribute):
+                                ?>
+                                <option value="<?php echo $attribute['label'] ?>"><?php echo $attribute['label'] ?></option>
+                                <?php
+                                $options .= '<option value="'.$attribute['label'].'">'.$attribute['label'] .'</option>';
+                            endforeach;
+                            ?>
+                        </select>
+                    </td>
+                    <td>
+                        <input type="text" name="parameters[linkto][]" placeholder="link to" value=""/>
+                    </td>
+                    <td>
+                        <input type="text" name="parameters[img][]" placeholder="image" id="<?php echo 'img-0-insert' ?>" value=""/>
+                    </td>
+                    <td>
+                        <button type="button" value="Pick" id="img-0" onclick="cleverMediabrowserUtilityBrands.openDialog('<?php echo $block->getUrl('cleverbrand/wysiwyg_images').'target_element_id/img-0-insert'; ?>')">Pick</button>
+                    </td>
+                    <td>
+                        <button type="button" value="Clear" id="img-0-in" onclick="removeImage(this.id)">Clear</button>
+                    </td>
+                    <td>
+                        <button type="button" value="Delete" id="0" onclick="removeRow(this.id)">Delete</button>
+                    </td>
+                </tr>
+            <?php
+            endif;
+            ?>
+        </table>
+
+        <button style="margin-top: 10px" type="button" class="addmanufacturer">Add more</button>
+    </div>
+</div>
+
+<script>
+    window.brandid = <?php echo $i; ?>;
+    window.manid  = '<?php echo str_replace("'","\'",$options); ?>';
+        require(['jquery', "CleverSoft_CleverBrands/js/browser"], function(jQuery){
+            removeImage = function(id) {
+                id = id + 'sert';
+                document.getElementById(id).value = "";
+            };
+
+            removeRow = function(id) {
+                var row = '.brands-'+id;
+                jQuery(row).remove();
+            };
+
+            jQuery(function(){
+                jQuery('button.addmanufacturer').click(function(event){
+                    window.brandid += 1;
+                    window.manselect = '<select name="parameters[brands][]">'+window.manid+'</select>';
+                    var url = "cleverMediabrowserUtilityBrands.openDialog('<?php echo $block->getUrl("cleverbrand/wysiwyg_images") ?>"+ "target_element_id/img-"+window.brandid+"-insert')";
+                    jQuery('<tr class="brands brands-' + window.brandid + '"><td>' + window.manselect + '</td>' +
+                    '<td><input type="text" name="parameters[linkto][]" placeholder="link to" value=""/></td>' +
+                    '<td><input type="text" name="parameters[img][]" placeholder="image" value="" id="img-'+window.brandid+'-insert"/></td>' +
+                    '<td><button type="button" value="Pick" id="img-'+window.brandid+'" onclick="'+url+'">Pick</button></td>' +
+                    '<td><button type="button" value="Clear" id="img-'+window.brandid+'-in" onclick="removeImage(this.id)">Clear</button></td>' +
+                    '<td><button type="button" value="Delete" id="' + window.brandid +'" onclick="removeRow(this.id)">Delete</button></td>' +
+                    '</tr>').appendTo('table.manufacturer');
+                });
+            });
+        });
+</script>

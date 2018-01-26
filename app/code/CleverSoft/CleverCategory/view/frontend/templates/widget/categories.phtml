@@ -1,0 +1,181 @@
+<?php
+/**
+ * @category    CleverSoft
+ * @package     CleverCategory
+ * @copyright   Copyright © 2017 CleverSoft., JSC. All Rights Reserved.
+ * @author 		ZooExtension.com
+ * @email       magento.cleversoft@gmail.com
+ */
+?> 
+<?php
+$categories = $this->getInforCategories();
+$lazyhelper = $this->helper('CleverSoft\Base\Helper\Data');
+$lazyload = $this->getData('lazyload') == '1' ? 'true' : 'false';
+$min_height_img_lazyload = $this->getData('height_image') ?  $this->getData('height_image') : 200;
+$icon = $lazyhelper->getCfg('responsive/iconlazyload');
+$grid_col = $this->getData('grid_column') ? $this->getData('grid_column') : 4;
+$grid_class = "zoo-grid-{$grid_col}col";
+if (!empty($icon)) {
+    $image = $icon;
+    $om = \Magento\Framework\App\ObjectManager::getInstance();
+    $storeManager = $om->create('Magento\Store\Model\StoreManagerInterface');
+    $image_url = $storeManager->getStore()
+            ->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA) . 'lazyload/' . $image;
+} else {
+    $image_url = $block->getViewFileUrl('CleverSoft_Base::images/transparent.gif');
+}
+?>
+<div class="row">
+	<div class="<?php echo $this->getData('customclass') ? $this->getData('customclass') : 'owlcarousel'; ?>"
+		 id="cat-carousel">
+		<?php if ($this->getData('layoutwg') == 'carousel'): ?>
+			<ul class="owlcategory owl-carousel" style="list-style-type: none;">
+				<?php foreach ($categories as $category): ?>
+					<li style="text-align:center">
+						<?php if (isset($category['urlcategory'])): ?>
+						<a href="<?php echo $category['urlcategory'] ?>" title="<?php echo $category['namecategory'] ?>">
+							<?php endif ?>
+
+							<?php if ($category['image']): ?>
+								<img data-src="<?php echo $category['image'] ?>"
+									 src="<?php if ($lazyload == 'true') echo $image_url; else echo $category['image']; ?>"
+									 class="<?php if ($lazyload == 'true') echo "clazyload"; ?> img-cat"
+									 alt="<?php echo $category['namecategory'] ?>"
+									<?php echo 'style="min-height: '.$min_height_img_lazyload.'px"'?>
+									/>
+							<?php else: ?>
+								<?php echo $category['namecategory'] ?>
+							<?php endif ?>
+							<div class="description">
+								<span class="name-cat"><?php echo strtoupper($category['namecategory']) ?></span><br/>
+								<?php if ($this->getData('show_qty') == '1'): ?>
+									<span class="num-product"><?php echo $category['numberofproduct'] ?> Items</span>
+								<?php endif; ?>
+							</div>
+							<?php if (isset($category['urlcategory'])): ?>
+						</a>
+					<?php endif ?>
+					</li>
+				<?php endforeach ?>
+			</ul>
+		<?php else: ?>
+			<div class="grid-category itemgrid zoo-itemgrid-adaptive <?php echo $grid_class; ?>">
+				<?php foreach ($categories as $category): ?>
+					<div class="category-item product-item">
+						<div class="main-content-category">
+							<?php if (isset($category['urlcategory'])): ?>
+							<a href="<?php echo $category['urlcategory'] ?>" title="<?php echo $category['namecategory'] ?>">
+								<?php endif ?>
+								<?php if ($category['image']): ?>
+									<img data-src="<?php echo $category['image'] ?>"
+										 src="<?php if ($lazyload == 'true') echo $image_url; else echo $category['image']; ?>"
+										 class="<?php if ($lazyload == 'true') echo "clazyload"; ?> img-cat"
+										 alt="<?php echo $category['namecategory'] ?>"
+										<?php echo 'style="min-height: '.$min_height_img_lazyload.'px"'?>
+										/>
+								<?php else: ?>
+									<?php echo $category['namecategory'] ?>
+								<?php endif ?>
+								<div class="description">
+									<span class="name-cat"><?php echo strtoupper($category['namecategory']) ?></span><br/>
+									<?php if ($this->getData('show_qty') == '1'): ?>
+										<span class="num-product"><?php echo $category['numberofproduct'] ?> Items</span>
+									<?php endif ?>
+								</div>
+								<?php if (isset($category['urlcategory'])): ?>
+							</a>
+						<?php endif ?>
+						</div>
+					</div>
+				<?php endforeach ?>
+			</div>
+		<?php endif; ?>
+	</div>
+</div>
+<?php
+$autoplay = $this->getData('autoplay') == '1' ? 'true' : 'false';
+$autoplaytimeout = $this->getData('autoplaytime') ? (int)$this->getData('autoplaytime') * 1000 : 1000;
+$hoverPause = $this->getData('hoverpause') == '1' ? 'true' : 'false';
+$pagination = $this->getData('pagination') == '1' ? 'true' : 'false';
+$prev = $this->getData('navigation_prev') ? $this->getData('navigation_prev') : 'prev';
+$next = $this->getData('navigation_next') ? $this->getData('navigation_next') : 'next';
+if ($this->getData('bullet')) {
+    $bullet = $this->getData('bullet') == '1' ? 'true' : 'false';
+} else {
+    $bullet = 'false';
+}
+//change
+?>
+    <script>
+        require(["jquery","jQueryLibMin"], function ($) {
+            <?php if($block->getData('enable_fullwidth')) { ?>
+            var $left = $('#cat-carousel').offset().left;
+            $('#cat-carousel').css({
+                'left': '-' + $left + 'px',
+                'position': 'relative',
+                'right': '0',
+                'width': $(window).width() + 'px'
+            });
+            $('#cat-carousel .owlcategory').css('width', '100%');
+            <?php } ?>
+            <?php if ($this->getData('layoutwg') == 'carousel'): ?>
+            $(function () {
+                if ('<?php echo $this->getData('layoutwg'); ?>' == 'carousel') {
+                    var $container = $(".owlcategory");
+                    $container.owlCarousel({
+                        nav: true,
+                        loop: true,
+                        margin: 10,
+                        autoplay: <?php echo $autoplay; ?>,
+                        autoplayTimeout: <?php echo $autoplaytimeout; ?>,
+                        autoplayHoverPause: <?php echo $hoverPause; ?>,
+                        dots: <?php echo $bullet; ?>,
+                        navText: ["<?php echo $prev; ?>", "<?php echo $next; ?>"],
+                        responsive: {
+                            0: {
+                                items: 1,
+                                nav: true
+                            },
+                            480: {
+                                items:<?php echo $this->getData('nbi480') ? $this->getData('nbi480') : 1; ?>,
+                                nav: true
+                            },
+                            768: {
+                                items:<?php echo $this->getData('nbi768') ? $this->getData('nbi768') : 2; ?>,
+                                nav: true
+                            },
+                            990: {
+                                items:<?php echo $this->getData('nbi990') ? $this->getData('nbi990') : 2; ?>,
+                                nav: true
+                            },
+                            1200: {
+                                items:<?php echo $this->getData('nbi1200') ? $this->getData('nbi1200') : 3; ?>,
+                                nav: true
+                            }
+                        }
+                    });
+                    <?php if ($lazyload == 'true') {  ?>
+                    $container.on('changed.owl.carousel', function(event) {
+                        setTimeout(function(){
+                            $(this).find(".owl-item.active .clazyload").lazyload({
+                                data_attribute: "src",
+                                failure_limit : 10
+                            });
+                        }, 100);
+                    });
+                    <?php } ?>
+                }
+            });
+            <?php else: ?>
+            $(function () {
+                var imgwidth = 0;
+                if ('<?php echo $this->getData('layoutwg'); ?>' == 'grid') {
+                    imgwidth = <?php echo $this->getData('imgwidth') ? $this->getData('imgwidth') : 0; ?>;
+                    if (imgwidth > 0) {
+                        $(".grid-category img.img-cat").width(imgwidth);
+                    }
+                }
+            });
+            <?php endif; ?>
+        });
+    </script> 

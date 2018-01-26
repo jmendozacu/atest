@@ -1,0 +1,7 @@
+<!-- File: app/code/Pulsestorm/MenuTutorial/etc/adminhtml/menu.xml -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="CleverSoft_Newsletter::newletter" title="NewsLetter" module="CleverSoft_Newsletter" sortOrder="55" parent="CleverSoft_Base::cl_all" resource="CleverSoft_Base::all" />
+        <add id="CleverSoft_Newsletter::newlettersettings" title="Settings" module="CleverSoft_Newsletter" sortOrder="0" parent="CleverSoft_Newsletter::newletter" action="adminhtml/system_config/edit/section/clevernewsletter" resource="CleverSoft_Theme::config_clevernewsletter" />
+    </menu>
+</config>

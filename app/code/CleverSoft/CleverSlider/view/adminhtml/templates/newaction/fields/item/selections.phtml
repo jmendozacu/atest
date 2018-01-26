@@ -1,0 +1,37 @@
+<?php
+/**
+ * @category    CleverSoft
+ * @package     CleverSlider
+ * @copyright   Copyright © 2017 CleverSoft., JSC. All Rights Reserved.
+ * @author 		ZooExtension.com
+ * @email       magento.cleversoft@gmail.com
+ */
+?>
+<?php
+$menu = $this->getSliderObject();
+?>
+
+<?php if(count($menu) > 1): ?>
+
+<?php
+$type = $slider->getData('type');
+$cssClass = $slider->getData('css_class');
+$items = json_decode($slider->getContent());
+$uniqId = uniqid('slider-');
+?>
+
+    <div class="selections-container">
+        <div class="manage-menus">
+
+        </div>
+    </div>
+
+
+
+<?php else : ?>
+    <div class="selections-container">
+        <div class="manage-menus">
+            <span class="add-edit-slider-action">Edit your slideshow below, or <a class="blue" href="<?php echo $block->getUrl('slideshow/index/new'); ?>">create a new slideshow</a>.		</span>
+        </div>
+    </div>
+<?php endif ?>

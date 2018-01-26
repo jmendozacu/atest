@@ -1,0 +1,73 @@
+/**
+ * Copyright 2016 The Valdecode Cookie Law Compliance Authors. All rights reserved.
+ * Use of this source code is governed by a MIT-style
+ * license that can be found in the LICENSE.txt file.
+ */
+#v-cookielaw { overflow: hidden; background: #fff;  z-index: 48;  }
+#v-cookielaw.v-bar { display: table; width: 100%; padding: 5px 0; }
+#v-cookielaw.v-bar .v-message { display: table-cell; }
+#v-cookielaw.v-bar .v-actions { display: table-cell; vertical-align: middle; width: 250px; padding-right: 10px; text-align: right; }
+#v-cookielaw.v-bar.v-top { position: relative; border-bottom: 1px solid #000; }
+#v-cookielaw.v-bar.v-bottom { position: fixed; bottom: 0; border-top: 1px solid #000; }
+
+#v-cookielaw.v-box {
+    position: fixed;
+    max-width: 400px;
+    padding: 20px;
+    -webkit-box-shadow: -2px 2px 82px -26px rgba(0, 0, 0, 0.25);
+    box-shadow: -2px 2px 82px -26px rgba(0, 0, 0, 0.25);
+    text-align: center;
+}
+#v-cookielaw.v-box h3{
+    text-transform: uppercase;
+    margin: 20px 0;
+}
+#v-cookielaw.v-box p{
+    padding: 0 15px;
+    margin: 0 0 20px;
+}
+#v-cookielaw.v-box .v-message a{
+    text-decoration: underline;
+}
+#v-cookielaw.v-box .v-actions { margin: 5px 10px; }
+#v-cookielaw.v-box .v-actions .btn{
+    text-transform: uppercase;
+    padding: 10px 25px;
+}
+#v-cookielaw.v-box.v-top-left {
+    top: 50px;
+    left: 30px;
+}
+#v-cookielaw.v-box.v-top-right {
+    top: 50px;
+    right: 30px;
+}
+#v-cookielaw.v-box.v-bottom-left {
+    bottom: 50px;
+    left: 30px;
+}
+#v-cookielaw.v-box.v-bottom-right {
+    bottom: 50px;
+    right: 30px;
+}
+
+/* RWD */
+@media (max-width: 480px) {
+    #v-cookielaw.v-box {  width: 100% !important; padding: 5px 0 0; position: fixed; bottom: 0 !important; top: auto !important; border-top: 1px solid #000; max-width: 100%; margin: 0; border-radius: 0; border-right: 0; border-left: 0; border-bottom: 0; }
+
+
+    #v-cookielaw.v-bar .v-actions { width: auto; }
+}
+
+/* Skin - Yellow Alert */
+#v-cookielaw.v-yellow-alert { background: #fffbcd; border-color: #e2cd7b !important; }
+
+/* Skin - Dark Clean */
+#v-cookielaw.v-dark-clean { color: #fff; background: #2c2c2c; border-color: #55575f !important; }
+
+/* Skin - Minimalist */
+#v-cookielaw.v-minimalist { color: #2c2c2c; background: #f0f0f0; border-color: #e0e0e0 !important; font-size: 11px; font-family: Verdana; }
+#v-cookielaw.v-bar.v-minimalist { padding: 2px 0; }
+#v-cookielaw.v-box.v-minimalist { width: 260px; }
+#v-cookielaw.v-box.v-minimalist .v-actions { margin: 5px; }
+#v-cookielaw.v-box.v-minimalist .v-message { padding: 5px; }

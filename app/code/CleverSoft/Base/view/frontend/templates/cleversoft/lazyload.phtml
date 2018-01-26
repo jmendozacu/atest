@@ -1,0 +1,63 @@
+<?php
+/**
+ * @category    CleverSoft
+ * @package     CleverBase
+ * @copyright   Copyright © 2017 CleverSoft., JSC. All Rights Reserved.
+ * @author 		ZooExtension.com
+ * @email       magento.cleversoft@gmail.com
+ */
+?>
+<?php
+$theme = $this->helper('CleverSoft\Base\Helper\Data');
+$equalH = $theme->getCfg('category_grid/equal_height');
+$threshold = $theme->getCfg('responsive/threshold');
+$config = $theme->getCfg('responsive/iconlazyload');
+if (isset($config) and $config !='') {
+    $image = $config;
+    $om = \Magento\Framework\App\ObjectManager::getInstance();
+    $storeManager = $om->create('Magento\Store\Model\StoreManagerInterface');
+    $image_url = $storeManager->getStore()
+            ->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA) . 'lazyload/' . $image;
+} else {
+    $image_url = $block->getViewFileUrl('CleverSoft_Base::images/transparent.gif');
+}
+?>
+<script>
+    requirejs(['jquery', 'jQueryLibMin'],function ($) {
+        //container is a selector
+        window.lazyloadfunction = function() {
+            if ($(".clazyload").length > 0) {
+                $(".clazyload").lazyload({
+                    data_attribute: "src",
+                    placeholder: '<?php echo $image_url;?>',
+                    threshold: '<?php echo $threshold;?>',
+                    failure_limit : 10,
+                    load: <?php if ($equalH) : ?>
+                        function(){
+                            $(this).waitForImages({
+                                finished: function() {
+                                    // ...
+                                },
+                                each: function() {
+                                    // ...
+                                },
+                                waitForAll: true
+                            }).done(function() {
+                                $(this).closest('.trigger-equal-height').attr('data-mage-init', JSON.stringify({'equalHeight': {'target': ' .product-item-info'}}));
+                                $(this).closest('.trigger-equal-height').trigger('contentUpdated');
+                            })
+                        }
+                    <?php else : ?>
+                    null
+                    <?php endif; ?>
+                });
+            }
+        };
+        $(function () {
+            lazyloadfunction();
+            $(document).bind('ajaxComplete', function(){
+                lazyloadfunction();
+            });
+        });
+    });
+</script>

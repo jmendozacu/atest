@@ -1,0 +1,105 @@
+<?php
+/**
+ * @category    CleverSoft
+ * @package     CleverBlock
+ * @copyright   Copyright © 2017 CleverSoft., JSC. All Rights Reserved.
+ * @author 		ZooExtension.com
+ * @email       magento.cleversoft@gmail.com
+ */
+?>
+<?php
+$element = $block->getElement();
+$note = $element->getNote() ? '<div class="note" id="' . $element->getId() . '-note">' . $element->getNote() . '</div>' : '';
+$elementBeforeLabel = $element->getExtType() == 'checkbox admin__control-checkbox' || $element->getExtType() == 'radio admin__control-radio';
+$fieldId = ($element->getHtmlContainerId()) ? ' id="' . $element->getHtmlContainerId() . '"' : '';
+$fieldClass = "admin__field field field-{$element->getId()} {$element->getCssClass()}";
+$fieldClass .= ($elementBeforeLabel) ? ' choice' : '';
+$fieldClass .= ($element->getRequired()) ? ' required _required' : '';
+$fieldClass .= ($note) ? ' with-note' : '';
+$fieldClass .= (!$element->getLabelHtml()) ? ' no-label' : '';
+
+$fieldAttributes = $fieldId . ' class="' . $fieldClass . '" '
+    . $block->getUiId('form-field', $element->getId())
+    . ($element->getFieldExtraAttributes() ? ' ' . $element->getFieldExtraAttributes() : '');
+$ranId = $block->getRandom()->getUniqueHash('categories');
+?>
+<div<?php /* @escapeNotVerified */ echo $fieldAttributes ?>>
+    <?php echo $element->getLabelHtml() ?>
+    <div class="admin__field-control control">
+        <input style="width: 25%;" type="text" class="input-text admin__control-text element-value-changer input-text entities <?php if ($this->getElement()->getRequired()):?>required-entry<?php endif ?>" name="<?php echo $element->getName()?>" readonly id="<?php echo $element->getHtmlId()?>" value="<?php echo $element->getValue()?>">
+        <label class="addafter"><a class="rule-chooser-trigger" href="javascript:void(0)" onclick="cleverWidgetCategory.displayEntityChooser('#<?php echo $ranId ?>')" title="<?php echo __('Open Chooser')?>">
+                <img class=rule-chooser-trigger" src="<?php echo $block->getViewFileUrl('CleverSoft_CleverProduct::images/rule_chooser_trigger.gif')?>"/>
+            </a></label>
+        <a class="rule-param-apply" href="javascript:void(0)" onclick="cleverWidgetCategory.hideEntityChooser('#<?php echo $ranId ?>')" title="<?php echo __('Apply')?>">
+            <img class="v-middle" src="<?php echo $block->getViewFileUrl('CleverSoft_CleverProduct::images/rule_component_apply.gif')?>"/>
+        </a>
+        <a class="rule-param-remove" href="javascript:void(0)" onclick="cleverWidgetCategory.clearEntityValue('#<?php echo $ranId ?>')" title="<?php echo __('Clear value')?>">
+            <img class="v-middle" src="<?php echo $block->getViewFileUrl('CleverSoft_CleverProduct::images/rule_component_remove.gif')?>"/>
+        </a>
+        <div id="<?php echo $ranId ?>" class="tree"></div>
+    </div>
+</div>
+
+<style type="text/css">
+    a.n-underline{text-decoration: none}
+    #loading-mask{z-index: 2000}
+</style>
+<script>
+    require([
+        "jquery",
+        "CleverSoft_CleverProduct/js/widget",
+        "prototype"
+    ],function(jQuery,CleverWidgetChooser) {
+        var uiid = '<?php echo substr($element->getHtmlId(), 0, -17)?>';
+        jQuery(function(){
+            window.cleverWidgetCategory = CleverWidgetChooser._init('<?php echo $block->getCategoriesChooserUrl()?>');
+            Event.observe(document, 'CategoryNode:changed', function(event){
+                window.cleverWidgetCategory.checkCategory(event);
+            });
+            if(jQuery('select[name="parameters[mode]"]').val() == 'id'){
+                jQuery('input[name="parameters[category_ids]"]').parent().parent().hide();
+            }
+            jQuery('select[name="parameters[mode]"]').on('change',function(){
+                if(jQuery(this).val() == 'id'){//parameters[category_ids]
+                    jQuery('input[name="parameters[category_ids]"]').parent().parent().hide();
+                }
+                else {
+                    jQuery('input[name="parameters[category_ids]"]').parent().parent().show();
+                }
+            });
+
+            if(jQuery('select[name="parameters[layout]"]').val() == 'list' || jQuery('select[name="parameters[layout]"]').val() == 'carousel-vertical') {
+                jQuery('select[name="parameters[display_rating]"],select[name="parameters[display_addtocart]"],select[name="parameters[display_addtowishlist]"],select[name="parameters[display_addtocompare]"],select[name="parameters[display_swatch_attributes]"],select[name="parameters[display_productname]"],select[name="parameters[display_name_single_line]"],select[name="parameters[display_price]"],select[name="parameters[addtolinks_position]"]').parent().parent().hide();
+            }
+
+            jQuery('select[name="parameters[layout]"]').on('change',function(){
+                if(jQuery(this).val() == 'list' || jQuery(this).val() == 'carousel-vertical') {
+                    jQuery('select[name="parameters[display_rating]"],select[name="parameters[display_addtocart]"],select[name="parameters[display_addtowishlist]"],select[name="parameters[display_addtocompare]"],select[name="parameters[display_swatch_attributes]"],select[name="parameters[display_productname]"],select[name="parameters[display_name_single_line]"],select[name="parameters[display_price]"],select[name="parameters[addtolinks_position]"]').parent().parent().hide();
+                } else {
+                    jQuery('select[name="parameters[display_rating]"],select[name="parameters[display_addtocart]"],select[name="parameters[display_addtowishlist]"],select[name="parameters[display_addtocompare]"],select[name="parameters[display_swatch_attributes]"],select[name="parameters[display_productname]"],select[name="parameters[display_name_single_line]"],select[name="parameters[display_price]"],select[name="parameters[addtolinks_position]"]').parent().parent().show();
+                }
+            });
+
+            if(jQuery('select[name="parameters[background]"]').val() == ''){
+                jQuery('input[name="parameters[background_overlay]"]').parent().parent().hide();
+                jQuery('select[name="parameters[background_overlay_o]"]').parent().parent().hide();
+                jQuery('input[name="parameters[parallax_image_src]"]').parent().parent().hide();
+            }
+
+            jQuery('select[name="parameters[background]"]').on('change',function(){
+                if(jQuery(this).val() == ''){//parameters[category_ids]
+                    jQuery('input[name="parameters[background_overlay]"]').parent().parent().hide();
+                    jQuery('select[name="parameters[background_overlay_o]"]').parent().parent().hide();
+                    jQuery('input[name="parameters[parallax_image_src]"]').parent().parent().hide();
+                }
+                else {
+                    jQuery('input[name="parameters[background_overlay]"]').parent().parent().show();
+                    jQuery('select[name="parameters[background_overlay_o]"]').parent().parent().show();
+                    jQuery('input[name="parameters[parallax_image_src]"]').parent().parent().show();
+                }
+            });
+
+        });
+
+    });
+</script>

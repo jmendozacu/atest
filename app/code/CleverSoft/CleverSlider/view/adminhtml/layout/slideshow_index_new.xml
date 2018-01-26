@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="editor"/>
+    <head>
+        <css src="jquery/fileUploader/css/jquery.fileupload-ui.css"/>
+        <css src="jquery/colorpicker/css/colorpicker.css"/>
+        <css src="CleverSoft_CleverSlider::css/styles.css"/>
+        <css src="CleverSoft_CleverSlider::css/flexslider.css"/>
+        <css src="CleverSoft_CleverSlider::css/demo.css"/>
+        <css src="CleverSoft_CleverSlider::css/font-awesome/font-awesome.min.css"/>
+        <css src="CleverSoft_CleverSlider::css/jquery-ui.css"/>
+    </head>
+    <body>
+        <referenceContainer name="content">
+            <block class="CleverSoft\CleverSlider\Block\Adminhtml\Formfields\NewAction\Fields\SliderItems\Types" template="newaction/fields/item/container.phtml" name="slider_items_container">
+                <block class="CleverSoft\CleverSlider\Block\Adminhtml\Formfields\NewAction" name="slideshow_newaction"/>
+                <block class="CleverSoft\CleverSlider\Block\Adminhtml\Formfields\NewAction\Fields\SliderItems\Types" name="slider_item_types" template="newaction/fields/item/types.phtml" />
+                <block class="CleverSoft\CleverSlider\Block\Adminhtml\Formfields\NewAction\Fields\SliderItems\Types" name="slider_items_layout" template="newaction/fields/item/layout.phtml" />
+                <block class="CleverSoft\CleverSlider\Block\Adminhtml\Formfields\NewAction\Fields\SliderItems\Types" name="slider_items_icons_panel" template="newaction/fields/item/icons.phtml" />
+                <block class="CleverSoft\CleverSlider\Block\Adminhtml\Formfields\NewAction\Fields\SliderItems\Types" name="slider_col_templates_panel" template="newaction/fields/item/col.phtml" />
+            </block>
+        </referenceContainer>
+        <referenceContainer name="js">
+        </referenceContainer>
+    </body>
+</page>

@@ -1,0 +1,144 @@
+<?php
+/**
+ * @category    CleverSoft
+ * @package     CleverProduct
+ * @copyright   Copyright © 2017 CleverSoft., JSC. All Rights Reserved.
+ * @author 		ZooExtension.com
+ * @email       magento.cleversoft@gmail.com
+ */
+?>
+<?php
+
+$element = $block->getElement();
+$note = $element->getNote() ? '<div class="note" id="' . $element->getId() . '-note">' . $element->getNote() . '</div>' : '';
+$elementBeforeLabel = $element->getExtType() == 'checkbox admin__control-checkbox' || $element->getExtType() == 'radio admin__control-radio';
+$fieldId = ($element->getHtmlContainerId()) ? ' id="' . $element->getHtmlContainerId() . '"' : '';
+$fieldClass = "admin__field field field-{$element->getId()} {$element->getCssClass()}";
+$fieldClass .= ($elementBeforeLabel) ? ' choice' : '';
+$fieldClass .= ($element->getRequired()) ? ' required _required' : '';
+$fieldClass .= ($note) ? ' with-note' : '';
+$fieldClass .= (!$element->getLabelHtml()) ? ' no-label' : '';
+
+$fieldAttributes = $fieldId . ' class="' . $fieldClass . '" '
+    . $block->getUiId('form-field', $element->getId())
+    . ($element->getFieldExtraAttributes() ? ' ' . $element->getFieldExtraAttributes() : '');
+?>
+<div<?php /* @escapeNotVerified */ echo $fieldAttributes ?>>
+    <?php echo $element->getLabelHtml() ?>
+    <div class="admin__field-control control">
+        <select class="widget-option select multiselect element-value-changer admin__control-multiselect <?php if ($this->getElement()->getRequired()):?>required-entry<?php endif ?>" multiple="multiple"  name="<?php echo $element->getName()?>[]" id="<?php echo $element->getHtmlId()?>">
+        </select>
+    </div>
+    <script>
+        require([
+            'prototype',
+            'jquery'
+        ], function(){
+            var uiid = '<?php echo substr($element->getHtmlId(), 0, -17)?>';
+            Element.observe('<?php echo substr($element->getHtmlId(), 0, -8)?>', 'change', function(ev){
+                var input = Event.element(ev);
+                var me = $('<?php echo $element->getHtmlId()?>');
+                var url = '<?php echo $block->getUrl('cleverproduct/widget/attribute')?>';
+                if (input && me) window.updateAttributeOption(me, input, url, null);
+            });
+            jQuery(document).ready(function(){
+                if(jQuery('#'+uiid+'navigation').val() != 1){
+                    jQuery('.field-'+uiid+'navigation_prev').hide();
+                    jQuery('.field-'+uiid+'navigation_next').hide();
+                }
+                if(jQuery('#'+uiid+'mode').val() == 'id'){
+                    jQuery('.field-'+uiid+'category_ids').hide();
+                }
+
+            });
+
+            jQuery('#'+uiid+'navigation').on('change',function(){
+                if(jQuery(this).val() != 1){
+                    jQuery('.field-'+uiid+'navigation_prev').hide();
+                    jQuery('.field-'+uiid+'navigation_next').hide();
+                }
+                else {
+                    jQuery('.field-'+uiid+'navigation_prev').show();
+                    jQuery('.field-'+uiid+'navigation_next').show();
+                }
+            });
+
+            jQuery('#'+uiid+'mode').on('change',function(){
+                if(jQuery(this).val() == 'id'){
+                    jQuery('.field-'+uiid+'category_ids').hide();
+                }
+                else {
+                    jQuery('.field-'+uiid+'category_ids').show();
+                }
+            });
+
+            jQuery('#'+uiid+'widget_tab').on('change',function(){
+                if(jQuery(this).val() != 'none'){
+                    jQuery('.field-'+uiid+'mode').hide();
+                    jQuery('.field-'+uiid+'labels').show();
+                }
+                else {
+                    jQuery('.field-'+uiid+'mode').hide();
+                    jQuery('.field-'+uiid+'labels').hide();
+                    if(jQuery('#'+uiid+'widget_type').val() == 'product'){
+                        jQuery('.field-'+uiid+'mode').show();
+                        if(jQuery('#'+uiid+'widget_tab').val() == 'collection') jQuery('.field-'+uiid+'collection').show();
+                        else jQuery('.field-'+uiid+'collection').hide();
+                    }
+                    else
+                        jQuery('.field-'+uiid+'mode').hide();
+                }
+            });
+            jQuery('#'+uiid+'widget_type').on('change',function(){
+                if(jQuery(this).val() != 'product'){
+                    jQuery('.field-'+uiid+'mode').hide();
+                    if(jQuery(this).val() == 'category'){
+                        console.log("DDDD");
+                        console.log('.field-'+uiid+'category_ids');
+                        jQuery('.field-'+uiid+'category_ids').css('display','none');
+                    }
+                    else{
+                        jQuery('.field-'+uiid+'category_ids').hide();
+                    }
+                }
+                else {
+                    if(jQuery('#'+uiid+'widget_tab').val() == 'none'){
+                        jQuery('.field-'+uiid+'mode').show();
+                        jQuery('.field-'+uiid+'collection').hide();
+                    }
+                    else{
+                        jQuery('.field-'+uiid+'mode').hide();
+                        if(jQuery('#'+uiid+'widget_tab').val() == 'collection') jQuery('.field-'+uiid+'collection').show();
+                        else jQuery('.field-'+uiid+'collection').hide();
+                    }
+
+                }
+            });
+
+            window.updateAttributeOption = function(me, depend, url, value){
+                if (value) var values = value.split(',');
+                else var values = [];
+                new Ajax.Request(url, {
+                    parameters: {value: $(depend).value},
+                    onSuccess: function(transport){
+                        try{
+                            var options = transport.responseText.evalJSON();
+                            $(me).update('');
+                            options.each(function(option){
+                                var optionElm = new Element('option', {value:option.id});
+                                if (values.indexOf(option.id) !== -1){
+                                    optionElm.writeAttribute('selected', 'selected');
+                                }
+                                optionElm.update(option.label);
+                                $(me).appendChild(optionElm);
+                            });
+                        }catch(e){}
+                    }
+                });
+            }
+            window.updateAttributeOption('<?php echo $element->getHtmlId()?>', '<?php echo substr($element->getHtmlId(), 0, -8)?>', '<?php echo $block->getUrl('cleverproduct/widget/attribute')?>', '<?php echo $element->getValue()?>');
+        });
+
+    </script>
+</div>
+

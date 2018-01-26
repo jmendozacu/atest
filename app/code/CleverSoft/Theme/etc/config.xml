@@ -1,0 +1,124 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category    CleverSoft
+ * @package     CleverTheme
+ * @copyright   Copyright © 2017 CleverSoft., JSC. All Rights Reserved.
+ * @author 		ZooExtension.com
+ * @email       magento.cleversoft@gmail.com
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <cookielaw>
+            <general>
+                <enablecookie>1</enablecookie>
+                <type>v-bar</type>
+                <bar_position>v-top</bar_position>
+                <box_position></box_position>
+                <skin></skin>
+                <behaviour>0</behaviour>
+                <autohide>0</autohide>
+                <load_after>5</load_after>
+            </general>
+            <content>
+                <show>default</show>
+                <custom_message></custom_message>
+                <custom_accept></custom_accept>
+                <custom_more_info></custom_more_info>
+                <cms_page>no-route</cms_page>
+            </content>
+        </cookielaw>
+        <clevernewsletter>
+            <display_options>
+                <enable>1</enable>
+                <background_color>#FFFFFF</background_color>
+                <background_image></background_image>
+                <intro></intro>
+                <load_after>10</load_after>
+                <width>700</width>
+                <height>300</height>
+            </display_options>
+        </clevernewsletter>
+        <sociallogin>
+            <general>
+                <enable_for_login>1</enable_for_login>
+                <enable_for_register>1</enable_for_register>
+                <validate_ignore>1</validate_ignore>
+                <enable_photo>1</enable_photo>
+                <redirect_for_login>__referer__</redirect_for_login>
+                <redirect_for_register>__referer__</redirect_for_register>
+            </general>
+            <facebook>
+                <login_btn_text>Login with Facebook</login_btn_text>
+                <register_btn_text>Register with Facebook</register_btn_text>
+            </facebook>
+            <twitter>
+                <login_btn_text>Login with Twitter</login_btn_text>
+                <register_btn_text>Register with Twitter</register_btn_text>
+            </twitter>
+            <google>
+                <login_btn_text>Login with Google</login_btn_text>
+                <register_btn_text>Register with Google</register_btn_text>
+            </google>
+            <linkedin>
+                <login_btn_text>Login with Linkedin</login_btn_text>
+                <register_btn_text>Register with Linkedin</register_btn_text>
+            </linkedin>
+            <instagram>
+                <login_btn_text>Login with Instagram</login_btn_text>
+                <register_btn_text>Register with Instagram</register_btn_text>
+            </instagram>
+        </sociallogin>
+        <clevershopby>
+            <general>
+                <ajax_enabled>1</ajax_enabled>
+                <handle_filter_collapsing>1</handle_filter_collapsing>
+                <enabled>1</enabled>
+                <url>all-products</url>
+            </general>
+            <stock_filter>
+                <enabled>0</enabled>
+                <placed_block>1</placed_block>
+                <position>0</position>
+                <label>Stock</label>
+                <is_expanded>0</is_expanded>
+                <display_mode>0</display_mode>
+            </stock_filter>
+            <rating_filter>
+                <enabled>0</enabled>
+                <placed_block>1</placed_block>
+                <position>0</position>
+                <label>Rating</label>
+                <is_expanded>0</is_expanded>
+                <display_mode>0</display_mode>
+            </rating_filter>
+            <new_filter>
+                <enabled>0</enabled>
+                <placed_block>1</placed_block>
+                <position>0</position>
+                <label>New</label>
+                <is_expanded>0</is_expanded>
+                <display_mode>0</display_mode>
+            </new_filter>
+            <on_sale_filter>
+                <enabled>0</enabled>
+                <placed_block>1</placed_block>
+                <position>0</position>
+                <label>On Sale</label>
+                <is_expanded>0</is_expanded>
+                <display_mode>0</display_mode>
+            </on_sale_filter>
+            <tooltips>
+                <enabled>1</enabled>
+                <image>cleversoft/shopby/images/tooltip.png</image>
+            </tooltips>
+            <url>
+                <mode>1</mode>
+            </url>
+            <robots>
+                <control_robots>1</control_robots>
+            </robots>
+        </clevershopby>
+    </default>
+</config>

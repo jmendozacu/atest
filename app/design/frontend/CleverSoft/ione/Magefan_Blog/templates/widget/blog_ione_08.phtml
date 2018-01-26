@@ -1,0 +1,67 @@
+<?php
+/**
+ * Copyright © 2016 Ihor Vansach (ihor@magefan.com). All rights reserved.
+ * See LICENSE.txt for license details (http://opensource.org/licenses/osl-3.0.php).
+ *
+ * Glory to Ukraine! Glory to the heroes!
+ */
+?>
+<?php
+/**
+ * Blog recent posts widget
+ *
+ * @var $block \Magefan\Blog\Block\Widget\Recent
+ */
+?>
+
+<?php
+    $_postCollection = $block->getPostCollection();
+?>
+<?php if ($_postCollection->count()) { ?>
+<div class="post-list-wrapper blog-widget-recent custom">
+    <h3 class="title text-center"><?php echo $block->escapeHtml($block->getTitle()) ?></h3>
+    <ul class="post-list clearfix">
+        <?php foreach ($_postCollection as $_post) { ?>
+            <?php
+                $_postUrl = $_post->getPostUrl();
+                $_postName = $block->escapeHtml($_post->getTitle(), null, true);
+            ?>
+            <li class="post-holder col-md-3 post-holder-<?php echo $_post->getId() ?>">
+                <div class="post-header">
+
+                    <?php if ($featuredImage = $_post->getFeaturedImage()) { ?>
+                        <div class="post-ftimg-hld">
+                            <a href="<?php echo $_postUrl ?>" title="<?php echo $_postName ?>">
+                                <img src="<?php echo $featuredImage ?>" alt="<?php echo $_postName ?>" />
+                            </a>
+                        </div>
+                    <?php } ?>
+
+                    <div class="post-infos clear">
+                        <div class="item post-posed-date">
+							<span class="months"><?php echo $_post->getPublishDate('M') ?></span>
+                            <span class="days"><?php echo $_post->getPublishDate(' d, ') ?></span>
+                            <span class="year"><?php echo $_post->getPublishDate('Y') ?></span>
+                        </div>
+                    </div>
+
+                    <div class="post-title clearfix">
+                        <a class="post-item-link"
+                           href="<?php echo $_postUrl ?>">
+                            <?php echo $_postName; ?>
+                        </a>
+                    </div>
+					
+					<div class="post-link clearfix">
+						<a class="read-more"
+                           href="<?php echo $_postUrl ?>">
+                            <?php echo __('Read more'); ?>
+                        </a>
+					</div>
+                </div>
+            </li>
+
+        <?php } ?>
+    </ul>
+</div>
+<?php } ?>

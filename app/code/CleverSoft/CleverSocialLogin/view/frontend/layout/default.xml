@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="CleverSoft_CleverSocialLogin::css/pslogin.css" />
+    </head>
+    <body>
+        <referenceContainer name="after.body.start">
+            <block class="CleverSoft\CleverSocialLogin\Block\General" name="popup" template="CleverSoft_CleverSocialLogin::account/link/popup.phtml"/>
+            <block class="CleverSoft\CleverSocialLogin\Block\General" name="pslogin.general">
+                <action ifconfig="sociallogin/general/enable" method="setTemplate">
+                    <argument name="template" xsi:type="string">CleverSoft_CleverSocialLogin::general.phtml</argument>
+                </action>
+            </block>
+            </referenceContainer>
+        <referenceContainer name="page.messages">
+            <block class="CleverSoft\CleverSocialLogin\Block\Messages" name="pslogin.messages" />
+        </referenceContainer>
+        <referenceBlock name="header.links">
+            <block class="Magento\Framework\View\Element\Template" name="pslogin.theme.html.header.photo" as="pslogin_photo" before="customer">
+                <action ifconfig="sociallogin/general/enable" method="setTemplate">
+                    <argument name="template" xsi:type="string">CleverSoft_CleverSocialLogin::theme/html/header/photo.phtml</argument>
+                </action>
+                <arguments>
+                    <argument name="jsLayout" xsi:type="array">
+                        <item name="components" xsi:type="array">
+                            <item name="pslogin-photo" xsi:type="array">
+                                <item name="component" xsi:type="string">pslogin-photo</item>
+                            </item>
+                        </item>
+                    </argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+
+        <!-- Customer Authentication-popup -->
+        <referenceContainer name="before.body.end">
+            <block class="CleverSoft\CleverSocialLogin\Block\Buttons" name="cslogin.customer.form.login.buttons" as="cslogin_buttons" template="CleverSoft_CleverSocialLogin::customer/form/login/buttons.phtml">
+                <action method="checkPosition">
+                    <argument name="position" xsi:type="string">login</argument>
+                </action>
+                <action method="setOutput2js" />
+            </block>
+        </referenceContainer>
+
+    </body>
+</page>

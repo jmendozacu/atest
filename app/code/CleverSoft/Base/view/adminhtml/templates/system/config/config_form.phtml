@@ -1,0 +1,42 @@
+<?php
+/**
+ * @category    CleverSoft
+ * @package     CleverBase
+ * @copyright   Copyright © 2017 CleverSoft., JSC. All Rights Reserved.
+ * @author 		ZooExtension.com
+ * @email       magento.cleversoft@gmail.com
+ */
+?>
+<style>
+    .data-grid-multicheck-cell .action-multicheck-wrap{
+        width: auto;
+    }
+</style>
+<script>
+    require([
+        "jquery",
+        "uiRegistry",
+        "jquery/jquery.hashchange",
+        "mage/mage",
+        "prototype",
+        "mage/adminhtml/form",
+        "domReady!"
+    ], function(jQuery, registry){
+        jQuery(document).ajaxStop(function () {
+            if (jQuery('#row_megamenu_menumanager_manager button').length > 0) {
+                jQuery('#row_megamenu_menumanager_manager button').attr('type','button');
+            }
+            if (jQuery('#row_slideshow_slideshowmanager_manager button').length > 0) {
+                jQuery('#row_slideshow_slideshowmanager_manager button').attr('type','button');
+            }
+        });
+        jQuery(window).load(function($){
+            $('#row_megamenu_menumanager_manager .admin__data-grid-filters-footer button[data-action="grid-filter-apply"],#row_slideshow_slideshowmanager_manager .admin__data-grid-filters-footer button[data-action="grid-filter-apply"]').live('click',function(event){
+                event.preventDefault();
+                event.stopPropagation();
+                $('.data-grid-search-control-wrap .action-submit').click();
+            });
+        }(jQuery));
+
+    });
+</script>

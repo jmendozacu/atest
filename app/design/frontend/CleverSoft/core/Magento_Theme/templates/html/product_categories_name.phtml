@@ -1,0 +1,7 @@
+<div class="product-categories-name">
+<?php 
+   $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+   $category = $objectManager->get('Magento\Framework\Registry')->registry('current_category');//get current category 
+?>
+<strong>Categories: </strong><span><?php echo ' '.$category->getName(); ?></span>
+</div>

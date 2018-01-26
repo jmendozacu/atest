@@ -1,0 +1,83 @@
+<?php
+/**
+ * @category    CleverSoft
+ * @package     CleverBase
+ * @copyright   Copyright © 2017 CleverSoft., JSC. All Rights Reserved.
+ * @author        ZooExtension.com
+ * @email       magento.cleversoft@gmail.com
+ */
+
+$full_header_width = $block->getData('full_header_width');
+$compareHeader = $block->getData('compare');
+$wishlistHeader = $block->getData('wishlist');
+$sticky_logo = $block->getConfig('cleversoftbase/header/sticky_logo');
+//$logoSrc = $this->getUrl('pub/media/wysiwyg/cleversoft/logo/', ['_secure' => $this->getRequest()->isSecure(),'_type'=>\Magento\Framework\UrlInterface::URL_TYPE_WEB]).$sticky_logo;
+$logoSrc = $block->getMediaUrl() . 'wysiwyg/cleversoft/logo/' . $sticky_logo;
+
+?>
+
+<div class="panel wrapper">
+    <div class="header-panel <?php echo($full_header_width == 1 ? '' : 'container') ?>">
+        <div class="topbar-container">
+            <?php echo $this->getChildHtml("top.contact"); ?>
+            <?php echo $this->getChildHtml("currency"); ?>
+            <?php echo $this->getChildHtml("store_language"); ?>
+        </div>
+    </div>
+</div>
+<div class="justify-content-end header-content <?php echo($full_header_width == 1 ? '' : 'container') ?>"
+     id="header-sticky-mobile">
+    <div class="mr-auto zoo-header-content-block">
+        <span data-action="toggle-nav" class="action zoo-menu-label">
+            <span class="cs-font clever-icon-menu-5"></span>
+        </span>
+
+        <div class="header-minimal-search visible-xs visible-sm">
+            <a href="#"><span class="cs-font clever-icon-search-4"></span></a>
+        </div>
+        <?php echo $this->getChildHtml("logo"); ?>
+    </div>
+    <div class="zoo-header-content-block">
+        <div class="full-sc-search">
+            <span class="cs-font clever-icon-close"></span>
+            <?php echo $this->getChildHtml("top.search"); ?>
+        </div>
+    </div>
+    <div class="zoo-header-content-block">
+        <?php echo $this->getChildHtml("header.links"); ?>
+        <?php echo $this->getChildHtml("custom_block"); ?>
+        <?php echo $this->getChildHtml("minicart"); ?>
+        <?php if ($wishlistHeader) echo $this->getChildHtml("wishlist"); ?>
+        <?php if ($compareHeader) echo $this->getChildHtml("compare_link"); ?>
+    </div>
+</div>
+<div class="top-menu" id="zoo-sticky-header">
+    <div class="<?php echo($full_header_width == 1 ? '' : 'container') ?>">
+        <div class="d-flex justify-content-between align-items-center zoo-menu-content">
+            <?php if (isset($sticky_logo)) : ?>
+            <div class="logo-sticky">
+                <?php if ($block->isHomePage()): ?>
+                <strong>
+                    <?php else: ?>
+                    <a href="<?php echo $block->getUrl(''); ?>">
+                        <?php endif ?>
+                        <img src="<?php echo $logoSrc; ?>" width="<?php
+                        if (($block->getConfig('cleversoftbase/header/sticky_logo_width'))) {
+                            echo $block->getConfig('cleversoftbase/header/sticky_logo_width');
+                        }  ?>" height="auto"/>
+                        <?php if ($block->isHomePage()): ?>
+                </strong>
+            <?php else: ?>
+                </a>
+            <?php endif ?>
+            </div>
+            <?php endif ?>
+            <?php echo $this->getChildHtml("main.menu"); ?>
+            <div class="zoo-header-user align-items-center">
+                <?php if ($wishlistHeader) echo $this->getChildHtml("wishlist"); ?>
+                <?php if ($compareHeader) echo $this->getChildHtml("compare_link"); ?>
+                <?php echo $this->getChildHtml("minicart"); ?>
+            </div>
+        </div>
+    </div>
+</div>

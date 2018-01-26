@@ -1,0 +1,17 @@
+<?php
+/**
+ * Copyright © 2017 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/**
+ * @var $block \Magento\Theme\Block\Html\Sticky
+ */
+ 
+$sticky_logo = $block->getConfig('cleversoftbase/header/sticky_logo');
+$logoSrc = $this->getUrl('pub/media/wysiwyg/cleversoft/logo/', ['_secure' => $this->getRequest()->isSecure(),'_type'=>\Magento\Framework\UrlInterface::URL_TYPE_WEB]).$sticky_logo;
+ 
+?>
+<div class="sticky logo"><?php echo $logoSrc; ?></div>

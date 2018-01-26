@@ -1,0 +1,142 @@
+<?php
+/**
+ * @category    CleverSoft
+ * @package     CleverProduct
+ * @copyright   Copyright © 2017 CleverSoft., JSC. All Rights Reserved.
+ * @author 		ZooExtension.com
+ * @email       magento.cleversoft@gmail.com
+ */
+?>
+<?php
+use Magento\Framework\App\Action\Action;
+/* @var $this CleverProduct_Block_Widget */
+$id = $block->getConfig('id') ? $block->getConfig('id') : $block->getData('id');
+$enable_full_width = $block->getConfig('enable_fullwidth') ? $block->getConfig('enable_fullwidth') : $block->getData('enable_fullwidth');
+//$_template = $block->getTemplate();
+$productCollection  = $block->getData('collection');
+$_template = ($block->getData('layout') == 'list') ? 'zoo-product-collection02' : 'zoo-product-collection01';
+$title      = $block->getData('widget_title');
+$_sub_title = $block->getData('widget_sub_title');
+$tabs       = $block->getTabs();
+$t          = microtime();
+$type = $block->getData('layout');
+// zoo-product-collection01 = grid layout, zoo-product-collection02 = list layout
+$template = 'widget/cases/tab_items.phtml';
+$count              = $productCollection ? $productCollection->count() : 0;
+$carousel           = $block->getData('carousel');
+$equalHeight = $this->helper('CleverSoft\Base\Helper\Data')->getCfg('category_grid/equal_height') ? 'true' : 'false';
+$row                = $block->getData('row');
+$column             = $block->getData('column_grid');
+switch ($type) {
+    case 'carousel':
+        $row = 1;
+        $carousel = 1;
+        break;
+    case 'list':
+        $carousel = 0;
+        $row = $block->getData('limit');
+        $column = 1;
+        break;
+    case 'grid' :
+        $carousel = 0;
+        break;
+}
+?>
+<div class="<?php echo $block->getData('classes') . ' ' . $_template ?> " id="<?php echo $id ?>">
+    <div class="tabs-collection">
+        <div class="zoo-main-heading">
+            <div class="zoo-heading-wrapper-title">
+                <?php if ($title || $_sub_title): ?>
+                    <?php if($title) { ?>
+                        <h3><span><?php echo $title ?></span></h3>
+                    <?php } if($_sub_title){ ?>
+                        <h3><span><?php echo $_sub_title; ?></span></h3>
+                    <?php } ?>
+                <?php endif; ?>
+            </div>
+        </div>
+        <ul class="widget-tabs nav nav-tabs">
+            <?php foreach ($tabs as $index => $tab): ?>
+                <li class="<?php echo $index==0 ? 'active' : '' ?>">
+                    <a href="#<?php echo $id . '-' . $tab['id'] ?>"
+                       data-value="<?php echo $tab['value'] ?>"
+                       data-id="<?php echo $id ?>"
+                       data-type="<?php echo $tab['type'] ?>"
+                       data-limit="<?php echo $block->getLimit() ?>"
+                       data-column_ajax="<?php echo $column ?>"
+                       data-layout="<?php echo $type ?>"
+                       data-row="<?php echo $row ?>"
+                       data-cpid="<?php echo $tab['cpid'] ?>"
+                       data-cid="<?php echo $block->getData('category_ids') ?>"
+                       data-template="<?php echo $template ?>"
+                       data-image_width="<?php echo $block->getData('image_width') ?>"
+                       data-image_height="<?php echo $block->getData('image_height') ?>"
+                       data-product_grid_style="<?php echo $block->getData('product_grid_style') ?>"
+                       data-lazyload="<?php echo $block->getData('lazyload') ?>"
+                       data-height_image="<?php echo $block->getData('height_image') ?>"
+                       data-display_rating="<?php echo $block->getData('display_rating') ?>"
+                       data-display_addtocart="<?php echo $block->getData('display_addtocart') ?>"
+                       data-display_addtowishlist="<?php echo $block->getData('display_addtowishlist') ?>"
+                       data-display_addtocompare="<?php echo $block->getData('display_addtocompare') ?>"
+                       data-display_swatch_attributes="<?php echo $block->getData('display_swatch_attributes') ?>"
+                       data-display_productname="<?php echo $block->getData('display_productname') ?>"
+                       data-display_name_single_line="<?php echo $block->getData('display_name_single_line') ?>"
+                       data-display_price="<?php echo $block->getData('display_price') ?>"
+                       data-countdown="<?php echo $block->getData('countdown') ?>"
+                       data-carousel="<?php echo $carousel ?>"
+                       data-carouselv="<?php echo $block->getData('carouselv') ?>">
+                        <?php echo $tab['label'] ?>
+                    </a>
+                </li>
+            <?php endforeach ?>
+        </ul>
+    </div>
+    <div class="widget-tab-content tab-content">
+        <?php foreach ($tabs as $index => $tab): ?>
+        <div id="<?php echo $id . '-' . $tab['id'] ?>" class="tab-pane<?php echo $index==0 ? ' active' : '' ?>">
+            <?php if ($index > 0): ?>
+        </div>
+    <?php continue ?>
+    <?php endif ?>
+        <?php echo $block->renderCollection($tab['type'], $tab['value'], $template) ?>
+    </div>
+    <?php endforeach ?>
+</div>
+<script>
+    var BASE_URL = '<?php /* @escapeNotVerified */ echo $block->getUrl('*') ?>';
+    var FORM_KEY = '<?php /* @escapeNotVerified */ echo $block->getFormKey() ?>';
+</script>
+<script>
+    require([
+        "jquery",
+        "CleverSoft_CleverProduct/js/jquery.bxslider",
+        "cleverProductMage"
+    ], function ($,bxSlider,cleverProductMage) {
+        $(function() {
+            <?php if ($enable_full_width) :?>
+            var $left = $('#<?php echo $id; ?>').offset().left;
+            $('#<?php echo $id; ?>').css({
+                'left': '-' + $left + 'px',
+                'position': 'relative',
+                'width': $(window).width() + 'px'
+            });
+            <?php endif; ?>
+
+            $('#<?php echo $id ?>').cleverProductMage({
+                animation: <?php echo $block->getConfig('animation')?$block->getConfig('animation'):$block->getData('animation') ?>,
+                collectionUrl: '<?php echo $block->getUrl('cleverproduct/collection/collection') ?>',
+                spinnerClass: 'spinner',
+                spinnerImg: '<img class="img-loader" src="<?php echo $block->getViewFileUrl('CleverSoft_Base::images/bx_loader.gif'); ?>">',
+                parallax: <?php echo $block->getConfig('parallax') ?$block->getConfig('parallax'):$block->getData('parallax') ?>,
+                carousel: <?php echo $block->getConfig('carousel')? $block->getConfig('carousel'):$block->getData('carousel') ?>,
+                carouselv: <?php echo $block->getConfig('carouselv')? $block->getConfig('carouselv'):$block->getData('carouselv') ?>,
+                carouselConfig: null,
+                equalHeight:<?php echo $equalHeight ; ?>,
+                lazyload:<?php echo $block->getData('lazyload') ? 'true' : 'false'; ?>,
+                countdown: <?php echo $block->getConfig('countdown') ? $block->getConfig('countdown') : $block->getData('countdown')?>,
+                countdownConfig: null,
+                kenburns: <?php echo $block->getConfig('kenburns')?$block->getConfig('kenburns'):$block->getData('kenburns') ?>
+            });
+        });
+    });
+</script>

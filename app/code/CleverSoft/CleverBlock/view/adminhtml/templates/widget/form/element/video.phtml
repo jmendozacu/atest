@@ -1,0 +1,46 @@
+<?php
+/**
+ * @category    CleverSoft
+ * @package     CleverBlock
+ * @copyright   Copyright © 2017 CleverSoft., JSC. All Rights Reserved.
+ * @author 		ZooExtension.com
+ * @email       magento.cleversoft@gmail.com
+ */
+?>
+<?php
+
+$element = $block->getElement();
+$note = $element->getNote() ? '<div class="note" id="' . $element->getId() . '-note">' . $element->getNote() . '</div>' : '';
+$elementBeforeLabel = $element->getExtType() == 'checkbox admin__control-checkbox' || $element->getExtType() == 'radio admin__control-radio';
+$fieldId = ($element->getHtmlContainerId()) ? ' id="' . $element->getHtmlContainerId() . '"' : '';
+$fieldClass = "admin__field field field-{$element->getId()} {$element->getCssClass()}";
+$fieldClass .= ($elementBeforeLabel) ? ' choice' : '';
+$fieldClass .= ($element->getRequired()) ? ' required _required' : '';
+$fieldClass .= ($note) ? ' with-note' : '';
+$fieldClass .= (!$element->getLabelHtml()) ? ' no-label' : '';
+
+$fieldAttributes = $fieldId . ' class="' . $fieldClass . '" '
+    . $block->getUiId('form-field', $element->getId())
+    . ($element->getFieldExtraAttributes() ? ' ' . $element->getFieldExtraAttributes() : '');
+?>
+<div<?php /* @escapeNotVerified */ echo $fieldAttributes ?>>
+    <?php echo $element->getLabelHtml() ?>
+    <div class="admin__field-control control">
+        <input style="width: 50%;" type="text" onclick="<?php echo $element->getData('onclick')?>" class="input-text admin__control-text element-value-changer input-text entities <?php if ($this->getElement()->getRequired()):?>required-entry<?php endif ?>" name="<?php echo $element->getName()?>" id="<?php echo $element->getHtmlId()?>" value="<?php echo $element->getValue()?>">
+        <?php echo $block->getChildHtml('getBtn') ?>
+        <?php echo $block->getChildHtml('delBtn') ?>
+        <?php /* @escapeNotVerified */ echo $note ?>
+    </div>
+</div>
+<script>
+    require([
+        "CleverSoft_CleverBlock/js/video",
+        "prototype"
+    ],function(FormVideoField) {
+        window['<?php echo $element->getHtmlId()?>'] = new FormVideoField(
+            '<?php echo $element->getHtmlId()?>',
+            'videoSearchBtn',
+            'videoSearchIndicator'
+        );
+    });
+</script>

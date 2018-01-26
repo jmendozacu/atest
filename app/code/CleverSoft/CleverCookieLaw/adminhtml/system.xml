@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="cookielaw" translate="label" type="text" sortOrder="1200" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Cookie Law Compliance</label>
+            <tab>general</tab>
+            <resource>CleverSoft_CleverCookieLaw::clevercookielaw</resource>
+            <class>v-cookielaw-section</class>
+            <group id="general" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General</label>
+                <attribute type="expanded">1</attribute>
+                <field id="enablecookie" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable</label>
+                    <comment>Turn on or turn off cookie law</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="type" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Type</label>
+                    <source_model>CleverSoft\CleverCookieLaw\Model\Config\Type</source_model>
+                </field>
+                <field id="bar_position" translate="label" type="select" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Bar position</label>
+                    <comment>[Top] does not cover the content, [Bottom] is fixed.</comment>
+                    <depends><field id="type">v-bar</field></depends>
+                    <source_model>CleverSoft\CleverCookieLaw\Model\Config\Bar\Position</source_model>
+                </field>
+                <field id="box_position" translate="label" type="select" sortOrder="4" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Box position</label>
+                    <depends><field id="type">v-box</field></depends>
+                    <source_model>CleverSoft\CleverCookieLaw\Model\Config\Box\Position</source_model>
+                </field>
+                <field id="skin" translate="label" type="select" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Skin</label>
+                    <source_model>CleverSoft\CleverCookieLaw\Model\Config\Skin</source_model>
+                </field>
+                <field id="behaviour" translate="label" type="select" sortOrder="6" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>When visitor closes the notice</label>
+                    <source_model>CleverSoft\CleverCookieLaw\Model\Config\Behaviour</source_model>
+                </field>
+                <field id="autohide" translate="label" type="text" sortOrder="7" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Autohide (in seconds)</label>
+                    <comment>If [0] then the notice won't close automatically.</comment>
+                </field>
+            </group>
+            <group id="content" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Content</label>
+                <attribute type="expanded">1</attribute>
+                <field id="show" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Content</label>
+                    <source_model>CleverSoft\CleverCookieLaw\Model\Config\Message</source_model>
+                </field>
+                <field id="custom_message" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Message text</label>
+                    <depends><field id="show">custom</field></depends>
+                </field>
+                <field id="custom_accept" translate="label" type="text" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Accept text</label>
+                    <depends><field id="show">custom</field></depends>
+                </field>
+
+                <field id="custom_more_info" translate="label" type="text" sortOrder="4" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>More information text</label>
+                    <depends><field id="show">custom</field></depends>
+                </field>
+                <field id="cms_page" translate="label" type="select" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>More information page</label>
+                    <comment>CMS page with information about cookies and how to manage them.</comment>
+                    <source_model>Magento\Cms\Model\Config\Source\Page</source_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

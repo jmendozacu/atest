@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category    CleverSoft
+ * @package     CleverBase
+ * @copyright   Copyright © 2017 CleverSoft., JSC. All Rights Reserved.
+ * @author 		ZooExtension.com
+ * @email       magento.cleversoft@gmail.com
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="after.body.start">
+            <block class="Magento\Framework\View\Element\Template" name="cleversoft.lazyload" template="CleverSoft_Base::cleversoft/lazyload.phtml" />
+            <block class="Magento\Framework\View\Element\Template" name="cleversoft.js.theme" template="CleverSoft_Base::cleversoft/js_theme.phtml" />
+            <block class="Magento\Framework\View\Element\Template" name="promotion.box" template="CleverSoft_Base::promotion_box.phtml"/>
+        </referenceContainer>
+        <referenceContainer name="page.wrapper">
+            <block class="CleverSoft\Base\Block\Template" name="mt_header" template="html/header.phtml" before="-">
+                <block class="Magento\Cms\Block\Block" name="top.contact">
+                    <arguments>
+                        <argument name="block_id" xsi:type="string">top_contact</argument>
+                    </arguments>
+                </block>
+                <block class="Magento\Framework\View\Element\Html\Links" name="header.links">
+                    <arguments>
+                        <argument name="css_class" xsi:type="string">header links user_area</argument>
+                    </arguments>
+                </block>
+                <block class="CleverSoft\Base\Block\Template" name="custom_block" template="html/header_custom_block.phtml" ifconfig="CleverSoft_Base/header/static_block" after="-"/>
+                <block class="Magento\Cms\Block\Block" name="main.menu">
+                    <arguments>
+                        <argument name="block_id" xsi:type="string">main_menu</argument>
+                    </arguments>
+                </block>
+                    <block class="Magento\Framework\View\Element\Template" name="compare_link" before="-" template="Magento_Catalog::product/compare/link.phtml">
+                        <arguments>
+                            <argument name="jsLayout" xsi:type="array">
+                                <item name="components" xsi:type="array">
+                                    <item name="compareProducts" xsi:type="array">
+                                        <item name="component" xsi:type="string">Magento_Catalog/js/view/compare-products</item>
+                                    </item>
+                                </item>
+                            </argument>
+                        </arguments>
+                    </block>
+                <block class="Magento\Wishlist\Block\Link" name="wishlist" as="wishlist" template="Magento_Wishlist::link.phtml"/>
+
+            </block>
+
+        </referenceContainer>
+
+        
+        <move element="top.search" destination="mt_header"/>
+        <move element="minicart" destination="mt_header"/>
+        <move element="currency" destination="mt_header"/>
+        <move element="store_language" destination="mt_header"/>
+        <move element="logo" destination="mt_header"/>
+        <move element="skip_to_content" destination="mt_header"/>
+
+
+        <move element="page.top" destination="page.wrapper" after="mt_header"/>
+
+        <referenceContainer name="header.container" remove="true"/>
+        <referenceContainer name="header-wrapper" remove="true"/>
+        <referenceContainer name="footer" remove="true"/>
+        <referenceContainer name="footer-container">
+            <block class="CleverSoft\Base\Block\Template" name="footer_block" template="html/footer.phtml">
+                <block class="Magento\Store\Block\Switcher" name="footer.store_switcher" template="switch/stores.phtml"/>
+                <block class="Magento\Newsletter\Block\Subscribe" name="footer.newsletter" template="subscribe_footer.phtml"/>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

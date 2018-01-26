@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category    CleverSoft
+ * @package     CleverBase
+ * @copyright   Copyright © 2017 CleverSoft., JSC. All Rights Reserved.
+ * @author 		ZooExtension.com
+ * @email       magento.cleversoft@gmail.com
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="CleverSoft_Base::css/alternative.css"/>
+        <css src="CleverSoft_Base::css/owl.carousel.css"/>
+        <css src="CleverSoft_Base::css/owl.theme.default.min.css"/>
+        <css src="CleverSoft_Base::css/jquery.bxslider.css"/>
+        <css src="CleverSoft_Base::css/jquery-ui.css"/>
+    </head>
+</page>

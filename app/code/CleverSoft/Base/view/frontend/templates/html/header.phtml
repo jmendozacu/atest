@@ -1,0 +1,53 @@
+<?php
+/**
+ * @category    CleverSoft
+ * @package     CleverBase
+ * @copyright   Copyright © 2017 CleverSoft., JSC. All Rights Reserved.
+ * @author 		ZooExtension.com
+ * @email       magento.cleversoft@gmail.com
+ */
+?>
+<?php
+$compareHeader = $block->getData('compare');
+$wishlistHeader = $block->getData('wishlist');
+$full_header_width = $this->getConfig('cleversoftbase/header/full_header_width');
+$sticky_logo = $block->getConfig('cleversoftbase/header/sticky_logo');
+$logoSrc = $block->getMediaUrl().'wysiwyg/cleversoft/logo/'.$sticky_logo;
+$header_type = $this->getConfig('cleversoftbase/header/header_type');
+$custom_css = $this->getConfig('cleversoftbase_custom_css/css_swing_editor/custom_css');
+$custom_css_enable = $this->getConfig('cleversoftbase_custom_css/css_swing_editor/custom_css_enable');
+echo $this->cssTemplate($custom_css,$custom_css_enable);
+?>
+<script>
+    window.enable_sticky_menu = '<?php echo $this->getConfig('cleversoftbase/header/sticky_enable'); ?>';
+    window.header_type = '<?php echo $this->getConfig('cleversoftbase/header/header_type'); ?>';
+    window.enable_sticky_addtocart = '<?php echo $this->getConfig('cleversoftbase/product_page/enable_sticky_addtocart'); ?>';
+    window.sticky_info_product = '<?php echo $this->getConfig('cleversoftbase/product_page/disable_sticky_info_product'); ?>';
+    window.stickyThumbGallery = '<?php echo $this->getConfig('cleversoftbase/product_page/page_layout'); ?>';
+</script>
+<header class="page-header zoo-header-<?php echo $header_type; ?>" id="page-header">
+    <?php if($header_type == 1): ?>
+        <?php echo $block->renderCollection('html/cases/header_layout_1.phtml') ?>
+    <?php elseif($header_type == 2): ?>
+        <?php echo $block->renderCollection('html/cases/header_layout_2.phtml') ?>
+    <?php elseif($header_type == 3): ?>
+        <?php echo $block->renderCollection('html/cases/header_layout_3.phtml') ?>
+    <?php elseif($header_type == 4): ?>
+        <?php echo $block->renderCollection('html/cases/header_layout_4.phtml') ?>
+    <?php elseif($header_type == 5): ?>
+        <?php echo $block->renderCollection('html/cases/header_layout_5.phtml') ?>
+    <?php elseif($header_type == 6): ?>
+        <?php echo $block->renderCollection('html/cases/header_layout_6.phtml') ?>
+    <?php elseif($header_type == 7): ?>
+        <?php echo $block->renderCollection('html/cases/header_layout_7.phtml') ?>
+    <?php elseif($header_type == 8): ?>
+        <?php echo $block->renderCollection('html/cases/header_layout_8.phtml') ?>
+    <?php elseif($header_type == 9): ?>
+        <?php echo $block->renderCollection('html/cases/header_layout_9.phtml') ?>
+    <?php elseif($header_type == 10): ?>
+        <?php echo $block->renderCollection('html/cases/header_layout_10.phtml') ?>
+    <?php elseif($header_type == 11): ?>
+        <?php echo $block->renderCollection('html/cases/header_layout_11.phtml') ?>
+    <?php endif; ?>
+
+</header>

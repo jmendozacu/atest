@@ -1,0 +1,54 @@
+<?php
+/**
+ * @category    CleverSoft
+ * @package     CleverProduct
+ * @copyright   Copyright © 2017 CleverSoft., JSC. All Rights Reserved.
+ * @author 		ZooExtension.com
+ * @email       magento.cleversoft@gmail.com
+ */
+?>
+<?php
+$element = $block->getElement();
+$note = $element->getNote() ? '<div class="note" id="' . $element->getId() . '-note">' . $element->getNote() . '</div>' : '';
+$elementBeforeLabel = $element->getExtType() == 'checkbox admin__control-checkbox' || $element->getExtType() == 'radio admin__control-radio';
+$fieldId = ($element->getHtmlContainerId()) ? ' id="' . $element->getHtmlContainerId() . '"' : '';
+$fieldClass = "admin__field field field-{$element->getId()} {$element->getCssClass()}";
+$fieldClass .= ($elementBeforeLabel) ? ' choice' : '';
+$fieldClass .= ($element->getRequired()) ? ' required _required' : '';
+$fieldClass .= ($note) ? ' with-note' : '';
+$fieldClass .= (!$element->getLabelHtml()) ? ' no-label' : '';
+
+$fieldAttributes = $fieldId . ' class="' . $fieldClass . '" '
+    . $block->getUiId('form-field', $element->getId())
+    . ($element->getFieldExtraAttributes() ? ' ' . $element->getFieldExtraAttributes() : '');
+?>
+<div<?php /* @escapeNotVerified */ echo $fieldAttributes ?>>
+    <?php echo $element->getLabelHtml() ?>
+    <div class="admin__field-control control">
+        <ul id="<?php echo $element->getHtmlId()?>" class="options-list">
+            <?php foreach ($block->getOptions() as $option): ?>
+                <li class="ui-state-default collection-option">
+                    <input type="checkbox"
+                           name="<?php echo $element->getName() ?>[]"
+                           value="<?php echo $option['value'] ?>"
+                           <?php if ($option['selected']): ?>checked<?php endif ?>/>
+                    <span>&nbsp;<?php echo $option['label'] ?></span>
+                </li>
+            <?php endforeach ?>
+        </ul>
+        <?php /* @escapeNotVerified */ echo $note ?>
+    </div>
+</div>
+<style type="text/css">
+    ul.options-list li{cursor: move;}
+</style>
+<script>
+    require([
+        "jquery",
+        "jquery/ui",
+        "mage/mage"
+    ], function(jQuery){
+        jQuery('#<?php echo $element->getHtmlId()?>').sortable();
+        jQuery('#<?php echo $element->getHtmlId()?>').disableSelection();
+    });
+</script>

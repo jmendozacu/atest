@@ -1,0 +1,48 @@
+<?php
+/**
+ * @category    CleverSoft
+ * @package     CleverProduct
+ * @copyright   Copyright © 2017 CleverSoft., JSC. All Rights Reserved.
+ * @author 		ZooExtension.com
+ * @email       magento.cleversoft@gmail.com
+ */
+?>
+<?php
+
+$element = $block->getElement();
+$note = $element->getNote() ? '<div class="note" id="' . $element->getId() . '-note">' . $element->getNote() . '</div>' : '';
+$elementBeforeLabel = $element->getExtType() == 'checkbox admin__control-checkbox' || $element->getExtType() == 'radio admin__control-radio';
+$fieldId = ($element->getHtmlContainerId()) ? ' id="' . $element->getHtmlContainerId() . '"' : '';
+$fieldClass = "admin__field field field-{$element->getId()} {$element->getCssClass()}";
+$fieldClass .= ($elementBeforeLabel) ? ' choice' : '';
+$fieldClass .= ($element->getRequired()) ? ' required _required' : '';
+$fieldClass .= ($note) ? ' with-note' : '';
+$fieldClass .= (!$element->getLabelHtml()) ? ' no-label' : '';
+
+$fieldAttributes = $fieldId . ' class="' . $fieldClass . '" '
+    . $block->getUiId('form-field', $element->getId())
+    . ($element->getFieldExtraAttributes() ? ' ' . $element->getFieldExtraAttributes() : '');
+?>
+<div<?php /* @escapeNotVerified */ echo $fieldAttributes ?>>
+    <?php echo $element->getLabelHtml() ?>
+    <div class="admin__field-control control">
+        <input style="width: 50%;" type="text" onclick="<?php echo $element->getData('onclick')?>" class="input-text admin__control-text element-value-changer input-text entities <?php if ($this->getElement()->getRequired()):?>required-entry<?php endif ?>" name="<?php echo $element->getName()?>" id="<?php echo $element->getHtmlId()?>" value="<?php echo $element->getValue()?>">
+        <?php echo  $this->getChildHtml('browserBtn') ?>
+        <?php echo  $this->getChildHtml('clearBtn') ?>
+    </div>
+</div>
+<script>
+    require([
+        "CleverSoft_CleverProduct/js/browser",
+        "prototype"
+    ],function(MediabrowserUtility) {
+        window.MediabrowserUtility = MediabrowserUtility;
+        window.on_<?php echo $element->getHtmlId()?>_clear_click = function(){
+            var target = $('<?php echo $element->getHtmlId()?>');
+            if (target){
+                target.value = '';
+                if (fireEvent) fireEvent(target, 'change');
+            }
+        }
+    });
+</script>

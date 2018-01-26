@@ -1,0 +1,87 @@
+<?php
+/**
+ * @category    CleverSoft
+ * @package     CleverProduct
+ * @copyright   Copyright © 2017 CleverSoft., JSC. All Rights Reserved.
+ * @author 		ZooExtension.com
+ * @email       magento.cleversoft@gmail.com
+ */
+
+/* @var $this CleverProduct_Block_Widget */
+use CleverSoft\CleverProduct\Block\Widget\Collection;
+$_id = $block->getConfig('id');
+$_title = $block->getConfig('widget_title');
+$_sub_title = $block->getConfig('widget_sub_title');
+$t = microtime();
+///t var
+$type = $block->getData('layout');
+
+$tab = $block->getData('widget_tab');
+$tabs = $block->getTabs();
+
+switch ($type) {
+    case 'list':
+        if ($tab == 'categories' || $tab == 'collections') {require __DIR__.'/cases/tab.phtml';
+        }else { echo $block->renderCollection('collections', $block->getConfig('mode'), 'widget/cases/list.phtml');}
+        break;
+
+    case 'grid':
+        if ($tab == 'categories' || $tab == 'collections') {
+            require __DIR__.'/cases/tab.phtml';
+        }else {
+            echo $block->renderCollection('collections', $block->getConfig('mode'), 'widget/cases/grid.phtml');
+        }
+        break;
+
+    case 'grid2':
+        if ($tab == 'categories' || $tab == 'collections') {
+            require __DIR__.'/cases/tab_grid2.phtml';
+        }else {
+            echo $block->renderCollection('collections', $block->getConfig('mode'), 'widget/cases/grid2.phtml');
+        }
+        break;
+
+	case 'carousel-vertical':
+        if ($tab == 'categories' || $tab == 'collections') {
+            require __DIR__.'/cases/tab.phtml';
+        }else {
+            echo $block->renderCollection('collections', $block->getConfig('mode'), 'widget/cases/carousel_vertical.phtml');
+        }
+        break;
+		
+    default:
+        if ($tab == 'categories' || $tab == 'collections') {
+            require __DIR__.'/cases/tab.phtml';
+        } else {
+            if ($type == 'carousel') {
+                echo $block->renderCollection('collections', $block->getConfig('mode'), 'widget/cases/carousel.phtml');
+            } else {
+                ?>
+                <div class="<?php echo $block->getConfig('classes') ?> zoo-product-collection02" id="<?php echo $_id ?>">
+                    <?php if ($_title || $_sub_title): ?>
+                        <div class="zoo-main-heading">
+                            <?php if($_title) : ?>
+                                <div class="zoo-heading-wrapper-title">
+                                    <h3><span><?php echo $_title ?></span></h3>
+                                </div>
+                            <?php endif; if($_sub_title): ?>
+                                <div class="zoo-heading-wrapper-sub-title">
+                                    <h3><span><?php echo $_sub_title ?></span></h3>
+                                </div>
+                            <?php endif; ?>
+                        </div>
+                    <?php endif ?>
+
+                    <?php echo $block->renderCollection('collections', $block->getConfig('mode'), 'widget/cases/list.phtml') ?>
+                </div>
+                <?php
+            }
+        }
+        break;
+}
+
+?>
+
+
+
+

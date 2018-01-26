@@ -1,0 +1,469 @@
+<?xml version="1.0"?>
+<root>
+  <pages>
+    <cms_page>
+      <title>404 Not Found</title>
+      <identifier>no-route</identifier>
+      <content><![CDATA[<dl>
+<dt>The page you requested was not found, and we have a fine guess why.</dt>
+<dd>
+<ul class="disc">
+<li>If you typed the URL directly, please make sure the spelling is correct.</li>
+<li>If you clicked on a link to get here, the link is outdated.</li>
+</ul></dd>
+</dl>
+<dl>
+<dt>What can you do?</dt>
+<dd>Have no fear, help is near! There are many ways you can get back on track with Magento Store.</dd>
+<dd>
+<ul class="disc">
+<li><a href="#" onclick="history.go(-1); return false;">Go back</a> to the previous page.</li>
+<li>Use the search bar at the top of the page to search for your products.</li>
+<li>Follow these links to get you back on track!<br /><a href="{{store url=""}}">Store Home</a> <span class="separator">|</span> <a href="{{store url="customer/account"}}">My Account</a></li></ul></dd></dl>
+]]></content>
+      <is_active>1</is_active>
+      <page_layout>2columns-right</page_layout>
+      <stores>0</stores>
+    </cms_page>
+    <cms_page>
+      <title>iOne 01 - Home Minimal</title>
+      <identifier>home</identifier>
+      <content><![CDATA[<!-- Slider Show OLD: "sliders-ione-minimal" -->
+<div class="slider">{{widget type="CleverSoft\CleverSlider\Block\Widget\Slideshow" slider="ione_01_home"}}</div>
+<!-- Box content -->
+<div class="box-contents">{{widget type="CleverSoft\CleverCategory\Block\Adminhtml\Widget\Categories" show_qty="1" layoutwg="grid" category_ids="49,48,47,46" lazyload="1" grid_column="4"}}</div>
+<!-- New Arrivals-->
+<div class="new-arrivals">{{widget type="CleverSoft\CleverProduct\Block\Widget" widget_title="New Arrivals" layout="carousel" widget_tab="none" mode="latest" template="widget/product.phtml" category_ids="3,4" labels="10" limit="10" autoplay="1" autoplaytimeout="5000" enable_bullet="1" navigation="1" navigation_prev="<span class='cs-font clever-icon-prev'></span>" navigation_next="<span class='cs-font clever-icon-next'></span>" col_480="1" col_768="2" col_992="3" column="5" product_grid_style="product_grid_style_1" display_rating="remove" display_addtocart="visible" display_addtowishlist="visible" display_addtocompare="remove" display_swatch_attributes="visible" display_productname="visible" display_name_single_line="0" display_price="visible" addtolinks_position="0" classes="new_arrivals"}}</div>
+<!-- Instagram -->
+<div class="instagram">{{widget type="CleverSoft\CleverInstagram\Block\Widget\Instagram" widgetedit="1" modetakeimg="userid" userid="176379829" accessToken="176379829.099273b.b32da11a694d4417ba7520970b441edd" openimg="instagram" layoutwg="carousel" lazyload="1" enable_fullwidth="1" numberimage="15" img_resolution="low_resolution" navigation_prev="<span class='cs-font clever-icon-prev'></span>" navigation_next="<span class='cs-font clever-icon-next'></span>" sortby="random" autoplay="1" hoverpause="1" autoplaytime="5000" nbi480="2" nbi768="2" nbi990="4" nbi1200="8" customclass="instagram"}}<br />
+<div class="title"><a href="https://www.instagram.com/aliceandtrixie/">FOLLOW US @ INSTAGRAM</a></div>
+</div>
+<!-- End Instagram -->
+<p>{{widget type="CleverSoft\CleverBrands\Block\Widget\Adminhtml\Brands" brands="Brands,Brands,Brands" linkto=",," img="wysiwyg/ione01/slider_01.jpg,wysiwyg/ione01/slider_01.jpg,wysiwyg/ione01/slider_01.jpg" layoutwg="carousel" navigation_prev="<i class='fa fa-angle-left'></i>" navigation_next="<i class='fa fa-angle-right'></i>" enable_nav="1" nbi480="2" nbi768="2" nbi990="1" nbi1200="2"}}</p> ]]></content>
+      <is_active>1</is_active>
+      <page_layout>1column</page_layout>
+      <stores>2,3</stores>
+    </cms_page>
+    <cms_page>
+      <title>Enable Cookies</title>
+      <identifier>enable-cookies</identifier>
+      <content><![CDATA[<div class="enable-cookies cms-content">
+<p>"Cookies" are little pieces of data we send when you visit our store. Cookies help us get to know you better and personalize your experience. Plus they help protect you and other shoppers from fraud.</p>
+<p style="margin-bottom: 20px;">Set your browser to accept cookies so you can buy items, save items, and receive customized recommendations. Here’s how:</p>
+<ul>
+<li><a href="https://support.google.com/accounts/answer/61416?hl=en" target="_blank">Google Chrome</a></li>
+<li><a href="http://windows.microsoft.com/en-us/internet-explorer/delete-manage-cookies" target="_blank">Internet Explorer</a></li>
+<li><a href="http://support.apple.com/kb/PH19214" target="_blank">Safari</a></li>
+<li><a href="https://support.mozilla.org/en-US/kb/enable-and-disable-cookies-website-preferences" target="_blank">Mozilla/Firefox</a></li>
+</ul>
+</div>]]></content>
+      <is_active>1</is_active>
+      <page_layout>1column</page_layout>
+      <stores>0</stores>
+    </cms_page>
+    <cms_page>
+      <title>Privacy and Cookie Policy</title>
+      <identifier>privacy-policy-cookie-restriction-mode</identifier>
+      <content><![CDATA[<div class="privacy-policy cms-content">
+    <div class="message info">
+        <span>
+            Please replace this text with you Privacy Policy.
+            Please add any additional cookies your website uses below (e.g. Google Analytics).
+        </span>
+    </div>
+    <p>
+        This privacy policy sets out how this website (hereafter "the Store") uses and protects any information that
+        you give the Store while using this website. The Store is committed to ensuring that your privacy is protected.
+        Should we ask you to provide certain information by which you can be identified when using this website, then
+        you can be assured that it will only be used in accordance with this privacy statement. The Store may change
+        this policy from time to time by updating this page. You should check this page from time to time to ensure
+        that you are happy with any changes.
+    </p>
+    <h2>What we collect</h2>
+    <p>We may collect the following information:</p>
+    <ul>
+        <li>name</li>
+        <li>contact information including email address</li>
+        <li>demographic information such as postcode, preferences and interests</li>
+        <li>other information relevant to customer surveys and/or offers</li>
+    </ul>
+    <p>
+        For the exhaustive list of cookies we collect see the <a href="#list">List of cookies we collect</a> section.
+    </p>
+    <h2>What we do with the information we gather</h2>
+    <p>
+        We require this information to understand your needs and provide you with a better service,
+        and in particular for the following reasons:
+    </p>
+    <ul>
+        <li>Internal record keeping.</li>
+        <li>We may use the information to improve our products and services.</li>
+        <li>
+            We may periodically send promotional emails about new products, special offers or other information which we
+            think you may find interesting using the email address which you have provided.
+        </li>
+        <li>
+            From time to time, we may also use your information to contact you for market research purposes.
+            We may contact you by email, phone, fax or mail. We may use the information to customise the website
+            according to your interests.
+        </li>
+    </ul>
+    <h2>Security</h2>
+    <p>
+        We are committed to ensuring that your information is secure. In order to prevent unauthorised access or
+        disclosure, we have put in place suitable physical, electronic and managerial procedures to safeguard and
+        secure the information we collect online.
+    </p>
+    <h2>How we use cookies</h2>
+    <p>
+        A cookie is a small file which asks permission to be placed on your computer's hard drive.
+        Once you agree, the file is added and the cookie helps analyse web traffic or lets you know when you visit
+        a particular site. Cookies allow web applications to respond to you as an individual. The web application
+        can tailor its operations to your needs, likes and dislikes by gathering and remembering information about
+        your preferences.
+    </p>
+    <p>
+        We use traffic log cookies to identify which pages are being used. This helps us analyse data about web page
+        traffic and improve our website in order to tailor it to customer needs. We only use this information for
+        statistical analysis purposes and then the data is removed from the system.
+    </p>
+    <p>
+        Overall, cookies help us provide you with a better website, by enabling us to monitor which pages you find
+        useful and which you do not. A cookie in no way gives us access to your computer or any information about you,
+        other than the data you choose to share with us. You can choose to accept or decline cookies.
+        Most web browsers automatically accept cookies, but you can usually modify your browser setting
+        to decline cookies if you prefer. This may prevent you from taking full advantage of the website.
+    </p>
+    <h2>Links to other websites</h2>
+    <p>
+        Our website may contain links to other websites of interest. However, once you have used these links
+        to leave our site, you should note that we do not have any control over that other website.
+        Therefore, we cannot be responsible for the protection and privacy of any information which you provide whilst
+        visiting such sites and such sites are not governed by this privacy statement.
+        You should exercise caution and look at the privacy statement applicable to the website in question.
+    </p>
+    <h2>Controlling your personal information</h2>
+    <p>You may choose to restrict the collection or use of your personal information in the following ways:</p>
+    <ul>
+        <li>
+            whenever you are asked to fill in a form on the website, look for the box that you can click to indicate
+            that you do not want the information to be used by anybody for direct marketing purposes
+        </li>
+        <li>
+            if you have previously agreed to us using your personal information for direct marketing purposes,
+            you may change your mind at any time by letting us know using our Contact Us information
+        </li>
+    </ul>
+    <p>
+        We will not sell, distribute or lease your personal information to third parties unless we have your permission
+        or are required by law to do so. We may use your personal information to send you promotional information
+        about third parties which we think you may find interesting if you tell us that you wish this to happen.
+    </p>
+    <p>
+        You may request details of personal information which we hold about you under the Data Protection Act 1998.
+        A small fee will be payable. If you would like a copy of the information held on you please email us this
+        request using our Contact Us information.
+    </p>
+    <p>
+        If you believe that any information we are holding on you is incorrect or incomplete,
+        please write to or email us as soon as possible, at the above address.
+        We will promptly correct any information found to be incorrect.
+    </p>
+    <h2><a name="list"></a>List of cookies we collect</h2>
+    <p>The table below lists the cookies we collect and what information they store.</p>
+    <table class="data-table data-table-definition-list">
+        <thead>
+        <tr>
+            <th>Cookie Name</th>
+            <th>Cookie Description</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>FORM_KEY</th>
+                <td>Stores randomly generated key used to prevent forged requests.</td>
+            </tr>
+            <tr>
+                <th>PHPSESSID</th>
+                <td>Your session ID on the server.</td>
+            </tr>
+            <tr>
+                <th>GUEST-VIEW</th>
+                <td>Allows guests to view and edit their orders.</td>
+            </tr>
+            <tr>
+                <th>PERSISTENT_SHOPPING_CART</th>
+                <td>A link to information about your cart and viewing history, if you have asked for this.</td>
+            </tr>
+            <tr>
+                <th>STF</th>
+                <td>Information on products you have emailed to friends.</td>
+            </tr>
+            <tr>
+                <th>STORE</th>
+                <td>The store view or language you have selected.</td>
+            </tr>
+            <tr>
+                <th>USER_ALLOWED_SAVE_COOKIE</th>
+                <td>Indicates whether a customer allowed to use cookies.</td>
+            </tr>
+            <tr>
+                <th>MAGE-CACHE-SESSID</th>
+                <td>Facilitates caching of content on the browser to make pages load faster.</td>
+            </tr>
+            <tr>
+                <th>MAGE-CACHE-STORAGE</th>
+                <td>Facilitates caching of content on the browser to make pages load faster.</td>
+            </tr>
+            <tr>
+                <th>MAGE-CACHE-STORAGE-SECTION-INVALIDATION</th>
+                <td>Facilitates caching of content on the browser to make pages load faster.</td>
+            </tr>
+            <tr>
+                <th>MAGE-CACHE-TIMEOUT</th>
+                <td>Facilitates caching of content on the browser to make pages load faster.</td>
+            </tr>
+            <tr>
+                <th>SECTION-DATA-IDS</th>
+                <td>Facilitates caching of content on the browser to make pages load faster.</td>
+            </tr>
+            <tr>
+                <th>PRIVATE_CONTENT_VERSION</th>
+                <td>Facilitates caching of content on the browser to make pages load faster.</td>
+            </tr>
+            <tr>
+                <th>X-MAGENTO-VARY</th>
+                <td>Facilitates caching of content on the server to make pages load faster.</td>
+            </tr>
+            <tr>
+                <th>MAGE-TRANSLATION-FILE-VERSION</th>
+                <td>Facilitates translation of content to other languages.</td>
+            </tr>
+            <tr>
+                <th>MAGE-TRANSLATION-STORAGE</th>
+                <td>Facilitates translation of content to other languages.</td>
+            </tr>
+        </tbody>
+    </table>
+</div>]]></content>
+      <is_active>1</is_active>
+      <page_layout>1column</page_layout>
+      <stores>0</stores>
+    </cms_page>
+    <cms_page>
+      <title>iOne 02 - Home Best Selling</title>
+      <identifier>ione-02</identifier>
+      <content><![CDATA[<!-- Block iOne -->
+<div class="block-ione">{{widget type="CleverSoft\CleverBlock\Block\Widget" block_ids="10" block_lg="10,12," block_md="10,12," block_sm="10,12," block_xs="10,12," template="widget/block.phtml"}}</div>
+<!-- New Arrivals-->
+<div class="new-arrivals">{{widget type="CleverSoft\CleverProduct\Block\Widget" widget_title="New Arrivals" layout="carousel" widget_tab="none" mode="latest" template="widget/product.phtml" category_ids="3,4" labels="10" limit="10" autoplay="1" autoplaytimeout="5000" enable_bullet="1" navigation="1" navigation_prev="<span class='cs-font clever-icon-prev'></span>" navigation_next="<span class='cs-font clever-icon-next'></span>" col_480="1" col_768="2" col_992="3" column="5" product_grid_style="product_grid_style_2" display_rating="remove" display_addtocart="visible" display_addtowishlist="visible" display_addtocompare="visible" display_size="visible" display_color="visible" display_productname="visible" display_name_single_line="visible" display_price="visible" classes="new_arrivals"}}</div>
+<!-- End New Arrivals-->]]></content>
+      <is_active>1</is_active>
+      <page_layout>1column</page_layout>
+      <stores>5,6</stores>
+    </cms_page>
+    <cms_page>
+      <title>About</title>
+      <identifier>about</identifier>
+      <content><![CDATA[<!-- MAIN --><section class="main-content"><!-- CONTENT CONTACT -->
+<div class="container">
+<div class="row img">
+<div class="images"><img src="{{media url="wysiwyg/mato/about.jpg"}}" /></div>
+</div>
+<div class="row">
+<div class="left col-lg-4 col-md-4 col-sm-4 col-xs-4">
+<h4 class="title">WHO WE ARE</h4>
+</div>
+<div class="right col-lg-8 col-md-8 col-sm-8 col-xs-8">
+<p>From the parks of Toronto to the Tuileries in Paris, we&rsquo;ve got a penchant for capturing the best street style across the globe year-round. If you&rsquo;ve got a thing for shimmering layers, Susie Bubble and spotting editrixes in their natural habitat, look no further than this.</p>
+</div>
+</div>
+<div class="row">
+<div class="left col-lg-4 col-md-4 col-sm-4 col-xs-4">
+<h4 class="title">WHAT WE DO</h4>
+</div>
+<div class="right col-lg-8 col-md-8 col-sm-8 col-xs-8">
+<div>You&rsquo;ve got a thing for shimmering layers, Susie Bubble and spotting editrixes in their natural habitat, look no further than this, our constantly updated street style page!
+<ul>
+<li>Ornare arcu lacus, quis aliquet odio bibendum non.</li>
+<li>Nulla sagittis efficitur ex</li>
+<li>Fusce ac ipsum gravida, tristique sed felis augue</li>
+<li>Aarcu lacus, quis aliquet odio bibendum non.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="left col-lg-4 col-md-4 col-sm-4 col-xs-4">
+<h4 class="title">Contact Us</h4>
+</div>
+<div class="right col-lg-8 col-md-8 col-sm-8 col-xs-8">
+<p>5 th Floor 169 Nguyen Ngoc Vu<br /> Cau Giay - Ha Noi</p>
+<p><a href="tel:012456868234">(+84) 1245 6868 234</a><br /> <a href="tel:0988868123">(+04) 0988 868 123</a></p>
+<p><a href="mailto:stores@company.com">stores@company.com</a></p>
+</div>
+</div>
+</div>
+<!-- END CONTENT CONTACT --></section><!-- Instagram -->
+<div class="instagram">{{widget type="CleverSoft\CleverInstagram\Block\Widget\Instagram" widgetedit="1" modetakeimg="userid" userid="176379829" accessToken="176379829.099273b.b32da11a694d4417ba7520970b441edd" openimg="instagram" layoutwg="carousel" lazyload="1" height_image="238" enable_fullwidth="1" numberimage="15" img_resolution="low_resolution" navigation_prev="<span class='cs-font clever-icon-prev'></span>" navigation_next="<span class='cs-font clever-icon-next'></span>" sortby="random" autoplay="1" hoverpause="1" autoplaytime="5000" nbi480="2" nbi768="2" nbi990="4" nbi1200="8" customclass="instagram"}}
+<div class="title"><a href="https://www.instagram.com/aliceandtrixie/">FOLLOW US @ INSTAGRAM</a></div>
+</div>
+<!-- End Instagram -->]]></content>
+      <is_active>1</is_active>
+      <page_layout>1column</page_layout>
+      <stores>0</stores>
+    </cms_page>
+    <cms_page>
+      <title>iOne 03 - Home Collections Masonry</title>
+      <identifier>ione-03</identifier>
+      <content><![CDATA[<!-- Block Category -->
+<div class="block-cat">{{widget type="CleverSoft\CleverBlock\Block\Widget" classes="padding-0" block_ids="11" block_lg="11,12," block_md="11,12," block_sm="11,12," template="widget/block.phtml" block_xs="11,12,"}}</div>
+<!-- End Block Category -->]]></content>
+      <is_active>1</is_active>
+      <page_layout>1column</page_layout>
+      <stores>8,9</stores>
+    </cms_page>
+    <cms_page>
+      <title>iOne 04 - Home Collections Grid</title>
+      <identifier>ione-04</identifier>
+      <content><![CDATA[<!-- Block Category -->
+<div class="block-cate">{{widget type="CleverSoft\CleverBlock\Block\Widget" block_ids="12" block_lg="12,12," block_md="12,12," block_sm="12,12," block_xs="12,12," template="widget/block.phtml"}}</div>
+<!-- End Block Category -->
+<div class="new-arrivals">{{widget type="CleverSoft\CleverProduct\Block\Widget" widget_title="New Arrivals" layout="carousel" widget_tab="none" mode="latest" template="widget/product.phtml" category_ids="3,4" show_label="1" labels="10" limit="10" autoplay="1" autoplayhoverpause="1" autoplaytimeout="5000" enable_bullet="1" navigation="1" navigation_prev="<span class='cs-font clever-icon-prev'></span>" navigation_next="<span class='cs-font clever-icon-next'></span>" col_480="1" col_768="2" col_992="3" column="5" product_grid_style="product_grid_style_3" display_rating="remove" display_addtocart="visible" display_addtowishlist="visible" display_addtocompare="visible" display_size="visible" display_color="visible" display_productname="visible" display_name_single_line="visible" display_price="visible" classes="new_arrivals"}}</div>
+<!-- End New Arrivals -->]]></content>
+      <is_active>1</is_active>
+      <page_layout>1column</page_layout>
+      <stores>11,12</stores>
+    </cms_page>
+    <cms_page>
+      <title>iOne 05 - Home Lookbook</title>
+      <identifier>ione-05</identifier>
+      <content><![CDATA[<!-- Page Look Book -->{{widget type="CleverSoft\CleverBlock\Block\Widget" enable_fullwidth="1" block_ids="33" block_lg="33,12," block_md="33,12," block_sm="33,12," block_xs="33,12," template="widget/block.phtml"}}<!-- End Page Look Book -->]]></content>
+      <is_active>1</is_active>
+      <page_layout>1column</page_layout>
+      <stores>14,15</stores>
+    </cms_page>
+    <cms_page>
+      <title>iOne 06 - Home Full Screen Slider</title>
+      <identifier>ione-06</identifier>
+      <content><![CDATA[<!-- Main Slider -->
+<div class="main-slider">{{widget type="CleverSoft\CleverSlider\Block\Widget\Slideshow" slider="sliders-ione-full-screen"}}</div>
+<!-- Box Content -->
+<div class="boxs-content">{{widget type="CleverSoft\CleverBlock\Block\Widget" block_ids="23,24,25" block_lg="23,4,|24,4,|25,4," block_md="23,4,|24,4,|25,4," block_sm="23,4,|24,4,|25,4," block_xs="23,4,|24,4,|25,4," template="widget/block.phtml"}}</div>
+<!-- New Arrivals -->
+<div class="new-arrivals">{{widget type="CleverSoft\CleverProduct\Block\Widget" widget_title="New Arrivals" layout="carousel" widget_tab="none" mode="latest" template="widget/product.phtml" category_ids="4,3" labels="10" limit="10" autoplay="1" autoplayhoverpause="1" autoplaytimeout="5000" navigation="1" navigation_prev="<span class='cs-font clever-icon-prev'></span>" navigation_next="<span class='cs-font clever-icon-next'></span>" col_480="1" col_768="2" col_992="3" column="5" product_grid_style="product_grid_style_4" display_rating="remove" display_addtocart="visible" display_addtowishlist="visible" display_addtocompare="visible" display_size="visible" display_color="visible" display_productname="visible" display_name_single_line="visible" display_price="visible"}}</div>
+<!-- Full Main Slider -->
+<div class="full-main-slider">{{widget type="CleverSoft\CleverSlider\Block\Widget\Slideshow" slider="sliders-ione-main-full-screen"}}</div>
+<!-- Latest News -->
+<div class="latest-news">{{widget type="Magefan\Blog\Block\Widget\Recent" title="Latest News" number_of_posts="3" custom_template="widget/blog_ione_06.phtml"}}</div>
+<!-- Shop Brand -->
+<div class="shop_brand">{{widget type="CleverSoft\CleverBrands\Block\Widget\Adminhtml\Brands" brands="Brands,Brands,Brands,Brands,Brands,Brands" linkto="#,#,#,#,#,#" img="wysiwyg/ione06/01.jpg,wysiwyg/ione06/02.jpg,wysiwyg/ione06/03.jpg,wysiwyg/ione06/04.jpg,wysiwyg/ione06/05.jpg,wysiwyg/ione06/01.jpg" layoutwg="carousel" autoplay="1" autoplaytime="5000" nbi480="1" nbi768="1" nbi990="3" nbi1200="5"}}</div>
+<!-- End Shop Brand -->]]></content>
+      <is_active>1</is_active>
+      <page_layout>1column</page_layout>
+      <stores>17,18</stores>
+    </cms_page>
+    <cms_page>
+      <title>iOne 07 - Home Vertical Left</title>
+      <identifier>ione-07</identifier>
+      <content><![CDATA[<div class="left-menu">{{widget type="CleverSoft\CleverMegaMenus\Block\Widget\Megamenu" menu="main_menu"}}</div>
+<div class="main"><!-- Main Slider -->
+<div class="slider">{{widget type="CleverSoft\CleverSlider\Block\Widget\Slideshow" slider="sliders-ione-vertical-left"}}</div>
+<!-- Feature Product -->
+<div class="featured_products">{{widget type="CleverSoft\CleverProduct\Block\Widget" widget_title="Featured Products" layout="grid" widget_tab="none" mode="latest" template="widget/product.phtml" category_ids="4,3" labels="10" limit="10" column_grid="5" product_grid_style="product_grid_style_5" display_rating="visible" display_addtocart="visible" display_addtowishlist="visible" display_addtocompare="visible" display_swatch_attributes="remove" display_productname="visible" display_price="visible" display_name_single_line="1" addtolinks_position="1" aspect_ratio="1" aspect_ratio="1" image_width="300" }}</div>
+<!-- Static Box -->
+<div class="static-box">{{widget type="CleverSoft\CleverBlock\Block\Widget" block_ids="37" block_lg="37,12," block_md="37,12," block_sm="37,12," template="widget/block.phtml" block_xs="37,12,"}}</div>
+<!-- Latest News -->
+<div class="latest_news">{{widget type="Magefan\Blog\Block\Widget\Recent" title="Latest News" number_of_posts="3" custom_template="widget/blog_ione_07.phtml"}}</div>
+<!-- Signup -->
+<div class="signup">
+<h3 class="title">Newsletter Signup</h3>
+{{widget type="CleverSoft\CleverBlock\Block\Widget" block_ids="36" block_lg="36,12," block_md="36,12," block_sm="36,12," template="widget/block.phtml" block_xs="36,12,"}}</div>
+<!-- End Signup --></div> ]]></content>
+      <is_active>1</is_active>
+      <page_layout>1column</page_layout>
+      <stores>20,22</stores>
+    </cms_page>
+    <cms_page>
+      <title>iOne 08 - Home Dark Style</title>
+      <identifier>ione-08</identifier>
+      <content><![CDATA[<!-- Main Slider -->
+<div class="slider">{{widget type="CleverSoft\CleverSlider\Block\Widget\Slideshow" slider="sliders-ione-dark-style"}}</div>
+<!-- Box Category -->
+<div class="category">{{widget type="CleverSoft\CleverCategory\Block\Adminhtml\Widget\Categories" show_qty="1" layoutwg="grid" category_ids="60,61,62,63" lazyload="1" height_image="310" imgwidth="255" customclass="category"}}</div>
+<!-- Tab Category -->
+<div class="tab-category">{{widget type="CleverSoft\CleverProduct\Block\Widget" layout="grid" lazyload="1" height_image="230" widget_tab="collections" collections="bestsell,rating,new" template="widget/product.phtml" category_ids="48,47,46,4,3" show_label="1" labels="Best Sell || Most Rate || New Arrivals" limit="10" column_grid="5" product_grid_style="product_grid_style_6" display_rating="visible" display_addtocart="visible" display_addtowishlist="visible" display_addtocompare="visible" display_size="visible" display_color="visible" display_productname="visible" display_name_single_line="visible" display_price="visible" aspect_ratio="1" image_width="230" classes="cat-tab"}}</div>
+<!-- Blog Latest News -->
+<div class="latest-news">{{widget type="Magefan\Blog\Block\Widget\Recent" title="Latest News" number_of_posts="3" custom_template="widget/blog_ione_08.phtml"}}</div>
+<!-- End Blog Latest News -->]]></content>
+      <is_active>1</is_active>
+      <page_layout>1column</page_layout>
+      <stores>24,25</stores>
+    </cms_page>
+    <cms_page>
+      <title>iOne 09 - Home Header Transparency</title>
+      <identifier>ione-09</identifier>
+      <content><![CDATA[<!-- Main Slider -->
+<div class="main-slider">{{widget type="CleverSoft\CleverSlider\Block\Widget\Slideshow" slider="sliders-ione-full-screen"}}</div>
+<!-- Box Content -->
+<div class="boxs-content">{{widget type="CleverSoft\CleverBlock\Block\Widget" block_ids="23,24,25" block_lg="23,4,|24,4,|25,4," block_md="23,4,|24,4,|25,4," block_sm="23,4,|24,4,|25,4," block_xs="23,4,|24,4,|25,4," template="widget/block.phtml"}}</div>
+<!--div class="boxs-content">{{widget type="CleverSoft\CleverCategory\Block\Adminhtml\Widget\Categories" show_qty="1" layoutwg="carousel" category_ids="48,47,46" lazyload="1" height_image="330" nbi480="1" nbi768="1" nbi990="2" nbi1200="3" customclass="category-box"}}"</div-->
+<p></p>
+<!-- New Arrivals -->
+<div class="new-arrivals">{{widget type="CleverSoft\CleverProduct\Block\Widget" widget_title="New Arrivals" layout="carousel" lazyload="1" height_image="230" widget_tab="none" mode="latest" template="widget/product.phtml" category_ids="4,3" show_label="1" labels="10" limit="10" autoplay="1" autoplayhoverpause="1" autoplaytimeout="5000" enable_bullet="1" navigation="1" navigation_prev="<span class='cs-font clever-icon-prev'></span>" navigation_next="<span class='cs-font clever-icon-next'></span>" col_480="2" col_768="3" col_992="4" column="5" product_grid_style="product_grid_style_7" display_rating="visible" display_addtocart="visible" display_addtowishlist="visible" display_addtocompare="visible" display_size="visible" display_color="visible" display_productname="visible" display_name_single_line="visible" display_price="visible" aspect_ratio="1" image_width="200" classes="new_arrivals"}}</div>
+<!-- Full Main Slider -->
+<div class="full-main-slider">{{widget type="CleverSoft\CleverSlider\Block\Widget\Slideshow" slider="sliders-ione-main-full-screen"}}</div>
+<!-- Latest News -->
+<div class="latest-news">{{widget type="Magefan\Blog\Block\Widget\Recent" title="Latest News" number_of_posts="3" custom_template="widget/blog_ione_06.phtml"}}</div>
+<!-- Shop Brand -->
+<div class="shop_brand">{{widget type="CleverSoft\CleverBlock\Block\Widget" widget_title="Shop by Brand" block_ids="26,27,28,29,30" block_lg="26,2,|27,2,|28,2,|29,2,|30,4," block_md="26,2,|27,2,|28,2,|29,2,|30,4," block_sm="26,2,|27,2,|28,2,|29,2,|30,4," block_xs="26,2,|27,2,|28,2,|29,2,|30,4," template="widget/block.phtml" scroll="1" autoplay="1" autoplayhoverpause="1" autoplaytimeout="5000" enable_bullet="0" navigation="1" navigation_prev="<span class='cs-font clever-icon-prev'></span>" navigation_next="<span class='cs-font clever-icon-next'></span>" col_480="1" col_768="2" col_992="3" column="5"}}</div>
+<!-- End Shop Brand -->]]></content>
+      <is_active>1</is_active>
+      <page_layout>1column</page_layout>
+      <stores>26,27</stores>
+    </cms_page>
+    <cms_page>
+      <title>iOne 10 - Home Hero Slider</title>
+      <identifier>ione-10</identifier>
+      <content><![CDATA[<!-- Main Slider -->
+<div class="main-slider">{{widget type="CleverSoft\CleverSlider\Block\Widget\Slideshow" slider="sliders-ione-hero"}}</div>
+<!-- Box Content -->
+<div class="boxs-content">{{widget type="CleverSoft\CleverBlock\Block\Widget" block_ids="23,24,25" block_lg="23,4,|24,4,|25,4," block_md="23,4,|24,4,|25,4," block_sm="23,4,|24,4,|25,4," block_xs="23,4,|24,4,|25,4," template="widget/block.phtml"}}</div>
+<!-- New Arrivals -->
+<div class="new-arrivals">{{widget type="CleverSoft\CleverProduct\Block\Widget" widget_title="New Arrivals" layout="carousel" lazyload="1" widget_tab="none" mode="latest" template="widget/product.phtml" category_ids="4,3" show_label="1" labels="10" limit="10" autoplay="1" autoplayhoverpause="1" autoplaytimeout="5000" enable_bullet="1" navigation="1" navigation_prev="<span class='cs-font clever-icon-prev'></span>" navigation_next="<span class='cs-font clever-icon-next'></span>" col_480="1" col_768="2" col_992="3" column="5" display_rating="visible" display_addtocart="hover" display_addtowishlist="remove" display_addtocompare="remove" display_size="visible" display_color="visible" display_productname="visible" display_name_single_line="visible" display_price="visible" aspect_ratio="1" image_width="180" classes="new_arrivals"}}</div>
+<!-- Full Main Slider -->
+<div class="full-main-slider">{{widget type="CleverSoft\CleverSlider\Block\Widget\Slideshow" slider="sliders-ione-main-full-screen"}}</div>
+<!-- Latest News -->
+<div class="latest_news">{{widget type="Magefan\Blog\Block\Widget\Recent" title="Latest News" number_of_posts="3" custom_template="widget/blog_ione_07.phtml"}}</div>
+<!-- Shop Brand -->
+<div class="shop_brand">{{widget type="CleverSoft\CleverBlock\Block\Widget" widget_title="Shop by Brand" block_ids="26,27,28,29,30" block_lg="26,2,|27,2,|28,2,|29,2,|30,4," block_md="26,2,|27,2,|28,2,|29,2,|30,4," block_sm="26,2,|27,2,|28,2,|29,2,|30,4," block_xs="26,2,|27,2,|28,2,|29,2,|30,4," template="widget/block.phtml" scroll="1" autoplay="1" autoplayhoverpause="1" autoplaytimeout="5000" enable_bullet="0" navigation="1" navigation_prev="<span class='cs-font clever-icon-prev'></span>" navigation_next="<span class='cs-font clever-icon-next'></span>" col_480="1" col_768="2" col_992="3" column="5"}}</div>
+<!-- End Shop Brand -->]]></content>
+      <is_active>1</is_active>
+      <page_layout>1column</page_layout>
+      <stores>0,28,29</stores>
+    </cms_page>
+    <cms_page>
+      <title>iOne 07 - Home Vertical Left (NEW)</title>
+      <identifier>ione-07-home-vertical-left-new</identifier>
+      <content><![CDATA[<div class="sidebar-left col-sm-3 col-lg-2 hidden-xs padding-0 width-hidden-768">
+<div class="sidebar-menu">{{widget type="CleverSoft\CleverMegaMenus\Block\Widget\Megamenu" menu="sidebar_menu"}}</div>
+<div class="footer-sidebar">{{widget type="CleverSoft\CleverBlock\Block\Widget" block_ids="38" block_lg="38,12," block_md="38,12," block_sm="38,12," template="widget/block.phtml" block_xs="38,12,"}}</div></div>
+<div class="main-content col-sm-9 col-lg-10 hidden-xs padding-0"><!-- Main Slider -->
+<div class="slider">{{widget type="CleverSoft\CleverSlider\Block\Widget\Slideshow" slider="sliders-ione-vertical-left"}}</div>
+<!-- Feature Product -->
+<div class="featured_products">{{widget type="CleverSoft\CleverProduct\Block\Widget" widget_title="Featured Products" layout="grid" widget_tab="none" mode="latest" template="widget/product.phtml" category_ids="4,3,2" labels="10" limit="10" column_grid="5" display_rating="remove" display_addtocart="hover" display_addtowishlist="remove" display_addtocompare="remove" display_size="visible" display_color="visible" display_productname="visible" display_name_single_line="visible" display_price="visible" image_width="300" image_height="300"}}</div>
+<!-- Static Box -->
+<div class="static-box">{{widget type="CleverSoft\CleverBlock\Block\Widget" block_ids="37" block_lg="37,12," block_md="37,12," block_sm="37,12," template="widget/block.phtml" block_xs="37,12,"}}</div>
+<!-- Latest News -->
+<div class="latest_news">{{widget type="Magefan\Blog\Block\Widget\Recent" title="Latest News" number_of_posts="4" custom_template="widget/blog_ione_07.phtml"}}</div>
+<!-- Signup -->
+<div class="signup">
+<h3 class="title">Newsletter Signup</h3>
+{{widget type="CleverSoft\CleverBlock\Block\Widget" block_ids="36" block_lg="36,12," block_md="36,12," block_sm="36,12," template="widget/block.phtml" block_xs="36,12,"}}</div>
+<!-- End Signup --></div>]]></content>
+      <is_active>1</is_active>
+      <page_layout>1column</page_layout>
+      <stores>0</stores>
+    </cms_page>
+  </pages>
+</root>

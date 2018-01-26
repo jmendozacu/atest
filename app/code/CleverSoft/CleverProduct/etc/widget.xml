@@ -1,0 +1,419 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * @category    CleverSoft
+ * @package     CleverProduct
+ * @copyright   Copyright © 2017 CleverSoft., JSC. All Rights Reserved.
+ * @author 		ZooExtension.com
+ * @email       magento.cleversoft@gmail.com
+ */
+-->
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+    <widget id="cleverproduct" class="CleverSoft\CleverProduct\Block\Widget" is_email_compatible="true" placeholder_image="CleverSoft_CleverProduct::images/clever-product.png">
+        <label translate="true">Clever Products</label>
+        <description>Show products, photos, blocks in widget</description>
+        <parameters>
+            <parameter name="widget_title" xsi:type="text" required="false" visible="true">
+                <label translate="true">Widget Title</label>
+            </parameter>
+
+            <parameter name="widget_sub_title" xsi:type="text" required="false" visible="true">
+                <label translate="true">Widget Sub Title</label>
+            </parameter>
+
+
+            <parameter name="layout" xsi:type="select" required="true" visible="true"
+                       source_model="CleverSoft\CleverProduct\Model\Widget\Source\Type">
+                <label translate="true">Layout</label>
+                <description translate="true">Select layout content</description>
+            </parameter>
+
+            <parameter name="enable_fullwidth" xsi:type="select" required="true"  visible="true"
+                       source_model="Magento\Config\Model\Config\Source\Yesno">
+                <label translate="true">Enable FullWidth</label>
+                <description translate="true">Enable If you want to show this to fit to the screen width</description>
+            </parameter>
+
+            <parameter name="lazyload" xsi:type="select" required="true"  visible="true"
+                       source_model="Magento\Config\Model\Config\Source\Yesno">
+                <label translate="true">Enable Lazy Load</label>
+                <description translate="true">Lazy load Image</description>
+            </parameter>
+
+            <parameter name="height_image" xsi:type="text" visible="true">
+                <label translate="true">Image height (px)</label>
+                <depends>
+                    <parameter name="lazyload" value="1" />
+                </depends>
+            </parameter>
+
+            <parameter name="widget_tab" xsi:type="select" required="true" visible="true"
+                       source_model="CleverSoft\CleverProduct\Model\Widget\Source\Tab">
+                <label translate="true">Enable Tabs</label>
+                <description translate="true">Enable tab on widget</description>
+            </parameter>
+            <parameter name="mode" xsi:type="select" required="true" visible="true"
+                       source_model="CleverSoft\CleverProduct\Model\Widget\Source\Mode">
+                <label translate="true">Product Collection</label>
+                <description translate="true">The product collection</description>
+                <depends>
+                    <parameter name="widget_tab" value="none" />
+                </depends>
+            </parameter>
+            <parameter name="countdown" xsi:type="select" required="true" visible="true"
+                       source_model="Magento\Config\Model\Config\Source\Yesno">
+                <label translate="true">Enable Countdown</label>
+                <description translate="true">Enable countdown on product if available</description>
+
+            </parameter>
+            <parameter name="product_ids" xsi:type="conditions" class="CleverSoft\CleverProduct\Block\Adminhtml\Widget\Renderer\Product" required="true" visible="true">
+                <label translate="true">Product</label>
+                <description>Specific product ids here</description>
+                <depends>
+                    <parameter name="mode" value="id" />
+                </depends>
+            </parameter>
+
+            <parameter name="collections" xsi:type="conditions" class="CleverSoft\CleverProduct\Block\Adminhtml\Widget\Form\Element\Collection" required="true" visible="true">
+                <label translate="true">Product Collections</label>
+                <description translate="true"><![CDATA[The product collections for tabs. Drag & drop for order of collections]]></description>
+                <depends>
+                    <parameter name="widget_tab" value="collections" />
+                </depends>
+            </parameter>
+
+            <parameter name="category_ids" xsi:type="conditions" class="CleverSoft\CleverProduct\Block\Adminhtml\Widget\Renderer\Category" visible="true">
+                <label translate="true">Categories</label>
+                <description translate="true">If category is selected, the product collection will be filtered by this categories</description>
+            </parameter>
+
+            <parameter name="collections_c" xsi:type="conditions" class="CleverSoft\CleverProduct\Block\Adminhtml\Widget\Form\Element\Collection" visible="true">
+                <label translate="true">Product Collections</label>
+                <description translate="true"><![CDATA[The product collections for tabs. Drag & drop for order of collections]]></description>
+                <depends>
+                    <parameter name="widget_tab" value="categories" />
+                </depends>
+            </parameter>
+            <parameter name="show_label" xsi:type="select" required="true" visible="true"
+                       source_model="Magento\Config\Model\Config\Source\Yesno">
+                <label translate="true">Show Label</label>
+                <description translate="true">Show Label "Sale", "Out Of Stock", "Low Stock"</description>
+            </parameter>
+            <parameter name="labels" xsi:type="text"  visible="true" >
+                <label translate="true">Custom Labels</label>
+                <description translate="true">Separator by: ||</description>
+                <value>10</value>
+            </parameter>
+            <parameter name="limit" xsi:type="text"  visible="true" required="true">
+                <label translate="true">Limit</label>
+                <description translate="true">Limit number of products show on widget or tab</description>
+                <value>10</value>
+            </parameter>
+
+            <parameter name="autoplay" xsi:type="select" required="true"  visible="true"
+                       source_model="Magento\Config\Model\Config\Source\Yesno">
+                <label translate="true">Enable Auto Play</label>
+                <description translate="true">Enable Auto Play</description>
+                <depends>
+                    <parameter name="layout" value="carousel" />
+                </depends>
+            </parameter>
+
+            <parameter name="autoplayhoverpause" xsi:type="select" required="true"  visible="true"
+                       source_model="Magento\Config\Model\Config\Source\Yesno">
+                <label translate="true">Enable Hover Pause</label>
+                <description translate="true">Slideshow will pause when you hover on it if you set this to YES</description>
+                <depends>
+                    <parameter name="layout" value="carousel" />
+                </depends>
+            </parameter>
+
+            <parameter name="autoplaytimeout" xsi:type="text" visible="true">
+                <label translate="true">Auto Play Timeout</label>
+                <description translate="true">Change to any integrer for example 5000 to play every 5 seconds. </description>
+                <depends>
+                    <parameter name="layout" value="carousel" />
+                </depends>
+            </parameter>
+
+            <parameter name="enable_bullet" xsi:type="select" required="true"  visible="true"
+                       source_model="Magento\Config\Model\Config\Source\Yesno">
+                <label translate="true">Enable Bullet</label>
+                <description translate="true">Enable Bullet</description>
+                <depends>
+                    <parameter name="layout" value="carousel" />
+                </depends>
+            </parameter>
+
+            <parameter name="enable_loop" xsi:type="select" required="true"  visible="true"
+                       source_model="Magento\Config\Model\Config\Source\Yesno">
+                <label translate="true">Enable Loop</label>
+                <description translate="true">Enable Loop</description>
+                <depends>
+                    <parameter name="layout" value="carousel" />
+                </depends>
+            </parameter>
+
+            <parameter name="navigation" xsi:type="select"  visible="true"
+                       source_model="Magento\Config\Model\Config\Source\Yesno">
+                <label translate="true">Show Navigation</label>
+                <description translate="true">Show Navigation</description>
+                <depends>
+                    <parameter name="layout" value="carousel" />
+                </depends>
+            </parameter>
+
+            <parameter name="vertical_items" xsi:type="text"  visible="true">
+                <label translate="true">Number Items</label>
+                <description translate="true">Limit number of rows on carousel</description>
+                <depends>
+                    <parameter name="layout" value="carousel-vertical" />
+                </depends>
+                <value>1</value>
+            </parameter>
+
+            <parameter name="col_480" xsi:type="text"  visible="true">
+                <label translate="true">Number Items (480px up)</label>
+                <description translate="true">Limit number of columns on carousel - 480px wide screen </description>
+                <depends>
+                    <parameter name="layout" value="carousel" />
+                </depends>
+                <value>1</value>
+            </parameter>
+            <parameter name="col_768" xsi:type="text"  visible="true">
+                <label translate="true">Number Items (768px wide)</label>
+                <description translate="true">Limit number of columns on carousel - 768px wide screen</description>
+
+                <depends>
+                    <parameter name="layout" value="carousel" />
+                </depends>
+                <value>2</value>
+            </parameter>
+            <parameter name="col_992" xsi:type="text"  visible="true">
+                <label translate="true">Number Items (992px up)</label>
+                <description translate="true">Limit number of columns on carousel - 992px wide screen</description>
+
+                <depends>
+                    <parameter name="layout" value="carousel" />
+                </depends>
+                <value>3</value>
+            </parameter>
+
+            <parameter name="column" xsi:type="text"  visible="true">
+                <label translate="true">Number Items ( 1200px up)</label>
+                <description translate="true">Limit number of columns on carousel - from 1200px wide screen and up</description>
+                <depends>
+                    <parameter name="layout" value="carousel" />
+                </depends>
+                <value>4</value>
+            </parameter>
+
+            <parameter name="column_grid" xsi:type="text"  visible="true">
+                <label translate="true">Columns</label>
+                <description translate="true">Limit number of columns on widget</description>
+                <depends>
+                    <parameter name="layout" value="grid" />
+                </depends>
+                <value>4</value>
+            </parameter>
+
+            <parameter name="product_grid_style" xsi:type="select"  visible="true">
+                <label translate="true">Hover on Product</label>
+                <description translate="true">Choose one of those hover effects for products</description>
+                <options>
+                    <option name="product_grid_style_1" value="product_grid_style_1" selected="true" >
+                        <label translate="true">Style 1</label>
+                    </option>
+                    <option name="product_grid_style_2" value="product_grid_style_2">
+                        <label translate="true">Style 2</label>
+                    </option>
+                    <option name="product_grid_style_3" value="product_grid_style_3">
+                        <label translate="true">Style 3</label>
+                    </option>
+                    <option name="product_grid_style_4" value="product_grid_style_4">
+                        <label translate="true">Style 4</label>
+                    </option>
+                    <option name="product_grid_style_5" value="product_grid_style_5">
+                        <label translate="true">Style 5</label>
+                    </option>
+                    <option name="product_grid_style_6" value="product_grid_style_6">
+                        <label translate="true">Style 6</label>
+                    </option>
+                    <option name="product_grid_style_7" value="product_grid_style_7">
+                        <label translate="true">Style 7</label>
+                    </option>
+                </options>
+            </parameter>
+
+            <parameter name="display_rating" xsi:type="select"  visible="true">
+                <label translate="true">Ratings</label>
+                <options>
+                    <option name="rating_remove" value="remove">
+                        <label translate="true">Disable</label>
+                    </option>
+                    <option name="rating_visible" value="visible" selected="true" >
+                        <label translate="true">Enable</label>
+                    </option>
+                </options>
+            </parameter>
+
+            <parameter name="display_addtocart" xsi:type="select"  visible="true">
+                <label translate="true">Add To Cart</label>
+                <options>
+                    <option name="addtocart_remove" value="remove">
+                        <label translate="true">Disable</label>
+                    </option>
+                    <option name="addtocart_visible" value="visible">
+                        <label translate="true">Enable</label>
+                    </option>
+                </options>
+            </parameter>
+
+            <parameter name="display_addtowishlist" xsi:type="select"  visible="true">
+                <label translate="true">Add to wishlist</label>
+                <options>
+                    <option name="wishlist_remove" value="remove">
+                        <label translate="true">Disable</label>
+                    </option>
+                    <option name="wishlist_visible" value="visible" selected="true">
+                        <label translate="true">Enable</label>
+                    </option>
+                </options>
+            </parameter>
+
+            <parameter name="display_addtocompare" xsi:type="select"  visible="true">
+                <label translate="true">Add to compare</label>
+                <options>
+                    <option name="addcompare_remove" value="remove">
+                        <label translate="true">Disable</label>
+                    </option>
+                    <option name="addcompare_visible" value="visible" selected="true">
+                        <label translate="true">Enable</label>
+                    </option>
+                </options>
+            </parameter>
+
+            <parameter name="display_swatch_attributes" xsi:type="select"  visible="true">
+                <label translate="true">Swatch Attributes (Colors,Sizes,Style....)</label>
+                <options>
+                    <option name="display_swatch_attributes_remove" value="remove">
+                        <label translate="true">Disable</label>
+                    </option>
+                    <option name="display_swatch_attributes_visible" value="visible" selected="true">
+                        <label translate="true">Enable</label>
+                    </option>
+                </options>
+            </parameter>
+
+            <parameter name="display_productname" xsi:type="select"  visible="true">
+                <label translate="true">Product name</label>
+                <options>
+                    <option name="productname_remove" value="remove">
+                        <label translate="true">Disable</label>
+                    </option>
+                    <option name="productname_visible" value="visible" selected="true">
+                        <label translate="true">Enable</label>
+                    </option>
+                </options>
+            </parameter>
+
+            <parameter name="display_price" xsi:type="select"  visible="true">
+                <label translate="true">Price</label>
+                <options>
+                    <option name="price_remove" value="remove">
+                        <label translate="true">Disable</label>
+                    </option>
+                    <option name="price_visible" value="visible"  selected="true">
+                        <label translate="true">Enable</label>
+                    </option>
+                </options>
+            </parameter>
+
+            <parameter name="display_name_single_line" xsi:type="select"  visible="true">
+                <label translate="true">Display Name in Single Line</label>
+                <description translate="true"><![CDATA[If set to "Yes": if product name is too long to be displayed in a single line, it will be clipped and an ellipsis ('…', U+2026 HORIZONTAL ELLIPSIS) will be appended at the end of the line to represent clipped text. This will only take effect if the option <em>Name</em> was set to "Display".]]></description>
+                <options>
+                    <option name="line_yes" value="1" selected="true">
+                        <label translate="true">Yes</label>
+                    </option>
+                    <option name="line_no" value="0">
+                        <label translate="true">No</label>
+                    </option>
+                </options>
+            </parameter>
+
+            <parameter name="aspect_ratio" xsi:type="select"  visible="true" source_model="Magento\Config\Model\Config\Source\Yesno">
+                <label translate="true">Keep Image Aspect Ratio</label>
+                <description translate="true">Set "Yes", to keep aspect ratio of product images (height of each image will be calculated automatically based on width). If set to "No", Magento will automatically transform each image into square. If the original image was rectangular, the empty space at the sides will be filled with white color.</description>
+            </parameter>
+
+            <parameter name="image_width" xsi:type="text"  visible="true">
+                <label translate="true">Image Width</label>
+                <description translate="true">Set width image in page products list.</description>
+            </parameter>
+
+            <parameter name="image_height" xsi:type="text"  visible="true">
+                <label translate="true">Image Height</label>
+                <description translate="true">Set height image in page products list.</description>
+                <depends>
+                    <parameter name="aspect_ratio" value="0"></parameter>
+                </depends>
+            </parameter>
+
+            <parameter name="background" xsi:type="select"  visible="true"
+                       source_model="CleverSoft\CleverProduct\Model\Widget\Source\Background">
+                <label>Background</label>
+            </parameter>
+            <parameter name="parallax_type" xsi:type="select"  visible="true"
+                       source_model="CleverSoft\CleverProduct\Model\Widget\Source\Parallax\Type">
+                <label translate="true">Parallax Background Type</label>
+                <depends>
+                    <parameter name="background" value="parallax" />
+                </depends>
+            </parameter>
+            <parameter name="parallax_video_src" xsi:type="conditions"  visible="true" class="CleverSoft\CleverProduct\Block\Adminhtml\Widget\Form\Element\Video">
+                <label translate="true">Parallax Video Source</label>
+                <description translate="true">Ex: http://www.youtube.com/watch?v=UVOpiKiCEeY or http://vimeo.com/81979871</description>
+                <depends>
+                    <parameter name="parallax_type" value="video" />
+                </depends>
+            </parameter>
+
+            <parameter name="parallax_image_src" xsi:type="conditions"  visible="true" class="CleverSoft\CleverProduct\Block\Adminhtml\Widget\Form\Element\Browser">
+                <label translate="true">Parallax Background Source</label>
+                <depends>
+                    <parameter name="background" value="parallax" />
+                </depends>
+            </parameter>
+
+            <parameter name="background_overlay" xsi:type="conditions" class="CleverSoft\CleverProduct\Block\Adminhtml\Widget\Renderer\Color" visible="true">
+                <label translate="true">Background Overlay</label>
+                <description translate="true">Choose a color</description>
+            </parameter>
+
+            <parameter name="background_overlay_o" xsi:type="select" required="true" visible="true"
+                       source_model="CleverSoft\CleverProduct\Model\Widget\Source\Opacity">
+                <label translate="true">Background Overlay Opacity</label>
+                <description translate="true">The lower value, the more transparent</description>
+            </parameter>
+
+            <parameter name="cache" xsi:type="text" required="false" visible="true">
+                <label translate="true">Cache Lifetime</label>
+                <description translate="true">If set, caching this widget (in seconds)</description>
+            </parameter>
+            <parameter name="classes" xsi:type="text" required="false" visible="true">
+                <label translate="true">Widget Classes</label>
+                <description translate="true">Custom classes</description>
+            </parameter>
+            <parameter name="template" xsi:type="select" visible="true" required="true" sort_order="10">
+                <label translate="true">Template</label>
+                <options>
+                    <option name="Product" value="widget/product.phtml">
+                        <label translate="true">Product</label>
+                    </option>
+                </options>
+            </parameter>
+        </parameters>
+    </widget>
+</widgets>

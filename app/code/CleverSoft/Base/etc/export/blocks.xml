@@ -1,0 +1,1412 @@
+<?xml version="1.0"?>
+<root>
+  <blocks>
+    <cms_block>
+      <title>iOne 01 - Slider Home Minimal 01</title>
+      <identifier>ione_01_slider_01</identifier>
+      <content><![CDATA[<div class="main-slide-content" style="background-image: url({{media url='wysiwyg/ione01/slider_01.jpg'}});">
+<div class="caption-slide">
+<h2>5 best selling bluetooth headphone<br /> for mobile</h2>
+<a class="btn-ione btn-raised button" href="javascript:void(0">shop now</a></div>
+</div>]]></content>
+      <is_active>1</is_active>
+      <stores>2,3</stores>
+    </cms_block>
+    <cms_block>
+      <title>iOne 01 - Slider Home Minimal 02</title>
+      <identifier>ione_01_slider_02</identifier>
+      <content><![CDATA[<div class="main-slide-content" style="background-image: url({{media url='wysiwyg/ione01/slider_02.jpg'}});">
+<div class="caption-slide">
+<h2>5 best selling bluetooth headphone<br /> for mobile</h2>
+<a class="btn-ione btn-raised button" href="javascript:void(0">shop now</a></div>
+</div>]]></content>
+      <is_active>1</is_active>
+      <stores>2,3</stores>
+    </cms_block>
+    <cms_block>
+      <title>iOne 01 - Slider Home Minimal 03</title>
+      <identifier>ione_01_slider_03</identifier>
+      <content><![CDATA[<div class="main-slide-content" style="background-image: url({{media url='wysiwyg/ione01/slider_03.jpg'}});">
+<div class="caption-slide">
+<h2>5 best selling bluetooth headphone<br /> for mobile</h2>
+<a class="btn-ione btn-raised button" href="javascript:void(0">shop now</a></div>
+</div>]]></content>
+      <is_active>1</is_active>
+      <stores>2,3</stores>
+    </cms_block>
+    <cms_block>
+      <title>iOne 01 - Box Image 01</title>
+      <identifier>ione-01-box-image-01</identifier>
+      <content><![CDATA[<div class="box">
+<div class="img-box" style="min-height: 250px;">
+<div class="zoo-clazyload-spinners" style="min-height: 250px;">
+<div class="zoo-sk-circle">
+<div class="zoo-sk-circle1 sk-child"></div>
+<div class="zoo-sk-circle2 sk-child"></div>
+<div class="zoo-sk-circle3 sk-child"></div>
+<div class="zoo-sk-circle4 sk-child"></div>
+<div class="zoo-sk-circle5 sk-child"></div>
+<div class="zoo-sk-circle6 sk-child"></div>
+<div class="zoo-sk-circle7 sk-child"></div>
+<div class="zoo-sk-circle8 sk-child"></div>
+<div class="zoo-sk-circle9 sk-child"></div>
+<div class="zoo-sk-circle10 sk-child"></div>
+<div class="zoo-sk-circle11 sk-child"></div>
+<div class="zoo-sk-circle12 sk-child"></div>
+</div>
+</div>
+<img class="clazyload" data-src="pub/media/wysiwyg/ione01/box_content_01.jpg" /></div>
+<div class="description">
+<h2><a href="{{config path="web/secure/base_url"}}silk-scarf.html">silk scarf</a></h2>
+<span>16 Items</span> <a class="btn" href="{{config path="web/secure/base_url"}}silk-scarf.html">shop now</a></div>
+</div>]]></content>
+      <is_active>1</is_active>
+      <stores>2,3</stores>
+    </cms_block>
+    <cms_block>
+      <title>iOne 01 - Box Image 02</title>
+      <identifier>ione-01-box-image-02</identifier>
+      <content><![CDATA[<div class="box">
+<div class="img-box" style="min-height: 250px;">
+<div class="zoo-clazyload-spinners" style="min-height: 250px;">
+<div class="zoo-sk-circle">
+<div class="zoo-sk-circle1 sk-child"></div>
+<div class="zoo-sk-circle2 sk-child"></div>
+<div class="zoo-sk-circle3 sk-child"></div>
+<div class="zoo-sk-circle4 sk-child"></div>
+<div class="zoo-sk-circle5 sk-child"></div>
+<div class="zoo-sk-circle6 sk-child"></div>
+<div class="zoo-sk-circle7 sk-child"></div>
+<div class="zoo-sk-circle8 sk-child"></div>
+<div class="zoo-sk-circle9 sk-child"></div>
+<div class="zoo-sk-circle10 sk-child"></div>
+<div class="zoo-sk-circle11 sk-child"></div>
+<div class="zoo-sk-circle12 sk-child"></div>
+</div>
+</div>
+<img class="clazyload" data-src="pub/media/wysiwyg/ione01/box_content_02.jpg" /></div>
+<div class="description">
+<h2><a href="{{config path="web/secure/base_url"}}leather-bag.html">leather bag</a></h2>
+<span>10 Items</span> <a class="btn" href="{{config path="web/secure/base_url"}}leather-bag.html">shop now</a></div>
+</div>]]></content>
+      <is_active>1</is_active>
+      <stores>2,3</stores>
+    </cms_block>
+    <cms_block>
+      <title>iOne 01 - Box Image 03</title>
+      <identifier>ione-01-box-image-03</identifier>
+      <content><![CDATA[<div class="box">
+<div class="img-box" style="min-height: 250px;">
+<div class="zoo-clazyload-spinners" style="min-height: 250px;">
+<div class="zoo-sk-circle">
+<div class="zoo-sk-circle1 sk-child"></div>
+<div class="zoo-sk-circle2 sk-child"></div>
+<div class="zoo-sk-circle3 sk-child"></div>
+<div class="zoo-sk-circle4 sk-child"></div>
+<div class="zoo-sk-circle5 sk-child"></div>
+<div class="zoo-sk-circle6 sk-child"></div>
+<div class="zoo-sk-circle7 sk-child"></div>
+<div class="zoo-sk-circle8 sk-child"></div>
+<div class="zoo-sk-circle9 sk-child"></div>
+<div class="zoo-sk-circle10 sk-child"></div>
+<div class="zoo-sk-circle11 sk-child"></div>
+<div class="zoo-sk-circle12 sk-child"></div>
+</div>
+</div>
+<img class="clazyload" data-src="pub/media/wysiwyg/ione01/box_content_03.jpg" /></div>
+<div class="description">
+<h2><a href="{{config path="web/secure/base_url"}}dress-watch.html">dress watch</a></h2>
+<span>26 Items</span> <a class="btn" href="{{config path="web/secure/base_url"}}dress-watch.html">shop now</a></div>
+</div>]]></content>
+      <is_active>1</is_active>
+      <stores>2,3</stores>
+    </cms_block>
+    <cms_block>
+      <title>iOne 01 - Box Image 04</title>
+      <identifier>ione-01-box-image-04</identifier>
+      <content><![CDATA[<div class="box">
+<div class="img-box" style="min-height: 250px;">
+<div class="zoo-clazyload-spinners" style="min-height: 250px;">
+<div class="zoo-sk-circle">
+<div class="zoo-sk-circle1 sk-child"></div>
+<div class="zoo-sk-circle2 sk-child"></div>
+<div class="zoo-sk-circle3 sk-child"></div>
+<div class="zoo-sk-circle4 sk-child"></div>
+<div class="zoo-sk-circle5 sk-child"></div>
+<div class="zoo-sk-circle6 sk-child"></div>
+<div class="zoo-sk-circle7 sk-child"></div>
+<div class="zoo-sk-circle8 sk-child"></div>
+<div class="zoo-sk-circle9 sk-child"></div>
+<div class="zoo-sk-circle10 sk-child"></div>
+<div class="zoo-sk-circle11 sk-child"></div>
+<div class="zoo-sk-circle12 sk-child"></div>
+</div>
+</div>
+<img class="clazyload" data-src="pub/media/wysiwyg/ione01/box_content_04.jpg" /></div>
+<div class="description">
+<h2><a href="{{config path="web/secure/base_url"}}sport-bike.html">sport bike</a></h2>
+<span>09 Items</span> <a class="btn" href="{{config path="web/secure/base_url"}}sport-bike.html">shop now</a></div>
+</div>]]></content>
+      <is_active>1</is_active>
+      <stores>2,3</stores>
+    </cms_block>
+    <cms_block>
+      <title>Footer bottom</title>
+      <identifier>ione-01-footer-bottom</identifier>
+      <content><![CDATA[<div class="zoo-footer-bottom-content">
+<div class="footer-info">
+<div class="row">
+<div class="item col-lg-2 col-md-2 col-sm-2 col-xs-12">
+<h4 class="title">customer service</h4>
+<ul>
+<li><a href="{{config path="web/unsecure/base_url"}}about">About Us</a></li>
+<li><a href="#">Careers</a></li>
+<li><a href="#">Affiliate</a></li>
+<li><a href="#">Responsibility</a></li>
+<li><a href="{{config path="web/unsecure/base_url"}}contact">Contact Us</a></li>
+</ul>
+</div>
+<div class="item col-lg-2 col-md-2 col-sm-2 col-xs-12">
+<h4 class="title">Help</h4>
+<ul>
+<li><a href="#">Returns</a></li>
+<li><a href="#">Shipping</a></li>
+<li><a href="#">FAQ</a></li>
+<li><a href="#">Size Guide</a></li>
+<li><a href="#">Track Orders</a></li>
+</ul>
+</div>
+<div class="item col-lg-2 col-md-2 col-sm-2 col-xs-12">
+<h4 class="title">Follow us</h4>
+<ul>
+<li><a href="https://facebook.com/"><i class="fa fa-facebook"></i>Facebook</a></li>
+<li><a href="https://twitter.com/"><i class="fa fa-twitter"></i>Twitter</a></li>
+<li><a href="https://pinterest.com/"><i class="fa fa-pinterest"></i>Pinterest</a></li>
+<li><a href="https://plus.google.com/"><i class="fa fa-google-plus"></i>Google+</a></li>
+<li><a href="https://instagram.com/"><i class="fa fa-instagram"></i>Instagram</a></li>
+</ul>
+</div>
+<div class="item col-lg-2 col-md-2 col-sm-2 col-xs-12"></div>
+<div class="item newsletter col-lg-4 col-md-4 col-sm-4 col-xs-12">
+<h4 class="title">Newsletter</h4>
+<span>Subscribe now to get daily updates</span> {{block class="Magento\Newsletter\Block\Subscribe" name="subscribe" as="subscribe" before="-" template="subscribe.phtml"}} <span>Don&rsquo;t worry we don&rsquo;t spam</span></div>
+</div>
+</div>
+</div>
+<!--div class="zoo-accordion-footer visible-xs zoo-accordion-show"><span>accordion footer</span></div-->]]></content>
+      <is_active>1</is_active>
+      <stores>0</stores>
+    </cms_block>
+    <cms_block>
+      <title>Mega Menu</title>
+      <identifier>main_menu</identifier>
+      <content><![CDATA[<p>{{widget type="CleverSoft\CleverMegaMenus\Block\Widget\Megamenu" menu="main_menu"}}</p>]]></content>
+      <is_active>1</is_active>
+      <stores>0</stores>
+    </cms_block>
+    <cms_block>
+      <title>iOne 02 - Features Product</title>
+      <identifier>ione02_features_product</identifier>
+      <content><![CDATA[<div class="features-product">
+<div class="container padding-0">
+<div class="row">
+<div class="main-content">
+<div class="image col-lg-6 col-md-6 col-sm-6 col-xs-12">
+<div class="img-box">
+<img class="clazyload" style="width: auto; height: auto;" alt="" data-src="./pub/media/wysiwyg/ione02/bg_home2_collection_1.jpg" /></div>
+</div>
+<div class="content col-lg-6 col-md-6 col-sm-6 col-xs-12">
+<h2 class="title"><span>leather bag</span>5 Best selling<br />amazing set for woman</h2>
+<a class="button" href="{{config path="web/unsecure/base_url"}}leather-bag.html">discover now</a></div>
+</div>
+</div>
+<div class="row">
+<div class="main-content">
+<div class="image right col-lg-6 col-md-6 col-sm-6 col-xs-12">
+<div class="img-box">
+<img class="clazyload" style="width: auto; height: auto;" alt="" data-src="./pub/media/wysiwyg/ione02/bg_home2_collection_2.jpg" /></div>
+</div>
+<div class="content right col-lg-6 col-md-6 col-sm-6 col-xs-12">
+<h2 class="title"><span>woman clothes</span>New markdowns<br />added up to 75% off</h2>
+<a class="button" href="{{config path="web/unsecure/base_url"}}woman.html">discover now</a></div>
+</div>
+</div>
+<div class="row">
+<div class="main-content">
+<div class="image col-lg-6 col-md-6 col-sm-6 col-xs-12">
+<div class="img-box">
+<img class="clazyload" style="width: auto; height: auto;" alt="" data-src="./pub/media/wysiwyg/ione02/bg_home2_collection_3.jpg" /></div>
+</div>
+<div class="content col-lg-6 col-md-6 col-sm-6 col-xs-12">
+<h2 class="title"><span>dress watch</span>Wooden watch<br />amazing style for man</h2>
+<a class="button" href="{{config path="web/unsecure/base_url"}}dress-watch.html">discover now</a></div>
+</div>
+</div>
+</div>
+</div>]]></content>
+      <is_active>1</is_active>
+      <stores>5,6</stores>
+    </cms_block>
+    <cms_block>
+      <title>iOne 03 - Main Images</title>
+      <identifier>ion03_main_images</identifier>
+      <content><![CDATA[<div class="category">
+<div class="container padding-0">
+<div class="row row-01">
+<div class="left col-lg-9 col-md-9 col-sm-9 col-xs-12">
+<div class="row row-11">
+<div class="main-category left col-lg-8 col-md-8 col-sm-8 col-xs-12"><a href="{{config path="web/unsecure/base_url"}}man.html"> <img src="./pub/media/wysiwyg/ione03/i1.jpg" alt="" /> </a>
+<div class="collection-title-wrapper">
+<div class="collection-title">
+<h3 class="cate-name"><a href="{{config path="web/unsecure/base_url"}}man.html">Men</a></h3>
+<div class="des-cate"></div>
+<a class="shop" href="{{config path="web/unsecure/base_url"}}man.html">Shop now</a></div>
+</div>
+</div>
+<div class="main-category right col-lg-4 col-md-4 col-sm-4 col-xs-12"><a href="{{config path="web/unsecure/base_url"}}woman.html"> <img src="./pub/media/wysiwyg/ione03/i2.jpg" alt="" /> </a>
+<div class="collection-title-wrapper">
+<div class="collection-title">
+<h3 class="cate-name"><a href="{{config path="web/unsecure/base_url"}}woman.html">Woman</a></h3>
+<div class="des-cate"></div>
+<a class="shop" href="{{config path="web/unsecure/base_url"}}woman.html">Shop now</a></div>
+</div>
+</div>
+</div>
+<div class="row row-11">
+<div class="main-category left col-lg-4 col-md-4 col-sm-4 col-xs-12"><a href="{{config path="web/unsecure/base_url"}}rubber-shoe.html"> <img src="./pub/media/wysiwyg/ione03/i5.jpg" alt="" /> </a>
+<div class="collection-title-wrapper">
+<div class="collection-title">
+<h3 class="cate-name"><a href="{{config path="web/unsecure/base_url"}}rubber-shoe.html">Rubber shoe</a></h3>
+<div class="des-cate"></div>
+<a class="shop" href="{{config path="web/unsecure/base_url"}}rubber-shoe.html">Shop now</a></div>
+</div>
+</div>
+<div class="main-category right col-lg-8 col-md-8 col-sm-8 col-xs-12"><a href="{{config path="web/unsecure/base_url"}}dress-watch.html"> <img src="./pub/media/wysiwyg/ione03/i6.jpg" alt="" /> </a>
+<div class="collection-title-wrapper">
+<div class="collection-title">
+<h3 class="cate-name"><a href="{{config path="web/unsecure/base_url"}}dress-watch.html">Dress watch</a></h3>
+<div class="des-cate"></div>
+<a class="shop" href="{{config path="web/unsecure/base_url"}}dress-watch.html">Shop now</a></div>
+</div>
+</div>
+</div>
+</div>
+<div class="right col-lg-3 col-md-3 col-sm-3 col-xs-12">
+<div class="main-category col-lg-12 col-md-12 col-sm-12 col-xs-12"><a href="{{config path="web/unsecure/base_url"}}leather-bag.html"> <img src="./pub/media/wysiwyg/ione03/i3.jpg" alt="" /> </a>
+<div class="collection-title-wrapper">
+<div class="collection-title">
+<h3 class="cate-name"><a href="{{config path="web/unsecure/base_url"}}leather-bag.html">leather bag</a></h3>
+<div class="des-cate"></div>
+<a class="shop" href="{{config path="web/unsecure/base_url"}}leather-bag.html">Shop now</a></div>
+</div>
+</div>
+<div class="main-category col-lg-12 col-md-12 col-sm-12 col-xs-12"><a href="{{config path="web/unsecure/base_url"}}t-shirts.html"> <img src="./pub/media/wysiwyg/ione03/i4.jpg" alt="" /> </a>
+<div class="collection-title-wrapper">
+<div class="collection-title">
+<h3 class="cate-name"><a href="{{config path="web/unsecure/base_url"}}t-shirts.html">t-shirts</a></h3>
+<div class="des-cate"></div>
+<a class="shop" href="{{config path="web/unsecure/base_url"}}t-shirts.html">Shop now</a></div>
+</div>
+</div>
+</div>
+</div>
+<div class="row row-02">
+<div class="main-category left col-lg-4 col-md-4 col-sm-4 col-xs-12"><a href="{{config path="web/unsecure/base_url"}}silk-scarf.html"> <img src="./pub/media/wysiwyg/ione03/i7.jpg" alt="" /> </a>
+<div class="collection-title-wrapper">
+<div class="collection-title">
+<h3 class="cate-name"><a href="{{config path="web/unsecure/base_url"}}silk-scarf.html">silk scarf</a></h3>
+<div class="des-cate"></div>
+<a class="shop" href="{{config path="web/unsecure/base_url"}}silk-scarf.html">Shop now</a></div>
+</div>
+</div>
+<div class="main-category middle col-lg-4 col-md-4 col-sm-4 col-xs-12"><a href="{{config path="web/unsecure/base_url"}}jewelry.html"> <img src="./pub/media/wysiwyg/ione03/i8.jpg" alt="" /> </a>
+<div class="collection-title-wrapper">
+<div class="collection-title">
+<h3 class="cate-name"><a href="{{config path="web/unsecure/base_url"}}jewelry.html">jewelry</a></h3>
+<div class="des-cate"></div>
+<a class="shop" href="{{config path="web/unsecure/base_url"}}jewelry.html">Shop now</a></div>
+</div>
+</div>
+<div class="main-category right col-lg-4 col-md-4 col-sm-4 col-xs-12"><a href="{{config path="web/unsecure/base_url"}}wood-sunglasses.html"> <img src="./pub/media/wysiwyg/ione03/i9.jpg" alt="" /> </a>
+<div class="collection-title-wrapper">
+<div class="collection-title">
+<h3 class="cate-name"><a href="{{config path="web/unsecure/base_url"}}wood-sunglasses.html">wood sunglasses</a></h3>
+<div class="des-cate"></div>
+<a class="shop" href="{{config path="web/unsecure/base_url"}}wood-sunglasses.html">Shop now</a></div>
+</div>
+</div>
+</div>
+</div>
+</div>]]></content>
+      <is_active>1</is_active>
+      <stores>8,9</stores>
+    </cms_block>
+    <cms_block>
+      <title>iOne 04 - Category iOne</title>
+      <identifier>ione-04-category-ione</identifier>
+      <content><![CDATA[<div class="category-ione">
+			<div class="container padding-0">
+				<div class="row">
+					<div class="left item col-lg-8 col-sm-8 col-md-8 col-xs-12">
+						<div class="title">
+							<h2>Sinker Lamp</h2>
+							<span>Decoration</span>
+						</div>
+						<div class="images">
+							<a href="{{config path="web/unsecure/base_url"}}sinker-lamp.html"><img src="./pub/media/wysiwyg/ione04/01.jpg" alt="" /></a>
+						</div>
+					</div>
+					<div class="right item col-lg-4 col-sm-4 col-md-4 col-xs-12">
+						<div class="title">
+							<h2>Dress Watch</h2>
+							<span>Accessories</span>
+						</div>
+						<div class="images">
+							<a href="{{config path="web/unsecure/base_url"}}dress-watch.html"><img src="./pub/media/wysiwyg/ione04/02.jpg" alt="" /></a>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="left item col-lg-4 col-sm-4 col-md-4 col-xs-12">
+						<div class="title">
+							<h2>Wood Chair</h2>
+							<span>Interior</span>
+						</div>
+						<div class="images">
+							<a href="{{config path="web/unsecure/base_url"}}wood-chair.html"><img src="./pub/media/wysiwyg/ione04/03.jpg" alt="" /></a>
+						</div>
+					</div>
+					<div class="right item col-lg-8 col-sm-8 col-md-8 col-xs-12">
+						<div class="title">
+							<h2>Haiku Sofa</h2>
+							<span>Furniture</span>
+						</div>
+						<div class="images">
+							<a href="{{config path="web/unsecure/base_url"}}haiku-sofa.html"><img src="./pub/media/wysiwyg/ione04/04.jpg" alt="" /></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>]]></content>
+      <is_active>1</is_active>
+      <stores>11,12</stores>
+    </cms_block>
+    <cms_block>
+      <title>Top Contact</title>
+      <identifier>top_contact</identifier>
+      <content><![CDATA[<span class="zoo-top-contact">FREE SHIPPING ON ORDERS OVER $59</span>]]></content>
+      <is_active>1</is_active>
+      <stores>0</stores>
+    </cms_block>
+    <cms_block>
+      <title>iOne 05 - Lookbook 01</title>
+      <identifier>ione05_lookbook_01</identifier>
+      <content><![CDATA[<div class="main-slide-content-look slider-01">
+<div class="container"><!-- LOOK BOOK -->
+<div class="lookbook">
+<div class="lookbook__image" style="background: url('../css/images/img-slider/slider-01.png');">
+<div class="hint pro1" style="top: 20%; left: 40%;"><span>1</span> <span class="hint__dot"></span>
+<div class="tool tool--left">
+<div class="box-wrapper"><a href="/products/black-coffee-belt"> <span class="hint-title">Black Coffee Belt</span> <span class="hint-price"><span class="money" data-currency-usd="$110.00">$110.00</span></span> </a></div>
+</div>
+</div>
+<div class="hint pro2" style="top: 35%; left: 70%;"><span>2</span> <span class="hint__dot"></span>
+<div class="tool tool--right">
+<div class="box-wrapper"><a href="/products/black-coffee-belt"> <span class="hint-title">Black Coffee Belt</span> <span class="hint-price"><span class="money" data-currency-usd="$110.00">$110.00</span></span> </a></div>
+</div>
+</div>
+<div class="hint pro3" style="top: 75%; left: 20%;"><span>3</span> <span class="hint__dot"></span>
+<div class="tool tool--left">
+<div class="box-wrapper"><a href="/products/black-cap"> <span class="hint-title">Black Cap</span> <span class="hint-price"><span class="money" data-currency-usd="$105.00">$105.00</span></span> </a></div>
+</div>
+</div>
+<div class="hint pro4" style="top: 70%; left: 70%;"><span>4</span> <span class="hint__dot"></span>
+<div class="tool tool--right">
+<div class="box-wrapper"><a href="/products/adidas-originals-trainers"> <span class="hint-title">adidas Originals Trainers</span> <span class="hint-price"><span class="money" data-currency-usd="$90.00">$90.00</span></span> </a></div>
+</div>
+</div>
+</div>
+</div>
+<!--END LOOK BOOK -->
+<div class="caption-slide">
+<h2>Woman&rsquo;s<br />Lookbook 2016</h2>
+</div>
+</div>
+</div>]]></content>
+      <is_active>1</is_active>
+      <stores>14,15</stores>
+    </cms_block>
+    <cms_block>
+      <title>iOne 05 - Lookbook 02</title>
+      <identifier>ione05_lookbook_02</identifier>
+      <content><![CDATA[<div class="main-slide-content-look slider-02">
+								<div class="container">
+									<!-- LOOK BOOK -->
+									<div class="lookbook">
+									  	<div class="lookbook__image">
+										
+											<div class="hint pro1" style="top: 50%; left: 50%;"> 
+											  <span>1</span> 
+											  <span class="hint__dot"></span>
+											  <div class="tool tool--left">							               			                	
+												<div class="box-wrapper">
+												  <a href="/products/black-coffee-belt">
+													<span class="hint-title">Black Coffee Belt</span>
+													<span class="hint-price"><span class="money" data-currency-usd="$110.00">$110.00</span></span>
+												  </a>
+												</div>
+											  </div>
+											</div>
+											
+											<div class="hint pro2" style="top: 42%; left: 25%;"> 
+											  <span>2</span> 
+											  <span class="hint__dot"></span>
+											  <div class="tool tool--left">							               			                	
+												<div class="box-wrapper">
+												  <a href="/products/black-coffee-belt">
+													<span class="hint-title">Black Coffee Belt</span>
+													<span class="hint-price"><span class="money" data-currency-usd="$110.00">$110.00</span></span>
+												  </a>
+												</div>
+											  </div>
+											</div>
+											
+											<div class="hint pro3" style="top: 70%; left: 90%;"> 
+											  <span>3</span> 
+											  <span class="hint__dot"></span>
+											  <div class="tool tool--right">							               			                	
+												<div class="box-wrapper">
+												  <a href="/products/black-cap">
+													<span class="hint-title">Black Cap</span>
+													<span class="hint-price"><span class="money" data-currency-usd="$105.00">$105.00</span></span>
+												  </a>
+												</div>
+											  </div>
+											</div>
+											
+											<div class="hint pro4" style="top: 80%; left: 40%;"> 
+											  <span>4</span> 
+											  <span class="hint__dot"></span>
+											  <div class="tool tool--right">							               			                	
+												<div class="box-wrapper">
+												  <a href="/products/adidas-originals-trainers">
+													<span class="hint-title">adidas Originals Trainers</span>
+													<span class="hint-price"><span class="money" data-currency-usd="$90.00">$90.00</span></span>
+												  </a>
+												</div>
+											  </div>
+											</div>
+											
+									    </div>
+									</div>
+									<!--END LOOK BOOK -->
+									<div class="caption-slide">
+										<h2>Woman’s<br>Lookbook 2016</h2>
+									</div>
+								</div>
+							</div>]]></content>
+      <is_active>1</is_active>
+      <stores>14,15</stores>
+    </cms_block>
+    <cms_block>
+      <title>iOne 05 - Lookbook 03</title>
+      <identifier>ione05_lookbook_03</identifier>
+      <content><![CDATA[<div class="main-slide-content-look slider-03">
+								<div class="container">
+									<!-- LOOK BOOK -->
+									<div class="lookbook">
+									  	<div class="lookbook__image">
+											
+											<div class="hint pro1" style="top: 25%; left: 60%;"> 
+											  <span>1</span> 
+											  <span class="hint__dot"></span>
+											  <div class="tool tool--right">							               			                	
+												<div class="box-wrapper">
+												  <a href="/products/black-coffee-belt">
+													<span class="hint-title">Black Coffee Belt</span>
+													<span class="hint-price"><span class="money" data-currency-usd="$110.00">$110.00</span></span>
+												  </a>
+												</div>
+											  </div>
+											</div>
+											
+											<div class="hint pro2" style="top: 50%; left: 40%;"> 
+											  <span>2</span> 
+											  <span class="hint__dot"></span>
+											  <div class="tool tool--left">							               			                	
+												<div class="box-wrapper">
+												  <a href="/products/black-coffee-belt">
+													<span class="hint-title">Black Coffee Belt</span>
+													<span class="hint-price"><span class="money" data-currency-usd="$110.00">$110.00</span></span>
+												  </a>
+												</div>
+											  </div>
+											</div>
+											
+											<div class="hint pro3" style="top: 65%; left: 85%;"> 
+											  <span>3</span> 
+											  <span class="hint__dot"></span>
+											  <div class="tool tool--right">							               			                	
+												<div class="box-wrapper">
+												  <a href="/products/black-cap">
+													<span class="hint-title">Black Cap</span>
+													<span class="hint-price"><span class="money" data-currency-usd="$105.00">$105.00</span></span>
+												  </a>
+												</div>
+											  </div>
+											</div>
+											
+											<div class="hint pro4" style="top: 85%; left: 35%;"> 
+											  <span>4</span> 
+											  <span class="hint__dot"></span>
+											  <div class="tool tool--right">							               			                	
+												<div class="box-wrapper">
+												  <a href="/products/adidas-originals-trainers">
+													<span class="hint-title">adidas Originals Trainers</span>
+													<span class="hint-price"><span class="money" data-currency-usd="$90.00">$90.00</span></span>
+												  </a>
+												</div>
+											  </div>
+											</div>
+											
+									    </div>
+									</div>
+									<!--END LOOK BOOK -->
+									<div class="caption-slide">
+										<h2>Man’s Autumn<br>Lookbook 2016</h2>
+									</div>
+								</div>
+							</div>]]></content>
+      <is_active>1</is_active>
+      <stores>14,15</stores>
+    </cms_block>
+    <cms_block>
+      <title>iOne 05 - Lookbook 04</title>
+      <identifier>ione05_lookbook_04</identifier>
+      <content><![CDATA[<div class="main-slide-content-look slider-04">
+<div class="container"><!-- LOOK BOOK -->
+<div class="lookbook">
+<div class="lookbook__image">
+<div class="hint pro1" style="top: 45%; left: 65%;"><span>1</span> <span class="hint__dot"></span>
+<div class="tool tool--right">
+<div class="box-wrapper"><a href="/products/black-coffee-belt"> <span class="hint-title">Black Coffee Belt</span> <span class="hint-price"><span class="money" data-currency-usd="$110.00">$110.00</span></span> </a></div>
+</div>
+</div>
+<div class="hint pro2" style="top: 43%; left: 30%;"><span>2</span> <span class="hint__dot"></span>
+<div class="tool tool--left">
+<div class="box-wrapper"><a href="/products/black-coffee-belt"> <span class="hint-title">Black Coffee Belt</span> <span class="hint-price"><span class="money" data-currency-usd="$110.00">$110.00</span></span> </a></div>
+</div>
+</div>
+<div class="hint pro3" style="top: 65%; left: 85%;"><span>3</span> <span class="hint__dot"></span>
+<div class="tool tool--right">
+<div class="box-wrapper"><a href="/products/black-cap"> <span class="hint-title">Black Cap</span> <span class="hint-price"><span class="money" data-currency-usd="$105.00">$105.00</span></span> </a></div>
+</div>
+</div>
+<div class="hint pro4" style="top: 90%; left: 50%;"><span>4</span> <span class="hint__dot"></span>
+<div class="tool tool--right">
+<div class="box-wrapper"><a href="/products/adidas-originals-trainers"> <span class="hint-title">adidas Originals Trainers</span> <span class="hint-price"><span class="money" data-currency-usd="$90.00">$90.00</span></span> </a></div>
+</div>
+</div>
+</div>
+</div>
+<!--END LOOK BOOK -->
+<div class="caption-slide">
+<h2>Real man&rsquo;s<br />Lookbook Winter</h2>
+</div>
+</div>
+</div>]]></content>
+      <is_active>1</is_active>
+      <stores>14,15</stores>
+    </cms_block>
+    <cms_block>
+      <title>iOne 05 - Tools Lookbook</title>
+      <identifier>ione05_tools_lookbook</identifier>
+      <content><![CDATA[<div id="tool-setup"><i class="setup fa fa-cogs"></i>
+<div class="content-setup">
+<div class="content">
+<h5 class="title">Setup Lookbook Page</h5>
+<h5 class="sub">Select slider</h5>
+<select id="selectslider" onchange="myselectpro()"><option value="none">Please, selector slider</option><option value="slider1">Slider 01</option><option value="slider2">Slider 02</option><option value="slider3">Slider 03</option><option value="slider4">Slider 04</option></select>
+<h5 class="sub">Select product</h5>
+<select id="selectpro" onchange="myselectpro()"><option value="none">Please, selector product</option><option value="product1">Product 01</option><option value="product2">Product 02</option><option value="product3">Product 03</option><option value="product4">Product 04</option></select>
+<h5 class="sub">Set Position Product</h5>
+<label>Top : (Ex : 20%/px - top: 20%/px)</label> <input id="positiontop" name="positionpr" type="text" /> <label>Left : (Ex : 20%/px - left: 20%/px)</label> <input id="positionleft" name="positionpr" type="text" />
+<h5 class="sub">Show Tool From</h5>
+<div class="radio"><input id="left" name="position" type="radio" value="left" /> <label for="left">Left</label> <input id="right" name="position" type="radio" value="right" /> <label for="right">Right</label></div>
+<input id="change" type="button" value="Change" /></div>
+</div>
+</div>
+<script type="text/javascript" xml="space">// 
+function myselectpro() {
+			    
+		    	var top = jQuery('#positiontop');
+		    	var left = jQuery('#positionleft');
+		    	var change = jQuery('#change');
+
+		    	change.click(function(){
+		    		var x = jQuery("#selectpro").val();
+		    		var s = jQuery("#selectslider").val();
+		    		
+		    		if(s=='slider1'){
+
+			    		if(x=='product1'){
+				    		jQuery('.owl-item .slider-01 .hint.pro1').css({"top": top.val(), "left": left.val()});
+				    		console.log(jQuery('input[id=left]:checked').length);
+				    		if (jQuery('input[id=right]:checked').length > 0) {
+							    if(jQuery('.owl-item .slider-01 .hint.pro1 .tool').hasClass('tool--left')){
+							    	jQuery('.owl-item .slider-01 .hint.pro1 .tool').removeClass('tool--left');
+							    	jQuery('.owl-item .slider-01 .hint.pro1 .tool').addClass('tool--right');
+							    }
+							    else if(jQuery('.owl-item .slider-01 .hint.pro1 .tool').hasClass('tool--right')){
+							    	jQuery('.owl-item .slider-01 .hint.pro1 .tool').removeClass('tool--right');
+							    	jQuery('.owl-item .slider-01 .hint.pro1 .tool').addClass('tool--right');
+							    }
+							}
+							else if(jQuery('input[id=left]:checked').length > 0){
+								if(jQuery('.owl-item .slider-01 .hint.pro1 .tool').hasClass('tool--left')){
+							    	jQuery('.owl-item .slider-01 .hint.pro1 .tool').removeClass('tool--left');
+							    	jQuery('.owl-item .slider-01 .hint.pro1 .tool').addClass('tool--left');
+							    }
+							    else if(jQuery('.owl-item .slider-01 .hint.pro1 .tool').hasClass('tool--right')){
+							    	jQuery('.owl-item .slider-01 .hint.pro1 .tool').removeClass('tool--right');
+							    	jQuery('.owl-item .slider-01 .hint.pro1 .tool').addClass('tool--left');
+							    }
+							}
+				    	}
+				    	else if(x=='product2'){
+				    		jQuery('.owl-item .slider-01 .hint.pro2').css({"top": top.val(), "left": left.val()});
+				    		if (jQuery('input[id=right]:checked').length > 0) {
+							    if(jQuery('.owl-item .slider-01 .hint.pro2 .tool').hasClass('tool--left')){
+							    	jQuery('.owl-item .slider-01 .hint.pro2 .tool').removeClass('tool--left');
+							    	jQuery('.owl-item .slider-01 .hint.pro2 .tool').addClass('tool--right');
+							    }
+							    else if(jQuery('.owl-item .slider-01 .hint.pro2 .tool').hasClass('tool--right')){
+							    	jQuery('.owl-item .slider-01 .hint.pro2 .tool').removeClass('tool--right');
+							    	jQuery('.owl-item .slider-01 .hint.pro2 .tool').addClass('tool--right');
+							    }
+							}
+							else if(jQuery('input[id=left]:checked').length > 0){
+								if(jQuery('.owl-item .slider-01 .hint.pro2 .tool').hasClass('tool--left')){
+							    	jQuery('.owl-item .slider-01 .hint.pro2 .tool').removeClass('tool--left');
+							    	jQuery('.owl-item .slider-01 .hint.pro2 .tool').addClass('tool--left');
+							    }
+							    else if(jQuery('.owl-item .slider-01 .hint.pro2 .tool').hasClass('tool--right')){
+							    	jQuery('.owl-item .slider-01 .hint.pro2 .tool').removeClass('tool--right');
+							    	jQuery('.owl-item .slider-01 .hint.pro2 .tool').addClass('tool--left');
+							    }
+							}
+				    	}
+				    	else if(x=='product3'){
+				    		jQuery('.owl-item .slider-01 .hint.pro3').css({"top": top.val(), "left": left.val()});
+				    		if (jQuery('input[id=right]:checked').length > 0) {
+							    if(jQuery('.owl-item .slider-01 .hint.pro3 .tool').hasClass('tool--left')){
+							    	jQuery('.owl-item .slider-01 .hint.pro3 .tool').removeClass('tool--left');
+							    	jQuery('.owl-item .slider-01 .hint.pro3 .tool').addClass('tool--right');
+							    }
+							    else if(jQuery('.owl-item .slider-01 .hint.pro3 .tool').hasClass('tool--right')){
+							    	jQuery('.owl-item .slider-01 .hint.pro3 .tool').removeClass('tool--right');
+							    	jQuery('.owl-item .slider-01 .hint.pro3 .tool').addClass('tool--right');
+							    }
+							}
+							else if(jQuery('input[id=left]:checked').length > 0){
+								if(jQuery('.owl-item .slider-01 .hint.pro3 .tool').hasClass('tool--left')){
+							    	jQuery('.owl-item .slider-01 .hint.pro3 .tool').removeClass('tool--left');
+							    	jQuery('.owl-item .slider-01 .hint.pro3 .tool').addClass('tool--left');
+							    }
+							    else if(jQuery('.owl-item .slider-01 .hint.pro3 .tool').hasClass('tool--right')){
+							    	jQuery('.owl-item .slider-01 .hint.pro3 .tool').removeClass('tool--right');
+							    	jQuery('.owl-item .slider-01 .hint.pro3 .tool').addClass('tool--left');
+							    }
+							}
+				    	}
+				    	else if(x=='product4'){
+				    		jQuery('.owl-item .slider-01 .hint.pro4').css({"top": top.val(), "left": left.val()});
+				    		if (jQuery('input[id=right]:checked').length > 0) {
+							    if(jQuery('.owl-item .slider-01 .hint.pro4 .tool').hasClass('tool--left')){
+							    	jQuery('.owl-item .slider-01 .hint.pro4 .tool').removeClass('tool--left');
+							    	jQuery('.owl-item .slider-01 .hint.pro4 .tool').addClass('tool--right');
+							    }
+							    else if(jQuery('.owl-item .slider-01 .hint.pro4 .tool').hasClass('tool--right')){
+							    	jQuery('.owl-item .slider-01 .hint.pro4 .tool').removeClass('tool--right');
+							    	jQuery('.owl-item .slider-01 .hint.pro4 .tool').addClass('tool--right');
+							    }
+							}
+							else if(jQuery('input[id=left]:checked').length > 0){
+								if(jQuery('.owl-item .slider-01 .hint.pro4 .tool').hasClass('tool--left')){
+							    	jQuery('.owl-item .slider-01 .hint.pro4 .tool').removeClass('tool--left');
+							    	jQuery('.owl-item .slider-01 .hint.pro4 .tool').addClass('tool--left');
+							    }
+							    else if(jQuery('.owl-item .slider-01 .hint.pro4 .tool').hasClass('tool--right')){
+							    	jQuery('.owl-item .slider-01 .hint.pro4 .tool').removeClass('tool--right');
+							    	jQuery('.owl-item .slider-01 .hint.pro4 .tool').addClass('tool--left');
+							    }
+							}
+			    		}
+			    	}
+			    	else if(s=='slider2'){
+
+			    		if(x=='product1'){
+				    		jQuery('.owl-item .slider-02 .hint.pro1').css({"top": top.val(), "left": left.val()});
+				    		console.log(jQuery('input[id=left]:checked').length);
+				    		if (jQuery('input[id=right]:checked').length > 0) {
+							    if(jQuery('.owl-item .slider-02 .hint.pro1 .tool').hasClass('tool--left')){
+							    	jQuery('.owl-item .slider-02 .hint.pro1 .tool').removeClass('tool--left');
+							    	jQuery('.owl-item .slider-02 .hint.pro1 .tool').addClass('tool--right');
+							    }
+							    else if(jQuery('.owl-item .slider-02 .hint.pro1 .tool').hasClass('tool--right')){
+							    	jQuery('.owl-item .slider-02 .hint.pro1 .tool').removeClass('tool--right');
+							    	jQuery('.owl-item .slider-02 .hint.pro1 .tool').addClass('tool--right');
+							    }
+							}
+							else if(jQuery('input[id=left]:checked').length > 0){
+								if(jQuery('.owl-item .slider-02 .hint.pro1 .tool').hasClass('tool--left')){
+							    	jQuery('.owl-item .slider-02 .hint.pro1 .tool').removeClass('tool--left');
+							    	jQuery('.owl-item .slider-02 .hint.pro1 .tool').addClass('tool--left');
+							    }
+							    else if(jQuery('.owl-item .slider-02 .hint.pro1 .tool').hasClass('tool--right')){
+							    	jQuery('.owl-item .slider-02 .hint.pro1 .tool').removeClass('tool--right');
+							    	jQuery('.owl-item .slider-02 .hint.pro1 .tool').addClass('tool--left');
+							    }
+							}
+				    	}
+				    	else if(x=='product2'){
+				    		jQuery('.owl-item .slider-02 .hint.pro2').css({"top": top.val(), "left": left.val()});
+				    		if (jQuery('input[id=right]:checked').length > 0) {
+							    if(jQuery('.owl-item .slider-02 .hint.pro2 .tool').hasClass('tool--left')){
+							    	jQuery('.owl-item .slider-02 .hint.pro2 .tool').removeClass('tool--left');
+							    	jQuery('.owl-item .slider-02 .hint.pro2 .tool').addClass('tool--right');
+							    }
+							    else if(jQuery('.owl-item .slider-02 .hint.pro2 .tool').hasClass('tool--right')){
+							    	jQuery('.owl-item .slider-02 .hint.pro2 .tool').removeClass('tool--right');
+							    	jQuery('.owl-item .slider-02 .hint.pro2 .tool').addClass('tool--right');
+							    }
+							}
+							else if(jQuery('input[id=left]:checked').length > 0){
+								if(jQuery('.owl-item .slider-02 .hint.pro2 .tool').hasClass('tool--left')){
+							    	jQuery('.owl-item .slider-02 .hint.pro2 .tool').removeClass('tool--left');
+							    	jQuery('.owl-item .slider-02 .hint.pro2 .tool').addClass('tool--left');
+							    }
+							    else if(jQuery('.owl-item .slider-02 .hint.pro2 .tool').hasClass('tool--right')){
+							    	jQuery('.owl-item .slider-02 .hint.pro2 .tool').removeClass('tool--right');
+							    	jQuery('.owl-item .slider-02 .hint.pro2 .tool').addClass('tool--left');
+							    }
+							}
+				    	}
+				    	else if(x=='product3'){
+				    		jQuery('.owl-item .slider2 .hint.pro3').css({"top": top.val(), "left": left.val()});
+				    		if (jQuery('input[id=right]:checked').length > 0) {
+							    if(jQuery('.owl-item .slider-02 .hint.pro3 .tool').hasClass('tool--left')){
+							    	jQuery('.owl-item .slider-02 .hint.pro3 .tool').removeClass('tool--left');
+							    	jQuery('.owl-item .slider-02 .hint.pro3 .tool').addClass('tool--right');
+							    }
+							    else if(jQuery('.owl-item .slider-02 .hint.pro3 .tool').hasClass('tool--right')){
+							    	jQuery('.owl-item .slider-02 .hint.pro3 .tool').removeClass('tool--right');
+							    	jQuery('.owl-item .slider-02 .hint.pro3 .tool').addClass('tool--right');
+							    }
+							}
+							else if(jQuery('input[id=left]:checked').length > 0){
+								if(jQuery('.owl-item .slider-02 .hint.pro3 .tool').hasClass('tool--left')){
+							    	jQuery('.owl-item .slider-02 .hint.pro3 .tool').removeClass('tool--left');
+							    	jQuery('.owl-item .slider-02 .hint.pro3 .tool').addClass('tool--left');
+							    }
+							    else if(jQuery('.owl-item .slider-02 .hint.pro3 .tool').hasClass('tool--right')){
+							    	jQuery('.owl-item .slider-02 .hint.pro3 .tool').removeClass('tool--right');
+							    	jQuery('.owl-item .slider-02 .hint.pro3 .tool').addClass('tool--left');
+							    }
+							}
+				    	}
+				    	else if(x=='product4'){
+				    		jQuery('.owl-item .slider-02 .hint.pro4').css({"top": top.val(), "left": left.val()});
+				    		if (jQuery('input[id=right]:checked').length > 0) {
+							    if(jQuery('.owl-item .slider-02 .hint.pro4 .tool').hasClass('tool--left')){
+							    	jQuery('.owl-item .slider-02 .hint.pro4 .tool').removeClass('tool--left');
+							    	jQuery('.owl-item .slider-02 .hint.pro4 .tool').addClass('tool--right');
+							    }
+							    else if(jQuery('.owl-item .slider-02 .hint.pro4 .tool').hasClass('tool--right')){
+							    	jQuery('.owl-item .slider-02 .hint.pro4 .tool').removeClass('tool--right');
+							    	jQuery('.owl-item .slider-02 .hint.pro4 .tool').addClass('tool--right');
+							    }
+							}
+							else if(jQuery('input[id=left]:checked').length > 0){
+								if(jQuery('.owl-item .slider-02 .hint.pro4 .tool').hasClass('tool--left')){
+							    	jQuery('.owl-item .slider-02 .hint.pro4 .tool').removeClass('tool--left');
+							    	jQuery('.owl-item .slider-02 .hint.pro4 .tool').addClass('tool--left');
+							    }
+							    else if(jQuery('.owl-item .slider-02 .hint.pro4 .tool').hasClass('tool--right')){
+							    	jQuery('.owl-item .slider-02 .hint.pro4 .tool').removeClass('tool--right');
+							    	jQuery('.owl-item .slider-02 .hint.pro4 .tool').addClass('tool--left');
+							    }
+							}
+			    		}
+			    	}
+			    	else if(s=='slider3'){
+
+			    		if(x=='product1'){
+				    		jQuery('.owl-item .slider-03 .hint.pro1').css({"top": top.val(), "left": left.val()});
+				    		console.log(jQuery('input[id=left]:checked').length);
+				    		if (jQuery('input[id=right]:checked').length > 0) {
+							    if(jQuery('.owl-item .slider-03 .hint.pro1 .tool').hasClass('tool--left')){
+							    	jQuery('.owl-item .slider-03 .hint.pro1 .tool').removeClass('tool--left');
+							    	jQuery('.owl-item .slider-03 .hint.pro1 .tool').addClass('tool--right');
+							    }
+							    else if(jQuery('.owl-item .slider-03 .hint.pro1 .tool').hasClass('tool--right')){
+							    	jQuery('.owl-item .slider-03 .hint.pro1 .tool').removeClass('tool--right');
+							    	jQuery('.owl-item .slider-03 .hint.pro1 .tool').addClass('tool--right');
+							    }
+							}
+							else if(jQuery('input[id=left]:checked').length > 0){
+								if(jQuery('.owl-item .slider-03 .hint.pro1 .tool').hasClass('tool--left')){
+							    	jQuery('.owl-item .slider-03 .hint.pro1 .tool').removeClass('tool--left');
+							    	jQuery('.owl-item .slider-03 .hint.pro1 .tool').addClass('tool--left');
+							    }
+							    else if(jQuery('.owl-item .slider-03 .hint.pro1 .tool').hasClass('tool--right')){
+							    	jQuery('.owl-item .slider-03 .hint.pro1 .tool').removeClass('tool--right');
+							    	jQuery('.owl-item .slider-03 .hint.pro1 .tool').addClass('tool--left');
+							    }
+							}
+				    	}
+				    	else if(x=='product2'){
+				    		jQuery('.owl-item .slider-03 .hint.pro2').css({"top": top.val(), "left": left.val()});
+				    		if (jQuery('input[id=right]:checked').length > 0) {
+							    if(jQuery('.owl-item .slider-03 .hint.pro2 .tool').hasClass('tool--left')){
+							    	jQuery('.owl-item .slider-03 .hint.pro2 .tool').removeClass('tool--left');
+							    	jQuery('.owl-item .slider-03 .hint.pro2 .tool').addClass('tool--right');
+							    }
+							    else if(jQuery('.owl-item .slider-03 .hint.pro2 .tool').hasClass('tool--right')){
+							    	jQuery('.owl-item .slider-03 .hint.pro2 .tool').removeClass('tool--right');
+							    	jQuery('.owl-item .slider-03 .hint.pro2 .tool').addClass('tool--right');
+							    }
+							}
+							else if(jQuery('input[id=left]:checked').length > 0){
+								if(jQuery('.owl-item .slider-03 .hint.pro2 .tool').hasClass('tool--left')){
+							    	jQuery('.owl-item .slider-03 .hint.pro2 .tool').removeClass('tool--left');
+							    	jQuery('.owl-item .slider-03 .hint.pro2 .tool').addClass('tool--left');
+							    }
+							    else if(jQuery('.owl-item .slider-03 .hint.pro2 .tool').hasClass('tool--right')){
+							    	jQuery('.owl-item .slider-03 .hint.pro2 .tool').removeClass('tool--right');
+							    	jQuery('.owl-item .slider-03 .hint.pro2 .tool').addClass('tool--left');
+							    }
+							}
+				    	}
+				    	else if(x=='product3'){
+				    		jQuery('.owl-item .slider-03 .hint.pro3').css({"top": top.val(), "left": left.val()});
+				    		if (jQuery('input[id=right]:checked').length > 0) {
+							    if(jQuery('.owl-item .slider-03 .hint.pro3 .tool').hasClass('tool--left')){
+							    	jQuery('.owl-item .slider-03 .hint.pro3 .tool').removeClass('tool--left');
+							    	jQuery('.owl-item .slider-03 .hint.pro3 .tool').addClass('tool--right');
+							    }
+							    else if(jQuery('.owl-item .slider-03 .hint.pro3 .tool').hasClass('tool--right')){
+							    	jQuery('.owl-item .slider-03 .hint.pro3 .tool').removeClass('tool--right');
+							    	jQuery('.owl-item .slider-03 .hint.pro3 .tool').addClass('tool--right');
+							    }
+							}
+							else if(jQuery('input[id=left]:checked').length > 0){
+								if(jQuery('.owl-item .slider-03 .hint.pro3 .tool').hasClass('tool--left')){
+							    	jQuery('.owl-item .slider-03 .hint.pro3 .tool').removeClass('tool--left');
+							    	jQuery('.owl-item .slider-03 .hint.pro3 .tool').addClass('tool--left');
+							    }
+							    else if(jQuery('.owl-item .slider-03 .hint.pro3 .tool').hasClass('tool--right')){
+							    	jQuery('.owl-item .slider-03 .hint.pro3 .tool').removeClass('tool--right');
+							    	jQuery('.owl-item .slider-03 .hint.pro3 .tool').addClass('tool--left');
+							    }
+							}
+				    	}
+				    	else if(x=='product4'){
+				    		jQuery('.owl-item .slider-03 .hint.pro4').css({"top": top.val(), "left": left.val()});
+				    		if (jQuery('input[id=right]:checked').length > 0) {
+							    if(jQuery('.owl-item .slider-03 .hint.pro4 .tool').hasClass('tool--left')){
+							    	jQuery('.owl-item .slider-03 .hint.pro4 .tool').removeClass('tool--left');
+							    	jQuery('.owl-item .slider-03 .hint.pro4 .tool').addClass('tool--right');
+							    }
+							    else if(jQuery('.owl-item .slider-03 .hint.pro4 .tool').hasClass('tool--right')){
+							    	jQuery('.owl-item .slider-03 .hint.pro4 .tool').removeClass('tool--right');
+							    	jQuery('.owl-item .slider-03 .hint.pro4 .tool').addClass('tool--right');
+							    }
+							}
+							else if(jQuery('input[id=left]:checked').length > 0){
+								if(jQuery('.owl-item .slider-03 .hint.pro4 .tool').hasClass('tool--left')){
+							    	jQuery('.owl-item .slider-03 .hint.pro4 .tool').removeClass('tool--left');
+							    	jQuery('.owl-item .slider-03 .hint.pro4 .tool').addClass('tool--left');
+							    }
+							    else if(jQuery('.owl-item .slider-03 .hint.pro4 .tool').hasClass('tool--right')){
+							    	jQuery('.owl-item .slider-03 .hint.pro4 .tool').removeClass('tool--right');
+							    	jQuery('.owl-item .slider-03 .hint.pro4 .tool').addClass('tool--left');
+							    }
+							}
+			    		}
+			    	}
+			    	else if(s=='slider4'){
+
+			    		if(x=='product1'){
+				    		jQuery('.owl-item .slider-04 .hint.pro1').css({"top": top.val(), "left": left.val()});
+				    		console.log(jQuery('input[id=left]:checked').length);
+				    		if (jQuery('input[id=right]:checked').length > 0) {
+							    if(jQuery('.owl-item .slider-04 .hint.pro1 .tool').hasClass('tool--left')){
+							    	jQuery('.owl-item .slider-04 .hint.pro1 .tool').removeClass('tool--left');
+							    	jQuery('.owl-item .slider-04 .hint.pro1 .tool').addClass('tool--right');
+							    }
+							    else if(jQuery('.owl-item .slider-04 .hint.pro1 .tool').hasClass('tool--right')){
+							    	jQuery('.owl-item .slider-04 .hint.pro1 .tool').removeClass('tool--right');
+							    	jQuery('.owl-item .slider-04 .hint.pro1 .tool').addClass('tool--right');
+							    }
+							}
+							else if(jQuery('input[id=left]:checked').length > 0){
+								if(jQuery('.owl-item .slider-04 .hint.pro1 .tool').hasClass('tool--left')){
+							    	jQuery('.owl-item .slider-04 .hint.pro1 .tool').removeClass('tool--left');
+							    	jQuery('.owl-item .slider-04 .hint.pro1 .tool').addClass('tool--left');
+							    }
+							    else if(jQuery('.owl-item .slider-04 .hint.pro1 .tool').hasClass('tool--right')){
+							    	jQuery('.owl-item .slider-04 .hint.pro1 .tool').removeClass('tool--right');
+							    	jQuery('.owl-item .slider-04 .hint.pro1 .tool').addClass('tool--left');
+							    }
+							}
+				    	}
+				    	else if(x=='product2'){
+				    		jQuery('.owl-item .slider-04 .hint.pro2').css({"top": top.val(), "left": left.val()});
+				    		if (jQuery('input[id=right]:checked').length > 0) {
+							    if(jQuery('.owl-item .slider-04 .hint.pro2 .tool').hasClass('tool--left')){
+							    	jQuery('.owl-item .slider-04 .hint.pro2 .tool').removeClass('tool--left');
+							    	jQuery('.owl-item .slider-04 .hint.pro2 .tool').addClass('tool--right');
+							    }
+							    else if(jQuery('.owl-item .slider-04 .hint.pro2 .tool').hasClass('tool--right')){
+							    	jQuery('.owl-item .slider-04 .hint.pro2 .tool').removeClass('tool--right');
+							    	jQuery('.owl-item .slider-04 .hint.pro2 .tool').addClass('tool--right');
+							    }
+							}
+							else if(jQuery('input[id=left]:checked').length > 0){
+								if(jQuery('.owl-item .slider-04 .hint.pro2 .tool').hasClass('tool--left')){
+							    	jQuery('.owl-item .slider4 .hint.pro2 .tool').removeClass('tool--left');
+							    	jQuery('.owl-item .slider-04 .hint.pro2 .tool').addClass('tool--left');
+							    }
+							    else if(jQuery('.owl-item .slider-03 .hint.pro2 .tool').hasClass('tool--right')){
+							    	jQuery('.owl-item .slider-03 .hint.pro2 .tool').removeClass('tool--right');
+							    	jQuery('.owl-item .slider-03 .hint.pro2 .tool').addClass('tool--left');
+							    }
+							}
+				    	}
+				    	else if(x=='product3'){
+				    		jQuery('.owl-item .slider-04 .hint.pro3').css({"top": top.val(), "left": left.val()});
+				    		if (jQuery('input[id=right]:checked').length > 0) {
+							    if(jQuery('.owl-item .slider-04 .hint.pro3 .tool').hasClass('tool--left')){
+							    	jQuery('.owl-item .slider-04 .hint.pro3 .tool').removeClass('tool--left');
+							    	jQuery('.owl-item .slider-04 .hint.pro3 .tool').addClass('tool--right');
+							    }
+							    else if(jQuery('.owl-item .slider-04 .hint.pro3 .tool').hasClass('tool--right')){
+							    	jQuery('.owl-item .slider-04 .hint.pro3 .tool').removeClass('tool--right');
+							    	jQuery('.owl-item .slider-04 .hint.pro3 .tool').addClass('tool--right');
+							    }
+							}
+							else if(jQuery('input[id=left]:checked').length > 0){
+								if(jQuery('.owl-item .slider-04 .hint.pro3 .tool').hasClass('tool--left')){
+							    	jQuery('.owl-item .slider-04 .hint.pro3 .tool').removeClass('tool--left');
+							    	jQuery('.owl-item .slider-04 .hint.pro3 .tool').addClass('tool--left');
+							    }
+							    else if(jQuery('.owl-item .slider-04 .hint.pro3 .tool').hasClass('tool--right')){
+							    	jQuery('.owl-item .slider-04 .hint.pro3 .tool').removeClass('tool--right');
+							    	jQuery('.owl-item .slider-04 .hint.pro3 .tool').addClass('tool--left');
+							    }
+							}
+				    	}
+				    	else if(x=='product4'){
+				    		jQuery('.owl-item .slider-04 .hint.pro4').css({"top": top.val(), "left": left.val()});
+				    		if ($('input[id=right]:checked').length > 0) {
+							    if($('.owl-item .slider-04 .hint.pro4 .tool').hasClass('tool--left')){
+							    	$('.owl-item .slider-04 .hint.pro4 .tool').removeClass('tool--left');
+							    	$('.owl-item .slider-04 .hint.pro4 .tool').addClass('tool--right');
+							    }
+							    else if($('.owl-item .slider-04 .hint.pro4 .tool').hasClass('tool--right')){
+							    	$('.owl-item .slider-04 .hint.pro4 .tool').removeClass('tool--right');
+							    	$('.owl-item .slider-04 .hint.pro4 .tool').addClass('tool--right');
+							    }
+							}
+							else if($('input[id=left]:checked').length > 0){
+								if($('.owl-item .slider-04 .hint.pro4 .tool').hasClass('tool--left')){
+							    	$('.owl-item .slider-04 .hint.pro4 .tool').removeClass('tool--left');
+							    	$('.owl-item .slider-04 .hint.pro4 .tool').addClass('tool--left');
+							    }
+							    else if($('.owl-item .slider-04 .hint.pro4 .tool').hasClass('tool--right')){
+							    	$('.owl-item .slider-04 .hint.pro4 .tool').removeClass('tool--right');
+							    	$('.owl-item .slider-04 .hint.pro4 .tool').addClass('tool--left');
+							    }
+							}
+			    		}
+			    	}
+		    	});
+			}
+		
+// </script>]]></content>
+      <is_active>1</is_active>
+      <stores>14,15</stores>
+    </cms_block>
+    <cms_block>
+      <title>iOne 06 - Slider 01</title>
+      <identifier>ione06_slider_01</identifier>
+      <content><![CDATA[<div class="main-slide-content" style="background: #f2e2da url('../m2_ione/pub/media/wysiwyg/ione06/slider-01.png') right bottom; background-repeat: no-repeat; background-position: 85%;">
+<div class="caption-slide">
+<h2>Sunglasses<br />Ladies Summer</h2>
+<a class="button" href="javascript:void(0)">shop now</a></div>
+</div>]]></content>
+      <is_active>1</is_active>
+      <stores>17,18</stores>
+    </cms_block>
+    <cms_block>
+      <title>iOne 06 - Slider 02</title>
+      <identifier>ione06_slider_02</identifier>
+      <content><![CDATA[<div class="main-slide-content" style="background: #f2e2da url('../m2_ione/pub/media/wysiwyg/ione06/slider-01.png') right bottom; background-repeat: no-repeat; background-position: 85%;">
+<div class="caption-slide">
+<h2>Sunglasses<br />Ladies Summer</h2>
+<a class="button" href="javascript:void(0)">shop now</a></div>
+</div>]]></content>
+      <is_active>1</is_active>
+      <stores>17,18</stores>
+    </cms_block>
+    <cms_block>
+      <title>iOne 06 - Box Images 01</title>
+      <identifier>ione06_box_images_01</identifier>
+      <content><![CDATA[<div class="item-box first">
+<div class="img-box"><img src="{{media url="wysiwyg/ione06/box_content_01.jpg"}}" alt="" /></div>
+<div class="description">
+<h2><a href="{{config path="web/unsecure/base_url"}}leather-bag.html">leather bag</a></h2>
+<span>37 Items</span></div>
+</div>]]></content>
+      <is_active>1</is_active>
+      <stores>17,18,26,27,28,29</stores>
+    </cms_block>
+    <cms_block>
+      <title>iOne 06 - Box Images 02</title>
+      <identifier>ione06_box_images_02</identifier>
+      <content><![CDATA[<div class="item-box">
+<div class="img-box"><img src="{{media url="wysiwyg/ione06/box_content_02.jpg"}}" alt="" /></div>
+<div class="description">
+<h2><a href="{{config path="web/unsecure/base_url"}}dress-watch.html">dress watch</a></h2>
+<span>25 Items</span></div>
+</div>]]></content>
+      <is_active>1</is_active>
+      <stores>17,18,26,27,28,29</stores>
+    </cms_block>
+    <cms_block>
+      <title>iOne 06 - Box Images 03</title>
+      <identifier>ione06_box_image_03</identifier>
+      <content><![CDATA[<div class="item-box last">
+<div class="img-box"><img src="{{media url="wysiwyg/ione06/box_content_03.jpg"}}" alt="" /></div>
+<div class="description">
+<h2><a href="{{config path="web/unsecure/base_url"}}sport-bike.html">sport bike</a></h2>
+<span>09 Items</span></div>
+</div>]]></content>
+      <is_active>1</is_active>
+      <stores>17,18,26,27,28,29</stores>
+    </cms_block>
+    <cms_block>
+      <title>iOne 06 - Brand 01</title>
+      <identifier>ione06_brand_01</identifier>
+      <content><![CDATA[<a href="#"><img src="{{media url="wysiwyg/ione06/01.jpg"}}" width="132" height="99" /></a>]]></content>
+      <is_active>1</is_active>
+      <stores>17,18,26,27,28,29</stores>
+    </cms_block>
+    <cms_block>
+      <title>iOne 06 - Brand 02</title>
+      <identifier>ione06_brand_02</identifier>
+      <content><![CDATA[<p><a href="#"><img src="{{media url="wysiwyg/ione06/02.jpg"}}" width="132" height="99" /></a></p>]]></content>
+      <is_active>1</is_active>
+      <stores>17,18,26,27,28,29</stores>
+    </cms_block>
+    <cms_block>
+      <title>iOne 06 - Brand 03</title>
+      <identifier>ione06_brand_03</identifier>
+      <content><![CDATA[<p><a href="#"><img src="{{media url="wysiwyg/ione06/03.jpg"}}" width="132" height="99" /></a></p>]]></content>
+      <is_active>1</is_active>
+      <stores>17,18,26,27,28,29</stores>
+    </cms_block>
+    <cms_block>
+      <title>iOne 06 - Brand 04</title>
+      <identifier>ione06_brnad_04</identifier>
+      <content><![CDATA[<p><a href="#"><img src="{{media url="wysiwyg/ione06/04.jpg"}}" width="132" height="99" /></a></p>]]></content>
+      <is_active>1</is_active>
+      <stores>17,18,26,27,28,29</stores>
+    </cms_block>
+    <cms_block>
+      <title>iOne 06 - Brand 05</title>
+      <identifier>ione06_brand_05</identifier>
+      <content><![CDATA[<p><a href="#"><img src="{{media url="wysiwyg/ione06/05.jpg"}}" width="132" height="99" /></a></p>]]></content>
+      <is_active>1</is_active>
+      <stores>17,18,26,27,28,29</stores>
+    </cms_block>
+    <cms_block>
+      <title>iOne 06 - Bottom Slider 01</title>
+      <identifier>ione06_bottom_slider_01</identifier>
+      <content><![CDATA[<div class="main-slide-content" style="background-image:url('../m2_ione/pub/media/wysiwyg/ione06/slider_main_01.jpg'); background-repeat: no-repeat; background-position: 85%;">
+									<div class="caption-slide">
+										<h2>Beautiful & Young<br>fashion set</h2>
+										<a class="button" href="javascript:void(0)">shop now</a>
+									</div>
+								</div>]]></content>
+      <is_active>1</is_active>
+      <stores>17,18</stores>
+    </cms_block>
+    <cms_block>
+      <title>iOne 06 - Bottom Slider 02</title>
+      <identifier>ione06_bottom_slider_01</identifier>
+      <content><![CDATA[<div class="main-slide-content" style="background-image:url('../m2_ione/pub/media/wysiwyg/ione06/slider_main_02.jpg'); background-repeat: no-repeat; background-position: 85%;">
+									<div class="caption-slide">
+										<h2>Beautiful & Young<br>fashion set</h2>
+										<a class="button" href="javascript:void(0)">shop now</a>
+									</div>
+								</div>]]></content>
+      <is_active>1</is_active>
+      <stores>17,18</stores>
+    </cms_block>
+    <cms_block>
+      <title>iOne 05 - Lookbook Page</title>
+      <identifier>ione05_lookbook_page</identifier>
+      <content><![CDATA[<div id="fsvs-body">
+<div class="slide item slider1">
+<div class="main-slide-lookbook">
+<div class="container"><!-- LOOK BOOK -->
+<div class="lookbook">
+<div class="lookbook__image">
+<div class="hint pro1" style="top: 20%; left: 35%;"><span>1</span> <span class="hint__dot"></span>
+<div class="tool tool--left">
+<div class="box-wrapper"><a href="/products/black-coffee-belt"> <span class="hint-title">Black Coffee Belt</span> <span class="hint-price"><span class="money" data-currency-usd="$110.00">$110.00</span></span> </a></div>
+</div>
+</div>
+<div class="hint pro2" style="top: 42%; left: 25%;"><span>2</span> <span class="hint__dot"></span>
+<div class="tool tool--left">
+<div class="box-wrapper"><a href="/products/black-coffee-belt"> <span class="hint-title">Black Coffee Belt</span> <span class="hint-price"><span class="money" data-currency-usd="$110.00">$110.00</span></span> </a></div>
+</div>
+</div>
+<div class="hint pro3" style="top: 70%; left: 65%;"><span>3</span> <span class="hint__dot"></span>
+<div class="tool tool--right">
+<div class="box-wrapper"><a href="/products/black-cap"> <span class="hint-title">Black Cap</span> <span class="hint-price"><span class="money" data-currency-usd="$105.00">$105.00</span></span> </a></div>
+</div>
+</div>
+<div class="hint pro4" style="top: 80%; left: 25%;"><span>4</span> <span class="hint__dot"></span>
+<div class="tool tool--right">
+<div class="box-wrapper"><a href="/products/adidas-originals-trainers"> <span class="hint-title">adidas Originals Trainers</span> <span class="hint-price"><span class="money" data-currency-usd="$90.00">$90.00</span></span> </a></div>
+</div>
+</div>
+</div>
+</div>
+<!--END LOOK BOOK -->
+<div class="caption-slide">
+<h2>Woman&rsquo;s<br />Lookbook 2016<br /><a href="/m2_ione/group-product-1.html">More view</a></h2>
+</div>
+</div>
+</div>
+</div>
+<div class="slide item slider2">
+<div class="main-slide-lookbook">
+<div class="container"><!-- LOOK BOOK -->
+<div class="lookbook">
+<div class="lookbook__image">
+<div class="hint pro1" style="top: 20%; left: 30%;"><span>1</span> <span class="hint__dot"></span>
+<div class="tool tool--left">
+<div class="box-wrapper"><a href="/products/black-coffee-belt"> <span class="hint-title">Black Coffee Belt</span> <span class="hint-price"><span class="money" data-currency-usd="$110.00">$110.00</span></span> </a></div>
+</div>
+</div>
+<div class="hint pro2" style="top: 35%; left: 20%;"><span>2</span> <span class="hint__dot"></span>
+<div class="tool tool--right">
+<div class="box-wrapper"><a href="/products/black-coffee-belt"> <span class="hint-title">Black Coffee Belt</span> <span class="hint-price"><span class="money" data-currency-usd="$110.00">$110.00</span></span> </a></div>
+</div>
+</div>
+<div class="hint pro3" style="top: 75%; left: 20%;"><span>3</span> <span class="hint__dot"></span>
+<div class="tool tool--left">
+<div class="box-wrapper"><a href="/products/black-cap"> <span class="hint-title">Black Cap</span> <span class="hint-price"><span class="money" data-currency-usd="$105.00">$105.00</span></span> </a></div>
+</div>
+</div>
+<div class="hint pro4" style="top: 70%; left: 60%;"><span>4</span> <span class="hint__dot"></span>
+<div class="tool tool--right">
+<div class="box-wrapper"><a href="/products/adidas-originals-trainers"> <span class="hint-title">adidas Originals Trainers</span> <span class="hint-price"><span class="money" data-currency-usd="$90.00">$90.00</span></span> </a></div>
+</div>
+</div>
+</div>
+</div>
+<!--END LOOK BOOK -->
+<div class="caption-slide">
+<h2>Woman&rsquo;s<br />Lookbook 2016<br /><a href="/m2_ione/group-product-1.html">More view</a></h2>
+</div>
+</div>
+</div>
+</div>
+<div class="slide item slider3">
+<div class="main-slide-lookbook">
+<div class="container"><!-- LOOK BOOK -->
+<div class="lookbook">
+<div class="lookbook__image">
+<div class="hint pro1" style="top: 25%; left: 60%;"><span>1</span> <span class="hint__dot"></span>
+<div class="tool tool--right">
+<div class="box-wrapper"><a href="/products/black-coffee-belt"> <span class="hint-title">Black Coffee Belt</span> <span class="hint-price"><span class="money" data-currency-usd="$110.00">$110.00</span></span> </a></div>
+</div>
+</div>
+<div class="hint pro2" style="top: 50%; left: 40%;"><span>2</span> <span class="hint__dot"></span>
+<div class="tool tool--left">
+<div class="box-wrapper"><a href="/products/black-coffee-belt"> <span class="hint-title">Black Coffee Belt</span> <span class="hint-price"><span class="money" data-currency-usd="$110.00">$110.00</span></span> </a></div>
+</div>
+</div>
+<div class="hint pro3" style="top: 65%; left: 85%;"><span>3</span> <span class="hint__dot"></span>
+<div class="tool tool--right">
+<div class="box-wrapper"><a href="/products/black-cap"> <span class="hint-title">Black Cap</span> <span class="hint-price"><span class="money" data-currency-usd="$105.00">$105.00</span></span> </a></div>
+</div>
+</div>
+<div class="hint pro4" style="top: 85%; left: 35%;"><span>4</span> <span class="hint__dot"></span>
+<div class="tool tool--right">
+<div class="box-wrapper"><a href="/products/adidas-originals-trainers"> <span class="hint-title">adidas Originals Trainers</span> <span class="hint-price"><span class="money" data-currency-usd="$90.00">$90.00</span></span> </a></div>
+</div>
+</div>
+</div>
+</div>
+<!--END LOOK BOOK -->
+<div class="caption-slide">
+<h2>Man&rsquo;s Autumn<br />Lookbook 2016<br /><a href="/m2_ione/group-product-1.html">More view</a></h2>
+</div>
+</div>
+</div>
+</div>
+<div class="slide item slider4">
+<div class="main-slide-lookbook">
+<div class="container"><!-- LOOK BOOK -->
+<div class="lookbook">
+<div class="lookbook__image">
+<div class="hint pro1" style="top: 45%; left: 65%;"><span>1</span> <span class="hint__dot"></span>
+<div class="tool tool--right">
+<div class="box-wrapper"><a href="/products/black-coffee-belt"> <span class="hint-title">Black Coffee Belt</span> <span class="hint-price"><span class="money" data-currency-usd="$110.00">$110.00</span></span> </a></div>
+</div>
+</div>
+<div class="hint pro2" style="top: 43%; left: 30%;"><span>2</span> <span class="hint__dot"></span>
+<div class="tool tool--left">
+<div class="box-wrapper"><a href="/products/black-coffee-belt"> <span class="hint-title">Black Coffee Belt</span> <span class="hint-price"><span class="money" data-currency-usd="$110.00">$110.00</span></span> </a></div>
+</div>
+</div>
+<div class="hint pro3" style="top: 65%; left: 85%;"><span>3</span> <span class="hint__dot"></span>
+<div class="tool tool--right">
+<div class="box-wrapper"><a href="/products/black-cap"> <span class="hint-title">Black Cap</span> <span class="hint-price"><span class="money" data-currency-usd="$105.00">$105.00</span></span> </a></div>
+</div>
+</div>
+<div class="hint pro4" style="top: 90%; left: 50%;"><span>4</span> <span class="hint__dot"></span>
+<div class="tool tool--right">
+<div class="box-wrapper"><a href="/products/adidas-originals-trainers"> <span class="hint-title">adidas Originals Trainers</span> <span class="hint-price"><span class="money" data-currency-usd="$90.00">$90.00</span></span> </a></div>
+</div>
+</div>
+</div>
+</div>
+<!--END LOOK BOOK -->
+<div class="caption-slide">
+<h2>Real man&rsquo;s<br />Lookbook Winter<br /><a href="/m2_ione/group-product-1.html">More view</a></h2>
+</div>
+</div>
+</div>
+</div>
+</div>]]></content>
+      <is_active>1</is_active>
+      <stores>14,15</stores>
+    </cms_block>
+    <cms_block>
+      <title>About</title>
+      <identifier>about</identifier>
+      <content><![CDATA[<!-- About me -->
+<div class="about-me">
+<div class="title"><span>about me</span></div>
+<div class="image"><a><img src="/m2_ione/pub/media/wysiwyg/mato/about-me.png" alt="" /></a></div>
+<div class="decription">iOne is a comfortable shop. It&rsquo;s totally responsive so it adapts to your style as well as the device it&rsquo;s viewed on. <a class="author">Tim Brand Wales</a></div>
+</div>
+<!-- End About me -->]]></content>
+      <is_active>1</is_active>
+      <stores>0</stores>
+    </cms_block>
+    <cms_block>
+      <title>Follow us</title>
+      <identifier>follow-us</identifier>
+      <content><![CDATA[<!-- Follow us -->
+<div class="follow-us">
+<div class="title"><span>follow us</span></div>
+<ul>
+<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+<li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+<li><a href="#"><i class="fa fa-instagram"></i></a></li>
+</ul>
+</div>
+<!-- End Follow us -->]]></content>
+      <is_active>1</is_active>
+      <stores>0</stores>
+    </cms_block>
+    <cms_block>
+      <title>Subscribe</title>
+      <identifier>subscribe</identifier>
+      <content><![CDATA[<div class="subscribe">
+<div class="sub-title">Subscribe now to get daily updates</div>{{block class="Magento\Newsletter\Block\Subscribe" name="subscribe" as="subscribe" before="-" template="subscribe.phtml"}}<span>Don’t worry we don’t spam</span></div>]]></content>
+      <is_active>1</is_active>
+      <stores>0</stores>
+    </cms_block>
+    <cms_block>
+      <title>Static Box iOne 07</title>
+      <identifier>static-box-ione-07</identifier>
+      <content><![CDATA[<div class="box-ione-07">
+	<div class="col-sm-4">
+		<div class="column-inner">
+			<div class="wrapper">
+				<div class="demo-box textstyle  animated" data-animation="" style="opacity: 1;">
+					<div class="rit-header-demo-box">
+                        <i class="circus-box clever-icon-truck"></i>
+                        <h3 class="title-demo-box">FREE SHIPPING OVER $99</h3>
+                    </div>
+                    <div class="description">Get free shipping on all purchase of $99 or more!</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="col-sm-4">
+		<div class="column-inner">
+			<div class="wrapper">
+				<div class="demo-box textstyle  animated" data-animation="" style="opacity: 1;">
+					<div class="rit-header-demo-box">
+                        <i class="circus-box  clever-icon-customer-reviews"></i>
+                        <h3 class="title-demo-box">SUPPORT ALL TIME</h3>
+                    </div>
+                    <div class="description">Need us? Remember we here alway 24/7</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-sm-4">
+		<div class="column-inner">
+			<div class="wrapper">
+				<div class="demo-box textstyle  animated" data-animation="" style="opacity: 1;">
+					<div class="rit-header-demo-box">
+                        <i class="circus-box clever-icon-reload"></i>
+                        <h3 class="title-demo-box">money back guarantee</h3>
+                    </div>
+                    <div class="description">Get the item you ordered, or your money back.</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>]]></content>
+      <is_active>1</is_active>
+      <stores>20,22</stores>
+    </cms_block>
+    <cms_block>
+      <title>iOne 07 - Social main footer</title>
+      <identifier>ione07-social-main-footer</identifier>
+      <content><![CDATA[<div class="main-footer container padding-0">
+			<div class="footer-copyright-02">
+				<div class="row">
+<div class="right col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						<ul>
+							<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+							<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+							<li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+							<li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+						</ul>
+					</div>
+					<div class="left col-lg-12 col-md-12 col-sm-12 col-xs-12">Copyright © 2017 <a href="http://zooextension.com/">ZooTemplate.</a>
+					</div>
+				</div>
+			</div>
+		</div>]]></content>
+      <is_active>1</is_active>
+      <stores>20,22</stores>
+    </cms_block>
+  </blocks>
+</root>

@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category    CleverSoft
+ * @package     CleverBase
+ * @copyright   Copyright © 2017 CleverSoft., JSC. All Rights Reserved.
+ * @author 		ZooExtension.com
+ * @email       magento.cleversoft@gmail.com
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="CleverSoft_Base::cl_all" title="CleverSoft" module="CleverSoft_Base" sortOrder="60" resource="CleverSoft_Base::all"/>
+        <add id="CleverSoft_Base::mato" title="Clever Themes v2.1.0" module="CleverSoft_Base" sortOrder="45"  resource="CleverSoft_Base::config_mato" parent="CleverSoft_Base::cl_all"/>
+        <add id="CleverSoft_Base::settings" title="Theme Settings" module="CleverSoft_Base" sortOrder="10" parent="CleverSoft_Base::mato" action="adminhtml/system_config/edit/section/cleversoftbase" resource="CleverSoft_Base::config_settings"/>
+        <add id="CleverSoft_Base::design" title="Theme Design" module="CleverSoft_Base" sortOrder="20" parent="CleverSoft_Base::mato" action="adminhtml/system_config/edit/section/cleversoftbase_design" resource="CleverSoft_Base::config_design"/>
+        <add id="CleverSoft_Base::custom_css" title="Custom Css" module="CleverSoft_Base" sortOrder="30" parent="CleverSoft_Base::mato" action="adminhtml/system_config/edit/section/cleversoftbase_custom_css" resource="CleverSoft_Base::config_custom_css"/>
+    </menu>
+</config>

@@ -1,0 +1,30 @@
+/**
+ * @category    CleverSoft
+ * @package     CleverCategory
+ * @copyright   Copyright © 2017 CleverSoft., JSC. All Rights Reserved.
+ * @author 		ZooExtension.com
+ * @email       magento.cleversoft@gmail.com
+ */
+
+span.name-cat, span.num-product, .category-item{
+    text-align: center;
+}
+
+span.name-cat{
+    font-weight: bold;
+}
+
+a:hover span.name-cat, a:hover span.num-product,a:link span.name-cat, a:link span.num-product,
+a:active span.name-cat, a:active span.num-product, a:visited span.name-cat, a:visited span.num-product{
+    color: black;
+    text-decoration: none !important;
+}
+
+img.img-cat{
+    width: 150px;
+    height: 130px;
+}
+
+.category-item{
+    display: inline-block;
+}

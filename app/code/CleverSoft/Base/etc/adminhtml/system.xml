@@ -1,0 +1,1565 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category    CleverSoft
+ * @package     CleverBase
+ * @copyright   Copyright © 2017 CleverSoft., JSC. All Rights Reserved.
+ * @author 		ZooExtension.com
+ * @email       magento.cleversoft@gmail.com
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="cleversoftbase" translate="label" sortOrder="180">
+            <label>CleverSoft Theme</label>
+        </tab>
+        <section id="cleversoftbase" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Theme Settings</label>
+            <tab>cleversoftbase</tab>
+            <resource>CleverSoft_Base::config_settings</resource>
+            <group id="responsive" translate="label" type="text" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General</label>
+                <field id="page_layout" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Page Layout</label>
+                    <source_model>CleverSoft\Base\Model\System\Config\Header\PageLayout</source_model>
+                </field>
+                <field id="page_maxi_width" translate="label comment" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Page Maximum Width</label>
+                    <source_model>CleverSoft\Base\Model\System\Config\Header\MaxWidthSelections</source_model>
+                    <depends><field id="page_layout">wide-layout</field></depends>
+                </field>
+                <field id="rtl_language" translate="label comment" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>RTL Language</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+
+                <field id="iconlazyload" translate="label comment" type="image" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Lazy Loading icon</label>
+                    <backend_model>Magento\Config\Model\Config\Backend\Image</backend_model>
+                    <upload_dir config="system/filesystem/media" scope_info="1">lazyload</upload_dir>
+                    <base_url type="media" scope_info="1">lazyload</base_url>
+                    <comment>Selected image display as loading icon.</comment>
+                </field>
+
+                <field id="promo_box_enable" translate="label comment" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show Promotion Box</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="promo_box_text" translate="label comment" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Promotion Box Text</label>
+                    <depends>
+                        <field id="promo_box_enable">1</field>
+                    </depends>
+                </field>
+                <field id="promo_box_link" translate="label comment" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Promotion Box Link</label>
+                    <depends>
+                        <field id="promo_box_enable">1</field>
+                    </depends>
+                </field>
+                <field id="threshold" translate="label comment" type="text" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Lazy Threshold</label>
+                    <comment>By default images are loaded when they appear on the screen. If you want images to load earlier use threshold parameter. Setting threshold to 200 causes image to load 200 pixels before it appears on viewport.</comment>
+                </field>
+            </group>
+            <group id="header" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Header</label>
+                <field id="header_type" translate="label comment" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Header Layouts</label>
+                    <comment>Select the position of header.</comment>
+                    <source_model>CleverSoft\Base\Model\System\Config\Header\Type</source_model>
+                </field>
+                <field id="sticky_enable" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Sticky Header</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="logo_upload" translate="label comment" type="image" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Upload Default Logo</label>
+                    <comment>JPG,PNG,GIF,SVG</comment>
+                    <backend_model>Magento\Config\Model\Config\Backend\Image</backend_model>
+                    <upload_dir config="system/filesystem/media">wysiwyg/cleversoft/logo</upload_dir>
+                    <base_url type="media" scope_info="1">wysiwyg/cleversoft/logo</base_url>
+                </field>
+                <field id="logo_upload_width" translate="label comment" type="text" sortOrder="25" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label> Logo Image Width</label>
+                </field>
+                <field id="logo_retina_upload" translate="label comment" type="image" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Upload Retina Logo</label>
+                    <comment>JPG,PNG,GIF,SVG</comment>
+                    <backend_model>Magento\Config\Model\Config\Backend\Image</backend_model>
+                    <upload_dir config="system/filesystem/media">wysiwyg/cleversoft/logo</upload_dir>
+                    <base_url type="media" scope_info="1">wysiwyg/cleversoft/logo</base_url>
+                </field>
+                <field id="sticky_logo" translate="label comment" type="image" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Sticky logo</label>
+                    <backend_model>Magento\Config\Model\Config\Backend\Image</backend_model>
+                    <upload_dir config="system/filesystem/media">wysiwyg/cleversoft/logo</upload_dir>
+                    <base_url type="media" scope_info="1">wysiwyg/cleversoft/logo</base_url>
+                </field>
+                <field id="sticky_logo_width" translate="label comment" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Sticky Logo Image Width</label>
+                </field>
+                <field id="compare" translate="label comment" type="select" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Mini Compare in Header</label>
+                    <comment>Enable/Disable mini compare in header.</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="wishlist" translate="label comment" type="select" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Mini Wishlist in Header</label>
+                    <comment>Enable/Disable mini wishlist in header.</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+
+                <field id="full_header_width" translate="label comment" type="select" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Header 100% Width</label>
+                    <comment>Enable this option to set the header to 100% of the browser width. Uncheck to follow the site width.</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="img_flag" translate="label comment" type="select" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Image Flag</label>
+                    <comment>Enable this option to show the image flag language.</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="canvas_cart" translate="label comment" type="select" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Canvas Cart</label>
+                    <comment>Enable this option to show Canvas Cart panel or Drop Down</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+            <group id="footer" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Footer</label>
+                <field id="links_column_auto_width" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Automatic Column Width Calculation</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="block_ids" translate="label comment" type="multiselect" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Blocks</label>
+                    <source_model>CleverSoft\CleverBlock\Model\Widget\Source\Block</source_model>
+                </field>
+                <field id="block_lg" translate="label comment" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Layout Large Devices (≥1200px)</label>
+                    <frontend_model>CleverSoft\Base\Block\Adminhtml\System\Config\Form\Field\Layoutpreview</frontend_model>
+                </field>
+                <field id="block_md" translate="label comment" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Layout Medium Devices (≥992px)</label>
+                    <frontend_model>CleverSoft\Base\Block\Adminhtml\System\Config\Form\Field\Layoutpreview</frontend_model>
+                </field>
+                <field id="block_sm" translate="label comment" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Layout Small Devices (≥768px)</label>
+                    <frontend_model>CleverSoft\Base\Block\Adminhtml\System\Config\Form\Field\Layoutpreview</frontend_model>
+                </field>
+                <field id="block_xs" translate="label comment" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label><![CDATA[Layout Extra Small Devices (<768px)]]></label>
+                    <frontend_model>CleverSoft\Base\Block\Adminhtml\System\Config\Form\Field\Layoutpreview</frontend_model>
+                </field>
+
+            </group>
+
+            <group id="category" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Category View</label>
+                <field id="heading_images" translate="label comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Images</label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                </field>
+                <field id="aspect_ratio" translate="label comment" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Keep Image Aspect Ratio</label>
+                    <comment>Set "Yes", to keep aspect ratio of product images (height of each image will be calculated automatically based on width). If set to "No", Magento will automatically transform each image into square. If the original image was rectangular, the empty space at the sides will be filled with white color.
+                    </comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="image_width" translate="label comment" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Image Width</label>
+                    <comment>Set width image in page products list.</comment>
+                </field>
+                <field id="image_height" translate="label comment" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Image Height</label>
+                    <comment>Set height image in page products list.</comment>
+                    <depends>
+                        <field id="aspect_ratio">0</field>
+                    </depends>
+                </field>
+                <field id="lazy_load_min_height" translate="label comment" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Min Height</label>
+                    <comment>Set height image layzy load.</comment>
+                    <depends>
+                        <field id="lazyload">1</field>
+                    </depends>
+                </field>
+                <field id="lazyload" translate="label comment" type="select" sortOrder="46" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Lazyload</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="alt_image" translate="label comment" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Alternative Image</label>
+                    <comment>Show alternative image on mouse hover over the main image.</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="alt_image_column" translate="label comment" type="select" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Select Alternative Image By Attribute</label>
+                    <comment>
+                        <![CDATA[Which attribute from product images will be used to select an alternative image.]]>
+                    </comment>
+                    <source_model>CleverSoft\Base\Model\System\Config\Source\Category\Altimagecolumn</source_model>
+                </field>
+                <field id="alt_image_column_value" translate="label comment" type="text" sortOrder="65" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Alternative Image Attribute Value</label>
+                    <comment>
+                        Specify the attribute value which will mark alternative images of your products. E.g.: if &lt;strong&gt;Select Alternative Image By Attribute&lt;/strong&gt; is set to "Sort Order", specify the number of product image which will mark the alternative image, for example: 2.
+                    </comment>
+                    <depends>
+                        <field id="alt_image">1</field>
+                    </depends>
+                </field>
+            </group>
+            <group id="category_grid" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Category View (Grid Mode)</label>
+                <field id="heading_display" translate="label comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Display Selected Elements</label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                </field>
+                <field id="display_rating" translate="label comment" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Ratings</label>
+                    <source_model>CleverSoft\Base\Model\System\Config\Source\Layout\Element\Displayonhover</source_model>
+                </field>
+                <field id="display_addtocart" translate="label comment" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Add To Cart</label>
+                    <source_model>CleverSoft\Base\Model\System\Config\Source\Layout\Element\Displayonhover</source_model>
+                </field>
+                <field id="display_addtowishlist" translate="label comment" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Add to wishlist</label>
+                    <source_model>CleverSoft\Base\Model\System\Config\Source\Layout\Element\Displayonhover</source_model>
+                </field>
+                <field id="display_addtocompare" translate="label comment" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Add to compare</label>
+                    <source_model>CleverSoft\Base\Model\System\Config\Source\Layout\Element\Displayonhover</source_model>
+                </field>
+                <field id="display_swatch_attributes" translate="label comment" type="select" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Swatch Attributes (Colors,Sizes,Style....)</label>
+                    <source_model>CleverSoft\Base\Model\System\Config\Source\Layout\Element\Displayonhover</source_model>
+                </field>
+
+                <field id="display_productname" translate="label comment" type="select" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Product name</label>
+                    <source_model>CleverSoft\Base\Model\System\Config\Source\Layout\Element\Displayonhover</source_model>
+                </field>
+                <field id="display_name_single_line" translate="label" sortOrder="90" type="select" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Display Name in Single Line</label>
+                    <comment><![CDATA[If set to "Yes": if product name is too long to be displayed in a single line, it will be clipped and an ellipsis ('…', U+2026 HORIZONTAL ELLIPSIS) will be appended at the end of the line to represent clipped text. This will only take effect if the option <em>Name</em> was set to "Display".]]></comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="display_price" translate="label comment" type="select" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Price</label>
+                    <source_model>CleverSoft\Base\Model\System\Config\Source\Layout\Element\Displayonhover</source_model>
+                </field>
+                <field id="addtolinks_position" translate="label comment" type="select" sortOrder="110" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show "Add to" Links as Icons Above the Image</label>
+                    <comment>If set to "Yes", "Add to wishlist" and "Add to compare" links will be displayed as simple icons above the product image.</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                <field id="heading_display_effects" translate="label comment" type="text" sortOrder="120" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Product Grid Display</label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                </field>
+                <field id="column_count" translate="label comment" type="select" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Number of Columns</label>
+                    <source_model>CleverSoft\Base\Model\System\Config\Source\Category\Grid\Columnbelow</source_model>
+                    <comment>Number of products displayed in a single row.</comment>
+                </field>
+                <field id="column_count_768" translate="label comment" type="select" sortOrder="140" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Number of Columns - Tablet</label>
+                    <source_model>CleverSoft\Base\Model\System\Config\Source\Category\Grid\Columnbelowmobile</source_model>
+                    <comment>Number of columns displayed if browser viewport width is between 640 px and 768 px.</comment>
+                </field>
+                <field id="column_count_640" translate="label comment" type="select" sortOrder="150" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Number of Columns - Tablet</label>
+                    <source_model>CleverSoft\Base\Model\System\Config\Source\Category\Grid\Columnbelowmobile</source_model>
+                    <comment>Number of columns displayed if browser viewport width is between 480px and 640 px.</comment>
+                </field>
+                <field id="column_count_480" translate="label comment" type="select" sortOrder="160" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Number of Columns - Mobile</label>
+                    <source_model>CleverSoft\Base\Model\System\Config\Source\Category\Grid\Columnbelowmobile</source_model>
+                    <comment>Number of columns displayed if browser viewport width is between 320 px and 480 px. Below that width products are displayed in a single column.</comment>
+                </field>
+                <field id="equal_height" translate="label comment" type="select" sortOrder="170" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Equal Height of Grid Items (Products)</label>
+                    <comment>If enabled, all grid items have the same height and "Add to cart" button is
+                        displayed at the bottom edge of the item.
+                    </comment>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="product_grid_style" translate="label comment" type="select" sortOrder="180" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Hover on Product</label>
+                    <source_model>CleverSoft\Base\Model\System\Config\Source\Product\Gridlayout</source_model>
+                    <comment>Choose one of those hover effects for products</comment>
+                </field>
+                <field id="centered" translate="label" sortOrder="190" type="select" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Align Center</label>
+                    <comment>Align elements of the grid item to the center: product name, price, button etc.</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="enable_border_boxshadow" translate="label" sortOrder="200" type="select" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Border Boxshadow</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="disable_border_radius" translate="label" sortOrder="200" type="select" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Disable Border Radius</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+
+            <group id="infinite_scroll" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Pagination</label>
+
+                <field id="ic_type" translate="label comment" type="select" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Paging Type</label>
+                    <source_model>CleverSoft\Base\Model\System\Config\Icevent</source_model>
+                </field>
+
+                <field id="scroll_buffer" translate="label comment" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Infinite Scroll Buffer (px) </label>
+                    <comment>The higher the buffer the easier,during scrolling, addition products will be loaded. Only use when Infinite Scroll is selected as the paging type. </comment>
+                </field>
+
+                <field id="load_more_button_text" translate="label comment" type="text" sortOrder="75" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Load More Button Text </label>
+                    <comment>Change the button text. </comment>
+                    <depends><field id="ic_type">manual</field></depends>
+                </field>
+
+                <field id="load_more_post_text" translate="label comment" type="text" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Load More Post Text </label>
+                    <comment>Change the text that is displayed on the button while the posts/products are being loaded. </comment>
+                    <depends><field id="ic_type">manual</field></depends>
+                </field>
+
+            </group>
+
+            <group id="contact_google_map" translate="label" type="text" sortOrder="55" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Google Map on Contact Page</label>
+                <field id="display_google_map" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Display Google Map</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="api_key" translate="label comment" type="text" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Google API Key</label>
+                    <comment><![CDATA[Get key: <a href="https://developers.google.com/maps/documentation/javascript/get-api-key" target="_blank">https://developers.google.com/maps/documentation/javascript/get-api-key</a>]]></comment>
+                    <depends>
+                        <field id="display_google_map">1</field>
+                    </depends>
+                </field>
+                <field id="address_google_map" translate="label comment" type="textarea" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Address</label>
+                    <depends>
+                        <field id="display_google_map">1</field>
+                    </depends>
+                </field>
+                <field id="html_google_map" translate="label comment" type="textarea" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Html</label>
+                    <depends>
+                        <field id="display_google_map">1</field>
+                    </depends>
+                </field>
+            </group>
+
+            <group id="product_page" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Product Page</label>
+                <comment>&lt;strong&gt;IMPORTANT:&lt;/strong&gt;&lt;br/&gt;Width of the product page columns is specified in &lt;strong style="color:red;"&gt;grid units&lt;/strong&gt;.&lt;br/&gt;If you want to display three main columns (&lt;strong&gt;Image Column&lt;/strong&gt;, &lt;strong&gt;Primary Column&lt;/strong&gt;, &lt;strong&gt;Secondary Column&lt;/strong&gt;) in a single row,&lt;br/&gt;sum of these three columns has to be &lt;strong&gt;equal 12 grid units&lt;/strong&gt; (for example: 4 + 5 + 3).
+                    &lt;br/&gt;&lt;br/&gt;</comment>
+                <field id="ganeral_product_page" translate="label" sortOrder="0" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Ganeral</label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                </field>
+                <field id="page_layout" translate="label comment" type="select" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Product Page Layout</label>
+                    <comment>Choose style.</comment>
+                    <source_model>CleverSoft\Base\Model\System\Config\Source\Product\Pagelayout</source_model>
+                </field>
+                <field id="aspect_ratio" translate="label comment" type="select" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Keep Image Aspect Ratio</label>
+                    <comment>Set "Yes", to keep aspect ratio of product images (height of each image will be calculated automatically based on width). If set to "No", Magento will automatically transform each image into square. If the original image was rectangular, the empty space at the sides will be filled with white color.
+                    </comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="main_image_width" translate="label comment" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Main Image Width</label>
+                    <comment>Set main width image in product detail.</comment>
+                </field>
+                <field id="main_image_height" translate="label comment" type="text" sortOrder="25" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Main Image Height</label>
+                    <comment>Set height image in page products details.</comment>
+                    <depends>
+                        <field id="aspect_ratio">0</field>
+                    </depends>
+                </field>
+                <field id="thumb_image_width" translate="label comment" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Thumb Image Width</label>
+                    <comment>Set thumb width image in page products detail, height of the images will be
+                        calculated automatically based on width and ratio.</comment>
+                </field>
+
+                <field id="prev_next" translate="label comment" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show Prev/Next Product Links</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="prev_text" translate="label comment" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Previous Icon</label>
+                    <depends>
+                        <field id="prev_next">1</field>
+                    </depends>
+                </field>
+                <field id="next_text" translate="label comment" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Next Icon</label>
+                    <depends>
+                        <field id="prev_next">1</field>
+                    </depends>
+                </field>
+                <field id="enable_sticky_addtocart" translate="label comment" type="select" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Sticky Addtocart</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="disable_sticky_info_product" translate="label comment" type="select" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable sticky info product</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                <field id="heading_columns" translate="label" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Width of Columns</label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                </field>
+                <field id="image_column" translate="label" sortOrder="100" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Image Column Width</label>
+                    <comment>Specify value in grid units (between 2 and 12).</comment>
+                    <validate>validate-number validate-number-range number-range-2-12 required-entry</validate>
+                </field>
+                <field id="primary_column" translate="label" sortOrder="110" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Primary Column Width</label>
+                    <comment>Specify value in grid units (between 2 and 12).</comment>
+                    <validate>validate-number validate-number-range number-range-2-12 required-entry</validate>
+                </field>
+                <field id="secondary_column" translate="label" sortOrder="120" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Secondary Column Width</label>
+                    <comment>Specify value in grid units (between 2 and 12).&lt;br/&gt;&lt;strong style="color:red;"&gt;Important&lt;/strong&gt;: Leave empty to remove this column.</comment>
+                    <validate>validate-number validate-number-range number-range-2-12</validate>
+                </field>
+                <field id="lower_primary_column" translate="label" sortOrder="130" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Lower Primary Column Width</label>
+                    <comment>Specify value in grid units (between 2 and 12).</comment>
+                    <validate>validate-number validate-number-range number-range-2-12 required-entry</validate>
+                </field>
+                <field id="lower_secondary_column" translate="label" sortOrder="140" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Lower Secondary Column Width</label>
+                    <comment>Specify value in grid units (between 2 and 12).&lt;br/&gt;&lt;strong style="color:red;"&gt;Important&lt;/strong&gt;: Leave empty to remove this column.</comment>
+                    <validate>validate-number validate-number-range number-range-2-12</validate>
+                </field>
+                <field id="heading_related" translate="label" sortOrder="180" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Upsell, Related Products</label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                </field>
+                <field id="related_position" translate="label" sortOrder="190" type="select" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Position Related</label>
+                    <comment>Position of related products block. Position will be ignored if option &lt;em&gt;"Related Products in Collateral Data"&lt;/em&gt; was set to "Yes".</comment>
+                    <source_model>CleverSoft\Base\Model\System\Config\Source\Product\Position\All</source_model>
+                </field>
+                <field id="upsell_position" translate="label" sortOrder="191" type="select" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Position Upsell</label>
+                    <comment>Position of upsell products block. Position will be ignored if option &lt;em&gt;"Related Products in Collateral Data"&lt;/em&gt; was set to "Yes".</comment>
+                    <source_model>CleverSoft\Base\Model\System\Config\Source\Product\Position\All</source_model>
+                </field>
+                <field id="tab_related_upsell_enable" translate="label comment" type="select" sortOrder="200" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Tab for related, upsell product</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="tab_related_upsell_style" translate="label comment" type="select" sortOrder="210" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Product Tabs Style</label>
+                    <source_model>CleverSoft\Base\Model\System\Config\Source\Product\Tabstyle</source_model>
+                    <depends>
+                        <field id="tab_related_upsell_enable">1</field>
+                    </depends>
+                </field>
+                <field id="related_checkbox" translate="label" sortOrder="220" type="select" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Related Products Checkbox</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+            </group>
+            <group id="product_labels" translate="label" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Product Labels</label>
+                <field id="new" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show "New" Label</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="new_label_text" translate="label comment" type="text" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>"New" Label Text</label>
+                    <depends>
+                        <field id="new">1</field>
+                    </depends>
+                </field>
+                <field id="sale" translate="label comment" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show "Sale" Label</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="sale_label_percent" translate="label comment" type="select" sortOrder="22" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show "Sale" Label with Discount Percent</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="sale">1</field>
+                    </depends>
+                </field>
+                <field id="sale_label_text" translate="label comment" type="text" sortOrder="25" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>"Sale" Label Text</label>
+                    <depends>
+                        <field id="sale">1</field>
+                        <field id="sale_label_percent">0</field>
+                    </depends>
+                </field>
+                <field id="low" translate="label comment" type="select" sortOrder="25" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show "Low Stock" Label</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="low_threshold" translate="label comment" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Low stock threshold</label>
+                </field>
+            </group>
+            <group id="product_slider" translate="label" type="text" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Product Sliders</label>
+                <comment>This section is related to product sliders. "Speed" will be applied for all existing
+                    product sliders, also on product page. Other settings are only applied to Featured Products
+                    Slider blocks and New Products blocks.
+                </comment>
+                <field id="timeout" translate="label comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Timeout</label>
+                    <comment>To enable automatic scrolling of the product sliders, specify time (in
+                        milliseconds) between slide transitions. Leave empty to disable automatic scrolling.
+                        Note that 1000 miliseconds = 1 second.
+                    </comment>
+                </field>
+                <field id="speed" translate="label comment" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Speed</label>
+                    <comment>Duration (in milliseconds) of scrolling animation.</comment>
+                </field>
+                <field id="move_items" translate="label comment" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Move Items</label>
+                    <comment>Number of items that should move on animation. Enter 0 to move all visible items.</comment>
+                    <depends>
+                        <field id="zoom_enable">1</field>
+                    </depends>
+                </field>
+            </group>
+            <group id="product_quickview" translate="label" type="text" sortOrder="95" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Product Quickview</label>
+                <comment>This section is related to Product Quickview.</comment>
+                <field id="enable" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+            <group id="magento_blocks" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Default Magento Blocks</label>
+                <comment>In this section you can disable default Magento blocks.</comment>
+                <field id="top_links" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Top Links</label>
+                    <comment>Links in the header: Accoun, Wishlist, Log In etc.</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="footer_newsletter" translate="label comment" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Newsletter Subscribe Form</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+            </group>
+            <group id="install" translate="label" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Installation</label>
+
+                <field id="export_blocks_heading" translate="label comment" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Export</label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                </field>
+
+                <field id="export_type" type="select" translate="label comment" sortOrder="105" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Export Type</label>
+                    <source_model>CleverSoft\Base\Model\Export\ExportTypes</source_model>
+                </field>
+
+                <field id="store_view" type="select" translate="label comment" sortOrder="110" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Select Store View</label>
+                    <source_model>CleverSoft\Base\Model\Export\StoreView</source_model>
+                    <depends><field id="export_type">theme_setting</field></depends>
+                </field>
+
+                <field id="export_button_cms" translate="button_label" sortOrder="115" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <button_label>Export Selected Type(s)</button_label>
+                    <attribute type="action_url">cleversoftbase/system_config_cms/export</attribute>
+                    <frontend_model>CleverSoft\Base\Block\System\Config\Form\Button\Export</frontend_model>
+                </field>
+
+
+                <field id="import_blocks_heading" translate="label comment" sortOrder="120" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Import Static Blocks</label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                </field>
+                <field id="import_blocks" translate="button_label" sortOrder="125" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <button_label>Import Static Blocks</button_label>
+                    <attribute type="action_url">cleversoftbase/system_config_cms/import</attribute>
+                    <attribute type="import_type">blocks</attribute>
+                    <frontend_model>CleverSoft\Base\Block\System\Config\Form\Button\Import\Cms</frontend_model>
+                </field>
+                <field id="overwrite_blocks" translate="label comment" type="select" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Overwrite Existing Blocks</label>
+                    <comment>If the identifiers of the static blocks are already exist, you can set to "Yes" then save the configuration, then click the "Import Static Blocks" button.</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="import_pages_heading" translate="label comment" sortOrder="200" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Import CMS Pages</label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                </field>
+                <field id="import_pages" translate="button_label" sortOrder="210" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <button_label>Import CMS Pages</button_label>
+                    <attribute type="action_url">cleversoftbase/system_config_cms/import</attribute>
+                    <attribute type="import_type">pages</attribute>
+                    <frontend_model>CleverSoft\Base\Block\System\Config\Form\Button\Import\Cms</frontend_model>
+                </field>
+                <field id="overwrite_pages" translate="label comment" type="select" sortOrder="220" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Overwrite Existing Pages</label>
+                    <comment>If the identifiers of the cms pages are already exist, you can set to "Yes" then save the configuration, then click the "Import Static Blocks" button.</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                <field id="import_demo_heading" translate="label comment" sortOrder="300" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Import Demo Version Settings</label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                </field>
+
+                <field id="demo_version" translate="label comment" type="select" sortOrder="310" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Demo Version</label>
+                    <source_model>CleverSoft\Base\Model\Import\Source\XmlFiles</source_model>
+                </field>
+
+                <field id="store_view_theme_import" type="select" translate="label comment" sortOrder="320" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Configuration Scope</label>
+                    <comment>Imported configuration settings will be applied to selected scope (selected store view or website). If you're not sure what is 'scope' in Magento system configuration, it is highly recommended to leave the default scope 'Default Config'. In this case imported configuration will be applied to all existing store views.</comment>
+                    <source_model>CleverSoft\Base\Model\Import\StoreViews</source_model>
+                </field>
+
+                <field id="import_demo" translate="button_label" sortOrder="330" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <button_label>Import</button_label>
+                    <attribute type="action_url">cleversoftbase/system_config_demo/import</attribute>
+                    <frontend_model>CleverSoft\Base\Block\System\Config\Form\Button\Import\Demo</frontend_model>
+                </field>
+
+            </group>
+        </section>
+        <section id="cleversoftbase_design" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Theme Design</label>
+            <tab>cleversoftbase</tab>
+            <resource>CleverSoft_Base::config_design</resource>
+            <group id="colors" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Colors</label>
+                <field id="heading_basic_colors" translate="label comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Basic Colors</label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                </field>
+                <field id="js" translate="label comment" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <frontend_model>CleverSoft\Base\Block\Adminhtml\System\Config\Form\Field\Js</frontend_model>
+                </field>
+                <field id="text_color" translate="label comment" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Text Color</label>
+                    <frontend_model>CleverSoft\Base\Block\Adminhtml\System\Config\Form\Field\Color</frontend_model>
+                </field>
+                <field id="link_color" translate="label comment" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Link Color</label>
+                    <frontend_model>CleverSoft\Base\Block\Adminhtml\System\Config\Form\Field\Color</frontend_model>
+                </field>
+                <field id="link_hover_color" translate="label comment" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Link Hover Color</label>
+                    <frontend_model>CleverSoft\Base\Block\Adminhtml\System\Config\Form\Field\Color</frontend_model>
+                </field>
+                <field id="heading_buttons" translate="label comment" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Buttons Color</label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                </field>
+                <field id="button_bg_color" translate="label comment" type="text" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Button Background Color</label>
+                    <frontend_model>CleverSoft\Base\Block\Adminhtml\System\Config\Form\Field\Color</frontend_model>
+                </field>
+                <field id="button_color" translate="label comment" type="text" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Button Text Color</label>
+                    <frontend_model>CleverSoft\Base\Block\Adminhtml\System\Config\Form\Field\Color</frontend_model>
+                </field>
+                <field id="button_border_color" translate="label comment" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Button Border Color</label>
+                    <frontend_model>CleverSoft\Base\Block\Adminhtml\System\Config\Form\Field\Color</frontend_model>
+                </field>
+                <field id="button_hover_color" translate="label comment" type="text" sortOrder="110" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Hover Button Text Color</label>
+                    <frontend_model>CleverSoft\Base\Block\Adminhtml\System\Config\Form\Field\Color</frontend_model>
+                </field>
+                <field id="button_bg_hover_color" translate="label comment" type="text" sortOrder="120" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Hover Button Background Color</label>
+                    <frontend_model>CleverSoft\Base\Block\Adminhtml\System\Config\Form\Field\Color</frontend_model>
+                    <comment>Selected emphasized buttons, e.g. "Add to cart" on product page, "Proceed to
+                        checkout" etc.
+                    </comment>
+                </field>
+                <field id="button_border_hover_color" translate="label comment" type="text" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Hover Button Border Color</label>
+                    <frontend_model>CleverSoft\Base\Block\Adminhtml\System\Config\Form\Field\Color</frontend_model>
+                    <comment>Selected emphasized buttons, e.g. "Add to cart" on product page, "Proceed to
+                        checkout" etc.
+                    </comment>
+                </field>
+                <field id="heading_labels" translate="label" sortOrder="180" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Product Labels</label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                </field>
+                <field id="label_sale_bg_color" translate="label" sortOrder="190" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Label "Sale" Background Color</label>
+                    <frontend_model>CleverSoft\Base\Block\Adminhtml\System\Config\Form\Field\Color</frontend_model>
+                </field>
+                <field id="label_sale_color" translate="label" sortOrder="200" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Label "Sale" Text Color</label>
+                    <frontend_model>CleverSoft\Base\Block\Adminhtml\System\Config\Form\Field\Color</frontend_model>
+                </field>
+                <field id="heading_misc" translate="label comment" type="text" sortOrder="210" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Other</label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                </field>
+                <field id="price_color" translate="label comment" type="text" sortOrder="220" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Price Color</label>
+                    <frontend_model>CleverSoft\Base\Block\Adminhtml\System\Config\Form\Field\Color</frontend_model>
+                </field>
+                <field id="rating_active_color" translate="label" sortOrder="230" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Star Ratings Color</label>
+                    <frontend_model>CleverSoft\Base\Block\Adminhtml\System\Config\Form\Field\Color</frontend_model>
+                </field>
+                <field id="heading_color_title" translate="label comment" type="text" sortOrder="240" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Heading Color Title</label>
+                    <frontend_model>CleverSoft\Base\Block\Adminhtml\System\Config\Form\Field\Color</frontend_model>
+                </field>
+            </group>
+            <group id="font" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Typography</label>
+                <field id="heading_body_font" translate="label comment" type="text" sortOrder="0" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Body Font</label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                </field>
+                <field id="body_font" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="font_size" translate="label comment" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Basic Font Size</label>
+                    <source_model>CleverSoft\Base\Model\System\Config\Source\Design\Font\Size\Basic</source_model>
+                    <comment>Size of the regular text. Font size of most of the other elements will be
+                        calculated relative to this value.
+                    </comment>
+                    <depends>
+                        <field id="body_font">1</field>
+                    </depends>
+                </field>
+                <field id="primary_font_family_group" translate="label" sortOrder="30" type="select" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Font Family</label>
+                    <comment>Select predefined font stack, Google Fonts or type in your custom font stack.</comment>
+                    <source_model>CleverSoft\Base\Model\System\Config\Source\Design\Font\Family\Groupcustomgoogle</source_model>
+                    <depends>
+                        <field id="body_font">1</field>
+                    </depends>
+                </field>
+                <field id="primary_font_family_custom" translate="label" sortOrder="40" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Custom</label>
+                    <comment>Type in your custom font stack, e.g.:&lt;br/&gt;&lt;em&gt;Arial, "Helvetica Neue", Helvetica, sans-serif&lt;/em&gt;.&lt;br/&gt;&lt;strong&gt;Important&lt;/strong&gt;: Do not add trailing semicolon.</comment>
+                    <depends>
+                        <field id="body_font">1</field>
+                        <field id="primary_font_family_group">custom</field>
+                    </depends>
+                </field>
+                <field id="primary_font_family" translate="label" sortOrder="50" type="select" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Google Fonts</label>
+                    <comment>Font preview is available on &lt;a target="_blank" href="http://www.google.com/webfonts"&gt;Google Web Fonts&lt;/a&gt;&lt;br/&gt;&lt;strong style="color:red;"&gt;Important&lt;/strong&gt;: most of the fonts from Google are not available in all weights. Make sure that you specified correct weight (field &lt;strong&gt;Font Weight&lt;/strong&gt; below) for selected font. Otherwise font will not be displayed. Refer to &lt;a target="_blank" href="http://www.google.com/webfonts"&gt;Google Web Fonts&lt;/a&gt; to check if the selected weight is available for your font.</comment>
+                    <source_model>CleverSoft\Base\Model\System\Config\Source\Design\Font\Family\Google</source_model>
+                    <depends>
+                        <field id="body_font">1</field>
+                        <field id="primary_font_family_group">google</field>
+                    </depends>
+                </field>
+                <field id="primary_char_subset" translate="label" sortOrder="60" type="multiselect" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Character Sets</label>
+                    <comment>Some of the fonts support multiple scripts (like Latin and Cyrillic for example). You need to select at least one character set.&lt;br/&gt;&lt;strong style="color:red;"&gt;Important&lt;/strong&gt;: not all fonts support extended character sets. For a complete list of available fonts and font subsets refer to &lt;a target="_blank" href="http://www.google.com/webfonts"&gt;Google Web Fonts&lt;/a&gt;.&lt;br/&gt;&lt;strong style="color:red;"&gt;Important&lt;/strong&gt;: using multiple character sets affects performance, so only select the character sets that you actually need.</comment>
+                    <source_model>CleverSoft\Base\Model\System\Config\Source\Design\Font\Google\Subset</source_model>
+                    <depends>
+                        <field id="body_font">1</field>
+                        <field id="primary_font_family_group">google</field>
+                    </depends>
+                </field>
+                <field id="primary_font_weight" translate="label" sortOrder="70" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Font Weight</label>
+                    <comment>Specify the weight of the font. You can only use &lt;strong&gt;numeric font weights&lt;/strong&gt; which are available for the CSS property &lt;a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight"&gt;&lt;em&gt;font-weight&lt;/em&gt;&lt;/a&gt;. E.g. normal weight is &lt;em&gt;400&lt;/em&gt;, bold is &lt;em&gt;700&lt;/em&gt;. Leave empty to use default weight.&lt;br/&gt;&lt;strong style="color:red;"&gt;Important&lt;/strong&gt;: if you selected a font from Google Fonts, note that some fonts are not available in all weights. Refer to &lt;a target="_blank" href="http://www.google.com/webfonts"&gt;Google Web Fonts&lt;/a&gt; to check if the selected weight is available for your font.</comment>
+                    <depends>
+                        <field id="body_font">1</field>
+                    </depends>
+                </field>
+
+
+                <field id="heading_h1_font" translate="label comment" type="text" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Heading 1 Font</label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                </field>
+                <field id="h1_font" translate="label comment" type="select" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="h1_font_size" translate="label comment" type="select" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Basic Font Size</label>
+                    <source_model>CleverSoft\Base\Model\System\Config\Source\Design\Font\Size\Basic</source_model>
+                    <comment>Size of the regular text. Font size of most of the other elements will be
+                        calculated relative to this value.
+                    </comment>
+                    <depends>
+                        <field id="h1_font">1</field>
+                    </depends>
+                </field>
+                <field id="h1_primary_font_family_group" translate="label" sortOrder="110" type="select" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Font Family</label>
+                    <comment>Select predefined font stack, Google Fonts or type in your custom font stack.</comment>
+                    <source_model>CleverSoft\Base\Model\System\Config\Source\Design\Font\Family\Groupcustomgoogle</source_model>
+                    <depends>
+                        <field id="h1_font">1</field>
+                    </depends>
+                </field>
+                <field id="h1_primary_font_family_custom" translate="label" sortOrder="120" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Custom</label>
+                    <comment>Type in your custom font stack, e.g.:&lt;br/&gt;&lt;em&gt;Arial, "Helvetica Neue", Helvetica, sans-serif&lt;/em&gt;.&lt;br/&gt;&lt;strong&gt;Important&lt;/strong&gt;: Do not add trailing semicolon.</comment>
+                    <depends>
+                        <field id="h1_font">1</field>
+                        <field id="h1_primary_font_family_group">custom</field>
+                    </depends>
+                </field>
+                <field id="h1_primary_font_family" translate="label" sortOrder="130" type="select" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Google Fonts</label>
+                    <comment>Font preview is available on &lt;a target="_blank" href="http://www.google.com/webfonts"&gt;Google Web Fonts&lt;/a&gt;&lt;br/&gt;&lt;strong style="color:red;"&gt;Important&lt;/strong&gt;: most of the fonts from Google are not available in all weights. Make sure that you specified correct weight (field &lt;strong&gt;Font Weight&lt;/strong&gt; below) for selected font. Otherwise font will not be displayed. Refer to &lt;a target="_blank" href="http://www.google.com/webfonts"&gt;Google Web Fonts&lt;/a&gt; to check if the selected weight is available for your font.</comment>
+                    <source_model>CleverSoft\Base\Model\System\Config\Source\Design\Font\Family\Google</source_model>
+                    <depends>
+                        <field id="h1_font">1</field>
+                        <field id="h1_primary_font_family_group">google</field>
+                    </depends>
+                </field>
+                <field id="h1_primary_char_subset" translate="label" sortOrder="140" type="multiselect" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Character Sets</label>
+                    <comment>Some of the fonts support multiple scripts (like Latin and Cyrillic for example). You need to select at least one character set.&lt;br/&gt;&lt;strong style="color:red;"&gt;Important&lt;/strong&gt;: not all fonts support extended character sets. For a complete list of available fonts and font subsets refer to &lt;a target="_blank" href="http://www.google.com/webfonts"&gt;Google Web Fonts&lt;/a&gt;.&lt;br/&gt;&lt;strong style="color:red;"&gt;Important&lt;/strong&gt;: using multiple character sets affects performance, so only select the character sets that you actually need.</comment>
+                    <source_model>CleverSoft\Base\Model\System\Config\Source\Design\Font\Google\Subset</source_model>
+                    <depends>
+                        <field id="h1_font">1</field>
+                        <field id="h1_primary_font_family_group">google</field>
+                    </depends>
+                </field>
+                <field id="h1_primary_font_weight" translate="label" sortOrder="150" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Font Weight</label>
+                    <comment>Specify the weight of the font. You can only use &lt;strong&gt;numeric font weights&lt;/strong&gt; which are available for the CSS property &lt;a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight"&gt;&lt;em&gt;font-weight&lt;/em&gt;&lt;/a&gt;. E.g. normal weight is &lt;em&gt;400&lt;/em&gt;, bold is &lt;em&gt;700&lt;/em&gt;. Leave empty to use default weight.&lt;br/&gt;&lt;strong style="color:red;"&gt;Important&lt;/strong&gt;: if you selected a font from Google Fonts, note that some fonts are not available in all weights. Refer to &lt;a target="_blank" href="http://www.google.com/webfonts"&gt;Google Web Fonts&lt;/a&gt; to check if the selected weight is available for your font.</comment>
+                    <depends>
+                        <field id="h1_font">1</field>
+                    </depends>
+                </field>
+
+                <field id="heading_h2_font" translate="label comment" type="text" sortOrder="160" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Heading 2 Font</label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                </field>
+                <field id="h2_font" translate="label comment" type="select" sortOrder="170" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="h2_font_size" translate="label comment" type="select" sortOrder="180" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Basic Font Size</label>
+                    <source_model>CleverSoft\Base\Model\System\Config\Source\Design\Font\Size\Basic</source_model>
+                    <comment>Size of the regular text. Font size of most of the other elements will be
+                        calculated relative to this value.
+                    </comment>
+                    <depends>
+                        <field id="h2_font">1</field>
+                    </depends>
+                </field>
+                <field id="h2_primary_font_family_group" translate="label" sortOrder="190" type="select" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Font Family</label>
+                    <comment>Select predefined font stack, Google Fonts or type in your custom font stack.</comment>
+                    <source_model>CleverSoft\Base\Model\System\Config\Source\Design\Font\Family\Groupcustomgoogle</source_model>
+                    <depends>
+                        <field id="h2_font">1</field>
+                    </depends>
+                </field>
+                <field id="h2_primary_font_family_custom" translate="label" sortOrder="200" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Custom</label>
+                    <comment>Type in your custom font stack, e.g.:&lt;br/&gt;&lt;em&gt;Arial, "Helvetica Neue", Helvetica, sans-serif&lt;/em&gt;.&lt;br/&gt;&lt;strong&gt;Important&lt;/strong&gt;: Do not add trailing semicolon.</comment>
+                    <depends>
+                        <field id="h2_font">1</field>
+                        <field id="h2_primary_font_family_group">custom</field>
+                    </depends>
+                </field>
+                <field id="h2_primary_font_family" translate="label" sortOrder="210" type="select" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Google Fonts</label>
+                    <comment>Font preview is available on &lt;a target="_blank" href="http://www.google.com/webfonts"&gt;Google Web Fonts&lt;/a&gt;&lt;br/&gt;&lt;strong style="color:red;"&gt;Important&lt;/strong&gt;: most of the fonts from Google are not available in all weights. Make sure that you specified correct weight (field &lt;strong&gt;Font Weight&lt;/strong&gt; below) for selected font. Otherwise font will not be displayed. Refer to &lt;a target="_blank" href="http://www.google.com/webfonts"&gt;Google Web Fonts&lt;/a&gt; to check if the selected weight is available for your font.</comment>
+                    <source_model>CleverSoft\Base\Model\System\Config\Source\Design\Font\Family\Google</source_model>
+                    <depends>
+                        <field id="h2_font">1</field>
+                        <field id="h2_primary_font_family_group">google</field>
+                    </depends>
+                </field>
+                <field id="h2_primary_char_subset" translate="label" sortOrder="220" type="multiselect" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Character Sets</label>
+                    <comment>Some of the fonts support multiple scripts (like Latin and Cyrillic for example). You need to select at least one character set.&lt;br/&gt;&lt;strong style="color:red;"&gt;Important&lt;/strong&gt;: not all fonts support extended character sets. For a complete list of available fonts and font subsets refer to &lt;a target="_blank" href="http://www.google.com/webfonts"&gt;Google Web Fonts&lt;/a&gt;.&lt;br/&gt;&lt;strong style="color:red;"&gt;Important&lt;/strong&gt;: using multiple character sets affects performance, so only select the character sets that you actually need.</comment>
+                    <source_model>CleverSoft\Base\Model\System\Config\Source\Design\Font\Google\Subset</source_model>
+                    <depends>
+                        <field id="h2_font">1</field>
+                        <field id="h2_primary_font_family_group">google</field>
+                    </depends>
+                </field>
+                <field id="h2_primary_font_weight" translate="label" sortOrder="230" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Font Weight</label>
+                    <comment>Specify the weight of the font. You can only use &lt;strong&gt;numeric font weights&lt;/strong&gt; which are available for the CSS property &lt;a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight"&gt;&lt;em&gt;font-weight&lt;/em&gt;&lt;/a&gt;. E.g. normal weight is &lt;em&gt;400&lt;/em&gt;, bold is &lt;em&gt;700&lt;/em&gt;. Leave empty to use default weight.&lt;br/&gt;&lt;strong style="color:red;"&gt;Important&lt;/strong&gt;: if you selected a font from Google Fonts, note that some fonts are not available in all weights. Refer to &lt;a target="_blank" href="http://www.google.com/webfonts"&gt;Google Web Fonts&lt;/a&gt; to check if the selected weight is available for your font.</comment>
+                    <depends>
+                        <field id="h2_font">1</field>
+                    </depends>
+                </field>
+
+                <field id="heading_h3_font" translate="label comment" type="text" sortOrder="240" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Heading 3 Font</label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                </field>
+                <field id="h3_font" translate="label comment" type="select" sortOrder="250" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="h3_font_size" translate="label comment" type="select" sortOrder="260" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Basic Font Size</label>
+                    <source_model>CleverSoft\Base\Model\System\Config\Source\Design\Font\Size\Basic</source_model>
+                    <comment>Size of the regular text. Font size of most of the other elements will be
+                        calculated relative to this value.
+                    </comment>
+                    <depends>
+                        <field id="h3_font">1</field>
+                    </depends>
+                </field>
+                <field id="h3_primary_font_family_group" translate="label" sortOrder="270" type="select" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Font Family</label>
+                    <comment>Select predefined font stack, Google Fonts or type in your custom font stack.</comment>
+                    <source_model>CleverSoft\Base\Model\System\Config\Source\Design\Font\Family\Groupcustomgoogle</source_model>
+                    <depends>
+                        <field id="h3_font">1</field>
+                    </depends>
+                </field>
+                <field id="h3_primary_font_family_custom" translate="label" sortOrder="280" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Custom</label>
+                    <comment>Type in your custom font stack, e.g.:&lt;br/&gt;&lt;em&gt;Arial, "Helvetica Neue", Helvetica, sans-serif&lt;/em&gt;.&lt;br/&gt;&lt;strong&gt;Important&lt;/strong&gt;: Do not add trailing semicolon.</comment>
+                    <depends>
+                        <field id="h3_font">1</field>
+                        <field id="h3_primary_font_family_group">custom</field>
+                    </depends>
+                </field>
+                <field id="h3_primary_font_family" translate="label" sortOrder="290" type="select" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Google Fonts</label>
+                    <comment>Font preview is available on &lt;a target="_blank" href="http://www.google.com/webfonts"&gt;Google Web Fonts&lt;/a&gt;&lt;br/&gt;&lt;strong style="color:red;"&gt;Important&lt;/strong&gt;: most of the fonts from Google are not available in all weights. Make sure that you specified correct weight (field &lt;strong&gt;Font Weight&lt;/strong&gt; below) for selected font. Otherwise font will not be displayed. Refer to &lt;a target="_blank" href="http://www.google.com/webfonts"&gt;Google Web Fonts&lt;/a&gt; to check if the selected weight is available for your font.</comment>
+                    <source_model>CleverSoft\Base\Model\System\Config\Source\Design\Font\Family\Google</source_model>
+                    <depends>
+                        <field id="h3_font">1</field>
+                        <field id="h3_primary_font_family_group">google</field>
+                    </depends>
+                </field>
+                <field id="h3_primary_char_subset" translate="label" sortOrder="300" type="multiselect" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Character Sets</label>
+                    <comment>Some of the fonts support multiple scripts (like Latin and Cyrillic for example). You need to select at least one character set.&lt;br/&gt;&lt;strong style="color:red;"&gt;Important&lt;/strong&gt;: not all fonts support extended character sets. For a complete list of available fonts and font subsets refer to &lt;a target="_blank" href="http://www.google.com/webfonts"&gt;Google Web Fonts&lt;/a&gt;.&lt;br/&gt;&lt;strong style="color:red;"&gt;Important&lt;/strong&gt;: using multiple character sets affects performance, so only select the character sets that you actually need.</comment>
+                    <source_model>CleverSoft\Base\Model\System\Config\Source\Design\Font\Google\Subset</source_model>
+                    <depends>
+                        <field id="h3_font">1</field>
+                        <field id="h3_primary_font_family_group">google</field>
+                    </depends>
+                </field>
+                <field id="h3_primary_font_weight" translate="label" sortOrder="310" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Font Weight</label>
+                    <comment>Specify the weight of the font. You can only use &lt;strong&gt;numeric font weights&lt;/strong&gt; which are available for the CSS property &lt;a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight"&gt;&lt;em&gt;font-weight&lt;/em&gt;&lt;/a&gt;. E.g. normal weight is &lt;em&gt;400&lt;/em&gt;, bold is &lt;em&gt;700&lt;/em&gt;. Leave empty to use default weight.&lt;br/&gt;&lt;strong style="color:red;"&gt;Important&lt;/strong&gt;: if you selected a font from Google Fonts, note that some fonts are not available in all weights. Refer to &lt;a target="_blank" href="http://www.google.com/webfonts"&gt;Google Web Fonts&lt;/a&gt; to check if the selected weight is available for your font.</comment>
+                    <depends>
+                        <field id="h3_font">1</field>
+                    </depends>
+                </field>
+
+                <field id="heading_h4_font" translate="label comment" type="text" sortOrder="320" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Heading 4 Font</label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                </field>
+                <field id="h4_font" translate="label comment" type="select" sortOrder="330" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="h4_font_size" translate="label comment" type="select" sortOrder="340" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Basic Font Size</label>
+                    <source_model>CleverSoft\Base\Model\System\Config\Source\Design\Font\Size\Basic</source_model>
+                    <comment>Size of the regular text. Font size of most of the other elements will be
+                        calculated relative to this value.
+                    </comment>
+                    <depends>
+                        <field id="h4_font">1</field>
+                    </depends>
+                </field>
+                <field id="h4_primary_font_family_group" translate="label" sortOrder="350" type="select" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Font Family</label>
+                    <comment>Select predefined font stack, Google Fonts or type in your custom font stack.</comment>
+                    <source_model>CleverSoft\Base\Model\System\Config\Source\Design\Font\Family\Groupcustomgoogle</source_model>
+                    <depends>
+                        <field id="h4_font">1</field>
+                    </depends>
+                </field>
+                <field id="h4_primary_font_family_custom" translate="label" sortOrder="360" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Custom</label>
+                    <comment>Type in your custom font stack, e.g.:&lt;br/&gt;&lt;em&gt;Arial, "Helvetica Neue", Helvetica, sans-serif&lt;/em&gt;.&lt;br/&gt;&lt;strong&gt;Important&lt;/strong&gt;: Do not add trailing semicolon.</comment>
+                    <depends>
+                        <field id="h4_font">1</field>
+                        <field id="h4_primary_font_family_group">custom</field>
+                    </depends>
+                </field>
+                <field id="h4_primary_font_family" translate="label" sortOrder="370" type="select" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Google Fonts</label>
+                    <comment>Font preview is available on &lt;a target="_blank" href="http://www.google.com/webfonts"&gt;Google Web Fonts&lt;/a&gt;&lt;br/&gt;&lt;strong style="color:red;"&gt;Important&lt;/strong&gt;: most of the fonts from Google are not available in all weights. Make sure that you specified correct weight (field &lt;strong&gt;Font Weight&lt;/strong&gt; below) for selected font. Otherwise font will not be displayed. Refer to &lt;a target="_blank" href="http://www.google.com/webfonts"&gt;Google Web Fonts&lt;/a&gt; to check if the selected weight is available for your font.</comment>
+                    <source_model>CleverSoft\Base\Model\System\Config\Source\Design\Font\Family\Google</source_model>
+                    <depends>
+                        <field id="h4_font">1</field>
+                        <field id="h4_primary_font_family_group">google</field>
+                    </depends>
+                </field>
+                <field id="h4_primary_char_subset" translate="label" sortOrder="380" type="multiselect" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Character Sets</label>
+                    <comment>Some of the fonts support multiple scripts (like Latin and Cyrillic for example). You need to select at least one character set.&lt;br/&gt;&lt;strong style="color:red;"&gt;Important&lt;/strong&gt;: not all fonts support extended character sets. For a complete list of available fonts and font subsets refer to &lt;a target="_blank" href="http://www.google.com/webfonts"&gt;Google Web Fonts&lt;/a&gt;.&lt;br/&gt;&lt;strong style="color:red;"&gt;Important&lt;/strong&gt;: using multiple character sets affects performance, so only select the character sets that you actually need.</comment>
+                    <source_model>CleverSoft\Base\Model\System\Config\Source\Design\Font\Google\Subset</source_model>
+                    <depends>
+                        <field id="h4_font">1</field>
+                        <field id="h4_primary_font_family_group">google</field>
+                    </depends>
+                </field>
+                <field id="h4_primary_font_weight" translate="label" sortOrder="390" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Font Weight</label>
+                    <comment>Specify the weight of the font. You can only use &lt;strong&gt;numeric font weights&lt;/strong&gt; which are available for the CSS property &lt;a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight"&gt;&lt;em&gt;font-weight&lt;/em&gt;&lt;/a&gt;. E.g. normal weight is &lt;em&gt;400&lt;/em&gt;, bold is &lt;em&gt;700&lt;/em&gt;. Leave empty to use default weight.&lt;br/&gt;&lt;strong style="color:red;"&gt;Important&lt;/strong&gt;: if you selected a font from Google Fonts, note that some fonts are not available in all weights. Refer to &lt;a target="_blank" href="http://www.google.com/webfonts"&gt;Google Web Fonts&lt;/a&gt; to check if the selected weight is available for your font.</comment>
+                    <depends>
+                        <field id="h4_font">1</field>
+                    </depends>
+                </field>
+
+                <field id="heading_h5_font" translate="label comment" type="text" sortOrder="480" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Heading 5 Font</label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                </field>
+                <field id="h5_font" translate="label comment" type="select" sortOrder="490" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="h5_font_size" translate="label comment" type="select" sortOrder="500" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Basic Font Size</label>
+                    <source_model>CleverSoft\Base\Model\System\Config\Source\Design\Font\Size\Basic</source_model>
+                    <comment>Size of the regular text. Font size of most of the other elements will be
+                        calculated relative to this value.
+                    </comment>
+                    <depends>
+                        <field id="h5_font">1</field>
+                    </depends>
+                </field>
+                <field id="h5_primary_font_family_group" translate="label" sortOrder="510" type="select" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Font Family</label>
+                    <comment>Select predefined font stack, Google Fonts or type in your custom font stack.</comment>
+                    <source_model>CleverSoft\Base\Model\System\Config\Source\Design\Font\Family\Groupcustomgoogle</source_model>
+                    <depends>
+                        <field id="h5_font">1</field>
+                    </depends>
+                </field>
+                <field id="h5_primary_font_family_custom" translate="label" sortOrder="520" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Custom</label>
+                    <comment>Type in your custom font stack, e.g.:&lt;br/&gt;&lt;em&gt;Arial, "Helvetica Neue", Helvetica, sans-serif&lt;/em&gt;.&lt;br/&gt;&lt;strong&gt;Important&lt;/strong&gt;: Do not add trailing semicolon.</comment>
+                    <depends>
+                        <field id="h5_font">1</field>
+                        <field id="h5_primary_font_family_group">custom</field>
+                    </depends>
+                </field>
+                <field id="h5_primary_font_family" translate="label" sortOrder="530" type="select" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Google Fonts</label>
+                    <comment>Font preview is available on &lt;a target="_blank" href="http://www.google.com/webfonts"&gt;Google Web Fonts&lt;/a&gt;&lt;br/&gt;&lt;strong style="color:red;"&gt;Important&lt;/strong&gt;: most of the fonts from Google are not available in all weights. Make sure that you specified correct weight (field &lt;strong&gt;Font Weight&lt;/strong&gt; below) for selected font. Otherwise font will not be displayed. Refer to &lt;a target="_blank" href="http://www.google.com/webfonts"&gt;Google Web Fonts&lt;/a&gt; to check if the selected weight is available for your font.</comment>
+                    <source_model>CleverSoft\Base\Model\System\Config\Source\Design\Font\Family\Google</source_model>
+                    <depends>
+                        <field id="h5_font">1</field>
+                        <field id="h5_primary_font_family_group">google</field>
+                    </depends>
+                </field>
+                <field id="h5_primary_char_subset" translate="label" sortOrder="540" type="multiselect" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Character Sets</label>
+                    <comment>Some of the fonts support multiple scripts (like Latin and Cyrillic for example). You need to select at least one character set.&lt;br/&gt;&lt;strong style="color:red;"&gt;Important&lt;/strong&gt;: not all fonts support extended character sets. For a complete list of available fonts and font subsets refer to &lt;a target="_blank" href="http://www.google.com/webfonts"&gt;Google Web Fonts&lt;/a&gt;.&lt;br/&gt;&lt;strong style="color:red;"&gt;Important&lt;/strong&gt;: using multiple character sets affects performance, so only select the character sets that you actually need.</comment>
+                    <source_model>CleverSoft\Base\Model\System\Config\Source\Design\Font\Google\Subset</source_model>
+                    <depends>
+                        <field id="h5_font">1</field>
+                        <field id="h5_primary_font_family_group">google</field>
+                    </depends>
+                </field>
+                <field id="h5_primary_font_weight" translate="label" sortOrder="550" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Font Weight</label>
+                    <comment>Specify the weight of the font. You can only use &lt;strong&gt;numeric font weights&lt;/strong&gt; which are available for the CSS property &lt;a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight"&gt;&lt;em&gt;font-weight&lt;/em&gt;&lt;/a&gt;. E.g. normal weight is &lt;em&gt;400&lt;/em&gt;, bold is &lt;em&gt;700&lt;/em&gt;. Leave empty to use default weight.&lt;br/&gt;&lt;strong style="color:red;"&gt;Important&lt;/strong&gt;: if you selected a font from Google Fonts, note that some fonts are not available in all weights. Refer to &lt;a target="_blank" href="http://www.google.com/webfonts"&gt;Google Web Fonts&lt;/a&gt; to check if the selected weight is available for your font.</comment>
+                    <depends>
+                        <field id="h5_font">1</field>
+                    </depends>
+                </field>
+
+                <field id="heading_h6_font" translate="label comment" type="text" sortOrder="560" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Heading 6 Font</label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                </field>
+                <field id="h6_font" translate="label comment" type="select" sortOrder="570" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="h6_font_size" translate="label comment" type="select" sortOrder="580" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Basic Font Size</label>
+                    <source_model>CleverSoft\Base\Model\System\Config\Source\Design\Font\Size\Basic</source_model>
+                    <comment>Size of the regular text. Font size of most of the other elements will be
+                        calculated relative to this value.
+                    </comment>
+                    <depends>
+                        <field id="h6_font">1</field>
+                    </depends>
+                </field>
+                <field id="h6_primary_font_family_group" translate="label" sortOrder="590" type="select" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Font Family</label>
+                    <comment>Select predefined font stack, Google Fonts or type in your custom font stack.</comment>
+                    <source_model>CleverSoft\Base\Model\System\Config\Source\Design\Font\Family\Groupcustomgoogle</source_model>
+                    <depends>
+                        <field id="h6_font">1</field>
+                    </depends>
+                </field>
+                <field id="h6_primary_font_family_custom" translate="label" sortOrder="590" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Custom</label>
+                    <comment>Type in your custom font stack, e.g.:&lt;br/&gt;&lt;em&gt;Arial, "Helvetica Neue", Helvetica, sans-serif&lt;/em&gt;.&lt;br/&gt;&lt;strong&gt;Important&lt;/strong&gt;: Do not add trailing semicolon.</comment>
+                    <depends>
+                        <field id="h6_font">1</field>
+                        <field id="h6_primary_font_family_group">custom</field>
+                    </depends>
+                </field>
+                <field id="h6_primary_font_family" translate="label" sortOrder="600" type="select" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Google Fonts</label>
+                    <comment>Font preview is available on &lt;a target="_blank" href="http://www.google.com/webfonts"&gt;Google Web Fonts&lt;/a&gt;&lt;br/&gt;&lt;strong style="color:red;"&gt;Important&lt;/strong&gt;: most of the fonts from Google are not available in all weights. Make sure that you specified correct weight (field &lt;strong&gt;Font Weight&lt;/strong&gt; below) for selected font. Otherwise font will not be displayed. Refer to &lt;a target="_blank" href="http://www.google.com/webfonts"&gt;Google Web Fonts&lt;/a&gt; to check if the selected weight is available for your font.</comment>
+                    <source_model>CleverSoft\Base\Model\System\Config\Source\Design\Font\Family\Google</source_model>
+                    <depends>
+                        <field id="h6_font">1</field>
+                        <field id="h6_primary_font_family_group">google</field>
+                    </depends>
+                </field>
+                <field id="h6_primary_char_subset" translate="label" sortOrder="610" type="multiselect" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Character Sets</label>
+                    <comment>Some of the fonts support multiple scripts (like Latin and Cyrillic for example). You need to select at least one character set.&lt;br/&gt;&lt;strong style="color:red;"&gt;Important&lt;/strong&gt;: not all fonts support extended character sets. For a complete list of available fonts and font subsets refer to &lt;a target="_blank" href="http://www.google.com/webfonts"&gt;Google Web Fonts&lt;/a&gt;.&lt;br/&gt;&lt;strong style="color:red;"&gt;Important&lt;/strong&gt;: using multiple character sets affects performance, so only select the character sets that you actually need.</comment>
+                    <source_model>CleverSoft\Base\Model\System\Config\Source\Design\Font\Google\Subset</source_model>
+                    <depends>
+                        <field id="h6_font">1</field>
+                        <field id="h6_primary_font_family_group">google</field>
+                    </depends>
+                </field>
+                <field id="h6_primary_font_weight" translate="label" sortOrder="620" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Font Weight</label>
+                    <comment>Specify the weight of the font. You can only use &lt;strong&gt;numeric font weights&lt;/strong&gt; which are available for the CSS property &lt;a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight"&gt;&lt;em&gt;font-weight&lt;/em&gt;&lt;/a&gt;. E.g. normal weight is &lt;em&gt;400&lt;/em&gt;, bold is &lt;em&gt;700&lt;/em&gt;. Leave empty to use default weight.&lt;br/&gt;&lt;strong style="color:red;"&gt;Important&lt;/strong&gt;: if you selected a font from Google Fonts, note that some fonts are not available in all weights. Refer to &lt;a target="_blank" href="http://www.google.com/webfonts"&gt;Google Web Fonts&lt;/a&gt; to check if the selected weight is available for your font.</comment>
+                    <depends>
+                        <field id="h6_font">1</field>
+                    </depends>
+                </field>
+
+            </group>
+            <group id="page" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Page Wrapper</label>
+                <field id="heading_outer" translate="label" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Outer Container</label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                </field>
+                <field id="bg_color" translate="label comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Background Color</label>
+                    <frontend_model>CleverSoft\Base\Block\Adminhtml\System\Config\Form\Field\Color</frontend_model>
+                </field>
+                <field id="bg_image" translate="label" sortOrder="50" type="image" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Background Image</label>
+                    <backend_model>Magento\Config\Model\Config\Backend\Image</backend_model>
+                    <base_url type="media" scope_info="1">wysiwyg/cleversoft/background</base_url>
+                    <upload_dir config="system/filesystem/media" scope_info="1">wysiwyg/cleversoft/background</upload_dir>
+                </field>
+                <field id="bg_repeat" translate="label" sortOrder="60" type="select" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Background Repeat</label>
+                    <source_model>CleverSoft\Base\Model\System\Config\Source\Css\Background\Repeat</source_model>
+                </field>
+                <field id="bg_attachment" translate="label" sortOrder="70" type="select" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Background Attachment</label>
+                    <source_model>CleverSoft\Base\Model\System\Config\Source\Css\Background\Attachment</source_model>
+                </field>
+                <field id="bg_positionx" translate="label" sortOrder="80" type="select" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Background Position (x-axis)</label>
+                    <source_model>CleverSoft\Base\Model\System\Config\Source\Css\Background\Positionx</source_model>
+                </field>
+                <field id="bg_positiony" translate="label" sortOrder="90" type="select" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Background Position (y-axis)</label>
+                    <source_model>CleverSoft\Base\Model\System\Config\Source\Css\Background\Positiony</source_model>
+                </field>
+                <field id="tex" translate="label" sortOrder="100" type="select" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Pattern</label>
+                    <frontend_model>CleverSoft\Base\Block\Adminhtml\System\Config\Form\Field\Tex</frontend_model>
+                    <source_model>CleverSoft\Base\Model\System\Config\Source\Design\Tex\Names</source_model>
+                </field>
+                <field id="heading_inner" translate="label" sortOrder="200" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Inner Container</label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                </field>
+                <field id="content_padding_side" translate="label" sortOrder="210" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Side Padding</label>
+                    <comment>Add padding to the left and right side of inner container of all sections of the page. Leave empty to use default value. Specify value in pixels.</comment>
+                    <validate>validate-number validate-number-range number-range-0-50</validate>
+                </field>
+            </group>
+            <group id="header" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Header</label>
+                <comment>In this tab, you can configure the header section of the page located at the very top.</comment>
+                <field id="heading_general" translate="label comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>General</label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                </field>
+                <field id="color" translate="label comment" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Text Color</label>
+                    <frontend_model>CleverSoft\Base\Block\Adminhtml\System\Config\Form\Field\Color</frontend_model>
+                </field>
+                <field id="link_color" translate="label" sortOrder="30" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Link Color</label>
+                    <frontend_model>CleverSoft\Base\Block\Adminhtml\System\Config\Form\Field\Color</frontend_model>
+                </field>
+                <field id="link_hover_color" translate="label" sortOrder="40" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Link Hover Color</label>
+                    <frontend_model>CleverSoft\Base\Block\Adminhtml\System\Config\Form\Field\Color</frontend_model>
+                </field>
+                <field id="header_opacity" translate="label comment" type="text" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Header Opacity</label>
+                    <comment>Controls the opacity for the header. Opacity only works with ranges between 0 (transparent) and 1 (opaque). ex: .8</comment>
+                </field>
+
+                <field id="heading_gap" translate="label" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Outer Container</label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                </field>
+                <field id="bg_color" translate="label" sortOrder="110" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Background Color</label>
+                    <frontend_model>CleverSoft\Base\Block\Adminhtml\System\Config\Form\Field\Color</frontend_model>
+                </field>
+
+                <field id="bg_image" translate="label" sortOrder="120" type="image" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Background Image</label>
+                    <backend_model>Magento\Config\Model\Config\Backend\Image</backend_model>
+                    <base_url type="media" scope_info="1">wysiwyg/cleversoft/background</base_url>
+                    <upload_dir config="system/filesystem/media" scope_info="1">wysiwyg/cleversoft/background</upload_dir>
+                </field>
+                <field id="bg_repeat" translate="label" sortOrder="130" type="select" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Background Repeat</label>
+                    <source_model>CleverSoft\Base\Model\System\Config\Source\Css\Background\Repeat</source_model>
+                </field>
+                <field id="bg_attachment" translate="label" sortOrder="140" type="select" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Background Attachment</label>
+                    <source_model>CleverSoft\Base\Model\System\Config\Source\Css\Background\Attachment</source_model>
+                </field>
+                <field id="bg_positionx" translate="label" sortOrder="150" type="select" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Background Position (x-axis)</label>
+                    <source_model>CleverSoft\Base\Model\System\Config\Source\Css\Background\Positionx</source_model>
+                </field>
+                <field id="bg_positiony" translate="label" sortOrder="160" type="select" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Background Position (y-axis)</label>
+                    <source_model>CleverSoft\Base\Model\System\Config\Source\Css\Background\Positiony</source_model>
+                </field>
+                <field id="padding_top" translate="label" sortOrder="180" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Top Padding</label>
+                    <comment>Specify additional gap above the header section. Value in pixels.</comment>
+                    <validate>validate-number validate-number-range number-range-0-50</validate>
+                </field>
+                <field id="padding_bottom" translate="label" sortOrder="190" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Bottom Padding</label>
+                    <comment>Specify additional gap below the header section. Value in pixels.</comment>
+                    <validate>validate-number validate-number-range number-range-0-50</validate>
+                </field>
+                <field id="heading_inner" translate="label" sortOrder="300" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Inner Container</label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                </field>
+                <field id="inner_bg_color" translate="label" sortOrder="310" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Inner Background Color</label>
+                    <source_model>CleverSoft\Base\Model\System\Config\Source\Css\Background\Positionx</source_model>
+                </field>
+            </group>
+            <group id="header_top" translate="label" sortOrder="45" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Header - Top</label>
+                <field id="color" translate="label" sortOrder="10" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Text Color</label>
+                    <frontend_model>CleverSoft\Base\Block\Adminhtml\System\Config\Form\Field\Color</frontend_model>
+                </field>
+                <field id="link_color" translate="label" sortOrder="20" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Link Color</label>
+                    <frontend_model>CleverSoft\Base\Block\Adminhtml\System\Config\Form\Field\Color</frontend_model>
+                </field>
+                <field id="link_hover_color" translate="label" sortOrder="30" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Link Hover Color</label>
+                    <frontend_model>CleverSoft\Base\Block\Adminhtml\System\Config\Form\Field\Color</frontend_model>
+                </field>
+                <field id="line_height" translate="label" sortOrder="50" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Line Height</label>
+                    <comment>Minimum height of line of text. It works similar to CSS property &lt;a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/line-height"&gt;&lt;em&gt;line-height&lt;/em&gt;&lt;/a&gt;.</comment>
+                    <validate>validate-number validate-number-range number-range-0-100</validate>
+                </field>
+                <field id="heading_outer" translate="label" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Outer Container</label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                </field>
+                <field id="bg_color" translate="label" sortOrder="110" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Background Color</label>
+                    <frontend_model>CleverSoft\Base\Block\Adminhtml\System\Config\Form\Field\Color</frontend_model>
+                </field>
+                <field id="padding_top" translate="label" sortOrder="120" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Top Padding</label>
+                    <comment>Specify additional gap above this section of the header. Value in pixels.</comment>
+                    <validate>validate-number validate-number-range number-range-0-50</validate>
+                </field>
+                <field id="padding_bottom" translate="label" sortOrder="130" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Bottom Padding</label>
+                    <comment>Specify additional gap below this section of the header. Value in pixels.</comment>
+                    <validate>validate-number validate-number-range number-range-0-50</validate>
+                </field>
+                <field id="heading_inner" translate="label" sortOrder="300" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Inner Container</label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                </field>
+                <field id="inner_bg_color" translate="label" sortOrder="310" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Inner Background Color</label>
+                    <frontend_model>CleverSoft\Base\Block\Adminhtml\System\Config\Form\Field\Color</frontend_model>
+                </field>
+            </group>
+            <group id="header_primary" translate="label" sortOrder="50" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Header - Primary</label>
+                <field id="heading_outer" translate="label" sortOrder="190" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Outer Container</label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                </field>
+                <field id="line_height" translate="label" sortOrder="200" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Line Height</label>
+                    <comment>Minimum height of line of text. It works similar to CSS property &lt;a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/line-height"&gt;&lt;em&gt;line-height&lt;/em&gt;&lt;/a&gt;.</comment>
+                    <validate>validate-number validate-number-range number-range-0-100</validate>
+                </field>
+                <field id="bg_color" translate="label" sortOrder="210" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Background Color</label>
+                    <frontend_model>CleverSoft\Base\Block\Adminhtml\System\Config\Form\Field\Color</frontend_model>
+                </field>
+                <field id="padding_top" translate="label" sortOrder="220" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Top Padding</label>
+                    <comment>Specify additional gap above this section of the header. Value in pixels.</comment>
+                    <validate>validate-number validate-number-range number-range-0-50</validate>
+                </field>
+                <field id="padding_bottom" translate="label" sortOrder="230" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Bottom Padding</label>
+                    <comment>Specify additional gap below this section of the header. Value in pixels.</comment>
+                    <validate>validate-number validate-number-range number-range-0-50</validate>
+                </field>
+                <field id="heading_inner" translate="label" sortOrder="300" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Inner Container</label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                </field>
+                <field id="inner_bg_color" translate="label" sortOrder="310" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Inner Background Color</label>
+                    <frontend_model>CleverSoft\Base\Block\Adminhtml\System\Config\Form\Field\Color</frontend_model>
+                </field>
+            </group>
+            <group id="m_header" translate="label" sortOrder="55" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Mobile Header</label>
+                <field id="heading_outer" translate="label" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Outer Container</label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                </field>
+                <field id="bg_color" translate="label" sortOrder="110" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Background Color</label>
+                    <frontend_model>CleverSoft\Base\Block\Adminhtml\System\Config\Form\Field\Color</frontend_model>
+                    <backend_model>CleverSoft\Base\Model\System\Config\Header\Validatetransparent</backend_model>
+                </field>
+                <field id="padding_top" translate="label" sortOrder="120" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Top Padding</label>
+                    <comment>Specify additional gap above this section of the header. Value in pixels.</comment>
+                    <validate>validate-number validate-number-range number-range-0-50</validate>
+                </field>
+                <field id="padding_bottom" translate="label" sortOrder="130" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Bottom Padding</label>
+                    <comment>Specify additional gap below this section of the header. Value in pixels.</comment>
+                    <validate>validate-number validate-number-range number-range-0-50</validate>
+                </field>
+                <field id="heading_inner" translate="label" sortOrder="300" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Inner Container</label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                </field>
+                <field id="inner_bg_color" translate="label" sortOrder="310" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Inner Background Color</label>
+                    <frontend_model>CleverSoft\Base\Block\Adminhtml\System\Config\Form\Field\Color</frontend_model>
+                    <backend_model>CleverSoft\Base\Model\System\Config\Header\Validatetransparent</backend_model>
+                </field>
+                <field id="content_padding_side" translate="label" sortOrder="340" type="select" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Side Padding</label>
+                    <tooltip>- &lt;strong&gt;Use Default&lt;/strong&gt; - use the default side padding (defined in &lt;em&gt;Page &amp;gt; Inner Container &amp;gt; Side Padding&lt;/em&gt;).&lt;br/&gt;- &lt;strong&gt;No Side Padding&lt;/strong&gt; - remove side padding.&lt;br/&gt;- &lt;strong&gt;Full Width&lt;/strong&gt; - stretch the inner container of this section to full width and use the default side padding.&lt;br/&gt;- &lt;strong&gt;Full Width, No Side Padding&lt;/strong&gt; - stretch the inner container of this section to full width and remove side padding.</tooltip>
+                    <source_model>CleverSoft\Base\Model\System\Config\Source\Design\Section\Sidepadding</source_model>
+                </field>
+            </group>
+            <group id="nav" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Main Menu</label>
+                <field id="inner_bg_color" translate="label comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Background Color</label>
+                    <frontend_model>CleverSoft\Base\Block\Adminhtml\System\Config\Form\Field\Color</frontend_model>
+                </field>
+                <field id="font_size" translate="label comment" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Font Size</label>
+                    <comment>Top-level items</comment>
+                    <validate>validate-number validate-number-range number-range-8-25</validate>
+                </field>
+                <field id="font_uppercase" translate="label comment" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Uppercase</label>
+                    <comment>Top-level items</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="heading_menubar" translate="label comment" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Colors</label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                </field>
+                <field id="sticky_header" translate="label comment" type="text" sortOrder="45" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Sticky Header</label>
+                    <frontend_model>CleverSoft\Base\Block\Adminhtml\System\Config\Form\Field\Color</frontend_model>
+                </field>
+                <field id="color" translate="label comment" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Item Text Color</label>
+                    <frontend_model>CleverSoft\Base\Block\Adminhtml\System\Config\Form\Field\Color</frontend_model>
+                </field>
+                <field id="hover_bg_color" translate="label comment" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Hover Item Background Color</label>
+                    <frontend_model>CleverSoft\Base\Block\Adminhtml\System\Config\Form\Field\Color</frontend_model>
+                </field>
+                <field id="hover_color" translate="label comment" type="text" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Hover Item Text Color</label>
+                    <frontend_model>CleverSoft\Base\Block\Adminhtml\System\Config\Form\Field\Color</frontend_model>
+                </field>
+                <field id="heading_canvasmenu" translate="label comment" type="text" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Canvas Menu</label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                </field>
+                <field id="canvas_bg_content_color" translate="label comment" type="text" sortOrder="110" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Canvas Background Content Color</label>
+                    <frontend_model>CleverSoft\Base\Block\Adminhtml\System\Config\Form\Field\Color</frontend_model>
+                </field>
+                <field id="canvas_bg_color" translate="label comment" type="text" sortOrder="120" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Item Canvas Background Color</label>
+                    <frontend_model>CleverSoft\Base\Block\Adminhtml\System\Config\Form\Field\Color</frontend_model>
+                </field>
+                <field id="canvas_color" translate="label comment" type="text" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Item Canvas Text Color</label>
+                    <frontend_model>CleverSoft\Base\Block\Adminhtml\System\Config\Form\Field\Color</frontend_model>
+                </field>
+                <field id="canvas_hover_color" translate="label comment" type="text" sortOrder="150" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Canvas Hover Item Text Color</label>
+                    <frontend_model>CleverSoft\Base\Block\Adminhtml\System\Config\Form\Field\Color</frontend_model>
+                </field>
+            </group>
+            <group id="main" translate="label" sortOrder="100" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Main Content</label>
+                <comment>In this tab, you can configure the main content area - section of the page located
+                    between the header and the footer.</comment>
+                <field id="heading_gap" translate="label" sortOrder="200" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Outer Container</label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                </field>
+                <field id="bg_color" translate="label" sortOrder="210" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Background Color</label>
+                    <frontend_model>CleverSoft\Base\Block\Adminhtml\System\Config\Form\Field\Color</frontend_model>
+                </field>
+                <field id="tex" translate="label" sortOrder="220" type="select" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Pattern</label>
+                    <frontend_model>CleverSoft\Base\Block\Adminhtml\System\Config\Form\Field\Tex</frontend_model>
+                    <source_model>CleverSoft\Base\Model\System\Config\Source\Design\Tex\Names</source_model>
+                </field>
+                <field id="padding_top" translate="label" sortOrder="230" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Top Padding</label>
+                    <comment>Specify additional gap above the main section of the page. Value in pixels.</comment>
+                    <validate>validate-number validate-number-range number-range-0-100</validate>
+                </field>
+                <field id="padding_bottom" translate="label" sortOrder="240" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Bottom Padding</label>
+                    <comment>Specify additional gap below the main section of the page. Value in pixels.</comment>
+                    <validate>validate-number validate-number-range number-range-0-100</validate>
+                </field>
+                <field id="heading_inner" translate="label" sortOrder="300" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Inner Container</label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                </field>
+                <field id="inner_bg_color" translate="label" sortOrder="310" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Inner Background Color</label>
+                    <frontend_model>CleverSoft\Base\Block\Adminhtml\System\Config\Form\Field\Color</frontend_model>
+                </field>
+                <field id="content_padding_top" translate="label" sortOrder="320" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Top Padding</label>
+                    <tooltip>Specify additional space at the top of the inner container of this section. Value in pixels.</tooltip>
+                    <validate>validate-number validate-number-range number-range-0-100</validate>
+                </field>
+                <field id="content_padding_bottom" translate="label" sortOrder="330" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Bottom Padding</label>
+                    <tooltip>Specify additional space at the bottom of the inner container of this section. Value in pixels.</tooltip>
+                    <validate>validate-number validate-number-range number-range-0-100</validate>
+                </field>
+                <field id="content_padding_side" translate="label" sortOrder="350" type="select" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Side Padding</label>
+                    <tooltip>- &lt;strong&gt;Use Default&lt;/strong&gt; - use the default side padding (defined in &lt;em&gt;Page &amp;gt; Inner Container &amp;gt; Side Padding&lt;/em&gt;).&lt;br/&gt;- &lt;strong&gt;No Side Padding&lt;/strong&gt; - remove side padding.&lt;br/&gt;- &lt;strong&gt;Full Width&lt;/strong&gt; - stretch the inner container of this section to full width and use the default side padding.&lt;br/&gt;- &lt;strong&gt;Full Width, No Side Padding&lt;/strong&gt; - stretch the inner container of this section to full width and remove side padding.</tooltip>
+                    <source_model>CleverSoft\Base\Model\System\Config\Source\Design\Section\Sidepadding</source_model>
+                </field>
+            </group>
+            <group id="footer_container" translate="label" type="text" sortOrder="110" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Page Footer</label>
+                <field id="bg_color" translate="label comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Background Color</label>
+                    <frontend_model>CleverSoft\Base\Block\Adminhtml\System\Config\Form\Field\Color</frontend_model>
+                </field>
+                <field id="link_color" translate="label comment" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Link Color</label>
+                    <frontend_model>CleverSoft\Base\Block\Adminhtml\System\Config\Form\Field\Color</frontend_model>
+                </field>
+                <field id="hover_color" translate="label comment" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Link Hover Color</label>
+                    <frontend_model>CleverSoft\Base\Block\Adminhtml\System\Config\Form\Field\Color</frontend_model>
+                </field>
+                <field id="color" translate="label comment" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Text Color</label>
+                    <frontend_model>CleverSoft\Base\Block\Adminhtml\System\Config\Form\Field\Color</frontend_model>
+                </field>
+            </group>
+            <group id="footer_copyright" translate="label" type="text" sortOrder="120" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Footer - Copyright</label>
+                <field id="bg_color" translate="label comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Background Color</label>
+                    <frontend_model>CleverSoft\Base\Block\Adminhtml\System\Config\Form\Field\Color</frontend_model>
+                </field>
+                <field id="color" translate="label comment" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Text Color</label>
+                    <frontend_model>CleverSoft\Base\Block\Adminhtml\System\Config\Form\Field\Color</frontend_model>
+                </field>
+            </group>
+            <group id="product_detail" translate="label" type="text" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Product Page</label>
+                <field id="bg_color" translate="label comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Background Color</label>
+                    <frontend_model>CleverSoft\Base\Block\Adminhtml\System\Config\Form\Field\Color</frontend_model>
+                </field>
+            </group>
+        </section>
+        <section id="cleversoftbase_custom_css" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Custom Css</label>
+            <tab>cleversoftbase</tab>
+            <resource>CleverSoft_Base::config_custom_css</resource>
+            <group id="css_swing_editor" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Custom Css</label>
+                <field id="custom_css_enable" translate="label comment" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Custom Css</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="custom_css" translate="label comment" type="textarea" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Write your own css</label>
+                    <frontend_model>CleverSoft\Base\Block\Adminhtml\System\Config\Form\Field\Css</frontend_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

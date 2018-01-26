@@ -1,0 +1,65 @@
+<div class="contact">
+   <div class="row">
+      <div class="col-xs-12">
+        <div class="contact-maps"><iframe style="border: 0px; width: 100%;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.5133253018125!2d105.80814449999995!3d21.01213699999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab602de9caab%3A0x2defdd20ba3f2eac!2zMTY5IE5ndXnhu4VuIE5n4buNYyBWxaksIFRydW5nIEhvw6AsIEPhuqd1IEdp4bqleQ!5e0!3m2!1svi!2s!4v1395192834951" height="450" frameborder="0"></iframe></div>
+      </div>
+   </div>
+   <div class="row">
+      <div class="col-xs-12 col-sm-6 hidden-xs">
+         <div class="contact-title"> 
+                <h3>PLEASE DO GET IN TOUCH!</h3> 
+         </div>
+         <div class="contact-address-block">
+            <div class="contact-address">
+               <div class="media">
+                  <div class="media-body">
+					You already know what we do. Now all you have to do is get in touch with us. Give us a call, shoot us an email, or drop in for some wonderfully brewed coffee. We want to get the conversation started.
+                  </div>
+               </div>
+            </div>
+            <div class="contact-contactinfo">
+               <div class="media">
+                  <div class="media-body contact-telephone"> 
+                    5 th Floor 169 Nguyen Ngoc Vu<br>
+					Cau Giay - Ha Noi
+                  </div>
+               </div>
+               <div class="media">
+                  <div class="media-body contact-mobile">
+                    <p class="s-phone">(+84) 1245 6868 234</p>
+					<p class="s-phone">(+04) 0988 868 123</p>
+                  </div>
+               </div>
+               <div class="media">
+                  <div class="media-body contact-emailto"> 
+                     <p><a href="mailto:stores@company.com">stores@company.com</a></p> 		
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+	  <div class="col-xs-12 col-sm-6 ">
+         <h3>DROP US A LINE</h3>
+         <form class="contact-form"
+          action="<?php /* @escapeNotVerified */ echo $block->getFormAction(); ?>"
+          id="contact-form"
+          method="post"
+          data-hasrequired="<?php /* @escapeNotVerified */ echo __('* Required Fields') ?>"
+          data-mage-init='{"validation":{}}'>
+           
+			<p><textarea name="comment" id="comment" title="<?php /* @escapeNotVerified */ echo __('Your message') ?>" placeholder="<?php /* @escapeNotVerified */ echo __('Your message') ?>" class="input-text" cols="5" rows="3" data-validate="{required:true}"></textarea></p>   
+            <p><input name="name" id="name" title="<?php /* @escapeNotVerified */ echo __('Your name') ?>" placeholder="<?php /* @escapeNotVerified */ echo __('Your name') ?>" value="<?php echo $block->escapeHtml($this->helper('Magento\Contact\Helper\Data')->getUserName()) ?>" class="input-text" type="text" data-validate="{required:true}"/></p>
+            <p><input name="email" id="email" title="<?php /* @escapeNotVerified */ echo __('Your email') ?>" placeholder="<?php /* @escapeNotVerified */ echo __('Your email') ?>" value="<?php echo $block->escapeHtml($this->helper('Magento\Contact\Helper\Data')->getUserEmail()) ?>" class="input-text" type="email" data-validate="{required:true, 'validate-email':true}"/></p>
+            <!--p><input name="telephone" id="telephone" title="<?php /* @escapeNotVerified */ echo __('Phone Number') ?>" placeholder="<?php /* @escapeNotVerified */ echo __('Phone Number') ?>" value="" class="input-text" type="text" /></p-->
+            
+            <?php echo $block->getChildHtml('form.additional.info'); ?>
+            <div class="form-actions">
+               <input type="hidden" name="hideit" id="hideit" value="" />
+                <button type="submit" title="<?php /* @escapeNotVerified */ echo __('send message') ?>" class="btn-novetty btn-raised primary">
+                    <span><?php /* @escapeNotVerified */ echo __('send message') ?></span>
+                </button>		
+            </div>
+         </form>
+      </div>
+   </div>
+</div>

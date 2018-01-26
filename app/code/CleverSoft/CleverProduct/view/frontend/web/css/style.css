@@ -1,0 +1,37 @@
+.tab-pane{
+    display: none;
+}
+.tab-pane.active {
+    display: block;
+}
+.product-items .owl-nav [class*=owl-] a {
+	font-size: 0;
+    cursor: default;
+    pointer-events: none;
+    background: transparent;
+    text-align: center;
+    opacity: 1;
+}
+.product-items .owl-nav [class*=owl-] a:before {
+	color: #272727;
+    font-size: 20px;
+    text-shadow: 1px 1px 0 rgba(255,255,255,0.3);
+    font-family: 'cleversoft' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    letter-spacing: 0;
+    -webkit-font-feature-settings: "liga";
+    -moz-font-feature-settings: "liga=1";
+    -moz-font-feature-settings: "liga";
+    -ms-font-feature-settings: "liga" 1;
+    font-feature-settings: "liga";
+    -webkit-font-variant-ligatures: discretionary-ligatures;
+    font-variant-ligatures: discretionary-ligatures;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.product-items .owl-nav [class*=owl-] a.flex-prev:before { content: "\c024";}
+.product-items .owl-nav [class*=owl-] a.flex-next:before { content: "\c034";}

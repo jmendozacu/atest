@@ -1,0 +1,158 @@
+<?php
+/**
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/**
+ * Product media data template
+ *
+ * @var $block \Magento\Catalog\Block\Product\View\Gallery
+ */
+?>
+<?php
+    $images = $block->getGalleryImages();
+?>
+<div class="gallery-sticky2 _block-content-loading hidden-xs hidden-sm">
+    <div data-role="loader" class="loading-mask" style="display: none">
+        <div class="loader">
+            <img src="<?php /* @escapeNotVerified */ echo $block->getViewFileUrl('images/loader-1.gif'); ?>"
+                 alt="<?php /* @escapeNotVerified */ echo __('Loading...') ?>">
+        </div>
+    </div>
+    <div>
+        <div class="col-md-2 gallery-sticky2-image-thumb-col">
+            <?php foreach ($images as $image) {?>
+                <div class="gallery-sticky2-image-thumb-wrapper">
+                    <a href="">
+                        <img src="<?php echo($image->getData('small_image_url')) ;?>">
+                    </a>
+                </div>
+            <?php } ?>
+        </div>
+        <div class="col-md-10 gallery-sticky2-image-col">
+            <?php foreach ($images as $image) {?>
+                <?php if ($image->getData('media_type') == 'image'): ?>
+                    <div class="gallery-sticky2-image-wrapper">
+                        <a href="<?php echo ($image->getData('large_image_url')); ?>">
+                            <img src="<?php echo($image->getData('medium_image_url')) ;?>">
+                        </a>
+                    </div>
+                <?php elseif ($image->getData('media_type') == 'external-video'): ?>
+                    <div class="gallery-sticky2-video-wrapper" data-media-type="external-video" data-media-url="<?php echo($image->getData('video_url')); ?>">
+                        <a href="<?php echo ($image->getData('large_image_url')); ?>">
+                            <img src="<?php echo($image->getData('medium_image_url')) ;?>">
+                        </a>
+                    </div>
+                <?php endif;?>
+            <?php } ?>
+        </div>
+    </div>
+</div>
+<script>
+    require(["jquery","stickyCustom"], function ($) {
+        var sticky_gallery_content = $(".gallery-sticky2");
+        var sticky_gallery_image_thumb_content = sticky_gallery_content.find('.gallery-sticky2-image-thumb-col');
+        var sticky_gallery_image_content = sticky_gallery_content.find('.gallery-sticky2-image-col');
+        var active_index = -1;
+        sticky_gallery_image_thumb_content.find( ".gallery-sticky2-image-thumb-wrapper a" ).click(function( event ) {
+            event.preventDefault();
+            sticky_gallery_image_thumb_content.find(".gallery-sticky2-image-thumb-wrapper").removeClass('active');
+            $(this).parent().addClass('active');
+            active_index =$(this).parent().index();
+
+
+            var active_div = sticky_gallery_image_content.find(">div:eq(" + active_index + ")");
+
+            var windown_height = $(window).height();
+            var top_position = active_div.offset().top;
+            var height_div = active_div.height();
+
+            var scroll_value = top_position + (height_div / 2) - (windown_height / 2);
+
+            if ($(this).closest('.modal-content').length > 0) {
+                $(this).closest('.modal-content').animate({
+                    scrollTop: scroll_value
+                }, 1000);
+            } else {
+                $('html, body').animate({
+                    scrollTop: scroll_value
+                }, 1000);
+            }
+        });
+
+        var option = {
+            class: {
+                sticky_gallery_content: '.gallery-sticky2',
+                thumb_content: '.gallery-sticky2-image-thumb-col',
+                image_content: '.gallery-sticky2-image-col',
+                image_wrapper: '.gallery-sticky2-image-wrapper',
+                video_wrapper: '.gallery-sticky2-video-wrapper',
+            }
+        };
+
+        $.cleversoft.cleverBaseApllyImageAndVideoEvent(option);
+    });
+</script>
+<!--Fix for jumping content. Loader must be the same size as gallery.-->
+
+<div class="gallery-placeholder _block-content-loading hidden-md hidden-lg" data-gallery-role="gallery-placeholder">
+    <div data-role="loader" class="loading-mask">
+        <div class="loader">
+            <img src="<?php /* @escapeNotVerified */ echo $block->getViewFileUrl('images/loader-1.gif'); ?>"
+                 alt="<?php /* @escapeNotVerified */ echo __('Loading...') ?>">
+        </div>
+    </div>
+
+</div>
+<?php
+$_settingHelper = $this->helper('CleverSoft\Base\Helper\Data');
+/* Image size */
+if(!($main_width = $_settingHelper->getCfg('product_page/main_image_width')))
+    $main_width = $block->getImageAttribute('product_page_image_medium', 'width');
+if(!($main_height = $_settingHelper->getCfg('product_page/main_image_height')))
+    $main_height = $block->getImageAttribute('product_page_image_medium', 'height');
+if(!($thumb_width = $_settingHelper->getCfg('product_page/thumb_image_width')))
+    $thumb_width = $block->getImageAttribute('product_page_image_small', 'width');
+if(!($thumb_height = $_settingHelper->getCfg('product_page/thumb_image_height')))
+    $thumb_height = $block->getImageAttribute('product_page_image_small', 'height');
+?>
+<script type="text/x-magento-init">
+    {
+        "[data-gallery-role=gallery-placeholder]": {
+            "mage/gallery/gallery": {
+                "data": <?php /* @escapeNotVerified */ echo $block->getGalleryImagesJson(); ?>,
+                "options": {
+                    "nav": "<?php /* @escapeNotVerified */ echo $block->getVar("gallery/nav"); ?>",
+                    "loop": <?php /* @escapeNotVerified */ echo $block->getVar("gallery/loop"); ?>,
+                    "keyboard": <?php /* @escapeNotVerified */ echo $block->getVar("gallery/keyboard"); ?>,
+                    "arrows": <?php /* @escapeNotVerified */ echo $block->getVar("gallery/arrows"); ?>,
+                    "allowfullscreen": <?php /* @escapeNotVerified */ echo $block->getVar("gallery/allowfullscreen"); ?>,
+                    "showCaption": <?php /* @escapeNotVerified */ echo $block->getVar("gallery/caption"); ?>,
+                    "width": <?php /* @escapeNotVerified */ echo $main_width; ?>,
+                    "thumbwidth": <?php /* @escapeNotVerified */ echo $thumb_width; ?>,
+                    "thumbheight": <?php /* @escapeNotVerified */ echo $thumb_height ?: $thumb_width; ?>,
+                    "height": <?php /* @escapeNotVerified */ echo $main_height ?: $main_width; ?>,
+                    "transitionduration": <?php /* @escapeNotVerified */  echo $block->getVar("gallery/transition/duration"); ?>,
+                    "transition": "<?php /* @escapeNotVerified */  echo $block->getVar("gallery/transition/effect"); ?>",
+                    "navarrows": <?php /* @escapeNotVerified */  echo $block->getVar("gallery/navarrows"); ?>,
+                    "navtype": "<?php /* @escapeNotVerified */  echo $block->getVar("gallery/navtype"); ?>",
+                    "navdir": "<?php /* @escapeNotVerified */  echo $block->getVar("gallery/navdir"); ?>"
+                },
+                "fullscreen": {
+                    "nav": "<?php /* @escapeNotVerified */  echo $block->getVar("gallery/fullscreen/nav"); ?>",
+                    "loop": <?php /* @escapeNotVerified */  echo $block->getVar("gallery/fullscreen/loop"); ?>,
+                    "navdir": "<?php /* @escapeNotVerified */  echo $block->getVar("gallery/fullscreen/navdir"); ?>",
+                    "arrows": <?php /* @escapeNotVerified */  echo $block->getVar("gallery/fullscreen/arrows"); ?>,
+                    "showCaption": <?php /* @escapeNotVerified */  echo $block->getVar("gallery/fullscreen/caption"); ?>,
+                    "transitionduration": <?php /* @escapeNotVerified */  echo $block->getVar("gallery/fullscreen/transition/duration"); ?>,
+                    "transition": "<?php /* @escapeNotVerified */  echo $block->getVar("gallery/fullscreen/transition/effect"); ?>"
+                },
+                "breakpoints": <?php /* @escapeNotVerified */ echo $block->getBreakpoints(); ?>
+            }
+        }
+    }
+</script>
+

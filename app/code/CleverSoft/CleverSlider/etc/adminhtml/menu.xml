@@ -1,0 +1,8 @@
+<!-- File: app/code/Pulsestorm/SliderTutorial/etc/adminhtml/menu.xml -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="CleverSoft_CleverSlider::slideshow" title="Clever Slider" module="CleverSoft_Base" sortOrder="50" parent="CleverSoft_Base::cl_all" resource="CleverSoft_Base::all" />
+        <add id="CleverSoft_CleverSlider::slideshow_manger" title="Sliders Manager" module="CleverSoft_CleverSlider" sortOrder="0" parent="CleverSoft_CleverSlider::slideshow" action="slideshow/index/manager" resource="CleverSoft_CleverSlider::index" />
+        <add id="CleverSoft_CleverSlider::slideshow_new" title="Create New Slider" module="CleverSoft_CleverSlider" sortOrder="0" parent="CleverSoft_CleverSlider::slideshow" action="slideshow/index/new" resource="CleverSoft_CleverSlider::save" />
+    </menu>
+</config>

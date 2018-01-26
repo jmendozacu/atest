@@ -1,0 +1,70 @@
+<?php
+$urlInterface = \Magento\Framework\App\ObjectManager::getInstance()->get('Magento\Framework\UrlInterface');
+$urlInterface->getCurrentUrl();
+?>
+
+<div id="product-page-share">
+    <a href="javascript:void(0)" class="action ">
+        <span class="cs-font clever-icon-share-2"></span><span><?php /* @escapeNotVerified */ echo __('Share') ?></span>
+    </a>
+</div>
+<div id="myModel">
+    <div class="share-links col-xs-12">
+        <div class="share-product-text">
+            <p><?php /* @escapeNotVerified */ echo __('Share') ?></p>
+            <h3><?php echo $block->getLayout()->getBlock('page.main.title')->getPageTitle(); ?></h3>
+        </div>
+        <div class="product_socials_wrapper_inner">
+
+
+            <a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $urlInterface->getCurrentUrl(); ?>" target="_blank" class="facebook" title="Facebook">
+                <i class="cs-font clever-icon-facebook"></i>
+            </a>
+
+
+            <a href="https://twitter.com/share?url=<?php echo $urlInterface->getCurrentUrl(); ?>" target="_blank" class="twitter" title="Twitter">
+                <i class="cs-font clever-icon-twitter"></i>
+            </a>
+
+
+            <a href="https://pinterest.com/pin/create/button/?url=<?php echo $urlInterface->getCurrentUrl(); ?>" target="_blank" class="vimeo" title="vimeo">
+                <i class="cs-font clever-icon-pinterest"></i>
+            </a>
+
+
+            <a href="https://plus.google.com/share?url=<?php echo $urlInterface->getCurrentUrl(); ?>" target="_blank" class="google-plus" title="Google plus">
+                <i class="cs-font clever-icon-googleplus"></i>
+            </a>
+
+
+            <?php echo $this->getLayout()->createBlock('Magento\Catalog\Block\Product\View')->setTemplate('Magento_Catalog::product/view/mailto.phtml')->toHtml(); ?>
+
+        </div>
+    </div>
+</div>
+<script>
+    require(
+        [
+            'jquery',
+            'Magento_Ui/js/modal/modal'
+        ],
+        function($,modal) {
+            var options = {
+                type: 'popup',
+                responsive: true,
+                modalClass: 'product-page-share',
+                buttons: [{
+                    text: '',
+                    class: '',
+                    click: function () {
+                        this.closeModal();
+                    }
+                }]
+            };
+            var popup = modal(options, $('#myModel'));
+            $("#product-page-share").on("click",function(){
+                $('#myModel').modal('openModal');
+            });
+        }
+    );
+</script>

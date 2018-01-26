@@ -1,0 +1,113 @@
+<?php
+/**
+ * @category    CleverSoft
+ * @package     CleverSlider
+ * @copyright   Copyright © 2017 CleverSoft., JSC. All Rights Reserved.
+ * @author 		ZooExtension.com
+ * @email       magento.cleversoft@gmail.com
+ */
+?>
+<div class="row slider-content">
+
+    <div id="slider-spinner" data-role="spinner" class="admin__data-grid-loading-mask">
+        <div class="spinner">
+            <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+        </div>
+    </div>
+
+    <div class="col-m-3 col-left">
+        <div class="slider-item-wrapper col-main">
+            <h2 class="title"><?php echo __('Slide Show Structure') ?></h2>
+            <span id="text_change_edit"></span>
+
+            <div class="menu" id="slider-to-edit">
+
+            </div>
+
+        </div>
+        <div class="menu-item-bar">
+            <div class="menu-item-handle">
+                    <span class="item-title">
+                        <span class="menu-item-title" onclick="openTypeBox();" style="cursor: pointer"><?php echo __('Add New') ?></span>
+                    </span>
+                <span class="preview-icon"><i class="fa fa-file-text-o"></i></span> <span class="link-title"></span>
+            </div>
+        </div>
+        <div id="clever-open-type-box" style="display: none">
+            <div class="slider-item">
+                <ul class="clever-list-types-modal">
+                    <li>
+                        <a href="javascript:void(0)" data-type="image" class="add-to-menu slider-btn test"><?php echo __('Add Image')?></a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)" data-type="video" class="add-to-menu slider-btn test"><?php echo __('Add Video')?></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="slider-item-types">
+            <div class="type-items" id="type-items"></div>
+        </div>
+    </div>
+    <div class="col-m-9">
+        <div id="preview-area" class="flexslider carousel">
+
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    require([
+        "jquery",
+        "Magento_Ui/js/modal/alert",
+        "Magento_Ui/js/modal/modal",
+        "Magento_Ui/js/modal/confirm",
+        "jqueryTmpl",
+        "cleverJqueryUi",
+        "wysiwygEditorImg",
+        "slideLayout",
+        "flexsliderJS",
+        "CleverSoft_CleverSlider/js/froogaloop2.min",
+        "jquery/colorpicker/js/colorpicker",
+        "domReady!"
+    ], function ($, alert, modal, confirm) {
+        $(function () {
+            if(parseInt($('#menu_single_slide').val())) {
+                $('.field-number_item_480,.field-number_item_768,.field-number_item_992,.field-number_item_1200').fadeOut();
+            } else {
+                $('.field-number_item_480,.field-number_item_768,.field-number_item_992,.field-number_item_1200').fadeIn();
+            }
+            $('#switch_single_slide').on('change',function(){
+                $('#menu_single_slide').val($(this).is(':checked') ? 1:0 );
+                var b =  $('#menu_single_slide').val();
+                if(b == '0') {
+                    $('.field-number_item_480,.field-number_item_768,.field-number_item_992,.field-number_item_1200').fadeIn();
+                } else {
+                    $('.field-number_item_480,.field-number_item_768,.field-number_item_992,.field-number_item_1200').fadeOut();
+                }
+            });
+
+            $("#editting-tabs").tabs();
+            $(document).on('tabsactivate',function(){
+                $(window).trigger( 'resize' );
+                jQuery('#preview-area .slides iframe').css('height',jQuery('#preview-area .slides').height());
+            });
+        });
+
+        window.openTypeBox = function() {
+            $('#clever-open-type-box').slideToggle();
+        }
+        var $menu = $('#slider-to-edit');
+        $menu.menuLayout({
+            menuItemTypes: menuItemTypes,
+            menuItems: menuItems,
+            previewUrl: '<?php echo $this->getUrl('slideshow/sliderview/view') ?>',
+            previewBtn: '#preview-btn',
+            previewForm: '#edit_form',
+            alert: alert,
+            confirm: confirm,
+            mediaUrl: '<?php echo $this->getMediaUrl() ?>',
+            imagePlaceholder: '<?php echo $this->getImageUrl('slides/placeholder.jpg') ?>',
+            spinner: '#slider-spinner'
+        });
+    });
+</script>

@@ -1,0 +1,76 @@
+<?php
+/**
+ * @category    CleverSoft
+ * @package     CleverBlock
+ * @copyright   Copyright © 2017 CleverSoft., JSC. All Rights Reserved.
+ * @author 		ZooExtension.com
+ * @email       magento.cleversoft@gmail.com
+ */
+?>
+<?php
+
+$element = $block->getElement();
+/*
+ * thuan
+ */
+$value = $element->getValue();
+/*
+ *
+ */
+$note = $element->getNote() ? '<div class="note" id="' . $element->getId() . '-note">' . $element->getNote() . '</div>' : '';
+$elementBeforeLabel = $element->getExtType() == 'checkbox admin__control-checkbox' || $element->getExtType() == 'radio admin__control-radio';
+$fieldId = ($element->getHtmlContainerId()) ? ' id="' . $element->getHtmlContainerId() . '"' : '';
+$fieldClass = "admin__field field field-{$element->getId()} {$element->getCssClass()}";
+$fieldClass .= ($elementBeforeLabel) ? ' choice' : '';
+$fieldClass .= ($element->getRequired()) ? ' required _required' : '';
+$fieldClass .= ($note) ? ' with-note' : '';
+$fieldClass .= (!$element->getLabelHtml()) ? ' no-label' : '';
+
+$fieldAttributes = $fieldId . ' class="' . $fieldClass . '" '
+    . $block->getUiId('form-field', $element->getId())
+    . ($element->getFieldExtraAttributes() ? ' ' . $element->getFieldExtraAttributes() : '');
+?>
+<div<?php /* @escapeNotVerified */ echo $fieldAttributes ?>>
+    <?php echo $element->getLabelHtml() ?>
+    <div class="admin__field-control control">
+        <input type="text" class="widget-option input-text admin__control-text <?php if ($this->getElement()->getRequired()):?>required-entry<?php endif ?>" name="<?php echo $element->getName()?>" id="<?php echo $element->getHtmlId()?>" value="<?php echo $value ?>" >
+    </div>
+    <script>
+        require([
+            'prototype',
+            'jquery',
+            'CleverSoft_CleverBlock/js/colorpicker'
+        ], function(){
+            jQuery(document).ready(function () {
+                var $el = jQuery("#<?php  echo $element->getHtmlId() ?>");
+                $el.css("backgroundColor", "<?php echo $value ?>");
+
+                // Attach the color picker
+                $el.ColorPicker({
+                    color: "<?php echo $value ?>",
+                    onChange: function (hsb, hex, rgb) {
+                        $el.css("backgroundColor", "#" + hex).val("#" + hex);
+                    }
+                });
+
+                if(jQuery('select[name="parameters[background]"]').val() == ''){
+                    jQuery('input[name="parameters[background_overlay]"]').parent().parent().hide();
+                    jQuery('select[name="parameters[background_overlay_o]"]').parent().parent().hide();
+                }
+
+                jQuery('select[name="parameters[background]"]').on('change',function(){
+                    if(jQuery(this).val() == ''){//parameters[category_ids]
+                        jQuery('input[name="parameters[background_overlay]"]').parent().parent().hide();
+                        jQuery('select[name="parameters[background_overlay_o]"]').parent().parent().hide();
+                    }
+                    else {
+                        jQuery('input[name="parameters[background_overlay]"]').parent().parent().show();
+                        jQuery('select[name="parameters[background_overlay_o]"]').parent().parent().show();
+                    }
+                });
+
+            });
+        });
+
+    </script>
+</div>

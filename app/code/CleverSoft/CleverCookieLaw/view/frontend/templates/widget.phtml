@@ -1,0 +1,71 @@
+<?php
+/**
+ * @category    CleverSoft
+ * @package     CleverCookieLaw
+ * @copyright   Copyright © 2017 CleverSoft., JSC. All Rights Reserved.
+ * @author 		ZooExtension.com
+ * @email       magento.cleversoft@gmail.com
+ */
+?>
+<?php
+$_helper = $this->helper('CleverSoft\CleverCookieLaw\Helper\Data');
+if($_helper->getSystemConfig('general','enablecookie')):
+    ?>
+    <div id="v-cookielaw"
+         class="<?php echo $_helper->getSystemConfig('general','type'); ?> <?php echo $_helper->getSystemConfig('general','skin'); ?> <?php echo ($_helper->getSystemConfig('general','type') == 'v-bar') ? $_helper->getSystemConfig('general','bar_position') : $_helper->getSystemConfig('general','box_position'); ?>"
+         style="display: none">
+        <h3><?php echo 'Cookies Control'; ?></h3>
+        <div class="v-message">
+            <p>
+                <?php echo ($_helper->getSystemConfig('content','show') == 'default') ? __('We use cookies to ensure that we give you the best experience on our website. If you continue to use this site we will assume that you are happy with it.') : $_helper->getSystemConfig('content','custom_message'); ?>
+                <a href="<?php echo $_helper->getCmsPage(); ?>" class="v-button">
+                    <i><?php echo ($_helper->getSystemConfig('content','show') == 'default') ? __("More Info") : $_helper->getSystemConfig('content','custom_more_info'); ?></i>
+                </a>
+            </p>
+            <div class="v-actions">
+                <a href="javascript:cookieLawAccept();" class="btn">
+                    <?php echo ($_helper->getSystemConfig('content','show') == 'default') ? __("Accept") : $_helper->getSystemConfig('content','custom_accept'); ?>
+                </a>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        require(["jquery", "CleverSoft_CleverCookieLaw/js/cookies"],function($) {
+            $(function(){
+                window.cookieLawAccept = function() {
+                    var d = null;
+                    <?php if($_helper->getSystemConfig('general','behaviour')): ?>
+                    d = new Date();
+                    d.setTime(d.getTime() + (<?php echo $_helper->getSystemConfig('general','behaviour'); ?> * 24 * 60 * 60 * 1000));
+                    <?php endif; ?>
+                    Mage.Cookies.set('cookielaw', '1', d);
+                    document.getElementById('v-cookielaw').style.display = 'none';
+                };
+
+                window.cookieLawDisplay = function() {
+                    if (!window.Mage) {
+                        document.getElementById('v-cookielaw').style.display = ''
+                    } else {
+                        if (!Mage.Cookies.get('cookielaw')) document.getElementById('v-cookielaw').style.display = '';
+                    }
+                };
+
+                //Set timeout to display popup
+                <?php if ($_helper->getSystemConfig('general','load_after')): ?>
+                setTimeout(function () {
+                <?php endif; ?>
+                    cookieLawDisplay();
+                <?php if ($_helper->getSystemConfig('general','load_after')): ?>
+                }, <?php echo $_helper->getSystemConfig('general','load_after')*1000; ?>);
+                <?php endif; ?>
+                //End Set timeout to display popup
+
+                <?php if ($_helper->getSystemConfig('general','autohide')): ?>
+                setTimeout(function () {
+                    cookieLawAccept();
+                }, <?php echo $_helper->getSystemConfig('general','autohide')*1000; ?>);
+                <?php endif; ?>
+            });
+        });
+    </script>
+<?php endif; ?>
