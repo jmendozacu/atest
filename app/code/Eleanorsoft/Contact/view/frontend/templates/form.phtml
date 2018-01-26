@@ -1,0 +1,86 @@
+<div id="contact-form-container" data-bind="scope: 'contactForm'">
+    <div class="page messages" style="display: none;">
+        <div>
+            <div class="messages">
+                <div class="message">
+                    <div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <form id="form-contact" class="form contact" action="<?= $block->getUrl('eleanorsoft_contact/index/post'); ?>" data-bind="submit: submitContactForm">
+        <fieldset class="fieldset">
+            <legend class="legend">
+                <span>Write Us</span>
+            </legend>
+            <br />
+            <div class="field note no-label">Jot us a note and we’ll get back to you as quickly as possible.</div>
+            <div class="field name required">
+                <label class="label" for="name">
+                    <span>Full Name</span>
+                </label>
+                <div class="control">
+                    <input id="name" class="input-text" name="name" type="text" data-validate="{'required-entry':true}"/>
+                </div>
+            </div>
+            <div class="field email required">
+                <label class="label" for="email">
+                    <span>Email Address</span>
+                </label>
+                <div class="control">
+                    <input id="email" class="input-text" name="email" type="email" data-validate="{'required-entry':true, 'validate-email':true}"/>
+                </div>
+            </div>
+            <div class="field order">
+                <label class="label" for="order">
+                    <span>Order Number</span>
+                </label>
+                <div class="control">
+                    <input id="order" class="input-text" name="order" type="text"/>
+                </div>
+            </div>
+            <div class="field subject required">
+                <label class="label" for="subject">
+                    <span>Subject</span>
+                </label>
+                <div class="control">
+                    <select id="subject" class="select" name="subject"
+                            data-validate="{'required-entry':true}"
+                            data-bind="options: subjects, optionsValue: 'value', optionsText: 'label', optionsCaption: '...'">
+                    </select>
+                </div>
+            </div>
+            <div class="field comment">
+                <label class="label" for="comment">
+                    <span>Message</span>
+                </label>
+                <div class="control">
+                    <textarea id="comment" class="input-text" name="comment" cols="5" rows="3"></textarea>
+                </div>
+            </div>
+            <div class="actions-toolbar">
+                <div class="primary">
+                    <button class="action submit-contact primary" type="submit">
+                        <span>Submit</span>
+                    </button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>
+<script type="text/x-magento-init">
+{
+    "*": {
+        "Magento_Ui/js/core/app": {
+            "components": {
+                "contactForm": {
+                    "component": "Eleanorsoft_Contact/js/contact",
+                    "beforeSend": "function () { return true; }",
+                    "onSendError": "function () { return true; }",
+                    "onSendSuccess": "function () { return true; }"
+                }
+            }
+        }
+    }
+}
+</script>
