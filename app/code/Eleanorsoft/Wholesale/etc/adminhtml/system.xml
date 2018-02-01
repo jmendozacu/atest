@@ -7,13 +7,11 @@
         <section id="eleanorsoft_wholesale" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
             <label>Wholesale</label>
             <tab>eleanorsoft</tab>
-            <resource>Eleanorsoft_Wholesale::wholesales_config</resource>
             <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
-                <label>Enable Wholesale</label>
+                <label>Wholesale Contact</label>
                 <field id="enabled" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Enable Wholesale</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                    <backend_model>Magento\Contact\Model\System\Config\Backend\Links</backend_model>
                 </field>
             </group>
             <group id="email" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">

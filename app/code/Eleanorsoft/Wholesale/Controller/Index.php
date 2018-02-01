@@ -2,11 +2,16 @@
 
 namespace Eleanorsoft\Wholesale\Controller;
 
+use Magento\Framework\App\Action\Context;
+use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Framework\Mail\Template\TransportBuilder;
+use Magento\Framework\Translate\Inline\StateInterface;
 use Magento\Store\Model\ScopeInterface;
 use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Exception\NotFoundException;
 use Eleanorsoft\Wholesale\Helper\Data as BaseHelper;
+use Magento\Store\Model\StoreManagerInterface;
 
 /**
  * Wholesale index controller
@@ -14,38 +19,38 @@ use Eleanorsoft\Wholesale\Helper\Data as BaseHelper;
 abstract class Index extends Action
 {
     /**
-     * @var \Magento\Framework\Mail\Template\TransportBuilder
+     * @var TransportBuilder
      */
     protected $_transportBuilder;
 
     /**
-     * @var \Magento\Framework\Translate\Inline\StateInterface
+     * @var StateInterface
      */
     protected $inlineTranslation;
 
     /**
-     * @var \Magento\Framework\App\Config\ScopeConfigInterface
+     * @var ScopeConfigInterface
      */
     protected $scopeConfig;
 
     /**
-     * @var \Magento\Store\Model\StoreManagerInterface
+     * @var StoreManagerInterface
      */
     protected $storeManager;
 
     /**
-     * @param \Magento\Framework\App\Action\Context $context
-     * @param \Magento\Framework\Mail\Template\TransportBuilder $transportBuilder
-     * @param \Magento\Framework\Translate\Inline\StateInterface $inlineTranslation
-     * @param \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig
-     * @param \Magento\Store\Model\StoreManagerInterface $storeManager
+     * @param Context $context
+     * @param TransportBuilder $transportBuilder
+     * @param StateInterface $inlineTranslation
+     * @param ScopeConfigInterface $scopeConfig
+     * @param StoreManagerInterface $storeManager
      */
     public function __construct(
-        \Magento\Framework\App\Action\Context $context,
-        \Magento\Framework\Mail\Template\TransportBuilder $transportBuilder,
-        \Magento\Framework\Translate\Inline\StateInterface $inlineTranslation,
-        \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig,
-        \Magento\Store\Model\StoreManagerInterface $storeManager
+        Context $context,
+        TransportBuilder $transportBuilder,
+        StateInterface $inlineTranslation,
+        ScopeConfigInterface $scopeConfig,
+        StoreManagerInterface $storeManager
     ) {
         parent::__construct($context);
         $this->_transportBuilder = $transportBuilder;

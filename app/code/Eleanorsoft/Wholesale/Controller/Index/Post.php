@@ -2,46 +2,19 @@
 
 namespace Eleanorsoft\Wholesale\Controller\Index;
 
-use Braintree\Exception;
-use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\App\Response\Http;
 use Magento\Framework\DataObject;
 use Magento\Framework\Exception\NotFoundException;
-use Eleanorsoft\Wholesale\Helper\Data as BaseHelper;
-use Magento\Framework\App\Request\DataPersistorInterface;
 use Eleanorsoft\Wholesale\Controller\Index as BaseIndex;
-use Magento\Contact\Model\MailInterface;
-use Magento\Framework\App\Action\Context;
-use Magento\Framework\Translate\Inline\StateInterface;
-use Magento\Framework\Mail\Template\TransportBuilder;
-use Magento\Store\Model\StoreManagerInterface;
+use Magento\Backend\App\Area\FrontNameResolver;
+use Magento\Store\Model\ScopeInterface;
+use Magento\Store\Model\Store;
+use Eleanorsoft\Wholesale\Helper\Data as BaseHelper;
+
 
 class Post extends BaseIndex
 {
     const HANDLE_ERROR_STATUS_CODE = 20180117;
-    private $mail;
-
-    public function __construct(
-        Context $context,
-        TransportBuilder $transportBuilder,
-        StateInterface $inlineTranslation,
-        ScopeConfigInterface $scopeConfig,
-        StoreManagerInterface $storeManager,
-        MailInterface $mail
-    ) {
-        $this->mail = $mail;
-        parent::__construct(
-            $context,
-            $transportBuilder,
-            $inlineTranslation,
-            $scopeConfig,
-            $storeManager);
-    }
-
-    /**
-     * @var DataPersistorInterface
-     */
-    private $dataPersistor;
 
     /**
      * Post user question
@@ -66,10 +39,25 @@ class Post extends BaseIndex
         }
     }
 
+    /**
+     * Processes the ajax request
+     *
+     * @param $post
+     * @author Pisarenko Denis <denis.pisarenko@eleanorsoft.com>
+     * @copyright Copyright (c) 2018 Eleanorsoft (https://www.eleanorsoft.com/)
+     */
     private function _executeAjax($post)
     {
         try {
-            $this->sendMail($post);
+            $error = $this->getPostFieldValuesError($post);
+
+            if ($error) {
+                throw new \Exception($error, self::HANDLE_ERROR_STATUS_CODE);
+            }
+            $postObject = new DataObject();
+            $postObject->setData($post);
+
+            $this->sendMail($post['email'], $postObject);
 
             $code = Http::STATUS_CODE_200;
             $message = __('Thanks for contacting us with your comments and questions. We\'ll respond to you very soon.');
@@ -82,6 +70,8 @@ class Post extends BaseIndex
                 $code = Http::STATUS_CODE_500;
                 $message = __('We can\'t process your request right now. Sorry, that\'s all we know.');
             }
+        } finally {
+            $this->inlineTranslation->resume();
         }
 
         $this->getResponse()->setStatusCode($code)->setContent($message);
@@ -89,33 +79,48 @@ class Post extends BaseIndex
         return;
     }
 
-    private function sendMail($post)
+    /**
+     * Sending mail
+     *
+     * @param $post
+     * @author Pisarenko Denis <denis.pisarenko@eleanorsoft.com>
+     * @copyright Copyright (c) 2018 Eleanorsoft (https://www.eleanorsoft.com/)
+     */
+    private function sendMail($replyTo, $variables)
     {
-        $postObject = new DataObject();
-        $postObject->setData($post);
+        $this->inlineTranslation->suspend();
 
-        $error = $this->getPostFieldValuesError($post);
-
-        if ($error) {
-            throw new \Exception($error, self::HANDLE_ERROR_STATUS_CODE);
-        }
-
-        $this->mail->send(
-            $post['email'],
-            ['data' => $postObject]
-        );
+        $storeScope = ScopeInterface::SCOPE_STORE;
+        $transport = $this->_transportBuilder
+            ->setTemplateIdentifier($this->scopeConfig->getValue(BaseHelper::XML_PATH_EMAIL_TEMPLATE, $storeScope))
+            ->setTemplateOptions(
+                [
+                    'area' => FrontNameResolver::AREA_CODE,
+                    'store' => Store::DEFAULT_STORE_ID,
+                ]
+            )
+            ->setTemplateVars(['data' => $variables])
+            ->setFrom($this->scopeConfig->getValue(BaseHelper::XML_PATH_EMAIL_SENDER, $storeScope))
+            ->addTo($this->scopeConfig->getValue(BaseHelper::XML_PATH_EMAIL_RECIPIENT, $storeScope))
+            ->setReplyTo($replyTo)
+            ->getTransport();
+        $transport->sendMessage();
     }
 
+    /**
+     * Validating form data
+     *
+     * @param $value
+     * @param $rule
+     * @return bool
+     * @author Pisarenko Denis <denis.pisarenko@eleanorsoft.com>
+     * @copyright Copyright (c) 2018 Eleanorsoft (https://www.eleanorsoft.com/)
+     */
     private function validateFieldValue($value, $rule)
     {
-        try {
-            if(!\Zend_Validate::is(trim($value), $rule)) {
-                throw new \Exception();
-            }
-        } catch (\Exception $ex) {
+        if(!\Zend_Validate::is(trim($value), $rule)) {
             return false;
         }
-
         return true;
     }
 
