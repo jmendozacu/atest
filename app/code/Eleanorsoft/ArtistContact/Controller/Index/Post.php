@@ -78,8 +78,6 @@ class Post extends BaseIndex
                 $code = Http::STATUS_CODE_500;
                 $message = __($e->getMessage());
             }
-        } finally {
-            $this->inlineTranslation->resume();
         }
 
         $this->getResponse()->setStatusCode($code)->setContent($message);
@@ -229,24 +227,27 @@ class Post extends BaseIndex
      * @param $post
      * @author Pisarenko Denis <denis.pisarenko@eleanorsoft.com>
      * @copyright Copyright (c) 2018 Eleanorsoft (https://www.eleanorsoft.com/)
+     * @return string
      */
     private function getPostFieldValuesError($post)
     {
+        $error = '';
         if (!$this->validateFieldValue($post['name'], 'NotEmpty')) {
-            return 'Name field is empty.';
+            $error = 'Name field is empty.';
         }
 
         if (!$this->validateFieldValue($post['email'], 'EmailAddress')) {
-            return 'Email is not correct.';
+            $error = 'Email is not correct.';
         }
 
         if (!$this->validateFieldValue($post['phone'], 'NotEmpty')) {
-            return 'Phone Number field is empty.';
+            $error = 'Phone Number field is empty.';
         }
 
         if (!$this->validateFieldValue($post['yourself'], 'NotEmpty')) {
-            return '\'A little bit about yourself\' field is empty.';
+            $error = '\'A little bit about yourself\' field is empty.';
         }
+        return $error;
     }
 
 }

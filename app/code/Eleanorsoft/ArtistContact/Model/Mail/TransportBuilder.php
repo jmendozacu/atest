@@ -2,7 +2,6 @@
 
 namespace Eleanorsoft\ArtistContact\Model\Mail;
 
-use const bar\foo\baz\const1;
 use Magento\Framework\Mail\Template\TransportBuilder as Transport;
 /**
  * Class TransportBuilder

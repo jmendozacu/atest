@@ -63,6 +63,7 @@ define([
                     type: 'POST',
                     success: function(result){
                         if (self.onSendSuccess() !== false) {
+                            jForm[0].reset();
                             self.showSuccessMessage(result);
                         }
                     }
@@ -71,7 +72,6 @@ define([
                         self.showErrorMessage(error.responseText);
                     }
                 }).always(function () {
-                    jForm[0].reset();
                     jSubmit.prop('disabled', false);
                 });
 
