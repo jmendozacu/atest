@@ -70,8 +70,6 @@ class Post extends BaseIndex
                 $code = Http::STATUS_CODE_500;
                 $message = __('We can\'t process your request right now. Sorry, that\'s all we know.');
             }
-        } finally {
-            $this->inlineTranslation->resume();
         }
 
         $this->getResponse()->setStatusCode($code)->setContent($message);
@@ -105,6 +103,7 @@ class Post extends BaseIndex
             ->setReplyTo($replyTo)
             ->getTransport();
         $transport->sendMessage();
+        $this->inlineTranslation->resume();
     }
 
     /**
