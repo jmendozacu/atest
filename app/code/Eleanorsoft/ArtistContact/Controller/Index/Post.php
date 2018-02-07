@@ -83,40 +83,33 @@ class Post extends BaseIndex
         $this->getResponse()->setStatusCode($code)->setContent($message);
     }
 
-    /**
-     * get file data
-     *
-     * @return array
-     * @throws \Exception
-     * @author Pisarenko Denis <denis.pisarenko@eleanorsoft.com>
-     * @copyright Copyright (c) 2018 Eleanorsoft (https://www.eleanorsoft.com/)
-     */
-    private function getDataImg()
+
+    public function getDataImg()
     {
         $dataImg = array();
-        if (isset($_FILES['photo']['name']) and is_array($_FILES['photo']['name'])) {
-            for ($i = 0; $i < count($_FILES['photo']['name']); $i++){
-                if ($this->uploadedFileExists($i)) {
-                    if ($this->validateUploadedFile($i)) {
-                        $img_name = basename($_FILES['photo']['name'][$i]);
-                        $imgContent = file_get_contents($_FILES['photo']['tmp_name'][$i]);
-                        $dataImg[$i]['name'] = $img_name;
-                        $dataImg[$i]['content'] = $imgContent;
-                    } else {
-                        throw new \Exception("Invalid file Type or file Size Exceeded",
-                            self::HANDLE_ERROR_STATUS_CODE);
-                    }
-                }
+        $files = $this->getRequest()->getFiles()->get('photo');
 
+        if (count($files) > 0){
+            for($i = 0; $i < count($files); $i++){ $file = $files[$i];
+                if ($this->uploadedFileExists($file['size'])){
+                    if ($this->validateUploadedFile($file)){
+                        $imgName = basename($file['name']);
+                        $imgContent = file_get_contents($file['tmp_name']);
+                        $dataImg[$i]['name'] = $imgName;
+                        $dataImg[$i]['content'] = $imgContent;
+                    }
+                }else {
+                    throw new \Exception("Invalid file Type or file Size Exceeded",
+                        self::HANDLE_ERROR_STATUS_CODE);
+                }
             }
         }
-
         return $dataImg;
     }
 
-    private function uploadedFileExists($i)
+    private function uploadedFileExists($size)
     {
-        return (intval($_FILES['photo']['size'][$i]) > 0);
+        return (intval($size) > 0);
     }
 
     /**
@@ -127,54 +120,54 @@ class Post extends BaseIndex
      * @author Pisarenko Denis <denis.pisarenko@eleanorsoft.com>
      * @copyright Copyright (c) 2018 Eleanorsoft (https://www.eleanorsoft.com/)
      */
-    private function validateUploadedFile($i)
+    private function validateUploadedFile($file)
     {
         return (
-            $this->validateMimeType($i)
-            && $this->validateSize($i)
-            && $this->validateExtension($i)
+            $this->validateMimeType($file['type'])
+            && $this->validateSize($file['size'])
+            && $this->validateExtension($file['name'])
         );
     }
 
     /**
      * valid file type
      *
-     * @param $i
+     * @param $type
      * @return bool
      * @author Pisarenko Denis <denis.pisarenko@eleanorsoft.com>
      * @copyright Copyright (c) 2018 Eleanorsoft (https://www.eleanorsoft.com/)
      */
-    private function validateMimeType($i)
+    private function validateMimeType($type)
     {
-        $tmp = explode('/', $_FILES["photo"]["type"][$i]);
-        return ($tmp and $tmp[0] == 'image');
+        $tmp = explode('/', $type);
+        return ($tmp && $tmp[0] == 'image');
     }
 
     /**
      * valid file size
      *
-     * @param $i
+     * @param $size
      * @return bool
      * @author Pisarenko Denis <denis.pisarenko@eleanorsoft.com>
      * @copyright Copyright (c) 2018 Eleanorsoft (https://www.eleanorsoft.com/)
      */
-    private function validateSize($i)
+    private function validateSize($size)
     {
-        return ($_FILES["photo"]["size"][$i] <= 3 * 1024 * 1024);
+        return ($size <= 3 * 1024 * 1024);
     }
 
     /**
      * valid file extension
      *
-     * @param $i
+     * @param $extension
      * @return bool
      * @author Pisarenko Denis <denis.pisarenko@eleanorsoft.com>
      * @copyright Copyright (c) 2018 Eleanorsoft (https://www.eleanorsoft.com/)
      */
-    private function validateExtension($i)
+    private function validateExtension($extension)
     {
-        $validExtensions = array("jpeg", "jpg", "png");
-        return in_array(pathinfo($_FILES['photo']['name'][$i], PATHINFO_EXTENSION), $validExtensions);
+        $validExtensions = array("jpeg", "jpg", "png", "JPEG", "JPG", "PNG");
+        return in_array(pathinfo($extension, PATHINFO_EXTENSION), $validExtensions);
     }
 
     /**
