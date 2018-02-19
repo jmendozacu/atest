@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">designers_grid_form.grid_form_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">General Information</item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+    <settings>
+        <buttons>
+            <button name="save_and_continue" class="Eleanorsoft\DesignersPage\Block\Adminhtml\Designer\Edit\SaveAndContinueButton"/>
+            <button name="save" class="Eleanorsoft\DesignersPage\Block\Adminhtml\Designer\Edit\SaveButton"/>
+            <button name="reset" class="Eleanorsoft\DesignersPage\Block\Adminhtml\Designer\Edit\ResetButton"/>
+            <button name="delete" class="Eleanorsoft\DesignersPage\Block\Adminhtml\Designer\Edit\DeleteButton"/>
+            <button name="back" class="Eleanorsoft\DesignersPage\Block\Adminhtml\Designer\Edit\BackButton"/>
+        </buttons>
+        <namespace>designers_grid_form</namespace>
+        <dataScope>data</dataScope>
+        <deps>
+            <dep>designers_grid_form.grid_form_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="grid_form_data_source">
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+        <settings>
+            <submitUrl path="*/*/save"/>
+        </settings>
+        <dataProvider class="Eleanorsoft\DesignersPage\Model\DataProvider" name="grid_form_data_source">
+            <settings>
+                <requestFieldName>designer_id</requestFieldName>
+                <primaryFieldName>designer_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <fieldset name="designer_details">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="label" xsi:type="string" translate="true">Designer Details</item>
+            </item>
+        </argument>
+        <field name="designer_id" formElement="input">
+            <settings>
+                <dataType>text</dataType>
+                <visible>false</visible>
+                <dataScope>designer_id</dataScope>
+            </settings>
+        </field>
+
+        <field name="full_name" sortOrder="20" formElement="input">
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">Full Name</label>
+                <dataScope>full_name</dataScope>
+            </settings>
+        </field>
+        <field name="photo">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">string</item>
+                    <item name="source" xsi:type="string">image</item>
+                    <item name="label" xsi:type="string" translate="true">Photo</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="formElement" xsi:type="string">fileUploader</item>
+                    <item name="elementTmpl" xsi:type="string">ui/form/element/uploader/uploader</item>
+                    <item name="previewTmpl" xsi:type="string">Eleanorsoft_DesignersPage/image-preview</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                    <item name="uploaderConfig" xsi:type="array">
+                        <item name="url" xsi:type="url" path="*/*/upload/photo/photo"/>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="alternative_photo">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">string</item>
+                    <item name="source" xsi:type="string">image</item>
+                    <item name="label" xsi:type="string" translate="true">Alternative Photo</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="formElement" xsi:type="string">fileUploader</item>
+                    <item name="elementTmpl" xsi:type="string">ui/form/element/uploader/uploader</item>
+                    <item name="previewTmpl" xsi:type="string">Eleanorsoft_DesignersPage/image-preview</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">false</item>
+                    </item>
+                    <item name="uploaderConfig" xsi:type="array">
+                        <item name="url" xsi:type="url" path="*/*/upload/photo/alternative_photo"/>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="banner">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">string</item>
+                    <item name="source" xsi:type="string">image</item>
+                    <item name="label" xsi:type="string" translate="true">Banner</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="formElement" xsi:type="string">fileUploader</item>
+                    <item name="elementTmpl" xsi:type="string">ui/form/element/uploader/uploader</item>
+                    <item name="previewTmpl" xsi:type="string">Eleanorsoft_DesignersPage/image-preview</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">false</item>
+                    </item>
+                    <item name="uploaderConfig" xsi:type="array">
+                        <item name="url" xsi:type="url" path="*/*/upload/photo/banner"/>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="description" formElement="wysiwyg">
+            <settings>
+                <additionalClasses>
+                    <class name="admin__field-wide">true</class>
+                </additionalClasses>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <label/>
+                <dataScope>description</dataScope>
+            </settings>
+            <formElements>
+                <wysiwyg>
+                    <settings>
+                        <wysiwyg>true</wysiwyg>
+                    </settings>
+                </wysiwyg>
+            </formElements>
+        </field>
+        <field name="sort" formElement="input">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Sorting</label>
+                <dataScope>sort</dataScope>
+            </settings>
+        </field>
+    </fieldset>
+</form>

@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author     Pisarenko Denis <denis.pisarenko@eleanorsoft.com>
+ * @package    Eleanorsoft\CompanyInAdminOrderGrid
+ * @copyright  Copyright (c) 2017 Eleanorsoft (https://www.eleanorsoft.com/
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <preference for="Eleanorsoft\DesignersPage\Api\DesignerRepositoryInterface" type="Eleanorsoft\DesignersPage\Model\DesignerRepository"/>
+    <preference for="Eleanorsoft\DesignersPage\Api\Data\DesignerInterface" type="Eleanorsoft\DesignersPage\Model\Designer"/>
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="designers_grid_listing_data_source" xsi:type="string">Eleanorsoft\DesignersPage\Model\ResourceModel\Designer\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <virtualType name="DesignerUploader" type="Eleanorsoft\DesignersPage\Model\Uploader">
+        <arguments>
+            <argument name="baseTmpPath" xsi:type="const">Eleanorsoft\DesignersPage\Model\Uploader::IMAGE_TMP_PATH</argument>
+            <argument name="basePath" xsi:type="const">Eleanorsoft\DesignersPage\Model\Uploader::IMAGE_PATH</argument>
+            <argument name="allowedExtensions" xsi:type="array">
+                <item name="jpg" xsi:type="string">jpg</item>
+                <item name="jpeg" xsi:type="string">jpeg</item>
+                <item name="gif" xsi:type="string">gif</item>
+                <item name="png" xsi:type="string">png</item>
+
+                <item name="JPG" xsi:type="string">jpg</item>
+                <item name="JPEG" xsi:type="string">jpeg</item>
+                <item name="GIF" xsi:type="string">gif</item>
+                <item name="PNG" xsi:type="string">png</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Eleanorsoft\DesignersPage\Model\UploaderPool">
+        <arguments>
+            <argument name="uploaders" xsi:type="array">
+                <item name="image" xsi:type="string">DesignerUploader</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Eleanorsoft\DesignersPage\Ui\Component\Listing\Column\Image">
+        <arguments>
+            <argument name="imageModel" xsi:type="object">DesignerUploader</argument>
+        </arguments>
+    </type>
+
+    <type name="Eleanorsoft\DesignersPage\Controller\Adminhtml\Grid\Upload">
+        <arguments>
+            <argument name="uploader" xsi:type="object">DesignerUploader</argument>
+        </arguments>
+    </type>
+</config>

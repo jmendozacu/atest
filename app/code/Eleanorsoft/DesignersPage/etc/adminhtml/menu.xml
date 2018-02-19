@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author     Pisarenko Denis <denis.pisarenko@eleanorsoft.com>
+ * @package    Eleanorsoft\CompanyInAdminOrderGrid
+ * @copyright  Copyright (c) 2017 Eleanorsoft (https://www.eleanorsoft.com/
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Eleanorsoft_DesignersPage::designers" title="Designers" translate="title" module="Eleanorsoft_DesignersPage" sortOrder="50" parent="Magento_Backend::content" dependsOnModule="Eleanorsoft_DesignersPage" resource="Eleanorsoft_DesignersPage::el_designers" action="designers/grid"/>
+    </menu>
+</config>
