@@ -199,25 +199,23 @@ class Designer extends AbstractModel implements DesignerInterface
     }
 
     /**
-     * Get image URL
+     * Get sort
      *
-     * @return bool|string
-     * @throws LocalizedException
+     * @return string|null
      */
-    public function getImageUrl($image)
+    public function getSort()
     {
-        $url = false;
-        if ($image) {
-            if (is_string($image)) {
-                $uploader = $this->uploaderPool->getUploader('image');
-                $url = $uploader->getBaseUrl().$uploader->getBasePath().$image;
+        return $this->getData(self::SORT);
+    }
 
-            } else {
-                throw new LocalizedException(
-                    __('Something went wrong while getting the image url.')
-                );
-            }
-        }
-        return $url;
+    /**
+     * Set sort
+     *
+     * @param $value
+     * @return null|string
+     */
+    public function setSort($value)
+    {
+        return $this->setData(self::SORT, $value);
     }
 }

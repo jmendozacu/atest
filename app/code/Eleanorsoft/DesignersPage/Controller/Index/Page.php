@@ -1,9 +1,11 @@
 <?php
 namespace Eleanorsoft\DesignersPage\Controller\Index;
 
+use Eleanorsoft\DesignersPage\Api\DesignerRepositoryInterface;
 use Eleanorsoft\DesignersPage\Controller\IndexBase;
 use Magento\Framework\App\Action\Context;
 use Magento\Framework\App\ResponseInterface;
+use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\Exception\NotFoundException;
 use Magento\Framework\View\Result\PageFactory;
 use Eleanorsoft\DesignersPage\Model\ResourceModel\Designer\CollectionFactory;
@@ -21,16 +23,20 @@ class Page extends IndexBase
 
     protected $collectionFactory;
 
+    protected $designerRepository;
+
     public function __construct
     (
         Context $context,
         PageFactory $pageFactory,
-        CollectionFactory $collectionFactory
+        CollectionFactory $collectionFactory,
+        DesignerRepositoryInterface $designerRepository
     )
     {
         parent::__construct($context, $pageFactory);
 
         $this->collectionFactory = $collectionFactory;
+        $this->designerRepository = $designerRepository;
     }
 
     /**
@@ -44,13 +50,19 @@ class Page extends IndexBase
     public function execute()
     {
         $id = $this->getRequest()->getParam('id');
-        $collection = $this->collectionFactory->create();
-
-        $collection->addFieldToFilter('designer_id', array("eq" => $id));
-
-        if (count($collection) == 0) {
+        try{
+            $designer = $this->designerRepository->getById($id);
+        }catch (NoSuchEntityException $e){
             throw new NotFoundException(__('Page not found.'));
         }
-        return $this->pageFactory->create();
+        $resultPage = $this->pageFactory->create();
+        $breadcrumbs = $resultPage->getLayout()->getBlock('breadcrumbs');
+
+        $breadcrumbs->addCrumb('Eleanorsoft_DesignersPage', [
+                'label' => __($designer->getFullName()),
+                'title' => __($designer->getFullName())
+            ]
+        );
+        return $resultPage;
     }
 }

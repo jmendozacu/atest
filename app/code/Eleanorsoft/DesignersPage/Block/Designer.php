@@ -1,8 +1,13 @@
 <?php
 namespace Eleanorsoft\DesignersPage\Block;
 
-use Eleanorsoft\DesignersPage\Model\Designer as ModelDesigner;
-use Eleanorsoft\DesignersPage\Model\ResourceModel\Designer\CollectionFactory;
+use Eleanorsoft\DesignersPage\Api\Data\DesignerInterface;
+use Eleanorsoft\DesignersPage\Api\DesignerRepositoryInterface;
+use Eleanorsoft\DesignersPage\Helper\Data;
+
+use Magento\Catalog\Api\Data\ProductInterface;
+use Magento\Catalog\Model\ResourceModel\Product;
+use Magento\Framework\Data\Collection;
 use Magento\Framework\Exception\NotFoundException;
 use Magento\Framework\View\Element\Template;
 use Magento\Framework\View\Element\Template\Context;
@@ -17,72 +22,60 @@ use Magento\Framework\View\Element\Template\Context;
 
 class Designer extends Template
 {
-    /**
-     * @var CollectionFactory
-     */
-    protected $collectionFactory;
 
-    /**
-     * @var
-     */
+
+    protected $helper;
     protected $designerModel;
+    protected $designerRepository;
+    protected $product;
+    protected $resourceProduct;
 
     public function __construct
     (
         Context $context,
         array $data = [],
 
-        CollectionFactory $collectionFactory,
-        ModelDesigner $designerModel
+        DesignerInterface $designerModel,
+        Data $helper,
+        DesignerRepositoryInterface $designerRepository,
+        ProductInterface $product,
+        Product $resourceProduct
     )
     {
         parent::__construct($context, $data);
 
-        $this->collectionFactory = $collectionFactory;
         $this->designerModel = $designerModel;
+        $this->helper = $helper;
+        $this->designerRepository = $designerRepository;
+        $this->product = $product;
+        $this->resourceProduct = $resourceProduct;
     }
 
 
-    public function getDesigners()
+    public function getCollection()
     {
-        return  $this->collectionFactory->create();
+        return $this->designerRepository->getList(Collection::SORT_ORDER_ASC);
     }
 
     public function getDesignerById()
     {
         $id = $this->getRequest()->getParam('id');
-        $collection = $this->collectionFactory->create();
-
-        $collection->addFieldToFilter('designer_id', array("eq" => $id));
-
-        return $collection;
+        return $this->designerRepository->getById($id);
     }
 
-    public function getDataDesigner()
+    public function getHelper()
     {
-        $collection = $this->getDesignerById();
-        $data = [];
-
-        foreach ($collection as $item){
-            $data['full_name'] = $item->getFullName();
-            $data['photo'] = $this->designerModel->getImageUrl($item->getPhoto());
-            $data['alternative_photo'] = $this->designerModel->getImageUrl($item->getAlternativePhoto());
-            $data['banner'] = $this->designerModel->getImageUrl($item->getBanner());
-            $data['description'] = $item->getDescription();
-            $data['product_ids'] = $item->getProductIds();
-        }
-
-        return $data;
+        return $this->helper;
     }
 
-    public function getDataDesigners()
+    public function getDesigner()
     {
-        $collection = $this->getDesigners();
-        $data = [];
-        foreach ($collection as $item) {
-            $data[$item->getFullName()] = $this->designerModel->getImageUrl($item->getPhoto());
-        }
+        $id = $this->getRequest()->getParam('id');
+        $this->resourceProduct->load($this->product, $id);
 
-        return $data;
+        $id_designer = $this->product->getData('el_designer');
+
+        return $this->designerRepository->getById($id_designer);
+
     }
 }

@@ -5,6 +5,7 @@
  */
 namespace Eleanorsoft\DesignersPage\Model;
 
+use Eleanorsoft\DesignersPage\Helper\Data;
 use Eleanorsoft\DesignersPage\Model\ResourceModel\Designer\CollectionFactory;
 use Magento\Framework\App\Request\DataPersistorInterface;
 use Magento\Ui\DataProvider\AbstractDataProvider;
@@ -30,6 +31,11 @@ class DataProvider extends AbstractDataProvider
     protected $loadedData;
 
     /**
+     * @var Data
+     */
+    protected $helper;
+
+    /**
      * Constructor
      *
      * @param string $name
@@ -47,6 +53,7 @@ class DataProvider extends AbstractDataProvider
         $requestFieldName,
         CollectionFactory $blockCollectionFactory,
         DataPersistorInterface $dataPersistor,
+        Data $helper,
         array $meta = [],
         array $data = []
     )
@@ -55,6 +62,7 @@ class DataProvider extends AbstractDataProvider
 
         $this->collection = $blockCollectionFactory->create();
         $this->dataPersistor = $dataPersistor;
+        $this->helper = $helper;
     }
 
     /**
@@ -74,17 +82,17 @@ class DataProvider extends AbstractDataProvider
 
             if (isset($dataForm['photo'])){
                 $imageArr = [];
-                $imageArr[0]['url'] = $item->getImageUrl($item->getPhoto());
+                $imageArr[0]['url'] = $this->helper->getImageUrl($item->getPhoto());
                 $dataForm['photo'] = $imageArr;
             }
             if (isset($dataForm['alternative_photo'])){
                 $imageArr = [];
-                $imageArr[0]['url'] = $item->getImageUrl($item->getAlternativePhoto());
+                $imageArr[0]['url'] = $this->helper->getImageUrl($item->getAlternativePhoto());
                 $dataForm['alternative_photo'] = $imageArr;
             }
             if (isset($dataForm['banner'])){
                 $imageArr = [];
-                $imageArr[0]['url'] = $item->getImageUrl($item->getBanner());
+                $imageArr[0]['url'] = $this->helper->getImageUrl($item->getBanner());
                 $dataForm['banner'] = $imageArr;
             }
 
@@ -102,22 +110,5 @@ class DataProvider extends AbstractDataProvider
         }
 
         return $this->loadedData;
-    }
-    public function asss()
-    {
-        $items = $this->collection->getItems();
-        /** @var $image \Turiknox\SampleImageUploader\Model\Image */
-        foreach ($items as $image) {
-            $_data = $image->getData();
-            if (isset($_data['image'])) {
-                $imageArr = [];
-                $imageArr[0]['name'] = 'Image';
-                $imageArr[0]['url'] = $image->getImageUrl();
-                $_data['image'] = $imageArr;
-            }
-            $image->setData($_data);
-            $data[$image->getId()] = $_data;
-        }
-        return $data;
     }
 }

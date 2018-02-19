@@ -9,7 +9,31 @@
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
         <referenceContainer name="content">
-            <block class="Eleanorsoft\DesignersPage\Block\Designer" name="designers_page" template="Eleanorsoft_DesignersPage::designers.phtml"/>
+            <block cacheable="false" class="Eleanorsoft\DesignersPage\Block\Designer" name="designers_page" template="Eleanorsoft_DesignersPage::designers.phtml"/>
+        </referenceContainer>
+        <referenceContainer name="page.wrapper" htmlTag="div" htmlClass="page-wrapper">
+            <container htmlClass="zoo-breadcrumbs" htmlTag="div" name="main.breadcrumbs"
+                       before="main.top">
+                <container htmlTag="div" htmlClass="container" name="mt.breadcrumbs">
+                    <block class="Magento\Theme\Block\Html\Breadcrumbs" name="breadcrumbs" as="breadcrumbs">
+                        <action method="addCrumb">
+                            <argument name="crumbName" xsi:type="string">Home</argument>
+                            <argument name="crumbInfo" xsi:type="array">
+                                <item name="title" xsi:type="string">Home</item>
+                                <item name="label" xsi:type="string">Home</item>
+                                <item name="link" xsi:type="string">{{baseUrl}}</item>
+                            </argument>
+                        </action>
+                        <action method="addCrumb">
+                            <argument name="crumbName" xsi:type="string">Designers</argument>
+                            <argument name="crumbInfo" xsi:type="array">
+                                <item name="title" xsi:type="string">Designers</item>
+                                <item name="label" xsi:type="string">Designers</item>
+                            </argument>
+                        </action>
+                    </block>
+                </container>
+            </container>
         </referenceContainer>
     </body>
 </page>

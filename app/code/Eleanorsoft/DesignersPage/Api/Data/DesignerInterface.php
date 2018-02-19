@@ -22,6 +22,7 @@ interface DesignerInterface
     const BANNER            = 'banner';
     const DESCRIPTION       = 'description';
     const PRODUCT_IDS       = 'product_id';
+    const SORT              = 'sort';
 
     /**
      * Get ID
@@ -114,6 +115,21 @@ interface DesignerInterface
      * @return null|string
      */
     public function setDescription($value);
+
+    /**
+     * Get sort
+     *
+     * @return string|null
+     */
+    public function getSort();
+
+    /**
+     * Set sort
+     *
+     * @param $value
+     * @return null|string
+     */
+    public function setSort($value);
 
     /**
      * Get Product ids

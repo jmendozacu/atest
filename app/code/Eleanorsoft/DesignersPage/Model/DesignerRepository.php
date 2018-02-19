@@ -11,6 +11,7 @@ use Magento\Framework\Exception\CouldNotSaveException;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\Exception\StateException;
 use Magento\Framework\Exception\ValidatorException;
+use Eleanorsoft\DesignersPage\Model\ResourceModel\Designer\CollectionFactory;
 
 
 /**
@@ -39,20 +40,28 @@ class DesignerRepository implements DesignerRepositoryInterface
     protected $designerFactory;
 
     /**
+     * @var CollectionFactory
+     */
+    protected $collectionFactory;
+
+    /**
      * DesignerRepository constructor.
      * @param DesignerInterfaceFactory $designerFactory
      * @param Designer $resourceModel
+     * @param CollectionFactory $collectionFactory
      * @internal param DesignerFactory $blockFactory
      * @author Pisarenko Denis <denis.pisarenko@eleanorsoft.com>
      */
     public function __construct
     (
         DesignerInterfaceFactory $designerFactory,
-        Designer $resourceModel
+        Designer $resourceModel,
+        CollectionFactory $collectionFactory
     )
     {
         $this->resourceModel = $resourceModel;
         $this->designerFactory = $designerFactory;
+        $this->collectionFactory = $collectionFactory;
     }
 
 
@@ -102,13 +111,14 @@ class DesignerRepository implements DesignerRepositoryInterface
     /**
      * Retrieve designers matching the specified criteria.
      *
-     * @param SearchCriteriaInterface $searchCriteria
+     * @param $value
      * @return \Magento\Cms\Api\Data\BlockSearchResultsInterface
-     * @throws \Magento\Framework\Exception\LocalizedException
+     * @internal param SearchCriteriaInterface $searchCriteria
      */
-    public function getList(SearchCriteriaInterface $searchCriteria)
+    public function getList($value)
     {
-        // TODO: Implement getList() method.
+        $collection = $this->collectionFactory->create();
+        return  $collection->setOrder('sort', $value);
     }
 
     /**

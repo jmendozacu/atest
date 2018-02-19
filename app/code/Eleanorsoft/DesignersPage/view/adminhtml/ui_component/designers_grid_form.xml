@@ -67,6 +67,15 @@
                 <dataScope>full_name</dataScope>
             </settings>
         </field>
+
+        <field name="sort" formElement="input">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Sorting</label>
+                <dataScope>sort</dataScope>
+            </settings>
+        </field>
+
         <field name="photo">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
@@ -142,13 +151,6 @@
                     </settings>
                 </wysiwyg>
             </formElements>
-        </field>
-        <field name="sort" formElement="input">
-            <settings>
-                <dataType>text</dataType>
-                <label translate="true">Sorting</label>
-                <dataScope>sort</dataScope>
-            </settings>
         </field>
     </fieldset>
 </form>

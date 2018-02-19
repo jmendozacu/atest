@@ -34,11 +34,11 @@ interface DesignerRepositoryInterface
     /**
      * Retrieve designers matching the specified criteria.
      *
-     * @param SearchCriteriaInterface $searchCriteria
+     * @param $value
      * @return \Magento\Cms\Api\Data\BlockSearchResultsInterface
-     * @throws \Magento\Framework\Exception\LocalizedException
+     * @internal param SearchCriteriaInterface $searchCriteria
      */
-    public function getList(SearchCriteriaInterface $searchCriteria);
+    public function getList($value);
 
     /**
      * Delete designer.
