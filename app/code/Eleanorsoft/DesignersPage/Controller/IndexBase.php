@@ -17,6 +17,9 @@ abstract class IndexBase extends Action
 {
 
 
+    /**
+     * @var PageFactory
+     */
     protected $pageFactory;
 
     public function __construct

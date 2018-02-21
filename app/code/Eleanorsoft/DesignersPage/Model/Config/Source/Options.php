@@ -21,7 +21,7 @@ class Options extends AbstractSource
     }
 
     /**
-     * Retrieve All options
+     * Retrieve All designers
      *
      * @return array
      */

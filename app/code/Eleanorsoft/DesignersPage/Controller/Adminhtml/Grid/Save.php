@@ -12,9 +12,11 @@ use Eleanorsoft\DesignersPage\Controller\Adminhtml\Designer;
 use Eleanorsoft\DesignersPage\Model\Designer as ModelDesigner;
 use Eleanorsoft\DesignersPage\Model\UploaderPool;
 use Magento\Backend\App\Action\Context;
+use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Framework\Api\DataObjectHelper;
 use Magento\Framework\App\Request\DataPersistorInterface;
 use Magento\Framework\Exception\LocalizedException;
+use Magento\Framework\Serialize\Serializer\Json;
 use \Magento\Framework\View\Result\PageFactory;
 
 class Save extends Designer
@@ -44,6 +46,13 @@ class Save extends Designer
      */
     protected $helper;
 
+    /**
+     * @var ProductRepositoryInterface
+     */
+    protected $productRepository;
+
+    protected $json;
+
    public function __construct
    (
        Context $context,
@@ -53,7 +62,9 @@ class Save extends Designer
        DesignerInterface $designerInterface,
        DataPersistorInterface $dataPersistor,
        UploaderPool $uploaderPool,
-       DataObjectHelper $helper
+       DataObjectHelper $helper,
+       ProductRepositoryInterface $productRepository,
+       Json $json
    )
    {
        parent::__construct($context, $repository, $resultPageFactory);
@@ -62,6 +73,8 @@ class Save extends Designer
        $this->dataPersistor = $dataPersistor;
        $this->uploaderPool = $uploaderPool;
        $this->helper = $helper;
+       $this->productRepository = $productRepository;
+       $this->json = $json;
    }
 
     /**
@@ -75,6 +88,7 @@ class Save extends Designer
         /** @var \Magento\Backend\Model\View\Result\Redirect $resultRedirect */
         $resultRedirect = $this->resultRedirectFactory->create();
         $data = $this->getRequest()->getPostValue();
+        $products = $data['designer_products'] ? $this->json->unserialize($data['designer_products']): '';
 
         if ($data) {
             $id = $this->getRequest()->getParam('designer_id');
@@ -93,10 +107,10 @@ class Save extends Designer
             }
 
             try {
+
                 $photo = $this->getUploader('image')->uploadFileAndGetName('photo', $data);
                 $alt = $this->getUploader('image')->uploadFileAndGetName('alternative_photo', $data);
                 $banner = $this->getUploader('image')->uploadFileAndGetName('banner', $data);
-
 
                 if ($this->model->getId()){
                     if ($photo){
@@ -124,6 +138,15 @@ class Save extends Designer
 
                 $this->helper->populateWithArray($this->model, $data, DesignerInterface::class);
 
+                if ($products){
+                    foreach ($products as $key=>$item){
+                        $modelProduct = $this->productRepository->getById($key);
+                        $modelProduct->setData('el_designer', $this->model->getId());
+
+                        $this->productRepository->save($modelProduct);
+                    }
+
+                }
 
                 $this->repository->save($this->model);
 

@@ -21,8 +21,14 @@ use Eleanorsoft\DesignersPage\Model\ResourceModel\Designer\CollectionFactory;
 class Page extends IndexBase
 {
 
+    /**
+     * @var CollectionFactory
+     */
     protected $collectionFactory;
 
+    /**
+     * @var DesignerRepositoryInterface
+     */
     protected $designerRepository;
 
     public function __construct

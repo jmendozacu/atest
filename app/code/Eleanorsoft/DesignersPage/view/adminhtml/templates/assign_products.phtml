@@ -1,0 +1,28 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/** @var \Eleanorsoft\DesignersPage\Block\Adminhtml\Products\Edit\AssignProducts $block */
+
+/** @var \Eleanorsoft\DesignersPage\Block\Adminhtml\Products\Edit\Tab\Product $blockGrid */
+$blockGrid = $block->getBlockGrid();
+$gridJsObjectName = $blockGrid->getJsObjectName();
+?>
+<?php print $block->getGridHtml() ?>
+<input type="hidden" name="designer_products" id="designer_products_input" data-form-part="designers_grid_form" value="" />
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Eleanorsoft_DesignersPage/assign-products": {
+                "selectedProducts": <?php print /* @escapeNotVerified */ $block->getProductsJson() ?>,
+                "gridJsObjectName": <?php print /* @escapeNotVerified */ '"' . $gridJsObjectName . '"' ?: '{}' ?>
+            }
+        }
+    }
+</script>
+<!-- @todo remove when "UI components" will support such initialization -->
+<script>
+    require('mage/apply/main').apply();
+</script>

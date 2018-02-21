@@ -83,23 +83,6 @@ class InstallSchema implements InstallSchemaInterface
                         'unsigned' => true
                     ),
                     'Sorting'
-                )->addColumn('product_id', Table::TYPE_INTEGER, null,
-                    array(
-                        'unsigned' => true,
-                        'nullable' => true
-                        ),
-                        'Product Id'
-                )->addForeignKey(
-                    $setup->getFkName(
-                        'eleanorsoft_designers',
-                        'product_id',
-                        'catalog_product_entity',
-                        'entity_id'
-                    ),
-                    'product_id',
-                    $setup->getTable('catalog_product_entity'),
-                    'entity_id',
-                  Table::ACTION_CASCADE
                 );
             $setup->getConnection()->createTable($table);
         }

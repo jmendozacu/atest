@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+
+<!--
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+-->
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="product.info.main" >
+            <container name="product.info.price" label="Product info auxiliary container" htmlTag="div" htmlClass="product-info-price" after="product.info.overview"/>
+            <block class="Eleanorsoft\DesignersPage\Block\Designer" after="product.info.overview" name="designer_link" template="Eleanorsoft_DesignersPage::designer_link.phtml" />
+        </referenceContainer>
+    </body>
+</page>

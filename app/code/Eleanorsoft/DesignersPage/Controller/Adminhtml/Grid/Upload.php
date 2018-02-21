@@ -59,7 +59,11 @@ class Upload extends Designer
     }
 
     /**
-     * @return string
+     * Get field with id photo
+     *
+     * @return mixed
+     * @author Pisarenko Denis <denis.pisarenko@eleanorsoft.com>
+     * @copyright Copyright (c) 2018 Eleanorsoft (https://www.eleanorsoft.com/)
      */
     protected function getFieldName()
     {

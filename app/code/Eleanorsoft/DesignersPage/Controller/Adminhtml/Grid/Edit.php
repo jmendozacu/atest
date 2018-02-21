@@ -1,16 +1,47 @@
 <?php
 namespace Eleanorsoft\DesignersPage\Controller\Adminhtml\Grid;
 
+use Eleanorsoft\DesignersPage\Api\DesignerRepositoryInterface;
 use Eleanorsoft\DesignersPage\Controller\Adminhtml\Designer;
+use Magento\Backend\App\Action\Context;
+use Magento\Framework\Registry;
+use Magento\Framework\View\Result\PageFactory;
 
 class Edit extends Designer
 {
+
+    /**
+     * To pass designer model into blocks
+     *
+     * @var Registry
+     */
+    protected $registry;
+
+    public function __construct
+    (
+        Context $context,
+        DesignerRepositoryInterface $repository,
+        PageFactory $resultPageFactory,
+        Registry $registry
+    )
+    {
+        parent::__construct($context, $repository, $resultPageFactory);
+        $this->registry = $registry;
+    }
 
     /**
      * @var Designer
      */
     private $model;
 
+    /**
+     * Execute action based on request and return result
+     *
+     * Note: Request will be added as operation argument in future
+     *
+     * @return \Magento\Framework\Controller\ResultInterface|ResponseInterface
+     * @throws \Magento\Framework\Exception\NotFoundException
+     */
     public function execute()
     {
         // 1. Get ID and create model
@@ -25,6 +56,7 @@ class Edit extends Designer
                 $resultRedirect = $this->resultRedirectFactory->create();
                 return $resultRedirect->setPath('*/*/');
             }
+            $this->registry->register('es_item', $this->model);
         }
 
         // 5. Build edit form

@@ -12,7 +12,7 @@ namespace Eleanorsoft\DesignersPage\Api\Data;
  */
 interface DesignerInterface
 {
-    /**#@+
+    /**
      * Constants for keys of data array. Identical to the name of the getter in snake case
      */
     const DESIGNER_ID       = 'designer_id';
@@ -21,7 +21,6 @@ interface DesignerInterface
     const ALTERNATIVE_PHOTO = 'alternative_photo';
     const BANNER            = 'banner';
     const DESCRIPTION       = 'description';
-    const PRODUCT_IDS       = 'product_id';
     const SORT              = 'sort';
 
     /**
@@ -131,18 +130,4 @@ interface DesignerInterface
      */
     public function setSort($value);
 
-    /**
-     * Get Product ids
-     *
-     * @return null|array
-     */
-    public function getProductIds();
-
-    /**
-     * Set Product ids
-     *
-     * @param $value
-     * @return null|array
-     */
-    public function setProductIds(array $value);
 }

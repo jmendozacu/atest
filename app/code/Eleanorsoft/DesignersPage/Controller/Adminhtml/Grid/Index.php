@@ -14,9 +14,12 @@ use Eleanorsoft\DesignersPage\Controller\Adminhtml\Designer;
 class Index extends Designer
 {
     /**
-     * @return \Magento\Backend\Model\View\Result\Page
-     * @author Pisarenko Denis <denis.pisarenko@eleanorsoft.com>
-     * @copyright Copyright (c) 2018 Eleanorsoft (https://www.eleanorsoft.com/)
+     * Execute action based on request and return result
+     *
+     * Note: Request will be added as operation argument in future
+     *
+     * @return \Magento\Framework\Controller\ResultInterface|ResponseInterface
+     * @throws \Magento\Framework\Exception\NotFoundException
      */
     public function execute()
     {

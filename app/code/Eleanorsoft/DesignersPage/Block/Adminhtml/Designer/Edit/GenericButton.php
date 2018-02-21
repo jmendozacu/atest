@@ -37,7 +37,7 @@ class GenericButton
     }
 
     /**
-     * Return CMS block ID
+     * Return Designer block ID
      *
      * @return int|null
      */

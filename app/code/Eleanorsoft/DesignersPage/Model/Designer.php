@@ -178,27 +178,6 @@ class Designer extends AbstractModel implements DesignerInterface
     }
 
     /**
-     * Get Product ids
-     *
-     * @return null|array
-     */
-    public function getProductIds()
-    {
-        return $this->getData(self::PRODUCT_IDS);
-    }
-
-    /**
-     * Set Product ids
-     *
-     * @param $value
-     * @return Designer
-     */
-    public function setProductIds(array $value)
-    {
-        return $this->setData(self::PRODUCT_IDS, $value);
-    }
-
-    /**
      * Get sort
      *
      * @return string|null
