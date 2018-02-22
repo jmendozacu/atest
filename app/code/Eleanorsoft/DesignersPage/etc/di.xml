@@ -40,7 +40,7 @@
     <type name="Eleanorsoft\DesignersPage\Model\UploaderPool">
         <arguments>
             <argument name="uploaders" xsi:type="array">
-                <item name="image" xsi:type="string">DesignerUploader</item>
+                <item name="image" xsi:type="object">DesignerUploader</item>
             </argument>
         </arguments>
     </type>
