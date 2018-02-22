@@ -6,8 +6,11 @@ use Eleanorsoft\DesignersPage\Api\DesignerRepositoryInterface;
 use Eleanorsoft\DesignersPage\Helper\Data;
 
 use Magento\Catalog\Api\Data\ProductInterface;
+use Magento\Catalog\Model\Product\Attribute\Source\Status;
+use Magento\Catalog\Model\Product\Visibility;
 use Magento\Catalog\Model\ResourceModel\Product;
 use Magento\Catalog\Model\ResourceModel\Product\CollectionFactory;
+use Magento\CatalogInventory\Helper\Stock;
 use Magento\Framework\Data\Collection;
 use Magento\Framework\Exception\NotFoundException;
 use Magento\Framework\View\Element\Template;
@@ -53,6 +56,11 @@ class Designer extends Template
      */
     protected $collectionFactory;
 
+    /**
+     * @var Stock
+     */
+    protected $stock;
+
     public function __construct
     (
         Context $context,
@@ -63,7 +71,8 @@ class Designer extends Template
         DesignerRepositoryInterface $designerRepository,
         ProductInterface $product,
         Product $resourceProduct,
-        CollectionFactory $collectionFactory
+        CollectionFactory $collectionFactory,
+        Stock $stock
     )
     {
         parent::__construct($context, $data);
@@ -74,6 +83,7 @@ class Designer extends Template
         $this->product = $product;
         $this->resourceProduct = $resourceProduct;
         $this->collectionFactory = $collectionFactory;
+        $this->stock = $stock;
     }
 
 
@@ -131,13 +141,31 @@ class Designer extends Template
         return $this->designerRepository->getById($id_designer);
     }
 
-    public function getProducts()
+    public function getProducts($designer_id)
     {
-        $id = $this->getRequest()->getParam('id');
+        $store_id = $this->_storeManager->getStore()->getId();
 
         $collection = $this->collectionFactory->create()
-            ->addAttributeToFilter('el_designer', $id);
+            ->addAttributeToSelect('*')
+            ->addAttributeToFilter('el_designer', $designer_id)
+            ->addAttributeToFilter('status', ['eq' => Status::STATUS_ENABLED])
+            ->addAttributeToFilter('visibility', ['neq' =>Visibility::VISIBILITY_NOT_VISIBLE])
+            ->addStoreFilter($store_id);
+
+        $this->stock->addInStockFilterToCollection($collection);
 
         return $collection;
+    }
+
+    public function getProductListHtml()
+    {
+
+        $id = $this->getRequest()->getParam('id');
+        /** @var \Magento\Catalog\Block\Product\ListProduct $block */
+        $block = $this->getChildBlock('product_list');
+
+        $block->setCollection($this->getProducts($id));
+
+        return $block->toHtml();
     }
 }
