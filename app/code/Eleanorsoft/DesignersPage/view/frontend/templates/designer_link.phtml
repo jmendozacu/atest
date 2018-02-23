@@ -1,12 +1,9 @@
 <?php $_data = $this->getDesigner(); ?>
 <?php if ($_data){?>
-<div class="product-reviews-summary">
     <span class="value">Designer :&nbsp;</span>
-    <div class="reviews-actions">
-        <a href="<?php print $this->getUrl('designers/index/page', ['id' => $_data->getId()])?>" class="action add">
+        <a href="<?php print $this->getUrl('designers/index/page', ['id' => $_data->getId()])?>" class="action designers">
             <?php  echo __('%1', $_data->getFullName()) ?>
         </a>
-    </div>
-</div>
+
 <?php }?>
 

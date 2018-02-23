@@ -164,7 +164,7 @@ class Designer extends Template
 
         $id = $this->getRequest()->getParam('id');
         /** @var \Magento\Catalog\Block\Product\ListProduct $block */
-        $block = $this->getChildBlock('product_list');
+        $block = $this->getChildBlock('product_list_designer');
 
         $block->setCollection($this->getProducts($id));
 

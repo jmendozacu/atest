@@ -54,9 +54,10 @@ class Grid extends \Magento\Backend\App\Action
     {
 
         $id = $this->getRequest()->getParam('designer_id');
-        $model = $this->repository->getById($id);
-        $this->registry->register('es_item', $model);
-
+        if ($id) {
+            $model = $this->repository->getById($id);
+            $this->registry->register('es_item', $model);
+        }
         /** @var \Magento\Framework\Controller\Result\Raw $resultRaw */
         $resultRaw = $this->resultRawFactory->create();
         return $resultRaw->setContents(
