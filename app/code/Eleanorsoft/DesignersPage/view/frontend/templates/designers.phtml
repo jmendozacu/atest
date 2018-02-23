@@ -9,12 +9,13 @@
     <div id="zoo-product-listing" class="ajax-img-product-attribute wrapper grid products-grid products-grid-partitioned category-products-grid product_grid_style_4">
         <ol class="items product-items itemgrid itemgrid zoo-itemgrid-adaptive zoo-grid-4col trigger-equal-height">
             <?php foreach ($collection as $item){?>
+                <?php $alternativePhoto = $helper->getImageUrl($item->getAlternativePhoto());?>
             <li class="product_hover product product-item product-instock">
-                <div class="product-item-info  have-alternative-image " data-container="product-grid">
+                <div class="product-item-info  <?php if ($alternativePhoto){?>have-alternative-image<?php }?> " data-container="product-grid">
                     <div class="zoo-inner-product-item-info">
                         <div class="zoo-product-image">
                             <a href="<?php print $this->getUrl('*/*/page', ['id' => $item->getId()])?>" tabindex="-1" style="min-height: 200px"> <img class="product-image-photo clazyload" data-src="<?php print $helper->getImageUrl($item->getImageUrl());?>" src="<?php print $helper->getImageUrl($item->getPhoto());?>" alt="<?php print $item->getFullName(); ?>" style="display: block;">
-                                <span class="product-img-additional alt-image"><img class="img-responsive alt-img product-image-photo" src="<?php print $helper->getImageUrl($item->getAlternativePhoto());?>" alt="<?php print $item->getFullName(); ?>" width="auto" height="auto"></span>
+                                <?php if ($alternativePhoto){?><span class="product-img-additional alt-image"><img class="img-responsive alt-img product-image-photo" src="<?php print $alternativePhoto;?>" alt="<?php print $item->getFullName(); ?>" width="auto" height="auto"></span><?php }?>
                             </a>
                         </div>
                         <div class="product details product-item-details">
