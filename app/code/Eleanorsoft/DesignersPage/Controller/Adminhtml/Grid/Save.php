@@ -145,7 +145,10 @@ class Save extends Designer
                         $modelProduct = $this->productRepository->getById($key);
                         $modelProduct->setData('el_designer', $this->model->getId());
 
-                        $this->productRepository->save($modelProduct);
+                        // when repository saves product in multistore system
+                        // it removes store attributes. We have to use the old method
+                        $modelProduct->save();
+//                        $this->productRepository->save($modelProduct);
                     }
                 }
 

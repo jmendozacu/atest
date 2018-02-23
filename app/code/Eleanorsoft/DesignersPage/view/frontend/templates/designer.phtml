@@ -15,13 +15,13 @@
 
                     <?php print $designer->getDescription(); ?>
 
-                    <h3 id="designer-list-products">Products by <?php print $designer->getFullName(); ?> </h3>
+                    <h3 style="margin:20px 0;" id="designer-list-products">Products by <?php print $designer->getFullName(); ?> </h3>
+                    <?php print $block->getProductListHtml() ?>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<?php print $block->getProductListHtml() ?>
 
 
 
