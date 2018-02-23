@@ -138,6 +138,8 @@ class Save extends Designer
 
                 $this->helper->populateWithArray($this->model, $data, DesignerInterface::class);
 
+                $this->repository->save($this->model);
+
                 if ($products){
                     foreach ($products as $key=>$item){
                         $modelProduct = $this->productRepository->getById($key);
@@ -145,10 +147,7 @@ class Save extends Designer
 
                         $this->productRepository->save($modelProduct);
                     }
-
                 }
-
-                $this->repository->save($this->model);
 
                 $this->messageManager->addSuccessMessage(__('You saved the designer.'));
                 $this->dataPersistor->clear('designer_block');
