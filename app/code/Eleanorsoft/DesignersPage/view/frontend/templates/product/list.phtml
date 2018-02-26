@@ -132,6 +132,9 @@ if (!empty($icon)) {
             <?php /** @var $_item \Magento\Catalog\Model\Product */ ?>
             <?php foreach ($items as $_item): ?>
                 <?php /* @escapeNotVerified */
+
+                $imgUrl = $_imageHelper->getImg($_item, $imgWidth, $imgHeight,'category_page_grid');
+
                 if($_item->getIsSalable()) $product_stock = 'product-instock'; else $product_stock = 'product-oustock';
 
                 echo ($iterator++ == 1) ? '<li class="product_hover product product-item '.$product_stock.'">' : '</li><li class="product_hover product product-item '.$product_stock.'">' ?>
@@ -226,9 +229,6 @@ if (!empty($icon)) {
 
                         <a href="<?php /* @escapeNotVerified */
                         echo $block->getProductUrl($_item) ?>" tabindex="-1" <?php if ($lazyload == 'true') echo 'style="min-height: '.$min_height_img_lazyload.'px"'?>>
-                            <?php
-                            $imgUrl = $_imageHelper->getImg($_item, $imgWidth, $imgHeight,'category_page_grid');
-                            ?>
                             <img id="product-collection-image-<?php echo $_item->getId(); ?>" class="product-image-photo clazyload"
                                 <?php if($lazyload == 'true'): ?>
                                     data-src="<?php echo $imgUrl; ?>" src="<?php echo $image_url; ?>"
