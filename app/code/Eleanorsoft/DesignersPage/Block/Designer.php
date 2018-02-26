@@ -61,8 +61,7 @@ class Designer extends Template
      */
     protected $stock;
 
-    public function __construct
-    (
+    public function __construct(
         Context $context,
         array $data = [],
 
@@ -137,7 +136,7 @@ class Designer extends Template
         $this->resourceProduct->load($this->product, $id);
 
         $id_designer = $this->product->getData('el_designer');
-        if (!$id_designer){
+        if (!$id_designer) {
             return false;
         }
         return $this->designerRepository->getById($id_designer);

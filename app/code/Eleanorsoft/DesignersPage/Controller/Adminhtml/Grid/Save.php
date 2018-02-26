@@ -13,6 +13,7 @@ use Eleanorsoft\DesignersPage\Model\Designer as ModelDesigner;
 use Eleanorsoft\DesignersPage\Model\UploaderPool;
 use Magento\Backend\App\Action\Context;
 use Magento\Catalog\Api\ProductRepositoryInterface;
+use Magento\Catalog\Model\ResourceModel\Product\CollectionFactory;
 use Magento\Framework\Api\DataObjectHelper;
 use Magento\Framework\App\Request\DataPersistorInterface;
 use Magento\Framework\Exception\LocalizedException;
@@ -51,29 +52,37 @@ class Save extends Designer
      */
     protected $productRepository;
 
+    /**
+     * @var CollectionFactory
+     */
+    protected $collectionFactory;
+
+    /**
+     * @var Json
+     */
     protected $json;
 
-   public function __construct
-   (
+
+   public function __construct(
        Context $context,
        DesignerRepositoryInterface $repository,
        PageFactory $resultPageFactory,
-
        DesignerInterface $designerInterface,
        DataPersistorInterface $dataPersistor,
        UploaderPool $uploaderPool,
        DataObjectHelper $helper,
        ProductRepositoryInterface $productRepository,
+       CollectionFactory $collectionFactory,
        Json $json
    )
    {
        parent::__construct($context, $repository, $resultPageFactory);
-
        $this->designerInterface = $designerInterface;
        $this->dataPersistor = $dataPersistor;
        $this->uploaderPool = $uploaderPool;
        $this->helper = $helper;
        $this->productRepository = $productRepository;
+       $this->collectionFactory = $collectionFactory;
        $this->json = $json;
    }
 
@@ -93,9 +102,9 @@ class Save extends Designer
         if ($data) {
             $id = $this->getRequest()->getParam('designer_id');
 
-            if ($id){
+            if ($id) {
                 $this->model = $this->repository->getById($id);
-            }else{
+            } else {
                 unset($data['designer_id']);
                 $this->model = $this->designerInterface;
             }
@@ -112,24 +121,23 @@ class Save extends Designer
                 $alt = $this->getUploader('image')->uploadFileAndGetName('alternative_photo', $data);
                 $banner = $this->getUploader('image')->uploadFileAndGetName('banner', $data);
 
-                if ($this->model->getId()){
-                    if ($photo){
+                if ($this->model->getId()) {
+                    if ($photo) {
                         $data['photo'] = $photo;
-                    }else{
+                    } else {
                         $data['photo'] = $this->model->getPhoto();
                     }
-                    if ($alt){
+                    if ($alt) {
                         $data['alternative_photo'] = $alt;
-                    }else{
+                    } else {
                         $data['alternative_photo'] = $this->model->getAlternativePhoto();
                     }
-                    if ($banner){
+                    if ($banner) {
                         $data['banner'] = $banner;
-                    }else{
+                    } else {
                         $data['banner'] = $this->model->getBanner();
                     }
-
-                }else{
+                } else {
                     $data['photo'] = $photo;
                     $data['alternative_photo'] = $alt;
                     $data['banner'] = $banner;
@@ -140,8 +148,11 @@ class Save extends Designer
 
                 $this->repository->save($this->model);
 
-                if ($products){
-                    foreach ($products as $key=>$item){
+                $this->cleanProducts($this->model->getId());
+
+                if ($products) {
+                    foreach ($products as $key=>$item) {
+
                         $modelProduct = $this->productRepository->getById($key);
                         $modelProduct->setData('el_designer', $this->model->getId());
 
@@ -178,4 +189,18 @@ class Save extends Designer
     {
         return $this->uploaderPool->getUploader($type);
     }
+
+    private function cleanProducts($designer_id)
+    {
+        $collection = $this->collectionFactory->create()
+            ->addAttributeToSelect('*')
+            ->addAttributeToFilter('el_designer', $designer_id);
+
+        foreach ($collection as $item) {
+            $item->setData('el_designer', '');
+        }
+
+        $collection->save();
+    }
+
 }
