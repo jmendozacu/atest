@@ -9,10 +9,12 @@ namespace Eleanorsoft\DesignersPage\Controller\Adminhtml\Grid;
 use Eleanorsoft\DesignersPage\Api\Data\DesignerInterface;
 use Eleanorsoft\DesignersPage\Api\DesignerRepositoryInterface;
 use Eleanorsoft\DesignersPage\Controller\Adminhtml\Designer;
+use Eleanorsoft\DesignersPage\Helper\Data;
 use Eleanorsoft\DesignersPage\Model\Designer as ModelDesigner;
 use Eleanorsoft\DesignersPage\Model\UploaderPool;
 use Magento\Backend\App\Action\Context;
 use Magento\Catalog\Api\ProductRepositoryInterface;
+use Magento\Catalog\Model\ResourceModel\Product\Action;
 use Magento\Catalog\Model\ResourceModel\Product\CollectionFactory;
 use Magento\Framework\Api\DataObjectHelper;
 use Magento\Framework\App\Request\DataPersistorInterface;
@@ -62,29 +64,42 @@ class Save extends Designer
      */
     protected $json;
 
+    /**
+     * @var Action
+     */
+    protected $action;
 
-   public function __construct(
-       Context $context,
-       DesignerRepositoryInterface $repository,
-       PageFactory $resultPageFactory,
-       DesignerInterface $designerInterface,
-       DataPersistorInterface $dataPersistor,
-       UploaderPool $uploaderPool,
-       DataObjectHelper $helper,
-       ProductRepositoryInterface $productRepository,
-       CollectionFactory $collectionFactory,
-       Json $json
-   )
-   {
-       parent::__construct($context, $repository, $resultPageFactory);
-       $this->designerInterface = $designerInterface;
-       $this->dataPersistor = $dataPersistor;
-       $this->uploaderPool = $uploaderPool;
-       $this->helper = $helper;
-       $this->productRepository = $productRepository;
-       $this->collectionFactory = $collectionFactory;
-       $this->json = $json;
-   }
+    /**
+     * @var Data
+     */
+    protected $helperDesigner;
+
+    public function __construct(
+        Context $context,
+        DesignerRepositoryInterface $repository,
+        PageFactory $resultPageFactory,
+        DesignerInterface $designerInterface,
+        DataPersistorInterface $dataPersistor,
+        UploaderPool $uploaderPool,
+        DataObjectHelper $helper,
+        ProductRepositoryInterface $productRepository,
+        CollectionFactory $collectionFactory,
+        Action $action,
+        Data $helperDesigner,
+        Json $json
+    )
+    {
+        parent::__construct($context, $repository, $resultPageFactory);
+        $this->designerInterface = $designerInterface;
+        $this->dataPersistor = $dataPersistor;
+        $this->uploaderPool = $uploaderPool;
+        $this->helper = $helper;
+        $this->productRepository = $productRepository;
+        $this->collectionFactory = $collectionFactory;
+        $this->action = $action;
+        $this->helperDesigner = $helperDesigner;
+        $this->json = $json;
+    }
 
     /**
      * Save action
@@ -97,7 +112,7 @@ class Save extends Designer
         /** @var \Magento\Backend\Model\View\Result\Redirect $resultRedirect */
         $resultRedirect = $this->resultRedirectFactory->create();
         $data = $this->getRequest()->getPostValue();
-        $products = $data['designer_products'] ? $this->json->unserialize($data['designer_products']): '';
+        $products = $data['designer_products'] ? $this->json->unserialize($data['designer_products']) : '';
 
         if ($data) {
             $id = $this->getRequest()->getParam('designer_id');
@@ -148,19 +163,20 @@ class Save extends Designer
 
                 $this->repository->save($this->model);
 
-                $this->cleanProducts($this->model->getId());
+                $existingIds = $this->getProductIdsForDesigner($this->model->getId());
+                $newIds = [];
 
                 if ($products) {
-                    foreach ($products as $key=>$item) {
+                    $newIds = array_keys($products);
+                }
 
-                        $modelProduct = $this->productRepository->getById($key);
-                        $modelProduct->setData('el_designer', $this->model->getId());
+                $removeIds = array_diff($existingIds, $newIds);
+                $addIds = array_diff($newIds, $existingIds);
 
-                        // when repository saves product in multistore system
-                        // it removes store attributes. We have to use the old method
-                        $modelProduct->save();
-//                        $this->productRepository->save($modelProduct);
-                    }
+                $storeIds = $this->helperDesigner->toStoresArray();
+                foreach ($storeIds as $id) {
+                    $this->action->updateAttributes($removeIds, ['el_designer' => ''], $id);
+                    $this->action->updateAttributes($addIds, ['el_designer' => $this->model->getId()], $id);
                 }
 
                 $this->messageManager->addSuccessMessage(__('You saved the designer.'));
@@ -172,7 +188,6 @@ class Save extends Designer
                 return $resultRedirect->setPath('*/*/');
             } catch (LocalizedException $e) {
                 $this->messageManager->addErrorMessage($e->getMessage());
-
             } catch (\Exception $e) {
                 $this->messageManager->addExceptionMessage($e, __('Something went wrong while saving the designer.'));
             }
@@ -193,17 +208,11 @@ class Save extends Designer
         return $this->uploaderPool->getUploader($type);
     }
 
-    private function cleanProducts($designer_id)
+    private function getProductIdsForDesigner($designerId)
     {
-        $collection = $this->collectionFactory->create()
-            ->addAttributeToSelect('*')
-            ->addAttributeToFilter('el_designer', $designer_id);
-
-        foreach ($collection as $item) {
-            $item->setData('el_designer', '');
-        }
-
-        $collection->save();
+        return $this->collectionFactory->create()
+            ->addAttributeToSelect('entity_id')
+            ->addAttributeToFilter('el_designer', $designerId)
+            ->getColumnValues('entity_id');
     }
-
 }
