@@ -1,4 +1,5 @@
 <?php $_data = $this->getDesigner(); ?>
+
 <?php if ($_data){?>
     <span class="value">Designer :&nbsp;</span>
         <a href="<?php print $this->getUrl('designers/index/page', ['id' => $_data->getId()])?>" class="action designers">

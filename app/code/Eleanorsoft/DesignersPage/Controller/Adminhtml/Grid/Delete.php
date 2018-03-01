@@ -28,7 +28,7 @@ class Delete extends Designer
                 $model = $this->repository->getById($id);
                 $this->repository->delete($model);
                 // display success message
-                $this->messageManager->addSuccessMessage(__('You deleted the block.'));
+                $this->messageManager->addSuccessMessage(__('You deleted the designer.'));
                 // go to grid
                 return $resultRedirect->setPath('*/*/');
             } catch (\Exception $e) {

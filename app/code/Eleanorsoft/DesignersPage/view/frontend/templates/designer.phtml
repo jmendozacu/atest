@@ -6,9 +6,11 @@
 <div class="post-view">
     <div class="post-holder-4">
         <div class="post-content">
-            <div class="post-ftimg" style="background: #cccccc url('<?php print $helper->getImageUrl($designer->getBanner()); ?>') center center / cover no-repeat;">
+            <?php if ($designer->getBanner()){?>
+            <div class="post-ftimg" style="background: #cccccc url('<?php print $helper->getImageUrl($designer->getBanner());?>') center center / cover no-repeat;">
 
             </div>
+            <?php }?>
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2">
                     <h3><?php print $designer->getFullName(); ?></h3>
