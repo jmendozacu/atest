@@ -63,7 +63,6 @@ class Designer extends Template
 
     public function __construct(
         Context $context,
-        array $data = [],
 
         DesignerInterface $designerModel,
         Data $helper,
@@ -71,7 +70,8 @@ class Designer extends Template
         ProductInterface $product,
         Product $resourceProduct,
         CollectionFactory $collectionFactory,
-        Stock $stock
+        Stock $stock,
+        array $data = []
     )
     {
         parent::__construct($context, $data);
