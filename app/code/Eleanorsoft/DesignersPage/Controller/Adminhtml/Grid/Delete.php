@@ -3,11 +3,28 @@
 namespace Eleanorsoft\DesignersPage\Controller\Adminhtml\Grid;
 
 
+use Eleanorsoft\DesignersPage\Api\DesignerRepositoryInterface;
 use Eleanorsoft\DesignersPage\Controller\Adminhtml\Designer;
+use Magento\Backend\App\Action\Context;
+use Magento\Catalog\Model\ResourceModel\Product\CollectionFactory;
 use Magento\Framework\App\ResponseInterface;
+use Magento\Framework\View\Result\PageFactory;
 
 class Delete extends Designer
 {
+
+    protected $collectionFactory;
+
+    public function __construct(
+        Context $context,
+        DesignerRepositoryInterface $repository,
+        PageFactory $resultPageFactory,
+        CollectionFactory $collectionFactory
+    )
+    {
+        parent::__construct($context, $repository, $resultPageFactory);
+        $this->collectionFactory = $collectionFactory;
+    }
 
     /**
      * Execute action based on request and return result
@@ -21,9 +38,12 @@ class Delete extends Designer
     {
         $resultRedirect = $this->resultRedirectFactory->create();
         $id = $this->getRequest()->getParam('designer_id');
+        $collection = $this->collectionFactory->create();
 
         if ($id) {
             try {
+                $collection->getConnection()->delete('catalog_product_entity_varchar', "value=$id");
+
                 // init model and delete
                 $model = $this->repository->getById($id);
                 $this->repository->delete($model);
