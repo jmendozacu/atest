@@ -5,6 +5,7 @@ use Eleanorsoft\DesignersPage\Api\DesignerRepositoryInterface;
 use Eleanorsoft\DesignersPage\Controller\Adminhtml\Designer;
 use Magento\Backend\App\Action\Context;
 use Magento\Backend\Model\View\Result\ForwardFactory;
+use Magento\Catalog\Model\ResourceModel\Product\CollectionFactory;
 use Magento\Framework\View\Result\PageFactory;
 
 class Add extends Designer
@@ -14,18 +15,27 @@ class Add extends Designer
      */
     protected $resultForwardFactory;
 
-    public function __construct
-    (
+    /**
+     * Add constructor.
+     * @param Context $context
+     * @param DesignerRepositoryInterface $repository
+     * @param PageFactory $resultPageFactory
+     * @param CollectionFactory $collectionFactory
+     * @param ForwardFactory $resultForwardFactory
+     * @author Konstantin Esin <hello@eleanorsoft.com>
+     */
+    public function __construct(
         Context $context,
         DesignerRepositoryInterface $repository,
         PageFactory $resultPageFactory,
+        CollectionFactory $collectionFactory,
         ForwardFactory $resultForwardFactory
     )
     {
-        parent::__construct($context, $repository, $resultPageFactory);
+        parent::__construct($context, $repository, $resultPageFactory, $collectionFactory);
         $this->resultForwardFactory = $resultForwardFactory;
-
     }
+
 
     /**
      * Redirect to EditController

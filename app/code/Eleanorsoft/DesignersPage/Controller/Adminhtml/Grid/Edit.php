@@ -4,6 +4,7 @@ namespace Eleanorsoft\DesignersPage\Controller\Adminhtml\Grid;
 use Eleanorsoft\DesignersPage\Api\DesignerRepositoryInterface;
 use Eleanorsoft\DesignersPage\Controller\Adminhtml\Designer;
 use Magento\Backend\App\Action\Context;
+use Magento\Catalog\Model\ResourceModel\Product\CollectionFactory;
 use Magento\Framework\Registry;
 use Magento\Framework\View\Result\PageFactory;
 
@@ -17,15 +18,24 @@ class Edit extends Designer
      */
     protected $registry;
 
-    public function __construct
-    (
+    /**
+     * Edit constructor.
+     * @param Context $context
+     * @param DesignerRepositoryInterface $repository
+     * @param PageFactory $resultPageFactory
+     * @param CollectionFactory $collectionFactory
+     * @param Registry $registry
+     * @author Konstantin Esin <hello@eleanorsoft.com>
+     */
+    public function __construct(
         Context $context,
         DesignerRepositoryInterface $repository,
         PageFactory $resultPageFactory,
+        CollectionFactory $collectionFactory,
         Registry $registry
     )
     {
-        parent::__construct($context, $repository, $resultPageFactory);
+        parent::__construct($context, $repository, $resultPageFactory, $collectionFactory);
         $this->registry = $registry;
     }
 

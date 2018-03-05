@@ -33,12 +33,15 @@ class InstallData implements InstallDataInterface
     {
         $eavSetup = $this->eavSetupFactory->create(['setup' => $setup]);
         $eavSetup->addAttribute(Product::ENTITY, 'el_designer',[
-            'type'      =>  'varchar',
+            'type'      =>  'int',
             'label'     =>  'Designer',
             'input'     =>  'select',
             'source'    => 'Eleanorsoft\DesignersPage\Model\Config\Source\Options',
             'visible'   =>  true,
             'required'  =>  false,
+            'filterable' => true,
+            'visible_on_front' => true,
+            'filterable_in_search' => true,
             'global'    =>  ScopedAttributeInterface::SCOPE_GLOBAL
         ]);
     }

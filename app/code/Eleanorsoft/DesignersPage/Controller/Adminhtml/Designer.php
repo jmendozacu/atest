@@ -5,6 +5,7 @@ namespace Eleanorsoft\DesignersPage\Controller\Adminhtml;
 use Eleanorsoft\DesignersPage\Api\DesignerRepositoryInterface;
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
+use Magento\Catalog\Model\ResourceModel\Product\CollectionFactory;
 use \Magento\Framework\View\Result\PageFactory;
 
 
@@ -34,18 +35,34 @@ abstract class Designer extends Action
      */
     protected $resultPageFactory;
 
+    /**
+     *
+     * @var CollectionFactory
+     */
+    protected $collectionFactory;
+
+    /**
+     * Designer constructor.
+     * @param Context $context
+     * @param DesignerRepositoryInterface $repository
+     * @param PageFactory $resultPageFactory
+     * @param CollectionFactory $collectionFactory
+     * @author Konstantin Esin <hello@eleanorsoft.com>
+     */
     public function __construct
     (
         Context $context,
 
         DesignerRepositoryInterface $repository,
-        PageFactory $resultPageFactory
+        PageFactory $resultPageFactory,
+        CollectionFactory $collectionFactory
     )
     {
         parent::__construct($context);
 
         $this->repository = $repository;
         $this->resultPageFactory = $resultPageFactory;
+        $this->collectionFactory = $collectionFactory;
     }
 
     /**
@@ -74,5 +91,19 @@ abstract class Designer extends Action
         $resultPage->getConfig()->getTitle()->prepend(__($value));
         $resultPage->addBreadcrumb(__($value), __($value));
         return $resultPage;
+    }
+
+    /**
+     *
+     * @param $designerId
+     * @return array
+     * @author Konstantin Esin <hello@eleanorsoft.com>
+     */
+    protected function getProductIdsForDesigner($designerId)
+    {
+        return $this->collectionFactory->create()
+            ->addAttributeToSelect('entity_id')
+            ->addAttributeToFilter('el_designer', $designerId)
+            ->getColumnValues('entity_id');
     }
 }

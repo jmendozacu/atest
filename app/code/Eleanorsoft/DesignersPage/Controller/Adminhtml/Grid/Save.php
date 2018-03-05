@@ -15,12 +15,12 @@ use Eleanorsoft\DesignersPage\Model\UploaderPool;
 use Magento\Backend\App\Action\Context;
 use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Catalog\Model\ResourceModel\Product\Action;
-use Magento\Catalog\Model\ResourceModel\Product\CollectionFactory;
 use Magento\Framework\Api\DataObjectHelper;
 use Magento\Framework\App\Request\DataPersistorInterface;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Serialize\Serializer\Json;
 use \Magento\Framework\View\Result\PageFactory;
+use Magento\Catalog\Model\ResourceModel\Product\CollectionFactory;
 
 class Save extends Designer
 {
@@ -55,11 +55,6 @@ class Save extends Designer
     protected $productRepository;
 
     /**
-     * @var CollectionFactory
-     */
-    protected $collectionFactory;
-
-    /**
      * @var Json
      */
     protected $json;
@@ -78,24 +73,24 @@ class Save extends Designer
         Context $context,
         DesignerRepositoryInterface $repository,
         PageFactory $resultPageFactory,
+        CollectionFactory $collectionFactory,
         DesignerInterface $designerInterface,
         DataPersistorInterface $dataPersistor,
         UploaderPool $uploaderPool,
         DataObjectHelper $helper,
         ProductRepositoryInterface $productRepository,
-        CollectionFactory $collectionFactory,
         Action $action,
         Data $helperDesigner,
         Json $json
+
     )
     {
-        parent::__construct($context, $repository, $resultPageFactory);
+        parent::__construct($context, $repository, $resultPageFactory, $collectionFactory);
         $this->designerInterface = $designerInterface;
         $this->dataPersistor = $dataPersistor;
         $this->uploaderPool = $uploaderPool;
         $this->helper = $helper;
         $this->productRepository = $productRepository;
-        $this->collectionFactory = $collectionFactory;
         $this->action = $action;
         $this->helperDesigner = $helperDesigner;
         $this->json = $json;
@@ -208,11 +203,4 @@ class Save extends Designer
         return $this->uploaderPool->getUploader($type);
     }
 
-    private function getProductIdsForDesigner($designerId)
-    {
-        return $this->collectionFactory->create()
-            ->addAttributeToSelect('entity_id')
-            ->addAttributeToFilter('el_designer', $designerId)
-            ->getColumnValues('entity_id');
-    }
 }

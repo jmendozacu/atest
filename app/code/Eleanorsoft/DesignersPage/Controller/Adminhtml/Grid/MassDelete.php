@@ -5,6 +5,7 @@ use Eleanorsoft\DesignersPage\Api\DesignerRepositoryInterface;
 use Eleanorsoft\DesignersPage\Controller\Adminhtml\Designer;
 use Eleanorsoft\DesignersPage\Model\ResourceModel\Designer\CollectionFactory;
 use Magento\Backend\App\Action\Context;
+use Magento\Catalog\Model\ResourceModel\Product\CollectionFactory as CatalogCollectionFactory;
 use Magento\Framework\App\ResponseInterface;
 use Magento\Framework\View\Result\PageFactory;
 use Magento\Ui\Component\MassAction\Filter;
@@ -21,20 +22,20 @@ class MassDelete extends Designer
      */
     protected $collectionFactory;
 
-    public function __construct
-    (
+    public function __construct(
         Context $context,
         DesignerRepositoryInterface $repository,
         PageFactory $resultPageFactory,
+        CatalogCollectionFactory $collection,
         Filter $filter,
         CollectionFactory $collectionFactory
     )
     {
-        parent::__construct($context, $repository, $resultPageFactory);
-
+        parent::__construct($context, $repository, $resultPageFactory, $collection);
         $this->filter = $filter;
         $this->collectionFactory = $collectionFactory;
     }
+
 
     /**
      * Execute action based on request and return result

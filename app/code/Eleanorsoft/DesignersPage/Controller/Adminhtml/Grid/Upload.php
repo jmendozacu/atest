@@ -6,6 +6,7 @@ use Eleanorsoft\DesignersPage\Api\DesignerRepositoryInterface;
 use Eleanorsoft\DesignersPage\Controller\Adminhtml\Designer;
 use Eleanorsoft\DesignersPage\Model\Uploader;
 use Magento\Backend\App\Action\Context;
+use Magento\Catalog\Model\ResourceModel\Product\CollectionFactory;
 use Magento\Framework\App\ResponseInterface;
 use Magento\Framework\View\Result\PageFactory;
 use Magento\Framework\Controller\ResultFactory;
@@ -17,17 +18,24 @@ class Upload extends Designer
      */
     protected $uploader;
 
-    public function __construct
-    (
+    /**
+     * Upload constructor.
+     * @param Context $context
+     * @param DesignerRepositoryInterface $repository
+     * @param PageFactory $resultPageFactory
+     * @param CollectionFactory $collectionFactory
+     * @param Uploader $uploader
+     * @author Konstantin Esin <hello@eleanorsoft.com>
+     */
+    public function __construct(
         Context $context,
         DesignerRepositoryInterface $repository,
         PageFactory $resultPageFactory,
-
+        CollectionFactory $collectionFactory,
         Uploader $uploader
     )
     {
-        parent::__construct($context, $repository, $resultPageFactory);
-
+        parent::__construct($context, $repository, $resultPageFactory, $collectionFactory);
         $this->uploader = $uploader;
     }
 

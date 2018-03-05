@@ -5,7 +5,9 @@ namespace Eleanorsoft\DesignersPage\Controller\Adminhtml\Grid;
 
 use Eleanorsoft\DesignersPage\Api\DesignerRepositoryInterface;
 use Eleanorsoft\DesignersPage\Controller\Adminhtml\Designer;
+use Eleanorsoft\DesignersPage\Helper\Data;
 use Magento\Backend\App\Action\Context;
+use Magento\Catalog\Model\ResourceModel\Product\Action;
 use Magento\Catalog\Model\ResourceModel\Product\CollectionFactory;
 use Magento\Framework\App\ResponseInterface;
 use Magento\Framework\View\Result\PageFactory;
@@ -13,17 +15,39 @@ use Magento\Framework\View\Result\PageFactory;
 class Delete extends Designer
 {
 
-    protected $collectionFactory;
+    /**
+     *
+     * @var Data
+     */
+    protected $helper;
 
+    /**
+     *
+     * @var Action
+     */
+    protected $action;
+
+    /**
+     * Delete constructor.
+     * @param Context $context
+     * @param DesignerRepositoryInterface $repository
+     * @param PageFactory $resultPageFactory
+     * @param CollectionFactory $collectionFactory
+     * @param Data $helper
+     * @author Konstantin Esin <hello@eleanorsoft.com>
+     */
     public function __construct(
         Context $context,
         DesignerRepositoryInterface $repository,
         PageFactory $resultPageFactory,
-        CollectionFactory $collectionFactory
+        CollectionFactory $collectionFactory,
+        Data $helper,
+        Action $action
     )
     {
-        parent::__construct($context, $repository, $resultPageFactory);
-        $this->collectionFactory = $collectionFactory;
+        parent::__construct($context, $repository, $resultPageFactory, $collectionFactory);
+        $this->helper = $helper;
+        $this->action = $action;
     }
 
     /**
@@ -42,8 +66,13 @@ class Delete extends Designer
 
         if ($id) {
             try {
-                $collection->getConnection()->delete('catalog_product_entity_varchar', "value=$id");
 
+                $existingIds = $this->getProductIdsForDesigner($id);
+                $storeIds = $this->helper->toStoresArray();
+
+                foreach ($storeIds as $store){
+                    $this->action->updateAttributes($existingIds, ['el_designer' => NULL], $store);
+                }
                 // init model and delete
                 $model = $this->repository->getById($id);
                 $this->repository->delete($model);
