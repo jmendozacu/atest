@@ -173,6 +173,8 @@ class Save extends Designer
                     $this->action->updateAttributes($removeIds, ['el_designer' => ''], $id);
                     $this->action->updateAttributes($addIds, ['el_designer' => $this->model->getId()], $id);
                 }
+                $ids = array_merge($removeIds, $addIds);
+                $this->helperDesigner->reIndexering($ids);
 
                 $this->messageManager->addSuccessMessage(__('You saved the designer.'));
                 $this->dataPersistor->clear('designer_block');

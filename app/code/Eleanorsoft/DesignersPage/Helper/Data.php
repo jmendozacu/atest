@@ -5,6 +5,8 @@ use Eleanorsoft\DesignersPage\Model\UploaderPool;
 use Magento\Framework\App\Helper\AbstractHelper;
 use Magento\Framework\App\Helper\Context;
 use Magento\Framework\Exception\LocalizedException;
+use Magento\Indexer\Model\IndexerFactory;
+use Magento\Indexer\Model\Indexer\CollectionFactory;
 use Magento\Store\Model\StoreRepository;
 
 class Data extends AbstractHelper
@@ -19,17 +21,41 @@ class Data extends AbstractHelper
      */
     protected $storeRepository;
 
+    /**
+     *
+     * @var CollectionFactory
+     */
+    protected $indexerCollectionFactory;
+
+    /**
+     *
+     * @var IndexerFactory
+     */
+    protected $indexerFactory;
+
+    /**
+     * Data constructor.
+     * @param Context $context
+     * @param UploaderPool $pool
+     * @param StoreRepository $storeRepository
+     * @param CollectionFactory $indexerCollectionFactory
+     * @param IndexerFactory $indexerFactory
+     * @author Konstantin Esin <hello@eleanorsoft.com>
+     */
     public function __construct
     (
         Context $context,
         UploaderPool $pool,
-        StoreRepository $storeRepository
+        StoreRepository $storeRepository,
+        CollectionFactory $indexerCollectionFactory,
+        IndexerFactory $indexerFactory
     )
     {
         parent::__construct($context);
-
         $this->uploaderPool = $pool;
         $this->storeRepository = $storeRepository;
+        $this->indexerCollectionFactory = $indexerCollectionFactory;
+        $this->indexerFactory = $indexerFactory;
     }
 
     public function getImageUrl($image)
@@ -59,5 +85,12 @@ class Data extends AbstractHelper
         }
 
         return $storeIds;
+    }
+
+    public function reIndexering($ids = array())
+    {
+        $idx = $this->indexerFactory->create();
+        $idx->load('catalog_product_attribute');
+        $idx->reindexList($ids);
     }
 }
