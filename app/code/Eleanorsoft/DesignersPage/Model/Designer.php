@@ -3,6 +3,7 @@
 namespace Eleanorsoft\DesignersPage\Model;
 
 use Eleanorsoft\DesignersPage\Api\Data\DesignerInterface;
+use Eleanorsoft\DesignersPage\Api\Data\DesignerTranslatorInterface;
 use Eleanorsoft\DesignersPage\Model\ResourceModel\Designer as ResourceDesigner;
 use Magento\Framework\Data\Collection\AbstractDb;
 use Magento\Framework\Exception\LocalizedException;
@@ -21,13 +22,18 @@ use Magento\Framework\Model\Context;
  * @copyright Copyright (c) 2018 Eleanorsoft (https://www.eleanorsoft.com/)
  */
 
-class Designer extends AbstractModel implements DesignerInterface
+class Designer extends AbstractModel implements DesignerInterface, DesignerTranslatorInterface
 {
 
     /**
      * @var UploaderPool
      */
     protected $uploaderPool;
+
+    /**
+     * designer translation
+     */
+    protected $translation;
 
     public function __construct
     (
@@ -78,7 +84,7 @@ class Designer extends AbstractModel implements DesignerInterface
      */
     public function getFullName()
     {
-        return $this->getData(self::FULL_NAME);
+        return $this->translation[self::FULL_NAME];
     }
 
     /**
@@ -90,7 +96,7 @@ class Designer extends AbstractModel implements DesignerInterface
      */
     public function setFullName($value)
     {
-        return $this->setData(self::FULL_NAME, $value);
+        return $this->translation[self::FULL_NAME] = $value;
     }
 
     /**
@@ -100,7 +106,7 @@ class Designer extends AbstractModel implements DesignerInterface
      */
     public function getPhoto()
     {
-        return $this->getData(self::PHOTO);
+        return $this->translation[self::PHOTO];
     }
 
     /**
@@ -111,7 +117,7 @@ class Designer extends AbstractModel implements DesignerInterface
      */
     public function setPhoto($value)
     {
-        return $this->setData(self::PHOTO, $value);
+        return $this->translation[self::PHOTO] = $value;
     }
 
     /**
@@ -121,7 +127,7 @@ class Designer extends AbstractModel implements DesignerInterface
      */
     public function getAlternativePhoto()
     {
-        return $this->getData(self::ALTERNATIVE_PHOTO);
+        return $this->translation[self::ALTERNATIVE_PHOTO];
     }
 
     /**
@@ -132,7 +138,7 @@ class Designer extends AbstractModel implements DesignerInterface
      */
     public function setAlternativePhoto($value)
     {
-        return $this->setData(self::ALTERNATIVE_PHOTO, $value);
+        return $this->translation[self::ALTERNATIVE_PHOTO] = $value;
     }
 
     /**
@@ -142,7 +148,7 @@ class Designer extends AbstractModel implements DesignerInterface
      */
     public function getBanner()
     {
-        return $this->getData(self::BANNER);
+        return $this->translation[self::BANNER];
     }
 
     /**
@@ -153,7 +159,7 @@ class Designer extends AbstractModel implements DesignerInterface
      */
     public function setBanner($value)
     {
-        return $this->setData(self::BANNER, $value);
+        return $this->translation[self::BANNER] = $value;
     }
 
     /**
@@ -163,7 +169,7 @@ class Designer extends AbstractModel implements DesignerInterface
      */
     public function getDescription()
     {
-        return $this->getData(self::DESCRIPTION);
+        return $this->translation[self::DESCRIPTION];
     }
 
     /**
@@ -174,7 +180,7 @@ class Designer extends AbstractModel implements DesignerInterface
      */
     public function setDescription($value)
     {
-        return $this->setData(self::DESCRIPTION, $value);
+        return $this->translation[self::DESCRIPTION] = $value;
     }
 
     /**
@@ -196,5 +202,26 @@ class Designer extends AbstractModel implements DesignerInterface
     public function setSort($value)
     {
         return $this->setData(self::SORT, $value);
+    }
+
+    /**
+     * Set translation
+     *
+     * @param $value
+     * @return array
+     */
+    public function setTranslation($value): array
+    {
+        return $this->translation = $value;
+    }
+
+    /**
+     * Get translation
+     *
+     * @return array
+     */
+    public function getTranslation(): array
+    {
+        return $this->translation;
     }
 }

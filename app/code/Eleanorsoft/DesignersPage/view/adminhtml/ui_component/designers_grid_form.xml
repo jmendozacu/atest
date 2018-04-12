@@ -30,7 +30,7 @@
     <dataSource name="grid_form_data_source">
         <argument name="data" xsi:type="array">
             <item name="js_config" xsi:type="array">
-                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+                <item name="component" xsi:type="string">Eleanorsoft_DesignersPage/js/provider</item>
             </item>
         </argument>
         <settings>

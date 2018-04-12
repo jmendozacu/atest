@@ -15,6 +15,7 @@ interface DesignerInterface
     /**
      * Constants for keys of data array. Identical to the name of the getter in snake case
      */
+    const ENTITY            = 'eleanorsoft_designers';
     const DESIGNER_ID       = 'designer_id';
     const FULL_NAME         = 'full_name';
     const PHOTO             = 'photo';

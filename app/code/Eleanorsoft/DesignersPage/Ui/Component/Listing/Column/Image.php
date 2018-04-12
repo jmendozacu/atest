@@ -10,6 +10,7 @@
  */
 namespace Eleanorsoft\DesignersPage\Ui\Component\Listing\Column;
 
+use Eleanorsoft\DesignersPage\Model\ResourceModel\Designer;
 use Eleanorsoft\DesignersPage\Model\Uploader;
 use Magento\Framework\UrlInterface;
 use Magento\Framework\View\Element\UiComponentFactory;
@@ -37,6 +38,11 @@ class Image extends Column
     protected $urlBuilder;
 
     /**
+     * @var Designer
+     */
+    private $resourcemodel;
+
+    /**
      * Image constructor.
      *
      * @param ContextInterface $context
@@ -51,12 +57,14 @@ class Image extends Column
         UiComponentFactory $uiComponentFactory,
         UrlInterface $urlBuilder,
         Uploader $imageModel,
+        Designer $resourcemodel,
         array $components = [],
         array $data = []
     ) {
         parent::__construct($context, $uiComponentFactory, $components, $data);
         $this->imageModel = $imageModel;
         $this->urlBuilder = $urlBuilder;
+        $this->resourcemodel = $resourcemodel;
     }
 
     /**
@@ -70,6 +78,12 @@ class Image extends Column
         if (isset($dataSource['data']['items'])) {
             $fieldName = $this->getData('name');
             foreach ($dataSource['data']['items'] as & $item) {
+                $designer_id = $item['designer_id'];
+                $data = $this->resourcemodel->getDataDesigner($designer_id);
+                foreach ($data as $key=>$value) {
+                    $item[$key] = $value;
+                }
+
                 $url = '';
                 if ($item[$fieldName] != '') {
                     $url = $this->imageModel->getBaseUrl().$this->imageModel->getBasePath().$item[$fieldName];

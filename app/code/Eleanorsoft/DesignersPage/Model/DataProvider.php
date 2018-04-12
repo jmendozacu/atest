@@ -36,6 +36,12 @@ class DataProvider extends AbstractDataProvider
     protected $helper;
 
     /**
+     *
+     * @var ResourceModel\Designer
+     */
+    private $resourcemodel;
+
+    /**
      * Constructor
      *
      * @param string $name
@@ -53,6 +59,7 @@ class DataProvider extends AbstractDataProvider
         $requestFieldName,
         CollectionFactory $blockCollectionFactory,
         DataPersistorInterface $dataPersistor,
+        \Eleanorsoft\DesignersPage\Model\ResourceModel\Designer $resourcemodel,
         Data $helper,
         array $meta = [],
         array $data = []
@@ -60,6 +67,7 @@ class DataProvider extends AbstractDataProvider
     {
         parent::__construct($name, $primaryFieldName, $requestFieldName, $meta, $data);
 
+        $this->resourcemodel = $resourcemodel;
         $this->collection = $blockCollectionFactory->create();
         $this->dataPersistor = $dataPersistor;
         $this->helper = $helper;
@@ -79,20 +87,25 @@ class DataProvider extends AbstractDataProvider
         /** @var \Eleanorsoft\DesignersPage\Model\Designer $item */
         foreach ($items as $item) {
             $dataForm = $item->getData();
+            $designer_id = $dataForm['designer_id'];
+            $dataDesigner = $this->resourcemodel->getDataDesigner($designer_id);
+            foreach ($dataDesigner as $key=>$value) {
+                $dataForm[$key] = $value;
+            }
 
-            if (isset($dataForm['photo'])){
+            if ($dataForm['photo'] != ''){
                 $imageArr = [];
-                $imageArr[0]['url'] = $this->helper->getImageUrl($item->getPhoto());
+                $imageArr[0]['url'] = $this->helper->getImageUrl($dataForm['photo']);
                 $dataForm['photo'] = $imageArr;
             }
-            if (isset($dataForm['alternative_photo'])){
+            if ($dataForm['alternative_photo'] != ''){
                 $imageArr = [];
-                $imageArr[0]['url'] = $this->helper->getImageUrl($item->getAlternativePhoto());
+                $imageArr[0]['url'] = $this->helper->getImageUrl($dataForm['alternative_photo']);
                 $dataForm['alternative_photo'] = $imageArr;
             }
-            if (isset($dataForm['banner'])){
+            if ($dataForm['banner'] != ''){
                 $imageArr = [];
-                $imageArr[0]['url'] = $this->helper->getImageUrl($item->getBanner());
+                $imageArr[0]['url'] = $this->helper->getImageUrl($dataForm['banner']);
                 $dataForm['banner'] = $imageArr;
             }
 
@@ -108,6 +121,7 @@ class DataProvider extends AbstractDataProvider
             $this->loadedData[$block->getId()] = $block->getData();
             $this->dataPersistor->clear('designer_block');
         }
+
 
         return $this->loadedData;
     }

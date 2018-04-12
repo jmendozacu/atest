@@ -18,6 +18,7 @@ use Magento\Catalog\Model\ResourceModel\Product\Action;
 use Magento\Framework\Api\DataObjectHelper;
 use Magento\Framework\App\Request\DataPersistorInterface;
 use Magento\Framework\Exception\LocalizedException;
+use Magento\Framework\Registry;
 use Magento\Framework\Serialize\Serializer\Json;
 use \Magento\Framework\View\Result\PageFactory;
 use Magento\Catalog\Model\ResourceModel\Product\CollectionFactory;
@@ -69,6 +70,8 @@ class Save extends Designer
      */
     protected $helperDesigner;
 
+    protected $registry;
+
     public function __construct(
         Context $context,
         DesignerRepositoryInterface $repository,
@@ -79,6 +82,7 @@ class Save extends Designer
         UploaderPool $uploaderPool,
         DataObjectHelper $helper,
         ProductRepositoryInterface $productRepository,
+        Registry $registry,
         Action $action,
         Data $helperDesigner,
         Json $json
@@ -94,6 +98,7 @@ class Save extends Designer
         $this->action = $action;
         $this->helperDesigner = $helperDesigner;
         $this->json = $json;
+        $this->registry = $registry;
     }
 
     /**
@@ -104,6 +109,7 @@ class Save extends Designer
      */
     public function execute()
     {
+
         /** @var \Magento\Backend\Model\View\Result\Redirect $resultRedirect */
         $resultRedirect = $this->resultRedirectFactory->create();
         $data = $this->getRequest()->getPostValue();
@@ -174,7 +180,9 @@ class Save extends Designer
                     $this->action->updateAttributes($addIds, ['el_designer' => $this->model->getId()], $id);
                 }
                 $ids = array_merge($removeIds, $addIds);
-                $this->helperDesigner->reIndexering($ids);
+                if (!empty($ids)) {
+                    $this->helperDesigner->reIndexering($ids);
+                }
 
                 $this->messageManager->addSuccessMessage(__('You saved the designer.'));
                 $this->dataPersistor->clear('designer_block');

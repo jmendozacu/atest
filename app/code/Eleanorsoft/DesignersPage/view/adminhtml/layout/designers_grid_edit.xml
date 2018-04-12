@@ -13,6 +13,7 @@
             <block class="Magento\Backend\Block\Store\Switcher" name="store_switcher" template="Magento_Backend::store/switcher.phtml"/>
         </referenceContainer>
         <referenceContainer name="content">
+            <block class="Eleanorsoft\DesignersPage\Block\Url" name="url_provider" template="Eleanorsoft_DesignersPage::url.phtml"/>
             <uiComponent name="designers_grid_form"/>
         </referenceContainer>
     </body>

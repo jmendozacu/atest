@@ -101,7 +101,7 @@
                 <item name="config" xsi:type="array">
                     <item name="filter" xsi:type="string">textRange</item>
                     <item name="sorting" xsi:type="string">asc</item>
-                    <item name="label" xsi:type="string" translate="true">Photo ID</item>
+                    <item name="label" xsi:type="string" translate="true">Designer ID</item>
                     <item name="sortOrder" xsi:type="number">10</item>
                 </item>
             </argument>
@@ -109,6 +109,7 @@
         <column name="full_name">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
+                    <item name="sortable" xsi:type="boolean">false</item>
                     <item name="filter" xsi:type="string">text</item>
                     <item name="label" xsi:type="string" translate="true">Full Name</item>
                     <item name="sortOrder" xsi:type="number">20</item>

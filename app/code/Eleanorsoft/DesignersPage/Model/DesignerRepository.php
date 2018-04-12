@@ -75,7 +75,7 @@ class DesignerRepository implements DesignerRepositoryInterface
     public function save(DesignerInterface $designer)
     {
         try{
-
+            $designer->setDataChanges(true);
             $this->resourceModel->save($designer);
 
         }catch (\Exception $exception){
