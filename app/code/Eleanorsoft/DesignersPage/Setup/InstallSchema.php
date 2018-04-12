@@ -2,6 +2,7 @@
 
 namespace Eleanorsoft\DesignersPage\Setup;
 use Eleanorsoft\DesignersPage\Api\Data\DesignerInterface;
+use Magento\Framework\DB\Adapter\AdapterInterface;
 use Magento\Framework\DB\Ddl\Table;
 use Magento\Framework\Setup\InstallSchemaInterface;
 use Magento\Framework\Setup\ModuleContextInterface;
@@ -130,6 +131,15 @@ class InstallSchema implements InstallSchemaInterface
                         'nullable' => true,
                     ),
                     'Value'
+                )
+                ->addIndex(
+                    $setup->getIdxName(
+                        $tableName,
+                        ['designer_id', 'store_id'],
+                        AdapterInterface::INDEX_TYPE_UNIQUE
+                    ),
+                    ['designer_id', 'store_id'],
+                    ['type' => AdapterInterface::INDEX_TYPE_UNIQUE]
                 )
                 ->addForeignKey(
                     $setup->getFkName(
