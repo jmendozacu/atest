@@ -27,8 +27,19 @@ class Designer extends AbstractDb
      */
     protected $storeManager;
 
+    /**
+     * @var \Magento\Store\Model\ResourceModel\Store\CollectionFactory
+     */
+    protected $collectionStore;
+
+    /**
+     * @var Registry
+     */
     protected $registry;
 
+    /**
+     * @var Http
+     */
     protected $request;
 
     /**
@@ -43,12 +54,14 @@ class Designer extends AbstractDb
         StoreManagerInterface $storeManager,
         Registry $registry,
         Http $request,
+        \Magento\Store\Model\ResourceModel\Store\CollectionFactory $collectionStore,
         $connectionName = null
     )
     {
         parent::__construct($context, $connectionName);
         $this->storeManager = $storeManager;
         $this->registry = $registry;
+        $this->collectionStore = $collectionStore;
         $this->request = $request;
     }
 
@@ -72,8 +85,18 @@ class Designer extends AbstractDb
     protected function _afterLoad(AbstractModel $designer)
     {
         $store_id = $this->request->getParam('store');
-        if (is_null($store_id)) {
-            $store_id = 0;
+        $store__front_id = $this->request->getParam('___store');
+        if ($store__front_id){
+            $stores = $this->collectionStore->create()
+                ->addFieldToFilter('code',array("eq" => $store__front_id));
+            $stores->getFirstItem();
+
+            $store_id = $stores->getData();
+            $store_id = $store_id[0]['store_id'];
+        }else {
+            if (is_null($store_id)) {
+                $store_id = 0;
+            }
         }
 
         $designer_id = $designer->getId();

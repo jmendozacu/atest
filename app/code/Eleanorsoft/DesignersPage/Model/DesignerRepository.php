@@ -95,7 +95,7 @@ class DesignerRepository implements DesignerRepositoryInterface
      */
     public function getById($id)
     {
-        if (!isset($this->instances[$id])) {
+//        if (!isset($this->instances[$id])) {
 
             $designer = $this->designerFactory->create();
             $this->resourceModel->load($designer, $id);
@@ -104,7 +104,7 @@ class DesignerRepository implements DesignerRepositoryInterface
                 throw new NoSuchEntityException(__('Requested image doesn\'t exist'));
             }
             $this->instances[$id] = $designer;
-        }
+//        }
         return $this->instances[$id];
     }
 
