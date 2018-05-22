@@ -39,7 +39,6 @@ $logoSrc = $this->getUrl('pub/media/wysiwyg/cleversoft/logo/', ['_secure' => $th
         <?php echo $this->getChildHtml("logo"); ?>
     </div>
     <div class="zoo-header-content-block right">
-        <?php echo $this->getChildHtml("store_language"); ?>
         <?php echo $this->getChildHtml("header.links"); ?>
         <?php echo $this->getChildHtml("custom_block"); ?>
         <?php echo $this->getChildHtml("minicart"); ?>
@@ -83,6 +82,7 @@ $logoSrc = $this->getUrl('pub/media/wysiwyg/cleversoft/logo/', ['_secure' => $th
             <?php if ($compareHeader) echo $this->getChildHtml("compare_link"); ?>
             <?php echo $this->getChildHtml("minicart"); ?>
             <?php echo $this->getChildHtml("header.links"); ?>
+            <?php echo $this->getChildHtml("store_language"); ?>
         </div>
     </div>
 </div>

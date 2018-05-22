@@ -17,7 +17,6 @@ $wishlistHeader = $block->getData('wishlist');
         <div class="topbar-container">
             <?php echo $this->getChildHtml("top.contact"); ?>
             <?php echo $this->getChildHtml("currency"); ?>
-            <?php echo $this->getChildHtml("store_language"); ?>
         </div>
     </div>
 </div>
@@ -45,6 +44,7 @@ $wishlistHeader = $block->getData('wishlist');
             <?php if ($compareHeader) echo $this->getChildHtml("compare_link"); ?>
             <?php echo $this->getChildHtml("minicart"); ?>
             <?php echo $this->getChildHtml("header.links"); ?>
+            <?php echo $this->getChildHtml("store_language"); ?>
         </div>
     </div>
 </div>
