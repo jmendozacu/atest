@@ -1,13 +1,13 @@
 <?xml version="1.0"?>
-<!--
-/**
- * @author     Konstantin Esin <hello@eleanorsoft.com>
- * @package    Eleanorsoft_asufa
- * @copyright  Copyright (c) 2018 Eleanorsoft (https://www.eleanorsoft.com/)
- */
--->
-<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
-    <body>
-        <move element="store.settings.language" destination="header-wrapper" />
-    </body>
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <referenceContainer name="page.wrapper">
+        <block class="Magento\Cms\Block\Block" name="header_top" before="-">
+            <arguments>
+                <argument name="block_id" xsi:type="string">header_top</argument>
+            </arguments>
+        </block>
+    </referenceContainer>
+    <referenceBlock name="catalog.compare.sidebar" remove="true"/>
+    <referenceBlock name="view.addto.compare" remove="true" />
+    <referenceBlock name="category.product.addto.compare" remove="true"/>
 </page>
