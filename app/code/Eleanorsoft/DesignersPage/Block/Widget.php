@@ -2,25 +2,12 @@
 
 namespace Eleanorsoft\DesignersPage\Block;
 
-use CleverSoft\CleverBrands\Block\Widget\Adminhtml\Brands;
-use Magento\Catalog\Model\Product\Attribute\Repository;
-use Magento\Framework\UrlInterface;
+use CleverSoft\CleverProduct\Block\Widget as BaseWidget;
 use Magento\Framework\View\Element\Template\Context;
-use Magento\Store\Model\StoreManagerInterface;
+use Magento\Widget\Block\BlockInterface;
 
-class Widget extends Brands
+class Widget extends BaseWidget implements BlockInterface
 {
-    /**
-     *
-     * @var StoreManagerInterface
-     */
-    protected $storeManager;
-
-    /**
-     *
-     * @var Repository
-     */
-    protected $productAttributeRepository;
 
     /**
      *
@@ -28,44 +15,54 @@ class Widget extends Brands
      */
     protected $designer;
 
+    /**
+     * Widget constructor.
+     * @param \Magento\Catalog\Block\Product\Context $context
+     * @param \Magento\Framework\Json\EncoderInterface $jsonEncoder
+     * @param \Magento\Framework\ObjectManagerInterface $objectManager
+     * @param \CleverSoft\CleverProduct\Helper\Data $helperData
+     * @param Designer $designer
+     * @param array $data
+     */
     public function __construct(
-        Context $context,
-        StoreManagerInterface $storeManager,
-        Repository $productAttributeRepository,
+        \Magento\Catalog\Block\Product\Context $context,
+        \Magento\Framework\Json\EncoderInterface $jsonEncoder,
+        \Magento\Framework\ObjectManagerInterface $objectManager,
+        \CleverSoft\CleverProduct\Helper\Data $helperData,
         Designer $designer,
         array $data = []
     )
     {
-        parent::__construct($context, $data);
-
-        $this->storeManager = $storeManager;
-        $this->productAttributeRepository = $productAttributeRepository;
+        parent::__construct($context, $jsonEncoder, $objectManager, $helperData, $data);
         $this->designer = $designer;
     }
 
-    protected function _construct()
-    {
-        parent::_construct();
-        $this->setTemplate('widget/designers.phtml');
-    }
 
-    public function getOptionBrands()
+    /**
+     * Retrieve data about designer
+     *
+     * @return array
+     * @throws \Magento\Framework\Exception\LocalizedException
+     */
+    public function getOptionDesigners()
     {
-        $currentStore = $this->storeManager->getStore();
-        $mediaUrl = $currentStore->getBaseUrl(UrlInterface::URL_TYPE_MEDIA);
-
         $helper = $this->designer->getHelper();
         $designers = $this->designer->getCollection();
-
-        $options = array();
+        $options = [];
 
         foreach ($designers as $designer){
             $options[] = array(
+                'id' => $designer->getId(),
                 'label' => $designer->getFullName(),
                 'image' => $helper->getImageUrl($designer->getPhoto()),
+                'altImage' => $helper->getImageUrl($designer->getAlternativePhoto()),
                 'linkto' => $this->getUrl('designers/*/page', ['id' => $designer->getId()])
             );
         }
         return $options;
+    }
+
+    protected function _getProductCollection($type, $value){
+        return $this->getOptionDesigners();
     }
 }
