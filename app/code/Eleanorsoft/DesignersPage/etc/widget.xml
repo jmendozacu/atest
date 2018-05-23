@@ -15,7 +15,7 @@
 
 
             <parameter name="layout" xsi:type="select" required="true" visible="true"
-                       source_model="Eleanorsoft_DesignersPage\Model\Widget\Source\Type">
+                       source_model="Eleanorsoft\DesignersPage\Model\Widget\Source\Type">
                 <label translate="true">Layout</label>
                 <description translate="true">Select layout content</description>
             </parameter>
